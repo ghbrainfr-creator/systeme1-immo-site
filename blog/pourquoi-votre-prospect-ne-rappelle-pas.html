@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pourquoi votre prospect ne rappelle pas — La fenêtre des 48h | Système1-Immo</title>
+<meta name="description" content="Votre prospect a décidé de vendre. Il n'a pas appelé. Voici pourquoi — et comment capter le moment exact où il bascule, avant vos confrères. Par Nordine Mouaouia, 22 ans de terrain.">
+<meta name="keywords" content="prospect immobilier ne rappelle pas, relance client immobilier, moment de bascule vendeur, prospection immobilière neurosciences, fenêtre 48h immobilier">
+<meta property="og:title" content="Pourquoi votre prospect ne rappelle pas — La fenêtre des 48h">
+<meta property="og:description" content="Il a décidé de vendre. Il a appelé quelqu'un d'autre. Voici ce qui s'est passé — et comment ne plus jamais rater ce moment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://systeme1-immo.com/blog/pourquoi-prospect-ne-rappelle-pas">
+<link rel="canonical" href="https://systeme1-immo.com/blog/pourquoi-prospect-ne-rappelle-pas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy-950:#070B14;--navy-900:#0B1020;--navy-800:#0F1523;
+  --navy-700:#161E31;--navy-600:#1E2638;
+  --cool-50:#F5F7FB;--cool-200:#E4E7EC;--cool-400:#98A2B3;
+  --primary:#4DA3FF;--primary-dark:#3B8DE0;
+  --success:#52C77A;--orange:#E4763F;
+  --border:rgba(255,255,255,0.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy-950);font-family:'Inter',system-ui,sans-serif;color:var(--cool-50);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(7,11,20,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:var(--cool-50);text-decoration:none;display:flex;align-items:center;gap:8px}
+.nav-logo span{color:var(--primary)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:14px;color:var(--cool-400);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--cool-50)}
+.nav-cta{padding:8px 18px;background:var(--primary);color:#fff;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--primary-dark);color:#fff}
+
+/* HERO ARTICLE */
+.article-hero{max-width:780px;margin:0 auto;padding:60px 24px 48px}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--cool-400);margin-bottom:24px}
+.breadcrumb a{color:var(--cool-400);text-decoration:none}
+.breadcrumb a:hover{color:var(--primary)}
+.breadcrumb-sep{color:var(--border)}
+.article-tag{display:inline-block;padding:4px 12px;background:rgba(77,163,255,0.1);border:1px solid rgba(77,163,255,0.2);border-radius:20px;font-size:12px;font-weight:600;color:var(--primary);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:20px}
+.article-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1.15;color:var(--cool-50);margin-bottom:20px}
+.article-title em{color:var(--primary);font-style:normal}
+.article-intro{font-size:18px;color:var(--cool-400);line-height:1.7;margin-bottom:32px;max-width:680px}
+.article-meta{display:flex;align-items:center;gap:16px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:48px}
+.meta-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--orange));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
+.meta-info{flex:1}
+.meta-name{font-size:14px;font-weight:600;color:var(--cool-50)}
+.meta-role{font-size:12px;color:var(--cool-400)}
+.meta-date{font-size:12px;color:var(--cool-400)}
+
+/* ARTICLE BODY */
+.article-body{max-width:780px;margin:0 auto;padding:0 24px 80px}
+.article-body h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--cool-50);margin:48px 0 16px;line-height:1.25}
+.article-body h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--cool-200);margin:32px 0 12px}
+.article-body p{font-size:16px;color:var(--cool-400);margin-bottom:20px;line-height:1.8}
+.article-body p strong{color:var(--cool-50);font-weight:600}
+.article-body ul{margin:0 0 20px 20px}
+.article-body ul li{font-size:16px;color:var(--cool-400);margin-bottom:10px;line-height:1.7}
+.article-body ul li strong{color:var(--cool-50)}
+
+/* CALLOUTS */
+.callout-scene{padding:20px 24px;border-left:3px solid var(--orange);background:rgba(228,118,63,0.06);border-radius:0 10px 10px 0;margin:32px 0;font-size:15px;font-style:italic;color:var(--cool-400);line-height:1.8}
+.callout-scene strong{color:var(--cool-200);font-style:normal}
+.callout-stat{padding:24px 28px;background:var(--navy-800);border:1px solid var(--border);border-radius:12px;margin:32px 0;text-align:center}
+.callout-stat .number{font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:700;color:var(--primary);line-height:1}
+.callout-stat .label{font-size:14px;color:var(--cool-400);margin-top:8px}
+.callout-ref{padding:16px 20px;background:rgba(77,163,255,0.05);border:1px solid rgba(77,163,255,0.15);border-radius:10px;margin:24px 0;font-size:13px;color:var(--cool-400);font-style:italic}
+.callout-ref strong{color:var(--primary);font-style:normal}
+.callout-terrain{padding:20px 24px;background:var(--navy-700);border:1px solid var(--border);border-radius:12px;margin:32px 0}
+.callout-terrain .terrain-label{font-size:11px;font-weight:700;color:var(--success);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px}
+.callout-terrain p{font-size:15px;color:var(--cool-400);margin-bottom:0;font-style:italic}
+
+/* STEPS */
+.steps{margin:32px 0}
+.step{display:flex;gap:20px;margin-bottom:28px;align-items:flex-start}
+.step-num{width:36px;height:36px;border-radius:50%;background:rgba(77,163,255,0.1);border:1px solid rgba(77,163,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:var(--primary);flex-shrink:0;margin-top:2px}
+.step-content h4{font-size:16px;font-weight:600;color:var(--cool-50);margin-bottom:6px}
+.step-content p{font-size:15px;color:var(--cool-400);margin-bottom:0}
+
+/* CTA BLOC */
+.cta-bloc{background:linear-gradient(135deg,var(--navy-800),var(--navy-700));border:1px solid rgba(77,163,255,0.2);border-radius:16px;padding:40px;margin:48px 0;text-align:center}
+.cta-bloc h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--cool-50);margin-bottom:12px}
+.cta-bloc p{font-size:15px;color:var(--cool-400);margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-primary{display:inline-block;padding:14px 28px;background:var(--primary);color:#fff;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.2s;margin-bottom:12px}
+.cta-primary:hover{background:var(--primary-dark)}
+.cta-secondary{display:block;font-size:13px;color:var(--cool-400);text-decoration:none;margin-top:8px}
+.cta-secondary:hover{color:var(--primary)}
+
+/* REFERENCES */
+.references{margin-top:60px;padding-top:32px;border-top:1px solid var(--border)}
+.references h4{font-size:13px;font-weight:600;color:var(--cool-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
+.references ol{margin-left:20px}
+.references ol li{font-size:13px;color:var(--cool-400);margin-bottom:8px;line-height:1.6;font-style:italic}
+
+/* AUTHOR BIO */
+.author-bio{background:var(--navy-800);border:1px solid var(--border);border-radius:12px;padding:28px;margin:48px 0;display:flex;gap:20px;align-items:flex-start}
+.bio-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--orange));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;flex-shrink:0}
+.bio-name{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--cool-50);margin-bottom:4px}
+.bio-title{font-size:13px;color:var(--primary);margin-bottom:10px}
+.bio-text{font-size:14px;color:var(--cool-400);line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--navy-900);border-top:1px solid var(--border);padding:40px 24px;text-align:center}
+.footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;color:var(--cool-50);margin-bottom:8px}
+.footer-logo span{color:var(--primary)}
+.footer-text{font-size:13px;color:var(--cool-400)}
+.footer-links{display:flex;gap:20px;justify-content:center;margin-top:16px}
+.footer-links a{font-size:13px;color:var(--cool-400);text-decoration:none}
+.footer-links a:hover{color:var(--primary)}
+
+@media(max-width:640px){
+  .article-hero,.article-body{padding-left:16px;padding-right:16px}
+  .author-bio{flex-direction:column}
+  .cta-bloc{padding:28px 20px}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="https://systeme1-immo.com" class="nav-logo">SYSTÈME1<span>-IMMO™</span></a>
+    <div class="nav-links">
+      <a href="https://systeme1-immo.com/#outils">Outils</a>
+      <a href="https://systeme1-immo.com/#tarifs">Tarifs</a>
+      <a href="/blog">Blog</a>
+      <a href="https://systeme1-immo.com" class="nav-cta">Essai gratuit 14j</a>
+    </div>
+  </div>
+</nav>
+
+<div class="article-hero">
+  <div class="breadcrumb">
+    <a href="https://systeme1-immo.com">Accueil</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="/blog">Blog</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Prospection</span>
+  </div>
+  <div class="article-tag">Psychologie de la vente</div>
+  <h1 class="article-title">Pourquoi votre prospect<br>ne vous rappelle pas —<br><em>la fenêtre des 48h</em></h1>
+  <p class="article-intro">Il a ouvert votre email trois fois. Il a visité votre page d'estimation. Il a décidé. Et il a appelé quelqu'un d'autre. Voici exactement ce qui s'est passé — et comment ne plus jamais rater ce moment.</p>
+  <div class="article-meta">
+    <div class="meta-avatar">NM</div>
+    <div class="meta-info">
+      <div class="meta-name">Nordine Mouaouia</div>
+      <div class="meta-role">Expert neurosciences × immobilier · Consultant Cabinet Système1</div>
+    </div>
+    <div class="meta-date">Avril 2026 · 8 min de lecture</div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="callout-scene">
+    <strong>La scène.</strong> Vous connaissez ce contact depuis 6 mois. Vous lui avez envoyé une estimation. Il vous a dit "on n'est pas encore prêts." Hier, son bien est apparu sur SeLoger. Avec le logo d'un confrère.
+  </div>
+
+  <p>Ce moment-là, chaque agent l'a vécu. Certains une fois. D'autres, régulièrement. Et la question qui revient toujours est la même : <strong>qu'est-ce qui s'est passé ?</strong></p>
+
+  <p>Pas de mauvaise estimation. Pas de mauvais suivi. Juste un timing raté. Une fenêtre ouverte et fermée sans que vous le sachiez.</p>
+
+  <p>Après 22 ans de terrain et 53 ventes en solo en 2023, j'ai compris que ce problème n'est pas un problème de méthode de relance. C'est un problème de lecture du cerveau humain.</p>
+
+  <h2>Ce que dit la science sur la décision immobilière</h2>
+
+  <p>Le cerveau ne prend pas les grandes décisions de manière progressive et rationnelle. Il accumule des tensions silencieuses — une contrainte financière, un événement familial, une information de marché — jusqu'à un point de basculement soudain.</p>
+
+  <p>Daniel Kahneman, Prix Nobel d'économie 2002, a montré que les décisions sous incertitude sont dominées par <strong>l'aversion à la perte</strong> : la douleur de "brader sa vie" ou de "rater le bon moment" pèse deux fois plus lourd que le bénéfice attendu. Tant que cette incertitude n'est pas résolue, le prospect reste immobile — même s'il a décidé intérieurement.</p>
+
+  <div class="callout-ref">
+    <strong>Référence :</strong> Kahneman, D. & Tversky, A. (1979). Prospect Theory: An Analysis of Decision under Risk. <em>Econometrica, 47(2), 263–291.</em>
+  </div>
+
+  <p>Ce qui résout l'incertitude ? Rarement un appel de votre part. Presque toujours <strong>un événement extérieur</strong> : un divorce, une mutation professionnelle, un DPE qui tombe, un enfant qui quitte la maison, un voisin qui vient de vendre au-dessus du prix attendu.</p>
+
+  <div class="callout-stat">
+    <div class="number">48h</div>
+    <div class="label">C'est la durée moyenne de la fenêtre entre la décision intérieure et le premier appel passé à un agent</div>
+  </div>
+
+  <p>Dans cette fenêtre de 48 heures, votre prospect a décidé — mais n'a encore appelé personne. Il cherche une confirmation, un signal, une raison d'agir maintenant. <strong>Le premier agent qui envoie le bon signal dans cette fenêtre signe.</strong> Les autres lisent l'annonce trois semaines plus tard.</p>
+
+  <h2>Pourquoi votre prospect ne rappelle pas — les 4 vraies raisons</h2>
+
+  <h3>1. Il ne "réfléchit" pas — il attend un déclencheur</h3>
+
+  <p>"On réfléchit" est la phrase la plus mal interprétée en immobilier. Elle ne signifie pas "nous ne sommes pas intéressés." Elle signifie : <strong>"nous n'avons pas encore trouvé la raison qui rend la décision inévitable."</strong></p>
+
+  <p>Ce déclencheur peut être n'importe quoi. Une conversation avec un ami qui vient de vendre. Un article sur l'évolution des taux. Une nuit sans sommeil à calculer. Il n'en parle pas. Il attend. Et quand il arrive, il agit vite.</p>
+
+  <h3>2. Sa mémoire émotionnelle de votre interaction s'efface</h3>
+
+  <p>Kahneman a décrit le <strong>Peak-End Rule</strong> : le cerveau ne mémorise pas une expérience dans son intégralité. Il retient le moment émotionnel le plus fort et la fin. Si votre dernière interaction avec ce prospect s'est terminée sur "on vous rappelle", il ne reste rien dans sa mémoire émotionnelle qui vous différencie de vos confrères.</p>
+
+  <div class="callout-ref">
+    <strong>Référence :</strong> Kahneman, D., Fredrickson, B.L., Schreiber, C.A. & Redelmeier, D.A. (1993). When more pain is preferred to less. <em>Psychological Science, 4(6), 401–405.</em>
+  </div>
+
+  <h3>3. Vous n'étiez pas dans sa "fenêtre mentale" au bon moment</h3>
+
+  <p>Thaler et Sunstein ont montré que les grandes décisions se prennent dans les <strong>périodes de transition</strong>, pas en temps calme. Votre prospect ne prend pas sa décision de vendre un mardi après-midi ordinaire. Il la prend dans un moment de rupture — souvent le soir, le week-end, ou au lendemain d'un événement familial.</p>
+
+  <p>Si vous n'êtes pas présent — même symboliquement — à ce moment-là, vous n'existez pas dans sa décision.</p>
+
+  <h3>4. Il perçoit tous les agents comme identiques</h3>
+
+  <p>Un prospect qui a rencontré 3 agents et reçu 3 estimations similaires n'a aucune raison rationnelle de vous choisir plutôt qu'un autre. <strong>La décision finale se fait sur la mémorisation émotionnelle</strong> — qui lui a laissé une impression distincte, un moment particulier, une réponse à une peur qu'il n'avait pas formulée.</p>
+
+  <div class="callout-terrain">
+    <div class="terrain-label">Ce que j'observe sur le terrain</div>
+    <p>Sur mes 53 ventes de 2023, j'ai analysé l'origine du contact pour chaque mandat signé. Dans 34 cas sur 53, le vendeur m'avait contacté une première fois plusieurs mois avant — parfois un an avant — en me disant qu'il n'était "pas encore prêt". Ce qui avait changé entre les deux contacts : toujours un événement de vie. Jamais une campagne de relance. Jamais une baisse de prix.</p>
+  </div>
+
+  <h2>Comment capter la fenêtre des 48h — méthode concrète</h2>
+
+  <p>La bonne nouvelle : cette fenêtre se détecte. Pas par intuition — par les comportements numériques que votre prospect laisse avant d'appeler.</p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Surveiller les signaux comportementaux, pas le calendrier</h4>
+        <p>Un contact qui ouvre le même email 3 fois en 48h n'est pas en train de "lire ses emails" — il est en train de peser une décision. Un prospect qui visite votre page d'estimation à 22h un dimanche est en pleine fenêtre de bascule. Ce sont ces signaux qui doivent déclencher votre relance — pas votre planning de suivi à J+30.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Relancer sur un fait externe, jamais sur votre agenda</h4>
+        <p>"Je me permets de revenir vers vous pour savoir où en est votre projet" active la résistance. "J'ai pensé à vous en voyant que 3 biens similaires au vôtre viennent d'être vendus dans votre quartier ce trimestre" crée un événement déclencheur à votre place. Vous n'avez pas relancé — vous avez apporté une information qui rend la décision plus urgente.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Construire un moment émotionnel distinctif dès le premier contact</h4>
+        <p>Si votre première interaction se termine sur un échange de chiffres, vous n'avez rien laissé dans la mémoire émotionnelle du prospect. Identifiez la peur dominante de votre vendeur — peur de brader, peur de ne pas trouver à racheter, peur du délai — et répondez-y directement. C'est ce qu'il mémorisera. Pas l'estimation.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Automatiser la présence sans automatiser la relation</h4>
+        <p>Vous ne pouvez pas surveiller 300 contacts manuellement. Mais un système peut détecter les signaux comportementaux à votre place — retours sur l'estimation, ouvertures d'email, visites de votre site — et vous alerter uniquement quand un contact entre en fenêtre de bascule. Vous intervenez au bon moment, pas au hasard.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-bloc">
+    <h3>Combien de contacts dans votre CRM sont en ce moment en fenêtre de bascule ?</h3>
+    <p>Système1-Immo détecte automatiquement les signaux comportementaux de vos prospects et vous alerte au moment exact où ils basculent. Vous intervenez — ils signent.</p>
+    <a href="https://systeme1-immo.com" class="cta-primary">Voir comment ça fonctionne — 14j gratuits</a>
+    <a href="https://systeme1-immo.com" class="cta-secondary">Sans carte bancaire · Opérationnel en 5 minutes</a>
+  </div>
+
+  <h2>Les 3 erreurs qui font rater la fenêtre — et comment les corriger</h2>
+
+  <h3>Erreur 1 : Relancer par calendrier plutôt que par signal</h3>
+  <p>La relance à J+7, J+30, J+60 est un mythe de productivité. Elle consomme du temps et génère peu de résultats parce qu'elle ignore totalement l'état émotionnel du prospect. <strong>La bonne question n'est pas "quand est-ce que je le relance ?" mais "qu'est-ce qui m'indique qu'il est en train de décider ?"</strong></p>
+
+  <h3>Erreur 2 : Faire de l'estimation un acte administratif</h3>
+  <p>Quand vous présentez une estimation, vous avez une fenêtre rare : votre prospect est en train de mesurer le gap entre ce qu'il espérait et la réalité du marché. C'est un moment émotionnel fort. Si vous le traitez comme un échange de données, vous ratez l'opportunité de créer l'ancrage mémoriel qui vous différencie.</p>
+
+  <p>Posez la question que personne ne pose : <strong>"Qu'est-ce qui vous ferait dire que cette vente s'est bien passée ?"</strong> La réponse vous donnera la vraie peur dominante — et vous permettra d'y répondre avant vos confrères.</p>
+
+  <h3>Erreur 3 : Considérer un contact "froid" comme un contact "perdu"</h3>
+  <p>Un contact qui ne vous a pas rappelé depuis 3 mois n'est pas un contact perdu. C'est un contact en attente d'un déclencheur. Sur une base de 300 contacts dormants, statistiquement entre 15 et 30 sont en ce moment en train de vivre l'événement qui va déclencher leur décision. Le problème : vous ne savez pas lesquels.</p>
+
+  <div class="callout-stat">
+    <div class="number">34/53</div>
+    <div class="label">Mandats signés issus de contacts qui avaient dit "pas encore prêts" — sur mes ventes 2023</div>
+  </div>
+
+  <h2>Ce que ça change concrètement dans votre activité</h2>
+
+  <p>Quand vous commencez à lire les signaux comportementaux plutôt que votre calendrier de relance, trois choses changent :</p>
+
+  <ul>
+    <li><strong>Votre taux de transformation sur les relances monte.</strong> Parce que vous contactez uniquement les contacts qui sont en mouvement, pas tous vos contacts au même rythme.</li>
+    <li><strong>Vous arrêtez de subir les "surprises".</strong> Vous ne découvrez plus l'annonce d'un confrère trois semaines après. Vous captez le signal avant qu'il appelle.</li>
+    <li><strong>Votre charge mentale diminue.</strong> Vous ne gérez plus 300 contacts avec la même intensité. Vous concentrez votre énergie là où la fenêtre est ouverte.</li>
+  </ul>
+
+  <p>Ce n'est pas une méthode de relance différente. C'est une lecture différente du comportement humain — appliquée à votre CRM.</p>
+
+  <div class="author-bio">
+    <div class="bio-avatar">NM</div>
+    <div>
+      <div class="bio-name">Nordine Mouaouia</div>
+      <div class="bio-title">Expert neurosciences × immobilier · Consultant Cabinet Système1</div>
+      <div class="bio-text">22 ans de terrain. 53 ventes en solo en 2023. 50% de part de marché dans sa zone depuis 5 ans. Certifié en neurosciences appliquées, psychologie du consommateur et sciences comportementales (RNCP). Fondateur de Système1-Immo — le premier écosystème qui applique les neurosciences à la prospection immobilière.</div>
+    </div>
+  </div>
+
+  <div class="references">
+    <h4>Références scientifiques</h4>
+    <ol>
+      <li>Kahneman, D. & Tversky, A. (1979). Prospect Theory: An Analysis of Decision under Risk. <em>Econometrica, 47(2), 263–291.</em></li>
+      <li>Kahneman, D., Fredrickson, B.L., Schreiber, C.A. & Redelmeier, D.A. (1993). When more pain is preferred to less: Adding a better end. <em>Psychological Science, 4(6), 401–405.</em></li>
+      <li>Thaler, R.H. & Sunstein, C.R. (2008). <em>Nudge: Improving Decisions About Health, Wealth, and Happiness.</em> Yale University Press.</li>
+      <li>Rizzolatti, G. & Craighero, L. (2004). The Mirror-Neuron System. <em>Annual Review of Neuroscience, 27, 169–192.</em></li>
+    </ol>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">SYSTÈME1<span>-IMMO™</span></div>
+  <div class="footer-text">La prospection immobilière réinventée par les neurosciences</div>
+  <div class="footer-links">
+    <a href="https://systeme1-immo.com">Accueil</a>
+    <a href="/blog">Blog</a>
+    <a href="https://systeme1-immo.com/#tarifs">Tarifs</a>
+    <a href="https://systeme1-immo.com/#faq-s">FAQ</a>
+  </div>
+</footer>
+
+</body>
+</html>
