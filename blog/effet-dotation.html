@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'effet de dotation — Pourquoi votre vendeur surestime toujours son bien | Système1-Immo™</title>
+  <meta name="description" content="Richard Thaler a prouvé en 1990 que posséder un objet lui donne une valeur irrationnelle dans notre cerveau. Vos vendeurs le vivent chaque jour. Voici comment travailler avec ce biais, pas contre lui.">
+  <meta name="keywords" content="effet de dotation, biais cognitif immobilier, estimation prix immobilier, psychologie vendeur immobilier, Thaler, neurosciences immobilier">
+  <link rel="canonical" href="https://systeme1-immo.com/blog/effet-dotation.html">
+  <meta property="og:title" content="L'effet de dotation — Pourquoi votre vendeur surestime toujours son bien">
+  <meta property="og:description" content="Thaler l'a prouvé en 1990. Vos vendeurs le vivent chaque jour. Et vous, vous en faites quoi ?">
+  <meta property="og:url" content="https://systeme1-immo.com/blog/effet-dotation.html">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #070B14;
+      --dark2: #0F1523;
+      --dark3: #141B2D;
+      --blue: #4DA3FF;
+      --orange: #E8A838;
+      --green: #52C77A;
+      --gray: #98A2B3;
+      --light: #F5F7FB;
+      --border: rgba(255,255,255,0.07);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--dark);
+      color: #E8ECF4;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    nav {
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(7,11,20,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+    .logo span { color: var(--blue); }
+
+    nav a.cta {
+      background: var(--blue);
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 760px;
+      margin: 64px auto 0;
+      padding: 0 24px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+    .breadcrumb a { color: var(--gray); text-decoration: none; }
+    .breadcrumb a:hover { color: #fff; }
+    .breadcrumb span { opacity: 0.4; }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .badge-psycho { background: rgba(232,168,56,0.15); color: var(--orange); border: 1px solid rgba(232,168,56,0.2); }
+    .badge-science { background: rgba(77,163,255,0.1); color: var(--blue); border: 1px solid rgba(77,163,255,0.2); }
+
+    h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .standfirst {
+      font-size: 18px;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), #6C63FF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .meta-text { line-height: 1.4; }
+    .meta-name { font-size: 14px; font-weight: 600; color: #fff; }
+    .meta-info { font-size: 12px; color: var(--gray); }
+
+    /* BODY */
+    .article-body {
+      max-width: 760px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .article-body p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: #D4DAE8;
+      margin-bottom: 28px;
+    }
+
+    .article-body h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #fff;
+      margin: 56px 0 20px;
+      line-height: 1.3;
+    }
+
+    .article-body h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--blue);
+      margin: 36px 0 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 13px;
+    }
+
+    .article-body strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .article-body em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    /* PULL QUOTE */
+    blockquote {
+      border-left: 3px solid var(--orange);
+      padding: 20px 28px;
+      margin: 40px 0;
+      background: rgba(232,168,56,0.06);
+      border-radius: 0 12px 12px 0;
+    }
+
+    blockquote p {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 20px !important;
+      font-style: italic;
+      color: #E8D5B0 !important;
+      margin-bottom: 8px !important;
+      line-height: 1.5 !important;
+    }
+
+    blockquote cite {
+      font-size: 13px;
+      color: var(--gray);
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin: 40px 0;
+    }
+
+    .highlight p {
+      font-size: 15px !important;
+      color: #B8C4D8 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .highlight-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    /* BIAIS BOX */
+    .biais-box {
+      background: linear-gradient(135deg, rgba(232,168,56,0.08), rgba(77,163,255,0.06));
+      border: 1px solid rgba(232,168,56,0.2);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 48px 0;
+    }
+
+    .biais-box-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .biais-box h4 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .biais-box p {
+      font-size: 15px !important;
+      color: #B8C4D8 !important;
+      margin-bottom: 12px !important;
+    }
+
+    .biais-source {
+      font-size: 12px;
+      color: var(--gray);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      margin-top: 16px;
+    }
+
+    /* TERRAIN BOX */
+    .terrain-box {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 48px 0;
+    }
+
+    .terrain-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+
+    .terrain-box p {
+      font-size: 15px !important;
+      color: #B8C4D8 !important;
+      margin-bottom: 12px !important;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(77,163,255,0.1), rgba(82,199,122,0.08));
+      border: 1px solid rgba(77,163,255,0.2);
+      border-radius: 20px;
+      padding: 48px 40px;
+      margin: 64px 0 0;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      color: var(--gray);
+      font-size: 15px !important;
+      margin-bottom: 28px !important;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--blue);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; }
+
+    /* NAV ARTICLES */
+    .nav-articles {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-art-link {
+      flex: 1;
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .nav-art-link:hover { border-color: rgba(77,163,255,0.3); }
+
+    .nav-art-dir {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .nav-art-title {
+      font-size: 14px;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--gray);
+      font-size: 13px;
+      margin-top: 80px;
+    }
+
+    footer a { color: var(--gray); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .hero, .article-body { padding: 0 16px; }
+      .nav-articles { flex-direction: column; }
+      .cta-section { padding: 32px 24px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Système<span>1</span>-Immo™</a>
+  <a href="/#demo" class="cta">Essayer l'outil</a>
+</nav>
+
+<article>
+  <div class="hero">
+    <div class="breadcrumb">
+      <a href="/">Accueil</a>
+      <span>/</span>
+      <a href="/blog">Blog</a>
+      <span>/</span>
+      <span>L'effet de dotation</span>
+    </div>
+
+    <div class="badges">
+      <span class="badge badge-psycho">Psychologie</span>
+      <span class="badge badge-science">Prix Nobel 2017</span>
+    </div>
+
+    <h1>L'effet de dotation — pourquoi votre vendeur surestime toujours son bien</h1>
+
+    <p class="standfirst">Richard Thaler a reçu le Prix Nobel d'économie en 2017 pour avoir prouvé que posséder un objet lui donne une valeur irrationnelle dans notre cerveau. Vos vendeurs le vivent chaque jour. La question n'est pas de les convaincre qu'ils ont tort — c'est de travailler avec leur cerveau, pas contre lui.</p>
+
+    <div class="meta">
+      <div class="avatar">N</div>
+      <div class="meta-text">
+        <div class="meta-name">Nordine Mouaouia</div>
+        <div class="meta-info">Expert certifié en neurosciences du consommateur · Guy Hoquet Elne · 9 min de lecture</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-body">
+
+    <p>C'était un appartement à Perpignan. T3, 68 m², troisième étage sans ascenseur. Le propriétaire y avait vécu 14 ans. Il y avait repeint les murs lui-même, posé le parquet en un week-end avec son fils, planté des jardinières sur le balcon que sa femme arrosait chaque matin.</p>
+
+    <p>Il voulait 195 000 euros.</p>
+
+    <p>Le marché disait 158 000.</p>
+
+    <p>Quand je lui ai présenté l'estimation comparative, il m'a regardé comme si j'avais insulté sa famille. Il m'a dit : <strong>"Vous ne comprenez pas ce que représente cet appartement."</strong></p>
+
+    <p>Il avait entièrement raison. Je ne comprenais pas — et c'est exactement le problème.</p>
+
+    <p>Parce que l'acheteur non plus ne comprendra pas. Et lui, il va mettre 195 000 euros.</p>
+
+    <h2>Ce que Thaler a découvert — et ce que ça change pour vous</h2>
+
+    <p>En 1990, Richard Thaler et ses collègues ont mené une expérience devenue célèbre dans les annales de la psychologie comportementale. Ils ont distribué des mugs de café à certains participants, puis ont demandé à ceux qui en avaient reçu à quel prix ils accepteraient de les vendre — et à ceux qui n'en avaient pas reçu combien ils étaient prêts à payer pour en acheter un.</p>
+
+    <p>Le résultat a stupéfié les économistes classiques.</p>
+
+    <p><strong>Les propriétaires demandaient en moyenne le double de ce que les acheteurs proposaient.</strong> Pour le même mug. Dans la même pièce. À quelques minutes d'intervalle. La seule différence : l'un possédait l'objet, l'autre non.</p>
+
+    <p>Thaler a appelé ce phénomène <em>l'effet de dotation</em> — en anglais, l'endowment effect. Sa thèse centrale : dès qu'un objet nous appartient, notre cerveau l'encode différemment. Il ne l'évalue plus à sa valeur de marché, mais à sa valeur subjective de remplacement — c'est-à-dire ce qu'il nous coûterait émotionnellement de le perdre.</p>
+
+    <blockquote>
+      <p>« Les gens exigent bien plus pour abandonner un objet qu'ils ne seraient prêts à payer pour l'acquérir. »</p>
+      <cite>— Richard Thaler, <em>Misbehaving: The Making of Behavioral Economics</em>, 2015</cite>
+    </blockquote>
+
+    <p>Ce n'est pas de l'entêtement. Ce n'est pas de la mauvaise foi. C'est de la neurologie.</p>
+
+    <div class="biais-box">
+      <div class="biais-box-title">Le Biais mobilisé</div>
+      <h4>L'Effet de Dotation (Endowment Effect)</h4>
+      <p>Mécanisme : Dès qu'un bien nous appartient, il est encodé dans le cortex préfrontal avec une valeur émotionnelle supérieure à sa valeur marchande. La perspective de le perdre active le système d'aversion à la perte (amygdale), rendant toute négociation à la baisse psychologiquement douloureuse — non pas irrationnelle, mais <strong>neuralement inconfortable</strong>.</p>
+      <p><strong>Effet précis sur la décision :</strong> Le vendeur perçoit le prix de marché comme une perte, non comme un juste prix. Sa résistance n'est pas cognitive — elle est viscérale.</p>
+      <div class="biais-source">
+        Source : Thaler, R. H. (1980). Toward a positive theory of consumer choice. Journal of Economic Behavior & Organization. / Kahneman, D., Knetsch, J. L., & Thaler, R. H. (1990). Experimental Tests of the Endowment Effect and the Coase Theorem. Journal of Political Economy.
+      </div>
+    </div>
+
+    <h2>Pourquoi votre vendeur n'est pas fou — il est humain</h2>
+
+    <p>La première erreur que commettent la plupart des agents face à un vendeur surestimateur : essayer de le convaincre par la logique.</p>
+
+    <p>On sort les comparables. On montre le prix au m². On explique le marché, les taux, la demande. On présente des tableaux. On est patient, pédagogue, méthodique.</p>
+
+    <p>Et rien ne se passe.</p>
+
+    <p>Parce que vous parlez à son cortex préfrontal — la partie rationnelle — pendant que l'effet de dotation opère dans son système limbique — la partie émotionnelle. Ce ne sont pas les mêmes zones. Ce ne sont pas les mêmes arguments qui y ont accès.</p>
+
+    <p>Kahneman l'a documenté dans <em>Système 1, Système 2</em> : les décisions émotionnelles (Système 1) sont prises en millisecondes, et le Système 2 rationnel ne fait bien souvent que les justifier après coup. Votre vendeur ne surévalue pas son bien parce qu'il a mal calculé. Il le surévalue parce que son cerveau a pris la décision <em>avant</em> que vous arriviez dans la pièce.</p>
+
+    <div class="highlight">
+      <div class="highlight-title">Ce que ça signifie concrètement</div>
+      <p>Chaque fois qu'un vendeur résiste à votre estimation, ce n'est pas un problème de compréhension — c'est un problème d'encodage émotionnel. Il faut agir sur l'émotion avant de présenter le rationnel. Dans cet ordre. Pas l'inverse.</p>
+    </div>
+
+    <h2>Ce que j'ai appris à faire — et ce que ça change</h2>
+
+    <p>22 ans de terrain. Plus de 1 250 transactions. J'ai rencontré des centaines de vendeurs surestimateurs. J'ai essayé tout ce que les formations enseignaient : les arguments de marché, les comparables, la pédagogie douce, la pédagogie ferme, les délais, les contre-offres.</p>
+
+    <p>Ce qui fonctionne, c'est autre chose.</p>
+
+    <h3>Étape 1 — Valider l'expérience avant de présenter les chiffres</h3>
+
+    <p>Avant de parler prix, je demande. Combien de temps avez-vous vécu ici ? Qu'est-ce qui vous a plu en achetant ? Qu'avez-vous transformé ? Qu'est-ce qui vous a rendu fier dans cet appartement ?</p>
+
+    <p>Ce n'est pas du temps perdu. C'est le travail le plus important de la vente.</p>
+
+    <p>En laissant le vendeur exprimer la valeur émotionnelle de son bien, vous videz partiellement la pression de l'effet de dotation. Il a été entendu. Son vécu a été reconnu. Ce n'est pas la même conversation qui suit.</p>
+
+    <h3>Étape 2 — Reformuler la perte différemment</h3>
+
+    <p>L'effet de dotation fonctionne sur l'aversion à la perte. Le vendeur perçoit un prix bas comme une perte de valeur. Votre travail : reformuler ce qui constitue la vraie perte.</p>
+
+    <p>Pas : <em>"À 195 000, vous n'aurez pas d'offres."</em></p>
+
+    <p>Mais : <em>"Chaque mois sur le marché à ce prix, c'est une dépréciation perçue par les acheteurs. Dans 6 mois, vous négocierez depuis une position bien plus faible."</em></p>
+
+    <p>La perte n'est plus le prix. La perte, c'est le temps, la position de négociation, le pouvoir de décision. Ces pertes-là, le cerveau les comprend différemment.</p>
+
+    <h3>Étape 3 — Ancrer avec une projection, pas avec un passé</h3>
+
+    <p>Le vendeur pense à ce qu'il a investi, à ce qu'il a vécu, à ce que le bien représente. Il regarde en arrière. Votre rôle est de le retourner vers l'avant.</p>
+
+    <p><em>"Avec 158 000 euros nets, qu'est-ce que ça change pour vous concrètement ?"</em></p>
+
+    <p>Quand il répond — et il répond toujours — il commence à s'approprier le futur plutôt que le passé. L'effet de dotation perd de sa force lorsque le bien n'est plus au centre de la projection émotionnelle.</p>
+
+    <div class="terrain-box">
+      <div class="terrain-label">Cas terrain</div>
+      <p>Un vendeur à Elne. Maison de famille, 3 générations. Prix souhaité : 380 000 euros. Estimation marché : 295 000 euros. Écart de 85 000 euros — soit 29% d'excès.</p>
+      <p>Premier rendez-vous : je n'ai pas sorti un seul chiffre. J'ai passé 40 minutes à l'écouter me parler de la maison. Des figuiers dans le jardin. De son père qui avait construit le garage. De l'été de ses 12 ans.</p>
+      <p>Deuxième rendez-vous : présentation de l'estimation. Il m'a demandé 310 000. J'ai dit que c'était tendu mais que je pouvais défendre ce prix en travaillant la présentation du bien. On a signé à 298 000. En 47 jours.</p>
+      <p><strong>Sans une seule dispute sur le prix.</strong></p>
+    </div>
+
+    <h2>L'erreur que vous ne pouvez plus vous permettre</h2>
+
+    <p>L'erreur classique : prendre le mandat au prix du vendeur pour "voir". Se dire qu'avec le temps, il baissera. Qu'il finira par comprendre.</p>
+
+    <p>Cette stratégie coûte cher. Aux deux parties.</p>
+
+    <p>Un bien surestimé qui reste sur le marché déclenche ce que les psychologues appellent <em>l'effet de stigmatisation</em> : plus un bien reste visible sans trouver preneur, plus les acheteurs présument qu'il a un problème caché. Ils décotent mentalement. Celui qui finit par faire une offre propose moins que la valeur réelle.</p>
+
+    <p>En cédant à l'effet de dotation du vendeur, vous déclenchez un effet inverse chez l'acheteur. Le bien se retrouve pris en étau entre deux forces émotionnelles antagonistes — et c'est toujours le vendeur qui perd.</p>
+
+    <p>Votre rôle n'est pas de valider le prix. Votre rôle est de protéger la trajectoire de votre client.</p>
+
+    <h2>Ce que les neurosciences vous donnent comme avantage</h2>
+
+    <p>Comprendre l'effet de dotation, c'est comprendre que la résistance de votre vendeur n'est pas personnelle. Ce n'est pas de l'entêtement, ce n'est pas de l'ignorance, ce n'est pas un manque de confiance envers vous.</p>
+
+    <p>C'est une réponse neurologique automatique. Prévisible. Universelle.</p>
+
+    <p>Et parce qu'elle est prévisible, elle est travaillable.</p>
+
+    <p>Les agents qui comprennent ça ne passent plus leur énergie à argumenter contre le prix. Ils la passent à comprendre ce que le prix représente émotionnellement pour le vendeur — et à reconstruire la conversation depuis cet endroit-là.</p>
+
+    <p>C'est la différence entre forcer une porte et trouver la clé.</p>
+
+    <p>En 22 ans et 1 250 transactions, je n'ai jamais forcé une porte. Mais j'ai trouvé beaucoup de clés.</p>
+
+    <div class="cta-section">
+      <h3>Vous voulez aller plus loin ?</h3>
+      <p>Système1-Immo™ intègre les principaux biais cognitifs dans vos scripts de rendez-vous vendeur. Estimation, ancrage, reformulation — chaque étape de la prise de mandat est conçue pour travailler avec le cerveau de votre client.</p>
+      <a href="/" class="cta-btn">Découvrir l'outil →</a>
+    </div>
+
+    <div class="nav-articles">
+      <a href="/blog/fenetre-48h.html" class="nav-art-link">
+        <div class="nav-art-dir">← Article précédent</div>
+        <div class="nav-art-title">Pourquoi votre prospect ne rappelle pas — la fenêtre des 48h</div>
+      </a>
+      <a href="/blog" class="nav-art-link" style="text-align:right">
+        <div class="nav-art-dir">Voir tous les articles →</div>
+        <div class="nav-art-title">Retour au blog</div>
+      </a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <a href="/blog">← Retour au blog</a>
+  <span>© 2025 Système1-Immo™ — Nordine Mouaouia</span>
+  <a href="/">systeme1-immo.com</a>
+</footer>
+
+</body>
+</html>
