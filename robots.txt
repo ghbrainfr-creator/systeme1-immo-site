@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://systeme1-immo.com/sitemap.xml
+
+# Bloquer les ressources inutiles
+Disallow: /.vercel/
