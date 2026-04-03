@@ -765,47 +765,62 @@ body {
       <span class="k-word">Vos</span> <span class="k-word">prospects</span> <span class="k-word">hésitent.</span> <span class="k-word">Ils</span> <span class="k-word">ne</span> <span class="k-word">choisissent</span> <span class="k-word">pas</span> <span class="k-word">la</span> <span class="k-word">meilleure</span> <span class="k-word">offre</span> <span class="k-word">—</span> <span class="k-word">ils</span> <span class="k-word">choisissent</span> <span class="k-word">celle</span> <span class="k-word">qui</span> <span class="k-word">les</span> <span class="k-word">a</span> <span class="k-word">fait</span> <span class="k-word">le</span> <span class="k-word">moins</span> <span class="k-word">douter.</span> <span style="color:var(--accent-blue);font-style:italic"><span class="k-word">Système1-Immo</span> <span class="k-word">est</span> <span class="k-word">là</span> <span class="k-word">au</span> <span class="k-word">moment</span> <span class="k-word">où</span> <span class="k-word">ce</span> <span class="k-word">doute</span> <span class="k-word">se</span> <span class="k-word">forme.</span></span>
     </h2>
     <script>
-    (function () {
-      const container = document.querySelector('.karaoke-container');
-      if (!container || container.dataset.processed) return;
-      const wrapWords = (node) => {
-        if (node.nodeType === 3) {
-          const words = node.textContent.match(/\S+|\s+/g) || [];
-          const fragment = document.createDocumentFragment();
-          words.forEach((word) => {
-            if (word.trim().length > 0) {
-              const span = document.createElement('span');
-              span.textContent = word;
-              span.className = 'k-word';
-              fragment.appendChild(span);
-            } else {
-              fragment.appendChild(document.createTextNode(word));
-            }
-          });
-          node.replaceWith(fragment);
-        } else if (node.nodeType === 1) {
-          Array.from(node.childNodes).forEach(wrapWords);
-        }
-      };
-      Array.from(container.childNodes).forEach(wrapWords);
-      container.dataset.processed = 'true';
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const words = container.querySelectorAll('.k-word');
-              words.forEach((word, index) => {
-                setTimeout(() => { word.classList.add('active'); }, index * 40);
-              });
-              observer.unobserve(container);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-      observer.observe(container);
-    })();
-    </script>
+(function () {
+  function initKaraoke() {
+    const container = document.querySelector('.karaoke-container');
+    if (!container || container.dataset.processed) return;
+    const wrapWords = (node) => {
+      if (node.nodeType === 3) {
+        const words = node.textContent.match(/\S+|\s+/g) || [];
+        const fragment = document.createDocumentFragment();
+        words.forEach((word) => {
+          if (word.trim().length > 0) {
+            const span = document.createElement('span');
+            span.textContent = word;
+            span.className = 'k-word';
+            fragment.appendChild(span);
+          } else {
+            fragment.appendChild(document.createTextNode(word));
+          }
+        });
+        node.replaceWith(fragment);
+      } else if (node.nodeType === 1) {
+        Array.from(node.childNodes).forEach(wrapWords);
+      }
+    };
+    Array.from(container.childNodes).forEach(wrapWords);
+    container.dataset.processed = 'true';
+    const triggerAnimation = () => {
+      const words = container.querySelectorAll('.k-word');
+      words.forEach((word, index) => {
+        setTimeout(() => { word.classList.add('active'); }, index * 40);
+      });
+    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            triggerAnimation();
+            observer.unobserve(container);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    // Use requestAnimationFrame to ensure layout is calculated before observing
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        observer.observe(container);
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initKaraoke);
+  } else {
+    initKaraoke();
+  }
+})();
+</script>
     <p class="text-base sm:text-lg leading-relaxed mx-auto mb-12 max-w-2xl" style="color:var(--cool-400)">
       34 000 décisions de vendeurs analysées sur 20 ans de terrain.<br>On sait quel signal fait basculer un prospect — et exactement quand l'envoyer.
     </p>
