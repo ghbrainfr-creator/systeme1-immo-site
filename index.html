@@ -12,7 +12,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Et si votre prochain mandat arrivait sans décrocher le téléphone ?">
 <meta name="twitter:description" content="Système1-Immo détecte l'instant où votre prospect bascule et agit à votre place. Essai gratuit 14 jours.">
-&lt;link rel=" icon"="" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0' y1='0' x2='1' y2='1'&gt;&lt;stop offset='0%25' stop-color='%234DA3FF'/&gt;&lt;stop offset='100%25' stop-color='%236C63FF'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='32' height='32' rx='6' fill='url(%23g)'/&gt;&lt;text x='16' y='22' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='16'&gt;S1&lt;/text&gt;&lt;/svg&gt;">
+&lt;link rel=" icon"="" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/000/svg' viewBox='0 0 32 32'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0' y1='0' x2='1' y2='1'&gt;&lt;stop offset='0%25' stop-color='%234DA3FF'/&gt;&lt;stop offset='100%25' stop-color='%236C63FF'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='32' height='32' rx='6' fill='url(%23g)'/&gt;&lt;text x='16' y='22' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='16'&gt;S1&lt;/text&gt;&lt;/svg&gt;">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
@@ -470,9 +470,9 @@ body {
 .stat-feather-icon { animation:featherFloat 4s ease-in-out infinite; transform-origin:center; }
 
 /* ── Karaoke words ── */
-.k-word { color: var(--accent-blue); opacity: 1; transition: color 0.3s ease; display: inline-block; }
-.k-word.active { color: var(--cool-50); }
-.karaoke-container.done .k-word { color: var(--accent-blue); transition: color 0.6s ease; }
+.k-word { color: var(--cool-50) !important; opacity: 1; transition: color 0.3s ease; display: inline-block; }
+.k-word.active { color: var(--accent-blue) !important; }
+.karaoke-container.done .k-word { color: var(--cool-50) !important; transition: color 0.6s ease; }
 
 /* ── sh-center ── */
 .sh-center::after { content:''; display:block; width:60px; height:2px; background:linear-gradient(90deg,var(--accent-blue),var(--primary-dark)); margin:16px auto 0; border-radius:1px; opacity:0; transition:opacity .6s,width .6s ease-out; }
@@ -764,8 +764,8 @@ body {
   <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(108,99,255,.04),transparent 60%);opacity:.5"></div>
   <div class="text-center max-w-5xl mx-auto relative z-10">
     <span class="inline-block text-xs font-bold tracking-[.2em] uppercase mb-8" style="color:var(--cool-400)">[ LA VRAIE RAISON POUR LAQUELLE ILS N'APPELLENT PAS ]</span>
-    <h2 id="karaoke-neuro" class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-bold tracking-tight mb-10 karaoke-container" style="color:var(--cool-50)" data-processed="true">
-      <span class="k-word">Vos</span> <span class="k-word">prospects</span> <span class="k-word">hésitent.</span> <span class="k-word">Ils</span> <span class="k-word">ne</span> <span class="k-word">choisissent</span> <span class="k-word">pas</span> <span class="k-word">la</span> <span class="k-word">meilleure</span> <span class="k-word">offre</span> <span class="k-word">—</span> <span class="k-word">ils</span> <span class="k-word">choisissent</span> <span class="k-word">celle</span> <span class="k-word">qui</span> <span class="k-word">les</span> <span class="k-word">a</span> <span class="k-word">fait</span> <span class="k-word">le</span> <span class="k-word">moins</span> <span class="k-word">douter.</span> <span style="color:var(--accent-blue);font-style:italic"><span class="k-word">Système1-Immo</span> <span class="k-word">est</span> <span class="k-word">là</span> <span class="k-word">au</span> <span class="k-word">moment</span> <span class="k-word">où</span> <span class="k-word">ce</span> <span class="k-word">doute</span> <span class="k-word">se</span> <span class="k-word">forme.</span></span>
+    <h2 id="karaoke-neuro" class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-bold tracking-tight mb-10 karaoke-container" data-processed="true">
+      <span class="k-word">Vos</span> <span class="k-word">prospects</span> <span class="k-word">hésitent.</span> <span class="k-word">Ils</span> <span class="k-word">ne</span> <span class="k-word">choisissent</span> <span class="k-word">pas</span> <span class="k-word">la</span> <span class="k-word">meilleure</span> <span class="k-word">offre</span> <span class="k-word">—</span> <span class="k-word">ils</span> <span class="k-word">choisissent</span> <span class="k-word">celle</span> <span class="k-word">qui</span> <span class="k-word">les</span> <span class="k-word">a</span> <span class="k-word">fait</span> <span class="k-word">le</span> <span class="k-word">moins</span> <span class="k-word">douter.</span> <span style="color:var(--cool-50);font-style:italic"><span class="k-word">Système1-Immo</span> <span class="k-word">est</span> <span class="k-word">là</span> <span class="k-word">au</span> <span class="k-word">moment</span> <span class="k-word">où</span> <span class="k-word">ce</span> <span class="k-word">doute</span> <span class="k-word">se</span> <span class="k-word">forme.</span></span>
     </h2>
     <script>
 (function () {
