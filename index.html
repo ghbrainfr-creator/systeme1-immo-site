@@ -11,11 +11,7 @@
 <meta property="og:image" content="https://systeme1-landing.vercel.app/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Et si votre prochain mandat arrivait sans décrocher le téléphone ?">
-<<<<<<< HEAD
-<meta name="twitter:description" content="Système1-Immo détecte l'instant où otre prospect bascule et agit à votre place. Essai gratuit 14 jours.
-=======
-<meta name="twitter:description" content="Système1-Immo détecte l'instant où vore prospect bascule et agit à votre place. Essai gratuit 14 jours.
->>>>>>> 48554725dc322a824681a0c9cd81c2b6bed30bc0
+<meta name="twitter:description" content="Système1-Immo détecte l'instant où votre prospect bascule et agit à votre place. Essai gratuit 14 jours.">
 &lt;link rel=" icon"="" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0' y1='0' x2='1' y2='1'&gt;&lt;stop offset='0%25' stop-color='%234DA3FF'/&gt;&lt;stop offset='100%25' stop-color='%236C63FF'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='32' height='32' rx='6' fill='url(%23g)'/&gt;&lt;text x='16' y='22' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='16'&gt;S1&lt;/text&gt;&lt;/svg&gt;">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -474,8 +470,9 @@ body {
 .stat-feather-icon { animation:featherFloat 4s ease-in-out infinite; transform-origin:center; }
 
 /* ── Karaoke words ── */
-.k-word { opacity: 0.2; transition: opacity 0.25s ease; display: inline-block; }
-.k-word.active { opacity: 1; }
+.k-word { color: var(--accent-blue); opacity: 1; transition: color 0.3s ease; display: inline-block; }
+.k-word.active { color: var(--cool-50); }
+.karaoke-container.done .k-word { color: var(--accent-blue); transition: color 0.6s ease; }
 
 /* ── sh-center ── */
 .sh-center::after { content:''; display:block; width:60px; height:2px; background:linear-gradient(90deg,var(--accent-blue),var(--primary-dark)); margin:16px auto 0; border-radius:1px; opacity:0; transition:opacity .6s,width .6s ease-out; }
@@ -798,10 +795,14 @@ body {
     container.dataset.processed = 'true';
     const triggerAnimation = () => {
       const words = container.querySelectorAll('.k-word');
+      const totalDelay = words.length * 40;
       words.forEach((word, index) => {
         setTimeout(() => { word.classList.add('active'); }, index * 40);
       });
-    };
+      setTimeout(() => {
+        container.classList.add('done');
+      }, totalDelay + 400);
+    }
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
