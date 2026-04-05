@@ -765,73 +765,17 @@ body {
 <section class="relative border-b py-20 md:py-28 px-5 sm:px-6 lg:px-8" style="border-color:rgba(30,38,56,.5)">
   <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(108,99,255,.04),transparent 60%);opacity:.5"></div>
   <div class="text-center max-w-5xl mx-auto relative z-10">
-    <span class="inline-block text-xs font-bold tracking-[.2em] uppercase mb-8" style="color:var(--cool-400)">[ LA VRAIE RAISON POUR LAQUELLE ILS N'APPELLENT PAS ]</span>
-    <h2 id="karaoke-neuro" class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-bold tracking-tight mb-10 karaoke-container" data-processed="true">
-      <span class="k-word">Vos</span> <span class="k-word">prospects</span> <span class="k-word">hésitent.</span> <span class="k-word">Ils</span> <span class="k-word">ne</span> <span class="k-word">choisissent</span> <span class="k-word">pas</span> <span class="k-word">la</span> <span class="k-word">meilleure</span> <span class="k-word">offre</span> <span class="k-word"></span> <span class="k-word">ils</span> <span class="k-word">choisissent</span> <span class="k-word">celle</span> <span class="k-word">qui</span> <span class="k-word">les</span> <span class="k-word">a</span> <span class="k-word">fait</span> <span class="k-word">le</span> <span class="k-word">moins</span> <span class="k-word">douter.</span> <span class="k-blue" style="color:var(--accent-blue);font-style:italic"><span class="k-word">Système1-Immo</span> <span class="k-word">est</span> <span class="k-word">là</span> <span class="k-word">au</span> <span class="k-word">moment</span> <span class="k-word">où</span> <span class="k-word">ce</span> <span class="k-word">doute</span> <span class="k-word">se</span> <span class="k-word">forme.</span></span>
+    <span class="inline-block text-xs font-bold tracking-[.2em] uppercase mb-8" style="color:var(--cool-400)">Ce n'est pas votre méthode qui est mauvaise.</span>
+    <h2 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-bold tracking-tight mb-10" style="color:var(--cool-50)">
+      Il a choisi quelqu'un d'autre.<br>
+      <span style="color:var(--cool-400)">Pas parce que cet agent était meilleur.</span><br>
+      Parce qu'il était là au bon moment.
     </h2>
-    <script>
-(function () {
-  function initKaraoke() {
-    const container = document.querySelector('.karaoke-container');
-    if (!container || container.dataset.processed) return;
-    const wrapWords = (node) => {
-      if (node.nodeType === 3) {
-        const words = node.textContent.match(/\S+|\s+/g) || [];
-        const fragment = document.createDocumentFragment();
-        words.forEach((word) => {
-          if (word.trim().length > 0) {
-            const span = document.createElement('span');
-            span.textContent = word;
-            span.className = 'k-word';
-            fragment.appendChild(span);
-          } else {
-            fragment.appendChild(document.createTextNode(word));
-          }
-        });
-        node.replaceWith(fragment);
-      } else if (node.nodeType === 1) {
-        Array.from(node.childNodes).forEach(wrapWords);
-      }
-    };
-    Array.from(container.childNodes).forEach(wrapWords);
-    container.dataset.processed = 'true';
-    const triggerAnimation = () => {
-      const words = container.querySelectorAll('.k-word');
-      const totalDelay = words.length * 40;
-      words.forEach((word, index) => {
-        setTimeout(() => { word.classList.add('active'); }, index * 40);
-      });
-      setTimeout(() => {
-        container.classList.add('done');
-      }, totalDelay + 400);
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            triggerAnimation();
-            observer.unobserve(container);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-    // Use requestAnimationFrame to ensure layout is calculated before observing
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        observer.observe(container);
-      });
-    });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initKaraoke);
-  } else {
-    initKaraoke();
-  }
-})();
-</script>
+    
     <p class="text-base sm:text-lg leading-relaxed mx-auto mb-12 max-w-2xl" style="color:var(--cool-400)">
-      34 000 décisions de vendeurs analysées sur 20 ans de terrain.<br>On sait quel signal fait basculer un prospect, et exactement quand l'envoyer.
+      Votre prospect n'avait pas décidé de vous ignorer. Il avait juste une fenêtre de 48h — et vous n'étiez pas dedans.<br>
+      Dans cette fenêtre, il a décidé. Il a appelé. Il a signé avec quelqu'un. Pas vous.<br>
+      Ce n'est pas de la malchance. C'est de la mécanique. Et une mécanique, ça se résout.
     </p>
 
     <!-- 3 neuro cards Velox bento style -->
@@ -842,7 +786,7 @@ body {
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E05555" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8M12 8v8"></path></svg>
         </div>
         <h3 class="font-display text-base font-bold mb-2" style="color:#E05555">Incertitude de valeur</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Il ne "réfléchit" pas : il a peur de brader sa vie. Scan Immo™ lui donne un prix, un score, une certitude. La peur disparaît. Il vous rappelle dans la journée.</p>
+        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Il ne réfléchit pas. Il a peur. Peur de brader 20 ans d'économies. Peur de se tromper de prix. Peur de l'inconnu. Tant que cette peur est là, il ne bouge pas — peu importe ce que vous lui dites. Le Scan Immo™ lui donne un chiffre. Une certitude. Une permission de vendre. La peur disparaît. Il vous rappelle dans la journée.</p>
       </div>
       <!-- Friction cognitive -->
       <div class="velox-card p-7 text-center fi d1 scroll-reveal delay-100">
@@ -850,15 +794,21 @@ body {
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8A838" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
         </div>
         <h3 class="font-display text-base font-bold mb-2" style="color:#E8A838">Friction de parcours</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Chaque jour sans nouvelles, votre prospect refroidit. Vous le savez, mais vous ne pouvez pas tout suivre. L'IA relance à votre place, au bon moment. Zéro contact perdu.</p>
+        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Chaque jour sans nouvelles, il refroidit. Pas par mauvaise volonté. Par surcharge. Il a 40 choses en tête. Vous n'êtes pas l'une d'elles — jusqu'à ce qu'il reçoive le bon message, au bon moment. Vous ne pouvez pas relancer 50 contacts toutes les 72h. L'IA, si. En votre nom. Sans que vous y pensiez. Zéro contact perdu. Jamais.</p>
       </div>
       <!-- Déclencheur -->
-      <div class="velox-card p-7 text-center fi d2 scroll-reveal delay-200">
+      <div class="velox-card p-7 text-left fi d2 scroll-reveal delay-200" style="border-color:#52C77A;background:rgba(82,199,122,0.06)">
         <div class="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(82,199,122,.08);border:1px solid rgba(82,199,122,.2)">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="1.6" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
         </div>
-        <h3 class="font-display text-base font-bold mb-2" style="color:#52C77A">Le moment de bascule</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Il y a une fenêtre de 48h où votre prospect a décidé, mais n'a encore appelé personne. Système1-Immo détecte ce moment et vous alerte. Vous appelez en premier. Vous signez.</p>
+        <h3 class="font-display text-base font-bold mb-2" style="color:#52C77A">La fenêtre des 48h ★</h3>
+        <div class="text-left mt-3 space-y-2">
+          <p class="text-sm font-bold" style="color:var(--cool-50)">Il y a une fenêtre de 48h.</p>
+          <p class="text-sm font-bold" style="color:var(--cool-50)">Votre prospect a décidé.</p>
+          <p class="text-sm font-bold" style="color:#E8A838">Il n'a encore appelé personne.</p>
+          <p class="text-sm leading-relaxed mt-2" style="color:var(--cool-400)">Celui qui appelle dans cette fenêtre signe. Tous les autres arrivent trop tard — même s'ils sont meilleurs.</p>
+          <p class="text-sm font-bold leading-relaxed" style="color:var(--cool-200)">Système1-Immo détecte cette fenêtre. Vous recevez une alerte. Vous appelez en premier. Vous signez.</p>
+        </div>
       </div>
     </div>
   </div>
