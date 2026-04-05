@@ -1500,7 +1500,7 @@ body {
         <div class="grid grid-cols-3 gap-3 mb-8">
           <div class="cstat p-5 text-center fi"><p id="counter-1" class="font-display text-3xl font-bold leading-none mb-1" style="color:var(--accent-blue)">0</p><p class="text-xs" style="color:var(--cool-400)">décisions analysées</p></div>
           <div class="cstat p-5 text-center fi d1"><p id="counter-2" class="font-display text-3xl font-bold leading-none mb-1" style="color:var(--accent-blue)">0</p><p class="text-xs" style="color:var(--cool-400)">ans de terrain</p></div>
-          <div class="cstat p-5 text-center fi d2"><p id="counter-3" class="font-display text-3xl font-bold leading-none mb-1" style="color:#52C77A">0</p><p class="text-xs" style="color:var(--cool-400)">templates prêts à l'emploi dès votre activation</p></div>
+          <div class="cstat p-5 text-center fi d2"><p id="counter-3" class="font-display text-3xl font-bold leading-none mb-1" style="color:#52C77A">0</p><p class="text-xs" style="color:var(--cool-400)">système</p></div>
         </div>
 
         <!-- Testimonial card Velox style -->
@@ -2162,7 +2162,7 @@ Le reste, c'est du bonheur.</p>
 
 // ── Counters ──
 (function(){
-  const counters=[{el:'counter-1',target:34000,suffix:'+'},{el:'counter-2',target:20,suffix:' ans'},{el:'counter-3',target:54,suffix:''}];
+  const counters=[{el:'counter-1',target:34000,suffix:'+'},{el:'counter-2',target:20,suffix:' ans'},{el:'counter-3',target:1,suffix:''}];
   counters.forEach(({el,target,suffix})=>{
     const elem=document.getElementById(el);
     if(!elem) return;
