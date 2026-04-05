@@ -764,52 +764,55 @@ body {
 ═══════════════════════════════════════════ -->
 <section class="relative border-b py-20 md:py-28 px-5 sm:px-6 lg:px-8" style="border-color:rgba(30,38,56,.5)">
   <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(108,99,255,.04),transparent 60%);opacity:.5"></div>
-  <div class="text-center max-w-5xl mx-auto relative z-10">
-    <span class="inline-block text-xs font-bold tracking-[.2em] uppercase mb-8" style="color:var(--cool-400)">Ce n'est pas votre méthode qui est mauvaise.</span>
-    <h2 class="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-bold tracking-tight mb-10" style="color:var(--cool-50)">
+  <div class="text-center max-w-4xl mx-auto relative z-10">
+
+    <!-- Surtitre -->
+    <span class="inline-block text-xs font-bold tracking-[.2em] uppercase mb-6" style="color:var(--cool-400)">Ce n'est pas votre méthode qui est mauvaise.</span>
+
+    <!-- Titre -->
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-tight font-bold tracking-tight mb-6" style="color:var(--cool-50)">
       Il a choisi quelqu'un d'autre.<br>
-      <span style="color:var(--cool-400)">Pas parce que cet agent était meilleur.</span><br>
+      <span style="color:var(--cool-600)">Pas parce que cet agent était meilleur.</span><br>
       Parce qu'il était là au bon moment.
     </h2>
-    
-    <p class="text-base sm:text-lg leading-relaxed mx-auto mb-12 max-w-2xl" style="color:var(--cool-400)">
-      Votre prospect n'avait pas décidé de vous ignorer. Il avait juste une fenêtre de 48h — et vous n'étiez pas dedans.<br>
-      Dans cette fenêtre, il a décidé. Il a appelé. Il a signé avec quelqu'un. Pas vous.<br>
-      Ce n'est pas de la malchance. C'est de la mécanique. Et une mécanique, ça se résout.
+
+    <!-- Corps -->
+    <p class="text-base sm:text-lg leading-relaxed mx-auto mb-14 max-w-xl" style="color:var(--cool-400)">
+      Il avait une fenêtre de 48h. Vous n'étiez pas dedans.<br>
+      Ce n'est pas de la malchance. C'est de la mécanique.
     </p>
 
-    <!-- 3 neuro cards Velox bento style -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
-      <!-- Incertitude -->
-      <div class="velox-card p-7 text-center fi scroll-reveal">
-        <div class="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(224,85,85,.08);border:1px solid rgba(224,85,85,.2)">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E05555" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8M12 8v8"></path></svg>
+    <!-- 3 blocs -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-2 text-left">
+
+      <!-- Bloc 1 — Incertitude -->
+      <div class="velox-card p-7 fi scroll-reveal">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(224,85,85,.1)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E05555" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <h3 class="font-display text-base font-bold mb-2" style="color:#E05555">Incertitude de valeur</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Il ne réfléchit pas. Il a peur. Peur de brader 20 ans d'économies. Peur de se tromper de prix. Peur de l'inconnu. Tant que cette peur est là, il ne bouge pas — peu importe ce que vous lui dites. Le Scan Immo™ lui donne un chiffre. Une certitude. Une permission de vendre. La peur disparaît. Il vous rappelle dans la journée.</p>
+        <h3 class="font-display text-sm font-bold mb-3" style="color:#E05555">Incertitude de valeur</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Il ne réfléchit pas. Il a peur. Peur de brader 20 ans d'économies. Tant que cette peur est là, il ne bouge pas. Le Scan Immo™ lui donne un chiffre. Une certitude. La peur disparaît. Il vous rappelle dans la journée.</p>
       </div>
-      <!-- Friction cognitive -->
-      <div class="velox-card p-7 text-center fi d1 scroll-reveal delay-100">
-        <div class="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(232,168,56,.08);border:1px solid rgba(232,168,56,.2)">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8A838" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+
+      <!-- Bloc 2 — Friction -->
+      <div class="velox-card p-7 fi d1 scroll-reveal delay-100">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(232,168,56,.1)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8A838" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
         </div>
-        <h3 class="font-display text-base font-bold mb-2" style="color:#E8A838">Friction de parcours</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Chaque jour sans nouvelles, il refroidit. Pas par mauvaise volonté. Par surcharge. Il a 40 choses en tête. Vous n'êtes pas l'une d'elles — jusqu'à ce qu'il reçoive le bon message, au bon moment. Vous ne pouvez pas relancer 50 contacts toutes les 72h. L'IA, si. En votre nom. Sans que vous y pensiez. Zéro contact perdu. Jamais.</p>
+        <h3 class="font-display text-sm font-bold mb-3" style="color:#E8A838">Friction de parcours</h3>
+        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Chaque jour sans nouvelles, il refroidit. Il a 40 choses en tête — vous n'êtes pas l'une d'elles. Vous ne pouvez pas relancer 50 contacts toutes les 72h. L'IA, si. En votre nom. Zéro contact perdu.</p>
       </div>
-      <!-- Déclencheur -->
-      <div class="velox-card p-7 text-left fi d2 scroll-reveal delay-200" style="border-color:#52C77A;background:rgba(82,199,122,0.06)">
-        <div class="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center" style="background:rgba(82,199,122,.08);border:1px solid rgba(82,199,122,.2)">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="1.6" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+
+      <!-- Bloc 3 — Fenêtre 48h -->
+      <div class="velox-card p-7 fi d2 scroll-reveal delay-200" style="border-color:#52C77A;background:rgba(82,199,122,0.05)">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(82,199,122,.12)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="1.6" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
         </div>
-        <h3 class="font-display text-base font-bold mb-2" style="color:#52C77A">La fenêtre des 48h ★</h3>
-        <div class="text-left mt-3 space-y-2">
-          <p class="text-sm font-bold" style="color:var(--cool-50)">Il y a une fenêtre de 48h.</p>
-          <p class="text-sm font-bold" style="color:var(--cool-50)">Votre prospect a décidé.</p>
-          <p class="text-sm font-bold" style="color:#E8A838">Il n'a encore appelé personne.</p>
-          <p class="text-sm leading-relaxed mt-2" style="color:var(--cool-400)">Celui qui appelle dans cette fenêtre signe. Tous les autres arrivent trop tard — même s'ils sont meilleurs.</p>
-          <p class="text-sm font-bold leading-relaxed" style="color:var(--cool-200)">Système1-Immo détecte cette fenêtre. Vous recevez une alerte. Vous appelez en premier. Vous signez.</p>
-        </div>
+        <h3 class="font-display text-sm font-bold mb-3" style="color:#52C77A">La fenêtre des 48h</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--cool-400)">Il y a une fenêtre de 48h. Votre prospect a décidé. <span class="font-semibold" style="color:#E8A838">Il n'a encore appelé personne.</span></p>
+        <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Celui qui appelle en premier signe. Système1-Immo détecte cette fenêtre. Vous recevez une alerte. Vous appelez en premier. <span class="font-semibold" style="color:var(--cool-200)">Vous signez.</span></p>
       </div>
+
     </div>
   </div>
 </section>
