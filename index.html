@@ -23,7 +23,7 @@
 tailwind.config = {
   theme: {
     extend: {
-      colors: {
+      colors: 
         navy: { 950:'#070B14', 900:'#0B1020', 800:'#0F1523', 700:'#161E31', 600:'#1E2638' },
         cool: { 50:'#F5F7FB', 200:'#E4E7EC', 400:'#98A2B3' },
         accent: { blue:'#4DA3FF', indigo:'#6C63FF' }
@@ -1984,8 +1984,15 @@ body {
   <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(77,163,255,.06),transparent 55%)"></div>
   <div class="w-full max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
     <div class="relative rounded-2xl border p-10 sm:p-16 text-center overflow-hidden scroll-reveal" style="border-color:rgba(30,38,56,.6);background:var(--navy-950);box-shadow:inset 0 0 40px rgba(77,163,255,.06),0 0 40px rgba(77,163,255,.06);animation:ctaPulse 3s ease-in-out infinite">
-      <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-4 relative z-10" style="color:var(--cool-50);text-shadow:0 0 15px rgba(255,255,255,.15)">Ne me croyez pas sur parole.<br><span style="color:var(--accent-blue)">Testez sur votre propre secteur.</span></h2>
-      <p class="text-lg mb-10 relative z-10 max-w-xl mx-auto" style="color:var(--cool-400)">Testez sur votre propre secteur, avec vos propres prospects, pendant 14 jours. Sans carte bancaire. Sans engagement. Sans risque. Si vous ne voyez pas vos premiers leads sous 48h — on vous dit pourquoi. Et on corrige avec vous.</p>
+      <p class="text-xs font-bold uppercase tracking-widest mb-4 relative z-10" style="color:var(--accent-blue)">En ce moment, dans votre secteur.</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-6 relative z-10" style="color:var(--cool-50);text-shadow:0 0 15px rgba(255,255,255,.15)">Un vendeur cherche un agent.<br>Il vient de remplir un formulaire quelque part.<br><span style="color:var(--accent-blue)">La question : c’était le vôtre — ou celui d’un concurrent ?</span></h2>
+      <div class="text-left max-w-md mx-auto mb-8 relative z-10 flex flex-col gap-2">
+        <p class="text-sm" style="color:var(--cool-300)">✅  Premiers leads sous 48h — même sans base de contacts</p>
+        <p class="text-sm" style="color:var(--cool-300)">✅  Zéro prospection à froid — le système contacte à votre place</p>
+        <p class="text-sm" style="color:var(--cool-300)">✅  Opérationnel en 5 minutes — aucun code, aucune formation</p>
+        <p class="text-sm" style="color:var(--cool-300)">✅  Spécialisé agents immobiliers — pas un outil générique</p>
+      </div>
+      <p class="text-base italic mb-8 relative z-10 max-w-lg mx-auto" style="color:var(--cool-400)">“Ça prend 5 minutes. Vos concurrents qui l’ont activé hier reçoivent leurs premiers leads ce matin.”</p>
 
       <!-- Form -->
       <div class="max-w-[480px] mx-auto relative z-10">
@@ -2009,13 +2016,26 @@ body {
             </div>
             <div class="flex flex-col gap-1">
               <label class="text-xs font-medium text-left" style="color:rgba(152,162,179,.5)">Réseau</label>
-              <input type="text" name="reseau" placeholder="IAD, Safti, indépendant..." class="rounded-lg px-3.5 py-3 text-sm outline-none focus:ring-2 focus:ring-[var(--accent-blue)] focus:border-transparent" style="background:rgba(22,30,49,.6);border:1px solid rgba(30,38,56,.8);color:var(--cool-50)">
+              <select name="reseau" required="" class="rounded-lg px-3.5 py-3 text-sm outline-none focus:ring-2 focus:ring-[var(--accent-blue)] focus:border-transparent" style="background:rgba(22,30,49,.6);border:1px solid rgba(30,38,56,.8);color:var(--cool-50)">
+                <option value="" disabled selected style="color:rgba(152,162,179,.5)">Votre réseau</option>
+                <option value="IAD">IAD</option>
+                <option value="Safti">Safti</option>
+                <option value="BSK">BSK</option>
+                <option value="eXp">eXp</option>
+                <option value="Century 21">Century 21</option>
+                <option value="Orpi">Orpi</option>
+                <option value="Laforêt">Laforêt</option>
+                <option value="Guy Hoquet">Guy Hoquet</option>
+                <option value="Indépendant">Indépendant</option>
+                <option value="Autre">Autre</option>
+              </select>
             </div>
             <button type="submit" id="submit-btn" class="sm:col-span-2 neu-btn font-semibold text-sm py-3.5 rounded-xl border-none cursor-pointer mt-1.5 text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">
-              Activer mon système · 14 jours gratuits →
+              Je démarre ce soir — mes premiers leads sous 48h  →
             </button>
             <p id="form-feedback" class="sm:col-span-2 text-center text-xs hidden" style="color:#52C77A"></p>
-            <p class="sm:col-span-2 text-center text-xs" style="color:rgba(152,162,179,.4)">✓ Accès immédiat · Sans carte bancaire · Annulation en 1 clic</p>
+            <p class="sm:col-span-2 text-center text-xs" style="color:rgba(152,162,179,.4)">✓ Annulation en 1 clic · Sans carte bancaire · Accès immédiat</p>
+            <p class="sm:col-span-2 text-center text-xs mt-1" style="color:rgba(152,162,179,.3)">Vos informations restent privées. Aucun spam. Juste votre accès.</p>
           </form>
         </div>
       </div>
