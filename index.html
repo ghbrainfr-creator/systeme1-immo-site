@@ -938,6 +938,50 @@ Système1-Immo change ça.</p>
     </div>
 
     <div id="apps-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5 scroll-reveal" style="min-height:300px"></div>
+    <!-- Cost comparison table view -->
+    <div id="cost-table-view" style="display:none;" class="mt-6">
+      <div class="velox-card p-6 mb-6 border-l-4 border-blue-500">
+        <p class="font-bold text-lg leading-snug" style="color:var(--cool-50)">Pour obtenir ce que fait Système1-Immo,<br>il vous faudrait <strong>10 abonnements séparés.</strong></p>
+        <p class="mt-1 font-semibold" style="color:#4DA3FF">Et les faire parler entre eux. Bonne chance.</p>
+      </div>
+      <p class="text-sm mb-4" style="color:var(--cool-400)">Vous n’avez pas besoin de tous ces outils. Vous avez besoin des résultats qu’ils sont censés vous donner. Voici ce que ça vous coûterait si vous les achetiez un par un.</p>
+      <div class="overflow-x-auto rounded-xl mb-4">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr style="background:#0B1120">
+              <th class="text-left px-4 py-3 font-semibold" style="color:#fff">Ce que vous obtenez</th>
+              <th class="text-left px-4 py-3 font-semibold" style="color:#fff">Sans nous</th>
+              <th class="text-right px-4 py-3 font-semibold" style="color:#fff">Prix séparé</th>
+            </tr>
+          </thead>
+          <tbody style="background:#0D1526">
+            <tr class="border-t border-white/5"><td class="px-4 py-2.5" style="color:var(--cool-200)">CRM avec scoring IA</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Salesforce</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">150€/mois</td></tr>
+            <tr class="border-t border-white/5" style="background:#0F1729"><td class="px-4 py-2.5" style="color:var(--cool-200)">Campagnes email automatiques</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Sendinblue</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">95€/mois</td></tr>
+            <tr class="border-t border-white/5"><td class="px-4 py-2.5" style="color:var(--cool-200)">Site agent capturant des leads</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Webflow</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">30€/mois</td></tr>
+            <tr class="border-t border-white/5" style="background:#0F1729"><td class="px-4 py-2.5" style="color:var(--cool-200)">Diagnostic vendeur (Scan Immo™)</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Typeform Pro</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">25€/mois</td></tr>
+            <tr class="border-t border-white/5"><td class="px-4 py-2.5" style="color:var(--cool-200)">Scraping LBC / SeLoger / PAP</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Zapier</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">25€/mois</td></tr>
+            <tr class="border-t border-white/5" style="background:#0F1729"><td class="px-4 py-2.5" style="color:var(--cool-200)">WhatsApp IA conversationnel</td><td class="px-4 py-2.5" style="color:var(--cool-400)">WA Business Pro</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">40€/mois</td></tr>
+            <tr class="border-t border-white/5"><td class="px-4 py-2.5" style="color:var(--cool-200)">Messagerie IA de qualification</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Intercom</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">60€/mois</td></tr>
+            <tr class="border-t border-white/5" style="background:#0F1729"><td class="px-4 py-2.5" style="color:var(--cool-200)">Score et analyse d’annonce</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Hubspot</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">100€/mois</td></tr>
+            <tr class="border-t border-white/5"><td class="px-4 py-2.5" style="color:var(--cool-200)">Étude marché IA</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Statista</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">90€/mois</td></tr>
+            <tr class="border-t border-white/5" style="background:#0F1729"><td class="px-4 py-2.5" style="color:var(--cool-200)">GMB &amp; réseaux sociaux auto</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Localranker</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">30€/mois</td></tr>
+            <tr class="border-t border-white/5"><td class="px-4 py-2.5" style="color:var(--cool-200)">Estimation brandée en ligne</td><td class="px-4 py-2.5" style="color:var(--cool-400)">Mailchimp</td><td class="px-4 py-2.5 text-right" style="color:var(--cool-200)">30€/mois</td></tr>
+          </tbody>
+          <tfoot>
+            <tr style="background:#c0392b"><td class="px-4 py-3 font-bold" style="color:#fff">TOTAL — 11 outils séparés</td><td></td><td class="px-4 py-3 font-bold text-right" style="color:#fff">675€/mois</td></tr>
+            <tr style="background:#1a7a3c"><td class="px-4 py-3 font-bold" style="color:#fff">Système1-Immo Pro — Tout inclus</td><td></td><td class="px-4 py-3 font-bold text-right" style="color:#fff">89€/mois</td></tr>
+            <tr class="border-t-2" style="border-color:#4DA3FF"><td class="px-4 py-3 font-bold" style="color:var(--cool-50)">★ Vous économisez</td><td></td><td class="px-4 py-3 font-bold text-right" style="color:var(--cool-50)">586€/mois · 7 032€/an</td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="text-sm mb-2" style="color:var(--cool-400)">Mais le vrai coût, ce n’est pas les 675€. C’est le temps de configurer 11 outils. De les faire parler entre eux. De former vos collaborateurs. De gérer 11 SAV différents quand quelque chose ne marche pas.</p>
+      <p class="text-sm mb-4" style="color:var(--cool-400)">Ce coût-là, personne ne le calcule. Jusqu’au jour où on en a assez.</p>
+      <p class="text-xs mb-6" style="color:var(--cool-600);font-style:italic">Prix indicatifs basés sur les tarifs publics T1 2026. Certains outils proposent des plans gratuits limités. Système1-Immo intègre des versions adaptées à l’usage immobilier terrain.</p>
+      <div class="velox-card p-5 border-l-4" style="border-color:#4DA3FF">
+        <p class="font-bold mb-1" style="color:var(--cool-50)">Arrêtez de payer 675€ pour 11 outils qui ne se parlent pas.</p>
+        <p class="text-sm" style="color:#4DA3FF">→ Tout avoir en un seul endroit · 14 jours gratuits · Sans carte</p>
+      </div>
+    </div>
 
     <div id="total-cost" class="text-center mt-10 transition-all duration-500" style="opacity:0;transform:translateY(10px)">
       <p class="text-3xl font-bold font-display tracking-tight" style="color:var(--destructive)"><span id="cost-counter">0</span>€<span class="text-lg font-normal" style="color:var(--cool-400)">/mois d'abonnements</span></p>
@@ -2375,6 +2419,10 @@ Le reste, c'est du bonheur.</p>
       costDiv.style.cssText='opacity:0;transform:translateY(10px)';
       costEl.textContent='0';
     }
+    // Toggle grid vs table view
+    const gridEl=document.getElementById('apps-grid');
+    const tableEl=document.getElementById('cost-table-view');
+    if(gridEl&&tableEl){gridEl.style.display=show?'none':'grid';tableEl.style.display=show?'block':'none';}
   };
 })();
 
