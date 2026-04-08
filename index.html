@@ -1517,8 +1517,8 @@ body {
   <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(77,163,255,.04),transparent 60%);opacity:.5"></div>
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center mb-16 scroll-reveal">
-      <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4" style="color:var(--cool-50)">Un mandat, c'est 5 000€.<br><span style="color:var(--accent-blue)">Cet abonnement, c'est 89€/mois.</span></h2>
-      <p class="text-lg mb-8" style="color:var(--cool-400)">Le ROI se calcule en minutes, pas en mois.</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4" style="color:var(--cool-50)">Un mandat, c'est 5 000€.<br><span style="color:var(--accent-blue)">Cet abonnement, c'est <span id="hero-price">199€</span>/mois.</span></h2>
+      <p class="text-lg mb-8" style="color:var(--cool-400)">Prix verrouillé 12 mois. Réservé aux 300 premiers fondateurs.</p>
 
       <!-- Toggle -->
       <div class="flex items-center justify-center gap-4">
@@ -1528,65 +1528,83 @@ body {
         </button>
         <div class="flex items-center gap-2">
           <span id="billing-yearly" class="text-sm font-medium" style="color:var(--cool-400)">Annuel</span>
-          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2);color:var(--accent-blue)">-20%</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2);color:var(--accent-blue)">2 mois offerts</span>
         </div>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-      <!-- Solo -->
-      <div class="velox-card p-8 flex flex-col scroll-reveal">
-        <h3 class="font-display text-xl font-bold mb-2" style="color:var(--cool-50)">Solo</h3>
-        <p class="text-sm mb-6" style="color:var(--cool-400)">“Je démarre.”<br><br>Vous avez zéro système ce soir. Demain matin, vous en avez un.</p>
-        <div class="mb-6"><span class="font-display text-4xl font-bold tracking-tight price-val" style="color:var(--cool-50)" data-monthly="59€" data-yearly="47€">59€</span><span class="text-sm" style="color:var(--cool-400)">/mois</span></div>
-        <ul class="flex flex-col gap-3 mb-8 flex-1">
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>CRM intelligent · vous ne perdez plus aucun contact</li>
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Carnet Terrain · chaque rencontre devient une relance automatique</li>
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Veille marché quotidienne · vous arrivez informé à chaque RDV</li>
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Support email · réponse humaine si vous bloquez</li>
-
-        </ul>
-        <a href="#rejoindre" class="block text-center font-semibold text-sm py-3.5 rounded-xl transition-all hover:-translate-y-0.5" style="border:1px solid rgba(30,38,56,.8);background:rgba(15,21,35,.5);color:var(--cool-50)">Activer mon système · 14 jours gratuits</a>
-        <p class="text-xs text-center mt-2" style="color:rgba(152,162,179,.4)">Sans carte bancaire · Sans engagement</p>
+    <!-- Bannière compteur fondateurs -->
+    <div id="founder-banner" class="max-w-md mx-auto mb-12 p-5 rounded-xl scroll-reveal" style="background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.25);backdrop-filter:blur(12px)">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <span class="text-base" aria-hidden="true">🔥</span>
+        <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:#FCD34D">Offre Fondateur</span>
       </div>
+      <p class="text-center text-sm mb-3" style="color:var(--cool-200)">
+        Il reste <strong id="founder-remaining" style="color:#FCD34D">49 places</strong> à <strong id="founder-price" style="color:#FCD34D">199€/mois</strong>
+      </p>
+      <div class="relative h-2 rounded-full overflow-hidden mb-2" style="background:rgba(30,38,56,.8)">
+        <div id="founder-progress" class="absolute inset-y-0 left-0 rounded-full transition-all duration-700" style="width:2%;background:linear-gradient(90deg,#F59E0B,#FCD34D);box-shadow:0 0 12px rgba(251,191,36,.4)"></div>
+      </div>
+      <p class="text-center text-[11px]" style="color:rgba(152,162,179,.7)">Prochain palier : <span id="founder-next">249€/mois</span></p>
+    </div>
 
-      <!-- Pro -->
-      <div class="flex flex-col p-8 relative md:-translate-y-4 scroll-reveal delay-100" style="background:rgba(11,16,32,.95);border:1px solid var(--accent-blue);border-radius:16px;backdrop-filter:blur(20px);animation:proGlow 4s ease-in-out infinite">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <!-- Solo Fondateur (featured) -->
+      <div class="flex flex-col p-8 relative scroll-reveal" style="background:rgba(11,16,32,.95);border:1px solid var(--accent-blue);border-radius:16px;backdrop-filter:blur(20px);animation:proGlow 4s ease-in-out infinite">
         <div class="absolute top-0 inset-x-0 h-px" style="background:linear-gradient(to right,transparent,rgba(77,163,255,.5),transparent)"></div>
         <div class="flex justify-between items-center mb-2">
-          <h3 class="font-display text-xl font-bold" style="color:var(--cool-50)">Pro</h3>
-          <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2);color:var(--accent-blue)">★ LE PLUS CHOISI</span>
+          <h3 class="font-display text-xl font-bold" style="color:var(--cool-50)">Solo Fondateur</h3>
+          <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2);color:var(--accent-blue)">★ FONDATEUR</span>
         </div>
-        <p class="text-sm mb-6" style="color:var(--cool-400)">“Ma prospection tourne seule.”<br><br>Vous rentrez d'une journée terrain. Pendant ce temps, 54 messages sont partis en votre nom. Vous n'avez rien rédigé. Rien planifié. Rien envoyé.</p>
-        <div class="mb-6"><span class="font-display text-4xl font-bold tracking-tight price-val" style="color:var(--cool-50)" data-monthly="89€" data-yearly="71€">89€</span><span class="text-sm" style="color:var(--cool-400)">/mois</span></div>
+        <p class="text-sm mb-6" style="color:var(--cool-400)">Un mandat suffit à financer 2 ans d'abonnement.</p>
+        <div class="mb-1">
+          <span id="solo-price" class="font-display text-4xl font-bold tracking-tight price-val" style="color:var(--cool-50)">199€</span>
+          <span id="solo-period" class="text-sm" style="color:var(--cool-400)">/mois</span>
+        </div>
+        <p id="solo-annual-note" class="text-xs mb-6" style="color:rgba(152,162,179,.6);display:none">soit 166€/mois · 2 mois offerts</p>
+        <div id="solo-spacer" class="mb-6"></div>
         <ul class="flex flex-col gap-3 mb-8 flex-1">
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>54 templates email prêts · zéro rédaction</li>
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>WhatsApp IA · vos prospects reçoivent une réponse à 23h</li>
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>Scoring continu · vous savez exactement qui appeler demain matin</li>
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>Branding en 5 min · vos emails ressemblent à vous, pas à un outil</li>
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>Support prioritaire · réponse en moins de 2h</li>
-
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>CRM — journal relationnel complet</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>Vitrine agent — site personnalisé en 3 clics avec outils de conversion</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>Campagnes Email &amp; WhatsApp automatisées</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>Prospection Terrain — carnet + envoi immédiat</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>Ambassadeur — referral automatisé</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>IA Canagé — briefing quotidien + pilote automatique</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>ActuImmo — veille marché IA</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>Support prioritaire</li>
         </ul>
-        <a href="#rejoindre" class="neu-btn block text-center font-semibold text-sm py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">Activer mon système · 14 jours gratuits</a>
-        <p class="text-xs text-center mt-2" style="color:rgba(152,162,179,.4)">30€ de plus que Solo. Moins que le café du mois. Un mandat de plus suffit à financer 5 ans d'abonnement.</p>
+        <a href="#rejoindre" class="neu-btn block text-center font-semibold text-sm py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">Démarrer 14 jours gratuits</a>
+        <p class="text-xs text-center mt-2" style="color:rgba(152,162,179,.5)">Sans carte bancaire · Prix verrouillé 12 mois</p>
       </div>
 
       <!-- Agence -->
-      <div class="velox-card p-8 flex flex-col scroll-reveal delay-200">
+      <div class="velox-card p-8 flex flex-col scroll-reveal delay-100">
         <h3 class="font-display text-xl font-bold mb-2" style="color:var(--cool-50)">Agence</h3>
-        <p class="text-sm mb-6" style="color:var(--cool-400)">“Mon équipe en pilote automatique.”<br><br>6 agents. Un seul dashboard. Vous regardez les résultats — l'IA prospecte pour tout le monde.</p>
-        <div class="mb-6"><span class="font-display text-4xl font-bold tracking-tight price-val" style="color:var(--cool-50)" data-monthly="399€" data-yearly="319€">399€</span><span class="text-sm" style="color:var(--cool-400)">/mois</span></div>
-        <ul class="flex flex-col gap-3 mb-8 flex-1">
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>66€ par agent · moins que le plan Solo individuel</li>
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Dashboard patron · activité de toute l'équipe en temps réel</li>
-          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Onboarding dédié · votre équipe opérationnelle en 24h</li>
+        <p class="text-sm mb-6" style="color:var(--cool-400)">Pour le patron qui veut équiper toute son équipe.</p>
 
+        <!-- Calculateur sièges -->
+        <div class="mb-6 p-4 rounded-xl" style="background:rgba(15,21,35,.6);border:1px solid rgba(30,38,56,.8)">
+          <label for="agence-seats" class="block text-[10px] font-bold tracking-[.15em] uppercase mb-2" style="color:var(--cool-400)">Nombre de commerciaux</label>
+          <input id="agence-seats" type="number" min="2" max="50" value="6" class="w-full px-3 py-2 rounded-lg font-display text-lg font-bold" style="background:rgba(7,11,20,.8);border:1px solid rgba(30,38,56,.8);color:var(--cool-50);outline:none">
+          <div class="mt-4">
+            <span id="agence-price" class="font-display text-4xl font-bold tracking-tight price-val" style="color:var(--cool-50)">995€</span>
+            <span id="agence-period" class="text-sm" style="color:var(--cool-400)">/mois</span>
+          </div>
+          <p id="agence-annual-note" class="text-xs mt-1" style="color:rgba(152,162,179,.6);display:none">soit 829€/mois · 2 mois offerts</p>
+          <p id="agence-breakdown" class="text-xs mt-2" style="color:var(--cool-400)">Pour 6 commerciaux : 995€/mois soit 166€/commercial</p>
+        </div>
+
+        <ul class="flex flex-col gap-3 mb-8 flex-1">
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Tout du plan Solo pour chaque commercial</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>1 siège offert tous les 5 sièges payants</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Dashboard patron — activité équipe en temps réel</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Onboarding équipe dédié sous 24h</li>
+          <li class="flex items-start gap-2 text-sm" style="color:var(--cool-400)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2"><path d="M20 6L9 17l-5-5"></path></svg>Support prioritaire</li>
         </ul>
-        <a href="#rejoindre" class="block text-center font-semibold text-sm py-3.5 rounded-xl transition-all hover:-translate-y-0.5" style="border:1px solid rgba(30,38,56,.8);background:rgba(15,21,35,.5);color:var(--cool-50)">Réserver une démo équipe</a>
-        <p class="text-xs text-center mt-2" style="color:rgba(152,162,179,.4)">6 abonnements Solo vous coûteraient 354€/mois. Le plan Agence : 399€. Pour 6 agents avec tout le plan Pro inclus.</p>
+        <a id="agence-cta" href="mailto:contact@systeme1-immo.fr?subject=Demande%20d%C3%A9mo%20%C3%A9quipe" class="block text-center font-semibold text-sm py-3.5 rounded-xl transition-all hover:-translate-y-0.5" style="border:1px solid rgba(30,38,56,.8);background:rgba(15,21,35,.5);color:var(--cool-50)">Demander une démo équipe</a>
+        <p class="text-xs text-center mt-2" style="color:rgba(152,162,179,.5)">Réponse sous 2h · Démo personnalisée</p>
       </div>
     </div>
-    <p class="text-center text-xs mt-5" style="color:rgba(152,162,179,.4)"></p>
   <!-- Garantie -->
   <div class="text-center max-w-xl mx-auto mt-12 scroll-reveal">
     <h3 class="font-display text-lg font-bold mb-4" style="color:var(--cool-50)">14 jours pour voir. Rien à perdre.</h3>
@@ -2145,22 +2163,152 @@ body {
   handle();
 })();
 
-// ── Billing toggle ──
+// ── Pricing (paliers fondateurs + calculateur Agence + toggle) ──
 (function(){
-  const toggle = document.getElementById('billing-toggle');
-  const knob = document.getElementById('billing-knob');
-  const mLabel = document.getElementById('billing-monthly');
-  const yLabel = document.getElementById('billing-yearly');
-  if(!toggle) return;
-  let yearly=false;
-  toggle.addEventListener('click',()=>{
-    yearly=!yearly;
-    toggle.style.background=yearly?'var(--accent-blue)':'rgba(30,38,56,.8)';
-    knob.style.transform=yearly?'translateX(24px)':'translateX(4px)';
-    mLabel.style.color=yearly?'var(--cool-400)':'var(--cool-50)';
-    yLabel.style.color=yearly?'var(--cool-50)':'var(--cool-400)';
-    document.querySelectorAll('.price-val').forEach(p=>{p.textContent=yearly?p.dataset.yearly:p.dataset.monthly;});
-  });
+  // Config
+  const FOUNDER_TIERS = [
+    { max: 50,  price: 199, label: 'Fondateur #1 → #50' },
+    { max: 150, price: 249, label: 'Fondateur #51 → #150' },
+    { max: 300, price: 299, label: 'Fondateur #151 → #300' },
+  ];
+  const PUBLIC_PRICE = 349;
+  const CURRENT_FOUNDERS_COUNT = 1;
+  const SEATS_PER_FREE_SEAT = 5;
+  const ANNUAL_MONTHS_BILLED = 10;
+  const ANNUAL_MONTHS_ACCESS = 12;
+
+  function getActiveTier(count){
+    return FOUNDER_TIERS.find(t => count < t.max) || { max: Infinity, price: PUBLIC_PRICE, label: 'Prix public' };
+  }
+
+  const activeTier = getActiveTier(CURRENT_FOUNDERS_COUNT);
+  const activeIdx = FOUNDER_TIERS.indexOf(activeTier);
+  const nextTier = activeIdx >= 0 && activeIdx + 1 < FOUNDER_TIERS.length
+    ? FOUNDER_TIERS[activeIdx + 1]
+    : { price: PUBLIC_PRICE, label: 'Prix public' };
+  const remaining = activeTier.max - CURRENT_FOUNDERS_COUNT;
+  const tierStart = activeIdx > 0 ? FOUNDER_TIERS[activeIdx - 1].max : 0;
+  const tierSize = Math.max(1, activeTier.max - tierStart);
+  const filledInTier = Math.max(0, CURRENT_FOUNDERS_COUNT - tierStart);
+  const progressPct = Math.max(2, Math.round(filledInTier / tierSize * 100));
+
+  const $ = (id) => document.getElementById(id);
+
+  // Bannière fondateurs
+  const banner = {
+    remaining: $('founder-remaining'),
+    price:     $('founder-price'),
+    progress:  $('founder-progress'),
+    next:      $('founder-next'),
+  };
+  if (banner.remaining) banner.remaining.textContent = remaining + (remaining > 1 ? ' places' : ' place');
+  if (banner.price)     banner.price.textContent     = activeTier.price + '€/mois';
+  if (banner.progress)  banner.progress.style.width  = progressPct + '%';
+  if (banner.next)      banner.next.textContent      = nextTier.price + '€/mois';
+
+  // Hero price
+  const heroPrice = $('hero-price');
+  if (heroPrice) heroPrice.textContent = activeTier.price + '€';
+
+  // Plan Solo
+  const soloEls = {
+    price:      $('solo-price'),
+    period:     $('solo-period'),
+    annualNote: $('solo-annual-note'),
+  };
+
+  // Plan Agence
+  const agenceEls = {
+    seats:      $('agence-seats'),
+    price:      $('agence-price'),
+    period:     $('agence-period'),
+    annualNote: $('agence-annual-note'),
+    breakdown:  $('agence-breakdown'),
+    cta:        $('agence-cta'),
+  };
+
+  // Toggle
+  const toggle = $('billing-toggle');
+  const knob   = $('billing-knob');
+  const mLabel = $('billing-monthly');
+  const yLabel = $('billing-yearly');
+  let yearly = false;
+
+  function computeAgence(seats){
+    const paidSeats = Math.ceil(seats / (SEATS_PER_FREE_SEAT + 1) * SEATS_PER_FREE_SEAT);
+    const monthly   = paidSeats * activeTier.price;
+    return { paidSeats, monthly };
+  }
+
+  function updateSolo(){
+    if (!soloEls.price) return;
+    if (yearly) {
+      const annual    = activeTier.price * ANNUAL_MONTHS_BILLED;
+      const monthlyEq = Math.round(annual / ANNUAL_MONTHS_ACCESS);
+      soloEls.price.textContent = annual + '€';
+      if (soloEls.period)     soloEls.period.textContent = '/an';
+      if (soloEls.annualNote) {
+        soloEls.annualNote.textContent = 'soit ' + monthlyEq + '€/mois · 2 mois offerts';
+        soloEls.annualNote.style.display = 'block';
+      }
+    } else {
+      soloEls.price.textContent = activeTier.price + '€';
+      if (soloEls.period)     soloEls.period.textContent = '/mois';
+      if (soloEls.annualNote) soloEls.annualNote.style.display = 'none';
+    }
+  }
+
+  function updateAgence(){
+    if (!agenceEls.seats) return;
+    let seats = parseInt(agenceEls.seats.value, 10);
+    if (isNaN(seats) || seats < 2) seats = 2;
+    if (seats > 50) seats = 50;
+    const { monthly } = computeAgence(seats);
+    const perCommercial = Math.round(monthly / seats);
+
+    if (yearly) {
+      const annual    = monthly * ANNUAL_MONTHS_BILLED;
+      const monthlyEq = Math.round(annual / ANNUAL_MONTHS_ACCESS);
+      if (agenceEls.price)  agenceEls.price.textContent  = annual + '€';
+      if (agenceEls.period) agenceEls.period.textContent = '/an';
+      if (agenceEls.annualNote) {
+        agenceEls.annualNote.textContent = 'soit ' + monthlyEq + '€/mois · 2 mois offerts';
+        agenceEls.annualNote.style.display = 'block';
+      }
+    } else {
+      if (agenceEls.price)  agenceEls.price.textContent  = monthly + '€';
+      if (agenceEls.period) agenceEls.period.textContent = '/mois';
+      if (agenceEls.annualNote) agenceEls.annualNote.style.display = 'none';
+    }
+
+    if (agenceEls.breakdown) {
+      agenceEls.breakdown.textContent = 'Pour ' + seats + ' commerciaux : ' + monthly + '€/mois soit ' + perCommercial + '€/commercial';
+    }
+    if (agenceEls.cta) {
+      const subj = 'Demande démo équipe — ' + seats + ' commerciaux, ' + monthly + '€/mois';
+      agenceEls.cta.href = 'mailto:contact@systeme1-immo.fr?subject=' + encodeURIComponent(subj);
+    }
+  }
+
+  function updateAll(){ updateSolo(); updateAgence(); }
+  updateAll();
+
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      yearly = !yearly;
+      toggle.style.background = yearly ? 'var(--accent-blue)' : 'rgba(30,38,56,.8)';
+      if (knob)   knob.style.transform = yearly ? 'translateX(24px)' : 'translateX(4px)';
+      if (mLabel) mLabel.style.color = yearly ? 'var(--cool-400)' : 'var(--cool-50)';
+      if (yLabel) yLabel.style.color = yearly ? 'var(--cool-50)' : 'var(--cool-400)';
+      toggle.setAttribute('aria-checked', yearly ? 'true' : 'false');
+      updateAll();
+    });
+  }
+
+  if (agenceEls.seats) {
+    agenceEls.seats.addEventListener('input',  updateAgence);
+    agenceEls.seats.addEventListener('change', updateAgence);
+  }
 })();
 
 // ── Counters ──
