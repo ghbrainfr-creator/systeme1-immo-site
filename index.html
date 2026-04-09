@@ -12,13 +12,13 @@
 <meta name="twitter:card" content="summary_large_image
 <meta name="twitter:title" content="Et si votre prochain mandat arrivait sans décrocher le téléphone ?">
 <meta name="twitter:description" content="Système1-Immo détecte l'instant où votreprospect bascule et agit à votre place. Essai gratuit 14 jours.">
-&lt;link rel=" icon"="" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org//svg' viewBox='0 0 32 32'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0' y1='0' x2='1' y2='1'&gt;&lt;stop offset='0%25' stop-color='%234DA3FF'/&gt;&lt;stop offset='100%25' stop-color='%236C63FF'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='32' height='32' rx='6' fill='url(%23g)'/&gt;&lt;text x='16' y='22' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='16'&gt;S1&lt;/text&gt;&lt;/svg&gt;">
+&lt;link rel=" icon"="" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org//svg' viewBox='0 0 32 32'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0' y1='0' x2='1' y2='1'&gt;&lt;stop offset='0%25' stop-color='%235BA3E8'/&gt;&lt;stop offset='100%25' stop-color='%233B8DE0'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect width='32' height='32' rx='6' fill='url(%23g)'/&gt;&lt;text x='16' y='22' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='16'&gt;S1&lt;/text&gt;&lt;/svg&gt;">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Geist:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <script>
 tailwind.config = {
   theme: {
@@ -26,11 +26,11 @@ tailwind.config = {
       colors: 
         navy: { 950:'#070B14', 900:'#0B1020', 800:'#0F1523', 700:'#161E31', 600:'#1E2638' },
         cool: { 50:'#F5F7FB', 200:'#E4E7EC', 400:'#98A2B3' },
-        accent: { blue:'#4DA3FF', indigo:'#6C63FF' }
+        accent: { blue:'#5BA3E8' }
       },
       fontFamily: {
         display: ['Space Grotesk','system-ui','sans-serif'],
-        body: ['Inter','system-ui','sans-serif'],
+        body: ['Geist','system-ui','sans-serif'],
       }
     }
   }
@@ -39,8 +39,7 @@ tailwind.config = {
 <style>
 /* ── Velox palette variables ── */
 :root {
-  --accent-blue: #4DA3FF;
-  --accent-indigo: #6C63FF;
+  --accent-blue: #5BA3E8;
   --navy-950: #070B14;
   --navy-900: #0B1020;
   --navy-800: #0F1523;
@@ -50,7 +49,7 @@ tailwind.config = {
   --cool-200: #E4E7EC;
   --cool-400: #98A2B3;
   /* Système1 color tokens */
-  --primary: #4DA3FF;
+  --primary: #5BA3E8;
   --primary-dark: #3B8DE0;
   --success: #52C77A;
   --warning: #E8A838;
@@ -59,20 +58,46 @@ tailwind.config = {
   --neu-shadow-dark: rgba(0,0,0,0.5);
   --neu-shadow-light: rgba(255,255,255,0.03);
   --neu-highlight: rgba(255,255,255,0.05);
+
+  /* ── Design tokens (P2) ── */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --shadow-flat: 0 1px 0 rgba(255,255,255,.04) inset, 0 0 0 1px rgba(255,255,255,.04);
+  --shadow-raised: 0 10px 30px -12px rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.04) inset;
+  --shadow-glow: 0 0 0 1px rgba(91,163,232,.35), 0 14px 40px -14px rgba(91,163,232,.25), 0 1px 0 rgba(255,255,255,.06) inset;
+
+  /* ── Motion tokens (P3) ── */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 200ms;
+  --dur-base: 400ms;
+  --dur-slow: 700ms;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Geist', system-ui, sans-serif;
   background: var(--navy-950);
   color: var(--cool-200);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  position: relative;
+}
+/* ── Subtle grain texture (P5) — breaks the sterile flat background ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: .035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 /* ── Scroll reveal ── */
-.scroll-reveal { opacity:0; transform:translateY(20px); transition:opacity .8s ease-out,transform .8s ease-out; }
+.scroll-reveal { opacity:0; transform:translateY(20px); transition:opacity var(--dur-slow) var(--ease-smooth),transform var(--dur-slow) var(--ease-smooth); }
 .scroll-reveal.active { opacity:1; transform:translateY(0); }
 .delay-100 { transition-delay:100ms; }
 .delay-200 { transition-delay:200ms; }
@@ -104,13 +129,13 @@ body {
 @keyframes glowPulse { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1} 50%{transform:translate(-50%,-50%) scale(1.1);opacity:.6} }
 @keyframes orbitSpin { to{transform:rotate(360deg)} }
 @keyframes orbitCounter { to{transform:rotate(-360deg)} }
-@keyframes ctaPulse { 0%,100%{box-shadow:0 4px 20px rgba(77,163,255,.2)} 50%{box-shadow:0 4px 50px rgba(77,163,255,.4),0 0 80px rgba(77,163,255,.1)} }
+@keyframes ctaPulse { 0%,100%{box-shadow:0 0 0 1px rgba(91,163,232,.35), 0 6px 18px -8px rgba(0,0,0,.45)} 50%{box-shadow:0 0 0 1px rgba(91,163,232,.75), 0 6px 18px -8px rgba(0,0,0,.45)} }
 @keyframes gradShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
 @keyframes uploadArrow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
 @keyframes radarSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 @keyframes radarPing { 0%{transform:scale(.5);opacity:.8} 100%{transform:scale(1.8);opacity:0} }
 @keyframes boltFlash { 0%,100%{opacity:1} 50%{opacity:.7;filter:drop-shadow(0 0 6px #52C77A)} }
-@keyframes proGlow { 0%,100%{box-shadow:0 0 0 1px var(--accent-blue),0 8px 40px rgba(77,163,255,.1)} 50%{box-shadow:0 0 0 1px var(--accent-blue),0 8px 60px rgba(77,163,255,.2),0 0 80px rgba(77,163,255,.05)} }
+@keyframes proGlow { 0%,100%{box-shadow:0 0 0 1px rgba(91,163,232,.4), 0 12px 32px -14px rgba(0,0,0,.6)} 50%{box-shadow:0 0 0 1px rgba(91,163,232,.85), 0 12px 32px -14px rgba(0,0,0,.6)} }
 @keyframes statLine { from{width:0} to{width:100%} }
 @property --na { syntax:'<angle>'; initial-value:0deg; inherits:false; }
 @keyframes neonRotate { from{--na:0deg} to{--na:360deg} }
@@ -129,38 +154,55 @@ body {
 .velox-card {
   background: rgba(11,16,32,.95);
   border: 1px solid rgba(30,38,56,.7);
-  border-radius: 16px;
-  backdrop-filter: blur(20px);
-  transition: transform .5s cubic-bezier(.16,1,.3,1), box-shadow .5s ease, border-color .5s ease;
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-flat);
+  transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth);
 }
-.velox-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(77,163,255,.12),0 0 30px rgba(77,163,255,.06); border-color:rgba(77,163,255,.15); }
+.velox-card:hover { transform:translateY(-4px); box-shadow: var(--shadow-raised); border-color:rgba(91,163,232,.28); }
 
 /* ── Neumorphic card (Système1) ── */
 .neu-card {
   background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,.04);
-  border-radius: 20px;
-  box-shadow: 8px 8px 20px var(--neu-shadow-dark),-4px -4px 16px var(--neu-shadow-light),inset 0 1px 0 var(--neu-highlight);
-  transition: box-shadow .3s, transform .3s;
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-raised);
+  transition: box-shadow var(--dur-base) var(--ease-smooth), transform var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth);
 }
+.neu-card:hover { border-color: rgba(91,163,232,.18); }
 .neu-inset {
   box-shadow: inset 4px 4px 10px rgba(0,0,0,.4),inset -2px -2px 8px rgba(255,255,255,.03);
   border: 1px solid rgba(255,255,255,.03);
 }
 .neu-btn {
-  box-shadow: 6px 6px 16px rgba(0,0,0,.4),-3px -3px 10px rgba(77,163,255,.15),inset 0 1px 0 rgba(255,255,255,.15),inset 0 -1px 0 rgba(0,0,0,.1);
+  box-shadow: 6px 6px 16px rgba(0,0,0,.4),-3px -3px 10px rgba(91,163,232,.15),inset 0 1px 0 rgba(255,255,255,.15),inset 0 -1px 0 rgba(0,0,0,.1);
   transition: all .15s ease;
 }
 .neu-btn:hover { transform:translateY(-2px); }
 .neu-btn-outline { box-shadow:4px 4px 12px rgba(0,0,0,.3),-2px -2px 8px rgba(255,255,255,.02); }
 
+/* ── Accessible focus rings (P5) ── */
+a:focus-visible,
+button:focus-visible,
+.neu-btn:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+  border-radius: 6px;
+  transition: outline-offset var(--dur-fast) var(--ease-smooth);
+}
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* ── Section separator ── */
-.section-separator { height:1px; background:linear-gradient(90deg,transparent,rgba(77,163,255,.15),transparent); max-width:600px; margin:0 auto; }
+.section-separator { height:1px; background:linear-gradient(90deg,transparent,rgba(91,163,232,.15),transparent); max-width:600px; margin:0 auto; }
 
 /* ── Neon step cards ── */
 .neon-step { position:relative; isolation:isolate; overflow:hidden; transition:transform .3s ease; }
 .neon-step:hover { transform:translateY(-3px); }
-.neon-step::before { content:''; position:absolute; inset:-2px; border-radius:22px; background:conic-gradient(from var(--na),transparent 0deg,transparent 55deg,var(--accent-blue) 110deg,rgba(77,163,255,.67) 180deg,var(--accent-blue) 250deg,transparent 305deg,transparent 360deg); animation:neonRotate 3s linear infinite; z-index:0; }
+.neon-step::before { content:''; position:absolute; inset:-2px; border-radius:22px; background:conic-gradient(from var(--na),transparent 0deg,transparent 55deg,var(--accent-blue) 110deg,rgba(91,163,232,.67) 180deg,var(--accent-blue) 250deg,transparent 305deg,transparent 360deg); animation:neonRotate 3s linear infinite; z-index:0; }
 .neon-step::after { content:''; position:absolute; inset:1.5px; border-radius:19px; background:var(--card-bg); box-shadow:inset 0 1px 0 rgba(255,255,255,.04); z-index:1; }
 .neon-step>* { position:relative; z-index:2; }
 .neon-step:nth-child(2)::before { animation-delay:-1s; }
@@ -169,26 +211,26 @@ body {
 /* ── FAQ card ── */
 .faq-card {
   background:var(--card-bg);
-  border:1px solid rgba(255,255,255,.03);
-  border-radius:18px;
-  box-shadow:6px 6px 16px var(--neu-shadow-dark),-3px -3px 10px var(--neu-shadow-light),inset 0 1px 0 rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:var(--r-md);
+  box-shadow: var(--shadow-flat);
   position:relative; overflow:hidden;
-  transition:transform .3s ease, box-shadow .3s ease;
+  transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth);
 }
-.faq-card:hover { transform:translateY(-2px); box-shadow:6px 6px 16px var(--neu-shadow-dark),-3px -3px 10px var(--neu-shadow-light),inset 0 1px 0 rgba(255,255,255,.04), 0 0 30px rgba(77,163,255,.06); }
+.faq-card:hover { transform:translateY(-2px); box-shadow: var(--shadow-raised); border-color: rgba(91,163,232,.2); }
 .faq-card::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 50% at 50% 0%,var(--faq-glow,transparent) 0%,transparent 65%); opacity:0; transition:opacity .3s; }
 .faq-card:hover::before { opacity:.8; }
 
 /* ── Counter stat ── */
 .cstat {
   background:var(--card-bg);
-  border:1px solid rgba(255,255,255,.03);
-  border-radius:20px;
-  box-shadow:6px 6px 16px var(--neu-shadow-dark),-3px -3px 12px var(--neu-shadow-light),inset 0 1px 0 rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.05);
+  border-radius:var(--r-lg);
+  box-shadow: var(--shadow-flat);
   position:relative; overflow:hidden;
-  transition:transform .3s ease, box-shadow .3s ease;
+  transition: transform var(--dur-base) var(--ease-smooth), box-shadow var(--dur-base) var(--ease-smooth), border-color var(--dur-base) var(--ease-smooth);
 }
-.cstat:hover { transform:translateY(-3px); box-shadow:6px 6px 16px var(--neu-shadow-dark),-3px -3px 12px var(--neu-shadow-light),inset 0 1px 0 rgba(255,255,255,.04), 0 0 20px rgba(77,163,255,.1); }
+.cstat:hover { transform:translateY(-3px); box-shadow: var(--shadow-raised); border-color: rgba(91,163,232,.2); }
 .cstat::after { content:''; position:absolute; bottom:0; left:0; height:2px; background:linear-gradient(90deg,var(--accent-blue),var(--primary-dark)); width:0; }
 .cstat.v::after { animation:statLine 1.2s cubic-bezier(.16,1,.3,1) both; }
 
@@ -282,7 +324,7 @@ body {
   /* Masquer la progress line et activer tous les steps en mobile */
   #step-progress-line { display:none !important; }
   #sticky-scroll-section [id^="step-"] { opacity:1 !important; }
-  #sticky-scroll-section [id^="step-dot-"] { background:var(--accent-blue) !important; box-shadow:0 0 12px rgba(77,163,255,.8) !important; }
+  #sticky-scroll-section [id^="step-dot-"] { background:var(--accent-blue) !important; box-shadow:0 0 12px rgba(91,163,232,.8) !important; }
   #sticky-scroll-section [id^="step-title-"] { color:var(--cool-50) !important; }
 
   /* ── Pricing mobile ── */
@@ -323,12 +365,12 @@ body {
 /* ── Ticker enhanced ── */
 .ticker-brand {
   font-size:1.125rem; font-weight:600; letter-spacing:-0.02em; color:var(--cool-200);
-  padding:8px 20px; border-radius:10px; border:1px solid rgba(77,163,255,.08);
-  background:rgba(77,163,255,.04); transition:all .4s ease; white-space:nowrap;
+  padding:8px 20px; border-radius:10px; border:1px solid rgba(91,163,232,.08);
+  background:rgba(91,163,232,.04); transition:all .4s ease; white-space:nowrap;
 }
 .ticker-brand:hover {
-  color:var(--accent-blue); border-color:rgba(77,163,255,.25); background:rgba(77,163,255,.1);
-  box-shadow:0 0 20px rgba(77,163,255,.15); transform:translateY(-2px);
+  color:var(--accent-blue); border-color:rgba(91,163,232,.25); background:rgba(91,163,232,.1);
+  box-shadow:0 0 20px rgba(91,163,232,.15); transform:translateY(-2px);
 }
 
 /* ── App Cards Premium ── */
@@ -378,14 +420,14 @@ body {
   transition:opacity .3s ease;
   pointer-events:none;
   z-index:1;
-  background:radial-gradient(300px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(77,163,255,.12),transparent 60%);
+  background:radial-gradient(300px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(91,163,232,.12),transparent 60%);
 }
 .app-card:hover::before { opacity:1; }
 /* Glow border on hover */
 .app-card:hover {
   transform:translateY(-6px);
-  border-color:rgba(77,163,255,.25);
-  box-shadow:0 20px 40px rgba(77,163,255,.1),0 0 30px rgba(77,163,255,.05);
+  border-color:rgba(91,163,232,.25);
+  box-shadow:0 20px 40px rgba(91,163,232,.1),0 0 30px rgba(91,163,232,.05);
 }
 /* Icon glow */
 .app-icon {
@@ -496,7 +538,7 @@ body {
 .neural-spark { position:absolute; width:8px; height:8px; border-radius:50%; pointer-events:none; mix-blend-mode:screen; filter:blur(1px); }
 .neural-spark::after { content:''; position:absolute; inset:-4px; border-radius:50%; background:inherit; filter:blur(6px); opacity:.7; }
 </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.inset-x-0{left:0px;right:0px}.-bottom-4{bottom:-1rem}.-left-4{left:-1rem}.-left-5{left:-1.25rem}.-right-4{right:-1rem}.-right-5{right:-1.25rem}.-top-4{top:-1rem}.-top-5{top:-1.25rem}.bottom-10{bottom:2.5rem}.bottom-4{bottom:1rem}.bottom-\[5\%\]{bottom:5%}.left-0{left:0px}.left-1\/2{left:50%}.left-4{left:1rem}.right-0{right:0px}.right-4{right:1rem}.top-0{top:0px}.top-1\/2{top:50%}.top-1\/4{top:25%}.top-20{top:5rem}.top-4{top:1rem}.bottom-0{bottom:0px}.bottom-0\.5{bottom:0.125rem}.bottom-2{bottom:0.5rem}.left-\[18px\]{left:18px}.left-\[5px\]{left:5px}.top-0\.5{top:0.125rem}.top-1\.5{top:0.375rem}.top-2{top:0.5rem}.top-\[-8px\]{top:-8px}.z-0{z-index:0}.z-10{z-index:10}.z-50{z-index:50}.z-\[999\]{z-index:999}.z-20{z-index:20}.col-span-2{grid-column:span 2 / span 2}.mx-auto{margin-left:auto;margin-right:auto}.my-0{margin-top:0px;margin-bottom:0px}.-ml-4{margin-left:-1rem}.-ml-5{margin-left:-1.25rem}.mb-10{margin-bottom:2.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1\.5{margin-left:0.375rem}.mt-4{margin-top:1rem}.mt-\[10\%\]{margin-top:10%}.mt-\[30\%\]{margin-top:30%}.mt-\[60\%\]{margin-top:60%}.mb-0\.5{margin-bottom:0.125rem}.mb-1{margin-bottom:0.25rem}.mb-12{margin-bottom:3rem}.mb-14{margin-bottom:3.5rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-5{margin-bottom:1.25rem}.ml-1{margin-left:0.25rem}.ml-2{margin-left:0.5rem}.ml-auto{margin-left:auto}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-1\.5{margin-top:0.375rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-14{margin-top:3.5rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-5{margin-top:1.25rem}.mt-8{margin-top:2rem}.mt-auto{margin-top:auto}.mb-1\.5{margin-bottom:0.375rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-0\.5{height:0.125rem}.h-1\.5{height:0.375rem}.h-10{height:2.5rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-2\.5{height:0.625rem}.h-24{height:6rem}.h-3{height:0.75rem}.h-3\.5{height:0.875rem}.h-32{height:8rem}.h-4{height:1rem}.h-40{height:10rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-\[100\%\]{height:100%}.h-\[400px\]{height:400px}.h-\[58\%\]{height:58%}.h-\[60\%\]{height:60%}.h-\[62\%\]{height:62%}.h-\[78\%\]{height:78%}.h-\[85\%\]{height:85%}.h-full{height:100%}.h-12{height:3rem}.h-14{height:3.5rem}.h-20{height:5rem}.h-5{height:1.25rem}.h-9{height:2.25rem}.h-\[300vh\]{height:300vh}.h-px{height:1px}.h-screen{height:100vh}.h-1{height:0.25rem}.h-11{height:2.75rem}.w-1\.5{width:0.375rem}.w-10{width:2.5rem}.w-2{width:0.5rem}.w-2\.5{width:0.625rem}.w-3{width:0.75rem}.w-3\.5{width:0.875rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-\[100\%\]{width:100%}.w-\[58\%\]{width:58%}.w-\[60\%\]{width:60%}.w-\[600px\]{width:600px}.w-\[62\%\]{width:62%}.w-\[78\%\]{width:78%}.w-\[800px\]{width:800px}.w-\[85\%\]{width:85%}.w-full{width:100%}.w-px{width:1px}.w-11{width:2.75rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-5{width:1.25rem}.w-9{width:2.25rem}.w-\[2px\]{width:2px}.min-w-0{min-width:0px}.max-w-5xl{max-width:64rem}.max-w-7xl{max-width:80rem}.max-w-\[520px\]{max-width:520px}.max-w-2xl{max-width:42rem}.max-w-\[480px\]{max-width:480px}.max-w-\[800px\]{max-width:800px}.max-w-lg{max-width:32rem}.max-w-xl{max-width:36rem}.max-w-xs{max-width:20rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-default{cursor:default}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-20{gap:5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-8{gap:2rem}.gap-\[15\%\]{gap:15%}.gap-10{gap:2.5rem}.gap-2\.5{gap:0.625rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.-space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(-0.5rem * var(--tw-space-x-reverse));margin-left:calc(-0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.scroll-smooth{scroll-behavior:smooth}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.rounded-2xl{border-radius:1rem}.rounded-\[14px\]{border-radius:14px}.rounded-\[28px\]{border-radius:28px}.rounded-\[32px\]{border-radius:32px}.rounded-sm{border-radius:0.125rem}.border{border-width:1px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-none{border-style:none}.border-navy-600\/40{border-color:rgb(30 38 56 / 0.4)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-0\.5{padding:0.125rem}.p-10{padding:2.5rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-7{padding:1.75rem}.p-8{padding:2rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-7{padding-left:1.75rem;padding-right:1.75rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-px{padding-top:1px;padding-bottom:1px}.px-0\.5{padding-left:0.125rem;padding-right:0.125rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.pb-16{padding-bottom:4rem}.pt-24{padding-top:6rem}.pb-10{padding-bottom:2.5rem}.pl-10{padding-left:2.5rem}.pt-0\.5{padding-top:0.125rem}.pt-16{padding-top:4rem}.pt-3{padding-top:0.75rem}.pt-4{padding-top:1rem}.pt-5{padding-top:1.25rem}.pt-7{padding-top:1.75rem}.text-left{text-align:left}.text-center{text-align:center}.font-display{font-family:Space Grotesk, system-ui, sans-serif}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-\[7px\]{font-size:7px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-8xl{font-size:6rem;line-height:1}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.font-extrabold{font-weight:800}.uppercase{text-transform:uppercase}.leading-\[1\.07\]{line-height:1.07}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.leading-none{line-height:1}.leading-snug{line-height:1.375}.tracking-\[\.15em\]{letter-spacing:.15em}.tracking-\[\.2em\]{letter-spacing:.2em}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-\[\.12em\]{letter-spacing:.12em}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.line-through{-webkit-text-decoration-line:line-through;text-decoration-line:line-through}.opacity-0{opacity:0}.opacity-25{opacity:0.25}.opacity-50{opacity:0.5}.opacity-100{opacity:1}.opacity-40{opacity:0.4}.opacity-75{opacity:0.75}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.delay-100{transition-delay:100ms}.delay-200{transition-delay:200ms}.delay-300{transition-delay:300ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.duration-700{transition-duration:700ms}.ease-out{transition-timing-function:cubic-bezier(0, 0, 0.2, 1)}.hover\:-translate-y-0\.5:hover{--tw-translate-y:-0.125rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:-translate-x-0\.5:hover{--tw-translate-x:-0.125rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:translate-x-0\.5:hover{--tw-translate-x:0.125rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-accent-blue\/50:hover{border-color:rgb(77 163 255 / 0.5)}.hover\:text-\[var\(--accent-blue\)\]:hover{color:var(--accent-blue)}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:shadow-\[0_0_15px_rgba\(77\2c 163\2c 255\2c \.4\)\]:hover{--tw-shadow:0 0 15px rgba(77,163,255,.4);--tw-shadow-colored:0 0 15px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:border-transparent:focus{border-color:transparent}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-\[var\(--accent-blue\)\]:focus{--tw-ring-color:var(--accent-blue)}.group:hover .group-hover\:translate-x-1{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:-translate-y-1{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:opacity-100{opacity:1}@media (min-width: 640px){.sm\:col-span-2{grid-column:span 2 / span 2}.sm\:block{display:block}.sm\:inline-flex{display:inline-flex}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:gap-\[20\%\]{gap:20%}.sm\:p-16{padding:4rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}}@media (min-width: 768px){.md\:mb-16{margin-bottom:4rem}.md\:mt-0{margin-top:0px}.md\:block{display:block}.md\:flex{display:flex}.md\:hidden{display:none}.md\:w-1\/2{width:50%}.md\:w-5\/12{width:41.666667%}.md\:w-7\/12{width:58.333333%}.md\:-translate-y-4{--tw-translate-y:-1rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:justify-end{justify-content:flex-end}.md\:gap-12{gap:3rem}.md\:gap-16{gap:4rem}.md\:gap-5{gap:1.25rem}.md\:p-6{padding:1.5rem}.md\:p-7{padding:1.75rem}.md\:p-8{padding:2rem}.md\:py-28{padding-top:7rem;padding-bottom:7rem}.md\:pb-24{padding-bottom:6rem}.md\:pt-28{padding-top:7rem}.md\:pl-12{padding-left:3rem}.md\:pr-12{padding-right:3rem}.md\:pt-0{padding-top:0px}.md\:text-right{text-align:right}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-6xl{font-size:3.75rem;line-height:1}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-base{font-size:1rem;line-height:1.5rem}}@media (min-width: 1024px){.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:block{display:block}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.lg\:justify-start{justify-content:flex-start}.lg\:gap-16{gap:4rem}.lg\:gap-20{gap:5rem}.lg\:gap-5{gap:1.25rem}.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:text-left{text-align:left}.lg\:text-5xl{font-size:3rem;line-height:1}}</style><style>@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}@keyframes scrollLanding{0%{transform:translateX(-50%) translateY(0)}100%{transform:translateX(-50%) translateY(-60%)}}</style><link rel="stylesheet" type="text/css" href="chrome-extension://mnhffkhmpnefgklngfmlndmkimimbphc/css/components.css"></head>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.inset-x-0{left:0px;right:0px}.-bottom-4{bottom:-1rem}.-left-4{left:-1rem}.-left-5{left:-1.25rem}.-right-4{right:-1rem}.-right-5{right:-1.25rem}.-top-4{top:-1rem}.-top-5{top:-1.25rem}.bottom-10{bottom:2.5rem}.bottom-4{bottom:1rem}.bottom-\[5\%\]{bottom:5%}.left-0{left:0px}.left-1\/2{left:50%}.left-4{left:1rem}.right-0{right:0px}.right-4{right:1rem}.top-0{top:0px}.top-1\/2{top:50%}.top-1\/4{top:25%}.top-20{top:5rem}.top-4{top:1rem}.bottom-0{bottom:0px}.bottom-0\.5{bottom:0.125rem}.bottom-2{bottom:0.5rem}.left-\[18px\]{left:18px}.left-\[5px\]{left:5px}.top-0\.5{top:0.125rem}.top-1\.5{top:0.375rem}.top-2{top:0.5rem}.top-\[-8px\]{top:-8px}.z-0{z-index:0}.z-10{z-index:10}.z-50{z-index:50}.z-\[999\]{z-index:999}.z-20{z-index:20}.col-span-2{grid-column:span 2 / span 2}.mx-auto{margin-left:auto;margin-right:auto}.my-0{margin-top:0px;margin-bottom:0px}.-ml-4{margin-left:-1rem}.-ml-5{margin-left:-1.25rem}.mb-10{margin-bottom:2.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1\.5{margin-left:0.375rem}.mt-4{margin-top:1rem}.mt-\[10\%\]{margin-top:10%}.mt-\[30\%\]{margin-top:30%}.mt-\[60\%\]{margin-top:60%}.mb-0\.5{margin-bottom:0.125rem}.mb-1{margin-bottom:0.25rem}.mb-12{margin-bottom:3rem}.mb-14{margin-bottom:3.5rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-5{margin-bottom:1.25rem}.ml-1{margin-left:0.25rem}.ml-2{margin-left:0.5rem}.ml-auto{margin-left:auto}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-1\.5{margin-top:0.375rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-14{margin-top:3.5rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-5{margin-top:1.25rem}.mt-8{margin-top:2rem}.mt-auto{margin-top:auto}.mb-1\.5{margin-bottom:0.375rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-0\.5{height:0.125rem}.h-1\.5{height:0.375rem}.h-10{height:2.5rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-2\.5{height:0.625rem}.h-24{height:6rem}.h-3{height:0.75rem}.h-3\.5{height:0.875rem}.h-32{height:8rem}.h-4{height:1rem}.h-40{height:10rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-\[100\%\]{height:100%}.h-\[400px\]{height:400px}.h-\[58\%\]{height:58%}.h-\[60\%\]{height:60%}.h-\[62\%\]{height:62%}.h-\[78\%\]{height:78%}.h-\[85\%\]{height:85%}.h-full{height:100%}.h-12{height:3rem}.h-14{height:3.5rem}.h-20{height:5rem}.h-5{height:1.25rem}.h-9{height:2.25rem}.h-\[300vh\]{height:300vh}.h-px{height:1px}.h-screen{height:100vh}.h-1{height:0.25rem}.h-11{height:2.75rem}.w-1\.5{width:0.375rem}.w-10{width:2.5rem}.w-2{width:0.5rem}.w-2\.5{width:0.625rem}.w-3{width:0.75rem}.w-3\.5{width:0.875rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-\[100\%\]{width:100%}.w-\[58\%\]{width:58%}.w-\[60\%\]{width:60%}.w-\[600px\]{width:600px}.w-\[62\%\]{width:62%}.w-\[78\%\]{width:78%}.w-\[800px\]{width:800px}.w-\[85\%\]{width:85%}.w-full{width:100%}.w-px{width:1px}.w-11{width:2.75rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-5{width:1.25rem}.w-9{width:2.25rem}.w-\[2px\]{width:2px}.min-w-0{min-width:0px}.max-w-5xl{max-width:64rem}.max-w-7xl{max-width:80rem}.max-w-\[520px\]{max-width:520px}.max-w-2xl{max-width:42rem}.max-w-\[480px\]{max-width:480px}.max-w-\[800px\]{max-width:800px}.max-w-lg{max-width:32rem}.max-w-xl{max-width:36rem}.max-w-xs{max-width:20rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-default{cursor:default}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-20{gap:5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-8{gap:2rem}.gap-\[15\%\]{gap:15%}.gap-10{gap:2.5rem}.gap-2\.5{gap:0.625rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.-space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(-0.5rem * var(--tw-space-x-reverse));margin-left:calc(-0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.scroll-smooth{scroll-behavior:smooth}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.rounded-2xl{border-radius:1rem}.rounded-\[14px\]{border-radius:14px}.rounded-\[28px\]{border-radius:28px}.rounded-\[32px\]{border-radius:32px}.rounded-sm{border-radius:0.125rem}.border{border-width:1px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-none{border-style:none}.border-navy-600\/40{border-color:rgb(30 38 56 / 0.4)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-0\.5{padding:0.125rem}.p-10{padding:2.5rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-7{padding:1.75rem}.p-8{padding:2rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-7{padding-left:1.75rem;padding-right:1.75rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-px{padding-top:1px;padding-bottom:1px}.px-0\.5{padding-left:0.125rem;padding-right:0.125rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.pb-16{padding-bottom:4rem}.pt-24{padding-top:6rem}.pb-10{padding-bottom:2.5rem}.pl-10{padding-left:2.5rem}.pt-0\.5{padding-top:0.125rem}.pt-16{padding-top:4rem}.pt-3{padding-top:0.75rem}.pt-4{padding-top:1rem}.pt-5{padding-top:1.25rem}.pt-7{padding-top:1.75rem}.text-left{text-align:left}.text-center{text-align:center}.font-display{font-family:Space Grotesk, system-ui, sans-serif}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-\[7px\]{font-size:7px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-8xl{font-size:6rem;line-height:1}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.font-extrabold{font-weight:800}.uppercase{text-transform:uppercase}.leading-\[1\.07\]{line-height:1.07}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.leading-none{line-height:1}.leading-snug{line-height:1.375}.tracking-\[\.15em\]{letter-spacing:.15em}.tracking-\[\.2em\]{letter-spacing:.2em}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-\[\.12em\]{letter-spacing:.12em}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.line-through{-webkit-text-decoration-line:line-through;text-decoration-line:line-through}.opacity-0{opacity:0}.opacity-25{opacity:0.25}.opacity-50{opacity:0.5}.opacity-100{opacity:1}.opacity-40{opacity:0.4}.opacity-75{opacity:0.75}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.outline-none{outline:2px solid transparent;outline-offset:2px}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.delay-100{transition-delay:100ms}.delay-200{transition-delay:200ms}.delay-300{transition-delay:300ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.duration-700{transition-duration:700ms}.ease-out{transition-timing-function:cubic-bezier(0, 0, 0.2, 1)}.hover\:-translate-y-0\.5:hover{--tw-translate-y:-0.125rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:-translate-x-0\.5:hover{--tw-translate-x:-0.125rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:translate-x-0\.5:hover{--tw-translate-x:0.125rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-accent-blue\/50:hover{border-color:rgb(91 163 232 / 0.5)}.hover\:text-\[var\(--accent-blue\)\]:hover{color:var(--accent-blue)}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:shadow-\[0_0_15px_rgba\(77\2c 163\2c 255\2c \.4\)\]:hover{--tw-shadow:0 0 15px rgba(91,163,232,.4);--tw-shadow-colored:0 0 15px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:border-transparent:focus{border-color:transparent}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-\[var\(--accent-blue\)\]:focus{--tw-ring-color:var(--accent-blue)}.group:hover .group-hover\:translate-x-1{--tw-translate-x:0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:-translate-y-1{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:opacity-100{opacity:1}@media (min-width: 640px){.sm\:col-span-2{grid-column:span 2 / span 2}.sm\:block{display:block}.sm\:inline-flex{display:inline-flex}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:gap-\[20\%\]{gap:20%}.sm\:p-16{padding:4rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}}@media (min-width: 768px){.md\:mb-16{margin-bottom:4rem}.md\:mt-0{margin-top:0px}.md\:block{display:block}.md\:flex{display:flex}.md\:hidden{display:none}.md\:w-1\/2{width:50%}.md\:w-5\/12{width:41.666667%}.md\:w-7\/12{width:58.333333%}.md\:-translate-y-4{--tw-translate-y:-1rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:justify-end{justify-content:flex-end}.md\:gap-12{gap:3rem}.md\:gap-16{gap:4rem}.md\:gap-5{gap:1.25rem}.md\:p-6{padding:1.5rem}.md\:p-7{padding:1.75rem}.md\:p-8{padding:2rem}.md\:py-28{padding-top:7rem;padding-bottom:7rem}.md\:pb-24{padding-bottom:6rem}.md\:pt-28{padding-top:7rem}.md\:pl-12{padding-left:3rem}.md\:pr-12{padding-right:3rem}.md\:pt-0{padding-top:0px}.md\:text-right{text-align:right}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-6xl{font-size:3.75rem;line-height:1}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-3xl{font-size:1.875rem;line-height:2.25rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-base{font-size:1rem;line-height:1.5rem}}@media (min-width: 1024px){.lg\:col-span-2{grid-column:span 2 / span 2}.lg\:block{display:block}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.lg\:justify-start{justify-content:flex-start}.lg\:gap-16{gap:4rem}.lg\:gap-20{gap:5rem}.lg\:gap-5{gap:1.25rem}.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:text-left{text-align:left}.lg\:text-5xl{font-size:3rem;line-height:1}}</style><style>@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}@keyframes scrollLanding{0%{transform:translateX(-50%) translateY(0)}100%{transform:translateX(-50%) translateY(-60%)}}</style><link rel="stylesheet" type="text/css" href="chrome-extension://mnhffkhmpnefgklngfmlndmkimimbphc/css/components.css"></head>
 
 <body>
 <!-- Ambient bg -->
@@ -510,7 +552,7 @@ body {
 <header class="fixed top-0 left-0 right-0 z-50 border-b border-navy-600/40" style="background:rgba(7,11,20,.85);backdrop-filter:blur(20px);box-shadow:0 4px 20px rgba(0,0,0,.3)">
   <div class="flex w-full max-w-7xl mx-auto items-center justify-between h-16 px-5 sm:px-6 lg:px-8">
     <div class="flex items-center gap-3 select-none">
-      <div class="w-6 h-6 rounded" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo));display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(77,163,255,.2)">
+      <div class="w-6 h-6 rounded" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark));display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(91,163,232,.2)">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
       </div>
       <span class="font-display font-bold text-lg tracking-tight" style="color:var(--cool-50)">
@@ -524,10 +566,9 @@ body {
       <a href="/blog" class="hover:text-white transition-colors">Blog</a>
                 <a href="/130-facons-utiliser-ia-immobilier.html" class="hover:text-white transition-colors">130 Façons IA</a>
       <a href="#faq-s" class="hover:text-white transition-colors">FAQ</a>
-      <a href="https://systeme1-immo.vercel.app/login" class="hover:text-white transition-colors">Connexion</a>
     </nav>
     <div class="flex items-center gap-4">
-      <a href="#rejoindre" class="hidden sm:inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(77,163,255,.4)] hover:-translate-y-0.5 group" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">
+      <a href="#rejoindre" class="hidden sm:inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_15px_rgba(91,163,232,.4)] hover:-translate-y-0.5 group" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">
         Essai gratuit
         <svg class="ml-1.5 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
       </a>
@@ -549,8 +590,7 @@ body {
     <a href="/blog" class="mobile-link hover:text-[var(--accent-blue)] transition-colors">Blog</a>
               <a href="/130-facons-utiliser-ia-immobilier.html" class="mobile-link hover:text-[var(--accent-blue)] transition-colors">130 Façons IA</a>
     <a href="#faq-s" class="mobile-link hover:text-[var(--accent-blue)] transition-colors">FAQ</a>
-    <a href="https://systeme1-immo.vercel.app/login" class="mobile-link hover:text-[var(--accent-blue)] transition-colors">Connexion</a>
-    <a href="#rejoindre" class="mt-4 inline-flex items-center justify-center rounded-lg px-8 py-3 text-base font-semibold text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">Essai gratuit</a>
+    <a href="#rejoindre" class="mt-4 inline-flex items-center justify-center rounded-lg px-8 py-3 text-base font-semibold text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">Essai gratuit</a>
   </nav>
 </div>
 
@@ -562,15 +602,15 @@ body {
 <section class="overflow-hidden relative pt-24 pb-16 md:pt-28 md:pb-24">
   <!-- Velox vertical grid lines -->
   <div class="absolute inset-0 z-0 pointer-events-none flex justify-center gap-[15%] sm:gap-[20%] opacity-25" style="mask-image:linear-gradient(to bottom,transparent,black 10%,black 90%,transparent)">
-    <div class="w-px h-full" style="background:rgba(30,38,56,.6)"><div class="h-32 w-full mt-[10%]" style="background:linear-gradient(to bottom,transparent,rgba(77,163,255,.25),transparent);animation:float 6s ease-in-out infinite"></div></div>
-    <div class="w-px h-full" style="background:rgba(30,38,56,.6)"><div class="h-40 w-full mt-[60%]" style="background:linear-gradient(to bottom,transparent,rgba(108,99,255,.25),transparent);animation:float-delayed 8s ease-in-out infinite"></div></div>
-    <div class="w-px h-full hidden sm:block" style="background:rgba(30,38,56,.6)"><div class="h-24 w-full mt-[30%]" style="background:linear-gradient(to bottom,transparent,rgba(77,163,255,.25),transparent);animation:float-slow 10s ease-in-out infinite"></div></div>
+    <div class="w-px h-full" style="background:rgba(30,38,56,.6)"><div class="h-32 w-full mt-[10%]" style="background:linear-gradient(to bottom,transparent,rgba(91,163,232,.25),transparent);animation:float 6s ease-in-out infinite"></div></div>
+    <div class="w-px h-full" style="background:rgba(30,38,56,.6)"><div class="h-40 w-full mt-[60%]" style="background:linear-gradient(to bottom,transparent,rgba(91,163,232,.25),transparent);animation:float-delayed 8s ease-in-out infinite"></div></div>
+    <div class="w-px h-full hidden sm:block" style="background:rgba(30,38,56,.6)"><div class="h-24 w-full mt-[30%]" style="background:linear-gradient(to bottom,transparent,rgba(91,163,232,.25),transparent);animation:float-slow 10s ease-in-out infinite"></div></div>
     <div class="w-px h-full hidden md:block" style="background:rgba(30,38,56,.6)"></div>
     <div class="w-px h-full hidden lg:block" style="background:rgba(30,38,56,.6)"></div>
   </div>
   <!-- Glow blobs -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full pointer-events-none" style="background:rgba(77,163,255,.04);filter:blur(120px)"></div>
-  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full pointer-events-none" style="background:rgba(108,99,255,.04);filter:blur(100px)"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full pointer-events-none" style="background:rgba(91,163,232,.04);filter:blur(120px)"></div>
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full pointer-events-none" style="background:rgba(91,163,232,.04);filter:blur(100px)"></div>
 
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -579,10 +619,10 @@ body {
       <div class="fi text-center lg:text-left v">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-8 rounded-full scroll-reveal active" style="background:rgba(15,21,35,.6);border:1px solid rgba(30,38,56,1);backdrop-filter:blur(12px)">
           <div class="w-1.5 h-1.5 rounded-full" style="background:var(--accent-blue);box-shadow:0 0 8px var(--accent-blue);animation:pulse 2s infinite"></div>
-          <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:var(--cool-200)">Accès bêta · 14 jours gratuits · Sans carte bancaire</span>
+          <span class="text-[11px] font-semibold tracking-wide" style="color:var(--cool-200)">Accès bêta · 14 jours gratuits · Sans carte bancaire</span>
         </div>
 
-        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.07] tracking-tight mb-6 scroll-reveal active" style="color:var(--cool-50)">
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.02] tracking-tighter mb-6 scroll-reveal active" style="color:var(--cool-50)">
           Vous prospectez.<br>
           Ils ne rappellent pas.<br>
           <span style="color:var(--accent-blue)">Ça s’arrête aujourd’hui.</span>
@@ -593,7 +633,7 @@ body {
         </p>
 
         <div class="flex flex-wrap gap-3 mb-4 justify-center lg:justify-start scroll-reveal delay-100 active">
-          <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo));animation:ctaPulse 3s ease-in-out infinite">
+          <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark));animation:ctaPulse 3s ease-in-out infinite">
             Je veux que ça tourne sans moi →
           </a>
           <a href="#outils" class="neu-btn-outline inline-flex items-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-xl transition-all hover:border-accent-blue/50 hover:-translate-y-0.5" style="background:transparent;color:var(--cool-50);border:1px solid rgba(255,255,255,.12)">
@@ -613,12 +653,12 @@ body {
           <!-- Brain visual area: square = perfect circles (solar system) -->
           <div class="relative aspect-square w-full">
             <!-- Soft glow rings -->
-            <div class="absolute top-1/2 left-1/2 rounded-full pointer-events-none" style="width:100%;height:100%;background:radial-gradient(circle,rgba(77,163,255,.07) 0%,transparent 55%);animation:glowPulse 4s ease-in-out infinite 1.5s"></div>
+            <div class="absolute top-1/2 left-1/2 rounded-full pointer-events-none" style="width:100%;height:100%;background:radial-gradient(circle,rgba(91,163,232,.07) 0%,transparent 55%);animation:glowPulse 4s ease-in-out infinite 1.5s"></div>
             <div class="absolute top-1/2 left-1/2 rounded-full pointer-events-none" style="width:60%;height:60%;background:radial-gradient(circle,rgba(255,176,112,.12) 0%,transparent 70%);animation:glowPulse 4s ease-in-out infinite"></div>
 
             <!-- Static orbit ring borders (perfect circles) -->
-            <div class="absolute top-1/2 left-1/2 rounded-full pointer-events-none" style="width:100%;height:100%;border:1px solid rgba(77,163,255,.08);transform:translate(-50%,-50%)"></div>
-            <div class="absolute top-1/2 left-1/2 rounded-full pointer-events-none" style="width:70%;height:70%;border:1px solid rgba(77,163,255,.05);transform:translate(-50%,-50%)"></div>
+            <div class="absolute top-1/2 left-1/2 rounded-full pointer-events-none" style="width:100%;height:100%;border:1px solid rgba(91,163,232,.08);transform:translate(-50%,-50%)"></div>
+            <div class="absolute top-1/2 left-1/2 rounded-full pointer-events-none" style="width:70%;height:70%;border:1px solid rgba(91,163,232,.05);transform:translate(-50%,-50%)"></div>
 
             <!-- Brain image — the SUN at the center -->
             <div class="absolute top-1/2 left-1/2 pointer-events-none flex items-center justify-center" style="width:90%;height:90%;transform:translate(-50%,-50%);z-index:2">
@@ -641,18 +681,18 @@ body {
                 <span class="orbit-label" style="position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.55);white-space:nowrap;opacity:0;transition:opacity .2s">Scan Immo</span>
               </div>
               <!-- 2. ImmoScore · 2 o'clock -->
-              <div class="orbit-icon group" style="position:absolute;left:93.3%;top:25%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(77,163,255,.35);backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(77,163,255,.18);animation:orbitCounter 60s linear infinite">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#4DA3FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <div class="orbit-icon group" style="position:absolute;left:93.3%;top:25%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(91,163,232,.35);backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(91,163,232,.18);animation:orbitCounter 60s linear infinite">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#5BA3E8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                 <span class="orbit-label" style="position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.55);white-space:nowrap;opacity:0;transition:opacity .2s">ImmoScore</span>
               </div>
               <!-- 3. CRM · 4 o'clock -->
-              <div class="orbit-icon group" style="position:absolute;left:93.3%;top:75%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(77,163,255,.35);backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(77,163,255,.18);animation:orbitCounter 60s linear infinite">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#4DA3FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <div class="orbit-icon group" style="position:absolute;left:93.3%;top:75%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(91,163,232,.35);backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(91,163,232,.18);animation:orbitCounter 60s linear infinite">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#5BA3E8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
                 <span class="orbit-label" style="position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.55);white-space:nowrap;opacity:0;transition:opacity .2s">CRM</span>
               </div>
               <!-- 4. Campagnes · 6 o'clock -->
-              <div class="orbit-icon group" style="position:absolute;left:50%;top:100%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(77,163,255,.35);backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(77,163,255,.18);animation:orbitCounter 60s linear infinite">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#4DA3FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              <div class="orbit-icon group" style="position:absolute;left:50%;top:100%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(91,163,232,.35);backdrop-filter:blur(10px);box-shadow:0 0 20px rgba(91,163,232,.18);animation:orbitCounter 60s linear infinite">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#5BA3E8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
                 <span class="orbit-label" style="position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.55);white-space:nowrap;opacity:0;transition:opacity .2s">Campagnes</span>
               </div>
               <!-- 5. Estimateur · 8 o'clock -->
@@ -670,12 +710,12 @@ body {
             <!-- INNER ring rotating wrapper (6 secondary tools, reverse direction) -->
             <div class="absolute inset-0" style="animation:orbitSpin 40s linear infinite reverse">
               <!-- 1. Messagerie IA · 1 o'clock (60°) -->
-              <div class="orbit-icon group" style="position:absolute;left:67.5%;top:19.7%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(77,163,255,.3);backdrop-filter:blur(10px);box-shadow:0 0 15px rgba(77,163,255,.13);animation:orbitSpin 40s linear infinite">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#4DA3FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+              <div class="orbit-icon group" style="position:absolute;left:67.5%;top:19.7%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(91,163,232,.3);backdrop-filter:blur(10px);box-shadow:0 0 15px rgba(91,163,232,.13);animation:orbitSpin 40s linear infinite">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#5BA3E8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
               </div>
               <!-- 2. Landing Page · 3 o'clock (0°) -->
-              <div class="orbit-icon group" style="position:absolute;left:85%;top:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(77,163,255,.3);backdrop-filter:blur(10px);box-shadow:0 0 15px rgba(77,163,255,.13);animation:orbitSpin 40s linear infinite">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#4DA3FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <div class="orbit-icon group" style="position:absolute;left:85%;top:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(91,163,232,.3);backdrop-filter:blur(10px);box-shadow:0 0 15px rgba(91,163,232,.13);animation:orbitSpin 40s linear infinite">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#5BA3E8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
               </div>
               <!-- 3. Étude marché · 5 o'clock (-60°) -->
               <div class="orbit-icon group" style="position:absolute;left:67.5%;top:80.3%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(11,16,32,.92);border:1px solid rgba(232,168,56,.3);backdrop-filter:blur(10px);box-shadow:0 0 15px rgba(232,168,56,.13);animation:orbitSpin 40s linear infinite">
@@ -735,18 +775,18 @@ body {
 <!-- ══════════════════════════════════════════
      NEURO SECTION Velox "About" karaoke style
 ═══════════════════════════════════════════ -->
-<section class="relative border-b py-20 md:py-28 px-5 sm:px-6 lg:px-8" style="border-color:rgba(30,38,56,.5)">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(108,99,255,.04),transparent 60%);opacity:.5"></div>
+<section class="relative border-b pt-16 pb-24 md:pt-24 md:pb-32 px-5 sm:px-6 lg:px-8" style="border-color:rgba(30,38,56,.5)">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(91,163,232,.04),transparent 60%);opacity:.5"></div>
   <div class="text-center max-w-4xl mx-auto relative z-10">
 
     <!-- Surtitre -->
-    <span class="inline-block text-xs font-bold tracking-[.2em] uppercase mb-6" style="color:var(--cool-400)">Ce n'est pas votre méthode qui est mauvaise.</span>
+    <span class="inline-block text-sm font-semibold tracking-wide mb-6" style="color:var(--cool-400)">Ce n'est pas votre méthode qui est mauvaise.</span>
 
     <!-- Titre -->
-    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-tight font-bold tracking-tight mb-6" style="color:var(--cool-50)">
+    <h2 class="font-display text-3xl sm:text-4xl md:text-5xl leading-[1.05] font-bold tracking-tighter mb-6" style="color:var(--cool-50)">
       Il a choisi quelqu'un d'autre.<br>
       <span style="color:var(--cool-600)">Pas parce que cet agent était meilleur.</span><br>
-      <span style="color:#4DA3FF">Parce qu'il était là au bon moment.</span>
+      <span style="color:#5BA3E8">Parce qu'il était là au bon moment.</span>
     </h2>
 
     <!-- Corps -->
@@ -794,7 +834,7 @@ body {
 <!-- ══════════════════════════════════════════
      AGENT SITE Velox "Features" + mockup
 ═══════════════════════════════════════════ -->
-<section id="site-agent" class="relative py-20 md:py-28" style="background:linear-gradient(rgba(7,11,20,1),rgba(11,16,32,1))">
+<section id="site-agent" class="relative pt-16 pb-24 md:pt-24 md:pb-32" style="background:linear-gradient(rgba(7,11,20,1),rgba(11,16,32,1))">
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start scroll-reveal">
       <!-- LEFT : texte ancré + widget live captures -->
@@ -803,16 +843,16 @@ body {
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
           <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:var(--cool-200)">LA SOLUTION · SITE AGENT</span>
         </div>
-        <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight mb-5 leading-tight" style="color:var(--cool-50)">Votre site ne dort plus.<br><span style="color:var(--accent-blue)">Il prospecte. Il capture. Il qualifie.</span><br><span style="color:var(--cool-200)">24h/24. Sans vous.</span></h2>
-        <p class="text-base leading-relaxed mb-8" style="color:var(--cool-400)">Branché en 5 minutes. Opérationnel en une heure. Pendant que vous êtes sur le terrain, il capture. Pendant que vous dormez, il qualifie. Pendant que vous signez, il cherche le prochain.</p>
+        <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tighter mb-5 leading-[1.05]" style="color:var(--cool-50)">Votre site ne dort plus.<br><span style="color:var(--accent-blue)">Il prospecte. Il capture. Il qualifie.</span><br><span style="color:var(--cool-200)">24h/24. Sans vous.</span></h2>
+        <p class="text-base leading-relaxed mb-8 max-w-[65ch]" style="color:var(--cool-400)">Branché en 5 minutes. Opérationnel en une heure. Pendant que vous êtes sur le terrain, il capture. Pendant que vous dormez, il qualifie. Pendant que vous signez, il cherche le prochain.</p>
         <!-- Widget live captures -->
         <div class="rounded-2xl p-5 mb-8" style="background:rgba(7,11,20,.6);border:1px solid rgba(30,38,56,.8)">
           <div class="flex items-center gap-2 mb-4">
             <span class="w-2 h-2 rounded-full" style="background:#52C77A;box-shadow:0 0 6px #52C77A;animation:livePulse 2s ease-in-out infinite"></span>
-            <span class="text-[10px] font-bold tracking-[.12em] uppercase" style="color:rgba(152,162,179,.5)">Voilà ce qui s'est passé sur le site d'un agent la nuit dernière. Lui dormait.</span>
+            <span class="text-[11px] font-medium tracking-wide" style="color:rgba(152,162,179,.5)">Voilà ce qui s'est passé sur le site d'un agent la nuit dernière. Lui dormait.</span>
           </div>
           <div class="flex flex-col gap-2.5">
-            <div class="flex items-start gap-3 rounded-xl px-3.5 py-3" style="background:rgba(77,163,255,.05);border:1px solid rgba(77,163,255,.12)">
+            <div class="flex items-start gap-3 rounded-xl px-3.5 py-3" style="background:rgba(91,163,232,.05);border:1px solid rgba(91,163,232,.12)">
               <span class="text-[10px] font-mono pt-0.5 shrink-0" style="color:rgba(152,162,179,.4)">14h23</span>
               <div>
                 <p class="text-xs font-semibold leading-snug" style="color:var(--cool-100)">Sophie M. · Vendeur qualifié · Budget 320 000€</p>
@@ -835,13 +875,13 @@ body {
             </div>
           </div>
         </div>
-        <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">Je veux un site qui travaille quand je ne travaille pas →</a>
+        <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">Je veux un site qui travaille quand je ne travaille pas →</a>
         <p class="text-xs mt-3" style="color:rgba(152,162,179,.4)">Opérationnel ce soir. Premiers leads sous 48h.</p>
       </div>
       <!-- RIGHT : mockup navigateur + module store -->
       <div class="space-y-5 fi d1">
         <!-- Browser mockup -->
-      <div class="rounded-2xl overflow-hidden group" style="border:1px solid rgba(255,255,255,.04);box-shadow:8px 8px 24px rgba(0,0,0,.5),-4px -4px 16px rgba(255,255,255,.03),inset 0 1px 0 rgba(255,255,255,.05);transition:transform .3s ease,box-shadow .3s ease" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='8px 8px 24px rgba(0,0,0,.5),-4px -4px 16px rgba(255,255,255,.03),inset 0 1px 0 rgba(255,255,255,.05),0 0 40px rgba(77,163,255,.08)'" onmouseleave="this.style.transform='';this.style.boxShadow='8px 8px 24px rgba(0,0,0,.5),-4px -4px 16px rgba(255,255,255,.03),inset 0 1px 0 rgba(255,255,255,.05)'">
+      <div class="rounded-2xl overflow-hidden group" style="border:1px solid rgba(255,255,255,.04);box-shadow:8px 8px 24px rgba(0,0,0,.5),-4px -4px 16px rgba(255,255,255,.03),inset 0 1px 0 rgba(255,255,255,.05);transition:transform .3s ease,box-shadow .3s ease" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='8px 8px 24px rgba(0,0,0,.5),-4px -4px 16px rgba(255,255,255,.03),inset 0 1px 0 rgba(255,255,255,.05),0 0 40px rgba(91,163,232,.08)'" onmouseleave="this.style.transform='';this.style.boxShadow='8px 8px 24px rgba(0,0,0,.5),-4px -4px 16px rgba(255,255,255,.03),inset 0 1px 0 rgba(255,255,255,.05)'">
         <div class="flex items-center gap-2 px-4 py-3 border-b" style="background:rgba(22,30,49,.6);border-color:rgba(30,38,56,.6)">
           <span class="w-3 h-3 rounded-full" style="background:rgba(224,85,85,.7)"></span>
           <span class="w-3 h-3 rounded-full" style="background:rgba(232,168,56,.7)"></span>
@@ -861,7 +901,7 @@ body {
       <div class="neu-card p-6">
         <div class="flex items-center gap-2 mb-1">
           <h4 class="font-display text-sm font-bold" style="color:var(--cool-50)">Store de modules</h4>
-          <span class="text-[9px] font-bold tracking-wide uppercase px-2 py-0.5 rounded-full" style="color:var(--accent-blue);background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2)">Exclusif</span>
+          <span class="text-[9px] font-bold tracking-wide uppercase px-2 py-0.5 rounded-full" style="color:var(--accent-blue);background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">Exclusif</span>
         </div>
         <p class="text-xs mb-5" style="color:rgba(152,162,179,.5)">Des outils propriétaires introuvables ailleurs. Activez ceux que vous voulez, votre site s'adapte en temps réel.</p>
         <div class="flex flex-col gap-3" id="module-list"></div><!-- /RIGHT col -->
@@ -883,7 +923,7 @@ body {
       </div>
     </div>
     <div class="text-center mt-8 fi d3 scroll-reveal delay-300">
-      <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">Fini de prospecter sans résultat →</a>
+      <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">Fini de prospecter sans résultat →</a>
       <p class="text-xs mt-3" style="color:rgba(152,162,179,.4)">Votre site capture. Vous, vous closez.</p>
     </div>
   </div>
@@ -892,18 +932,18 @@ body {
 <!-- ══════════════════════════════════════════
      APPS GRID Velox features grid layout
 ═══════════════════════════════════════════ -->
-<section class="relative py-20 md:py-28 border-t border-b" style="border-color:rgba(30,38,56,.5);background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(77,163,255,.03),transparent 70%)">
+<section class="relative pt-16 pb-24 md:pt-24 md:pb-32 border-t border-b" style="border-color:rgba(30,38,56,.5);background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(91,163,232,.03),transparent 70%)">
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
     <div class="text-center mb-12 scroll-reveal">
-      <p class="text-xs font-mono tracking-widest uppercase mb-4" style="color:var(--accent-blue)">Ce que vous payez déjà — sans le savoir.</p>
-      <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight mb-6" style="color:var(--cool-50)">Pour obtenir ce que fait Système1-Immo,<br>il vous faudrait 10 abonnements séparés.<br><span style="color:var(--accent-blue)">Et les faire parler entre eux. Bonne chance.</span></h2>
+      <p class="text-sm font-mono tracking-wide mb-4" style="color:var(--accent-blue)">Ce que vous payez déjà — sans le savoir.</p>
+      <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-6" style="color:var(--cool-50)">Pour obtenir ce que fait Système1-Immo,<br>il vous faudrait 10 abonnements séparés.<br><span style="color:var(--accent-blue)">Et les faire parler entre eux. Bonne chance.</span></h2>
       <p class="text-lg leading-relaxed max-w-2xl mx-auto mb-4" style="color:var(--cool-400)">Vous n’avez pas besoin de tous ces outils. Vous avez besoin des résultats qu’ils sont censés vous donner. Voici ce que ça vous coûterait si vous les achetiez un par un.</p>
     </div>
 
     <!-- Toggle -->
     <div class="flex justify-center mb-8 scroll-reveal">
       <div class="relative inline-flex items-center rounded-full p-0.5" style="background:var(--card-bg);border:1px solid rgba(30,38,56,.8)">
-        <div id="apps-slider" class="absolute top-0.5 bottom-0.5 rounded-full transition-all duration-500" style="left:2px;width:calc(50% - 2px);background:rgba(77,163,255,.15);border:1px solid rgba(77,163,255,.25)"></div>
+        <div id="apps-slider" class="absolute top-0.5 bottom-0.5 rounded-full transition-all duration-500" style="left:2px;width:calc(50% - 2px);background:rgba(91,163,232,.15);border:1px solid rgba(91,163,232,.25)"></div>
         <button id="apps-btn-s1" onclick="toggleApps(false)" class="relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold transition-colors" style="color:var(--accent-blue)">✦ Avec Système1-Immo</button>
         <button id="apps-btn-replaced" onclick="toggleApps(true)" class="relative z-10 px-4 py-1.5 rounded-full text-xs font-semibold transition-colors" style="color:var(--cool-400)">✕ Ce que ça vous coûte sans nous</button>
       </div>
@@ -917,21 +957,21 @@ body {
     </div>
 
     <div class="text-center mt-10 scroll-reveal">
-      <a href="#outils" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">
+      <a href="#outils" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">
         Activer mon système · 14 jours gratuits
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
       </a>
 
     <!-- Texte sous tableau -->
     <div class="w-full max-w-3xl mx-auto px-5 sm:px-6 mt-10 scroll-reveal">
-      <p class="text-base leading-relaxed mb-6" style="color:var(--cool-400)">Mais le vrai coût, ce n’est pas les 675€. C’est le temps de configurer 11 outils. De les faire parler entre eux. De former vos collaborateurs. De gérer 11 SAV différents quand quelque chose ne marche pas.</p>
-      <p class="text-base leading-relaxed mb-8" style="color:var(--cool-400)">Ce coût-là, personne ne le calcule. Jusqu’au jour où on en a assez.</p>
+      <p class="text-base leading-relaxed mb-6 max-w-[65ch]" style="color:var(--cool-400)">Mais le vrai coût, ce n’est pas les 675€. C’est le temps de configurer 11 outils. De les faire parler entre eux. De former vos collaborateurs. De gérer 11 SAV différents quand quelque chose ne marche pas.</p>
+      <p class="text-base leading-relaxed mb-8 max-w-[65ch]" style="color:var(--cool-400)">Ce coût-là, personne ne le calcule. Jusqu’au jour où on en a assez.</p>
       <p class="text-xs" style="color:rgba(152,162,179,.45)">Prix indicatifs basés sur les tarifs publics T1 2026. Certains outils proposent des plans gratuits limités. Système1-Immo intègre des versions adaptées à l’usage immobilier terrain.</p>
     </div>
 
     <!-- CTA sous tableau -->
     <div class="text-center mt-10 scroll-reveal">
-      <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">
+      <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">
         Arrêtez de payer 675€ pour 11 outils qui ne se parlent pas.
         → Tout avoir en un seul endroit · 14 jours gratuits · Sans carte
       </a>
@@ -943,17 +983,17 @@ body {
 <!-- ══════════════════════════════════════════
      10 SÉQUENCES AUTOMATIQUES 54 templates
 ═══════════════════════════════════════════ -->
-<section class="relative py-20 md:py-28 border-t" style="border-color:rgba(30,38,56,.5);background:linear-gradient(var(--navy-950),rgba(11,16,32,.6))">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(77,163,255,.04),transparent 60%);opacity:.5"></div>
+<section class="relative pt-16 pb-24 md:pt-24 md:pb-32 border-t" style="border-color:rgba(30,38,56,.5);background:linear-gradient(var(--navy-950),rgba(11,16,32,.6))">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(91,163,232,.04),transparent 60%);opacity:.5"></div>
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center mb-16 scroll-reveal">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full" style="background:rgba(15,21,35,.6);border:1px solid rgba(30,38,56,1)">
-        <div class="w-4 h-4 rounded" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo));display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(77,163,255,.25)"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+        <div class="w-4 h-4 rounded" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark));display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(91,163,232,.25)"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
         <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:var(--cool-200)">PROSPECTION QUI TOURNE SEULE</span>
       </div>
-      <p class="text-xs font-medium mt-2 mb-5 tracking-wide uppercase" style="color:var(--cool-400)">54 emails · Séquences automatiques</p>
+      <p class="text-sm font-medium mt-2 mb-5 tracking-wide" style="color:var(--cool-400)">54 emails · Séquences automatiques</p>
       <p class="text-sm font-medium mb-3" style="color:var(--cool-400)">Pendant que vous étiez sur le terrain aujourd’hui.</p>
-      <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:var(--cool-50)">54 messages sont partis en votre nom.<br><span style="color:var(--accent-blue)">Vous n’avez rien rédigé.</span><br><span style="color:var(--cool-200)">Vous n’avez rien envoyé.</span><br><span style="color:var(--cool-400)">Vous n’étiez même pas là.</span></h2>
+      <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-4" style="color:var(--cool-50)">54 messages sont partis en votre nom.<br><span style="color:var(--accent-blue)">Vous n’avez rien rédigé.</span><br><span style="color:var(--cool-200)">Vous n’avez rien envoyé.</span><br><span style="color:var(--cool-400)">Vous n’étiez même pas là.</span></h2>
       <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color:var(--cool-400)">Il a ouvert votre email à 23h04. Vous dormiez. Il a cliqué sur votre estimation à 23h11. Vous dormiez encore. Il a rempli le formulaire à 23h18. Le lendemain matin, son nom était dans votre CRM. Chaud.<br><br>Vous n’avez décroché le téléphone qu’une seule fois. Pour confirmer le rendez-vous.</p>
     </div>
 
@@ -1017,7 +1057,7 @@ body {
       <!-- PROSPECTION -->
       <div class="velox-card p-6 md:p-7 scroll-reveal group" style="border-top:3px solid var(--accent-blue)">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2)">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
           </div>
           <div>
@@ -1028,22 +1068,22 @@ body {
         <div class="flex flex-col gap-3">
           <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02);border:1px solid rgba(30,38,56,.5)">
             <div><p class="text-xs font-semibold" style="color:var(--cool-200)">Prospect vendeur</p><p class="text-[10px]" style="color:var(--cool-400)">12 étapes · 37 jours · 11 emails</p></div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(77,163,255,.08)">📧 11 emails</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(91,163,232,.08)">📧 11 emails</span>
           </div>
           <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02);border:1px solid rgba(30,38,56,.5)">
             <div><p class="text-xs font-semibold" style="color:var(--cool-200)">Prospect acheteur</p><p class="text-[10px]" style="color:var(--cool-400)">7 étapes · 21 jours · 6 emails</p></div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(77,163,255,.08)">📧 6 emails</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(91,163,232,.08)">📧 6 emails</span>
           </div>
           <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02);border:1px solid rgba(30,38,56,.5)">
             <div><p class="text-xs font-semibold" style="color:var(--cool-200)">Prospect bailleur</p><p class="text-[10px]" style="color:var(--cool-400)">9 étapes · 27 jours · 8 emails</p></div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(77,163,255,.08)">📧 8 emails</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(91,163,232,.08)">📧 8 emails</span>
           </div>
           <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02);border:1px solid rgba(82,199,122,.15)">
             <div><p class="text-xs font-semibold" style="color:var(--cool-200)">Lead scrappé</p><p class="text-[10px]" style="color:var(--cool-400)">3 étapes · mix multicanal · 2 WA + 1 email</p></div>
             <span class="text-[10px] font-mono px-2 py-0.5 rounded" style="color:#52C77A;background:rgba(82,199,122,.08)">📱 2 WA + 📧 1</span>
           </div>
         </div>
-        <div class="mt-5 p-4 rounded-xl" style="background:rgba(77,163,255,.04);border:1px solid rgba(77,163,255,.12)">
+        <div class="mt-5 p-4 rounded-xl" style="background:rgba(91,163,232,.04);border:1px solid rgba(91,163,232,.12)">
           <p class="text-xs leading-relaxed" style="color:var(--cool-400)">Personne n’attend votre appel. Tout le monde attend le bon message.</p>
         </div>
       </div>
@@ -1105,10 +1145,10 @@ body {
       </div>
 
       <!-- AMBASSADEURS -->
-      <div class="velox-card p-6 md:p-7 scroll-reveal delay-100 group" style="border-top:3px solid var(--accent-indigo)">
+      <div class="velox-card p-6 md:p-7 scroll-reveal delay-100 group" style="border-top:3px solid var(--accent-blue)">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.2)">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-indigo)" stroke-width="1.6" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
           </div>
           <div>
             <h3 class="font-display text-base font-bold" style="color:var(--cool-50)">Ambassadeurs</h3>
@@ -1118,11 +1158,11 @@ body {
         <div class="flex flex-col gap-3">
           <div class="flex items-center justify-between py-2 px-3 rounded-lg" style="background:rgba(255,255,255,.02);border:1px solid rgba(30,38,56,.5)">
             <div><p class="text-xs font-semibold" style="color:var(--cool-200)">Programme de parrainage</p><p class="text-[10px]" style="color:var(--cool-400)">4 emails trimestriels automatiques</p></div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded" style="color:var(--accent-indigo);background:rgba(108,99,255,.08)">📧 4 emails</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(91,163,232,.08)">📧 4 emails</span>
           </div>
         </div>
-        <div class="mt-5 p-4 rounded-xl" style="background:rgba(108,99,255,.04);border:1px solid rgba(108,99,255,.12)">
-          <p class="text-xs leading-relaxed" style="color:var(--cool-400)"><span style="color:var(--accent-indigo)" class="font-semibold">À J+30 après chaque vente, un message part automatiquement.</span> Un lien de parrainage tracé. Une recommandation qui arrive. Vous ne touchez rien.<br><br><span style="color:var(--cool-200)" class="font-semibold">Résultat moyen : 2 à 3 mandats supplémentaires par an. Par client satisfait.</span></p>
+        <div class="mt-5 p-4 rounded-xl" style="background:rgba(91,163,232,.04);border:1px solid rgba(91,163,232,.12)">
+          <p class="text-xs leading-relaxed" style="color:var(--cool-400)"><span style="color:var(--accent-blue)" class="font-semibold">À J+30 après chaque vente, un message part automatiquement.</span> Un lien de parrainage tracé. Une recommandation qui arrive. Vous ne touchez rien.<br><br><span style="color:var(--cool-200)" class="font-semibold">Résultat moyen : 2 à 3 mandats supplémentaires par an. Par client satisfait.</span></p>
         </div>
       </div>
 
@@ -1131,7 +1171,7 @@ body {
     <!-- CTA bas de section -->
     <div class="text-center mt-14 scroll-reveal">
       <p class="text-sm mb-6 max-w-lg mx-auto" style="color:var(--cool-400)">Vendeurs, acheteurs, bailleurs, locataires : chaque contact a sa séquence. Personne n'est oublié. Jamais.</p>
-      <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">
+      <a href="#rejoindre" class="neu-btn inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">
         Activer mes 54 séquences · 14 jours gratuits
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
       </a>
@@ -1144,7 +1184,7 @@ body {
 <!-- ══════════════════════════════════════════
      ANIMATION LOCALE Commerçants & Quartier
 ═══════════════════════════════════════════ -->
-<section class="relative py-20 md:py-28" style="background:var(--navy-950)">
+<section class="relative pt-16 pb-24 md:pt-24 md:pb-32" style="background:var(--navy-950)">
   <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 40% at 50% 30%,rgba(232,168,56,.04),transparent 60%);opacity:.6"></div>
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
 
@@ -1194,7 +1234,7 @@ body {
 
       <!-- RIGHT Mockup visuel style Velox -->
       <div class="scroll-reveal delay-100">
-        <div class="rounded-2xl border overflow-hidden" style="border-color:rgba(30,38,56,.6);background:rgba(11,16,32,.95);backdrop-filter:blur(20px);box-shadow:0 0 40px rgba(232,168,56,.06)">
+        <div class="rounded-2xl border overflow-hidden" style="border-color:rgba(30,38,56,.6);background:rgba(11,16,32,.95);box-shadow:var(--shadow-raised)">
           <!-- Header -->
           <div class="flex items-center justify-between px-5 py-3 border-b" style="border-color:rgba(30,38,56,.5);background:rgba(11,16,32,.5)">
             <div class="flex items-center gap-3">
@@ -1221,7 +1261,7 @@ body {
                 <div class="flex items-center gap-2">
                   <div class="flex -space-x-2">
                     <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold text-white" style="background:var(--accent-blue)">ML</div>
-                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold text-white" style="background:var(--accent-indigo)">PD</div>
+                    <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold text-white" style="background:var(--accent-blue)">PD</div>
                     <div class="w-6 h-6 rounded-full flex items-center justify-center text-[8px] font-bold text-white" style="background:#52C77A">AR</div>
                   </div>
                   <span class="text-[10px] font-mono" style="color:var(--cool-400)">47 participants</span>
@@ -1279,20 +1319,20 @@ body {
 <!-- ══════════════════════════════════════════
      TOOLS ImmoScore + ScanImmo (Velox cards)
 ═══════════════════════════════════════════ -->
-<section class="py-20 md:py-28" id="outils" style="background:var(--navy-950)">
+<section class="pt-16 pb-24 md:pt-24 md:pb-32" id="outils" style="background:var(--navy-950)">
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
     <div class="text-center mb-16 scroll-reveal">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full" style="background:rgba(15,21,35,.6);border:1px solid rgba(30,38,56,1)">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="var(--cool-400)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
         <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:var(--cool-200)">ImmoScore™ · Scan Immo™</span>
       </div>
-      <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight mb-4 sh-center fi" style="color:var(--cool-50)">Il n'appelait pas.<br>Il hésitait.<br><span style="color:var(--accent-blue)">Jusqu'à ce qu'il tombe sur ça.</span></h2>
+      <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-4 sh-center fi" style="color:var(--cool-50)">Il n'appelait pas.<br>Il hésitait.<br><span style="color:var(--accent-blue)">Jusqu'à ce qu'il tombe sur ça.</span></h2>
       <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color:var(--cool-400)">Ces outils ne vendent pas. Ils ne pitchent pas. Ils font quelque chose de bien plus puissant : ils posent les bonnes questions au bon moment. Et quand quelqu'un répond à vos questions — il est déjà à mi-chemin de la décision.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- ImmoScore -->
-      <div id="immoscore-widget" class="velox-card p-7 fi scroll-reveal" style="outline:1px solid rgba(77,163,255,.12)"><div class="flex items-center gap-3 mb-5"><div class="neu-inset w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(77,163,255,.08)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></div><div><h3 class="font-display text-lg font-bold" style="color:var(--cool-50)">ImmoScore™</h3><p class="text-xs" style="color:rgba(152,162,179,.5)">Analyser n'importe quelle annonce</p></div></div>
-    <div class="rounded-xl p-5 mb-4" style="background:rgba(7,11,20,.5);border:1px solid rgba(30,38,56,.6)"><div class="flex gap-2 mb-4"><input id="is-url" type="text" value="" placeholder="Collez l'URL de votre annonce (LeBonCoin, SeLoger...)" class="flex-1 rounded-lg px-3.5 py-2.5 text-sm outline-none transition-colors" style="background:rgba(30,38,56,.4);border:1px solid rgba(30,38,56,.8);color:var(--cool-50);font-family:Inter,sans-serif"><button id="is-analyze" class="px-4 py-2.5 rounded-lg font-semibold text-xs text-white flex items-center gap-1.5 whitespace-nowrap" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))" disabled="">Analyser</button></div><div class="text-center py-6 text-sm" style="color:rgba(152,162,179,.4)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="mx-auto mb-2" style="opacity:.3"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>Collez une URL d'annonce pour démarrer l'analyse</div></div>
+      <div id="immoscore-widget" class="velox-card p-7 fi scroll-reveal" style="outline:1px solid rgba(91,163,232,.12)"><div class="flex items-center gap-3 mb-5"><div class="neu-inset w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(91,163,232,.08)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg></div><div><h3 class="font-display text-lg font-bold" style="color:var(--cool-50)">ImmoScore™</h3><p class="text-xs" style="color:rgba(152,162,179,.5)">Analyser n'importe quelle annonce</p></div></div>
+    <div class="rounded-xl p-5 mb-4" style="background:rgba(7,11,20,.5);border:1px solid rgba(30,38,56,.6)"><div class="flex gap-2 mb-4"><input id="is-url" type="text" value="" placeholder="Collez l'URL de votre annonce (LeBonCoin, SeLoger...)" class="flex-1 rounded-lg px-3.5 py-2.5 text-sm outline-none transition-colors" style="background:rgba(30,38,56,.4);border:1px solid rgba(30,38,56,.8);color:var(--cool-50);font-family:Geist,sans-serif"><button id="is-analyze" class="px-4 py-2.5 rounded-lg font-semibold text-xs text-white flex items-center gap-1.5 whitespace-nowrap" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))" disabled="">Analyser</button></div><div class="text-center py-6 text-sm" style="color:rgba(152,162,179,.4)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="mx-auto mb-2" style="opacity:.3"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>Collez une URL d'annonce pour démarrer l'analyse</div></div>
     <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Collez une URL. L'IA analyse les photos, le texte, le pricing. Elle score 8 axes — neurosciences appliquées à la décision d'achat. Elle identifie exactement ce qui bloque l'acheteur.<br><br>Ce que ça vous donne : vous arrivez en rendez-vous avec les arguments que votre prospect n'avait pas vu venir. Il se demande comment vous saviez. Vous, vous signez.</p></div>
       <!-- ScanImmo -->
       <div id="scanimmo-widget" class="velox-card p-7 fi d1 scroll-reveal delay-100" style="outline:1px solid rgba(82,199,122,.12)"><div class="flex items-center gap-3 mb-5"><div class="neu-inset w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(82,199,122,.08)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg></div><div><h3 class="font-display text-lg font-bold" style="color:var(--cool-50)">Scan Immo™</h3><p class="text-xs" style="color:rgba(152,162,179,.5)">Le diagnostic qui capture vos vendeurs</p></div></div>
@@ -1319,7 +1359,7 @@ body {
      HOW IT WORKS Velox sticky scroll style
 ═══════════════════════════════════════════ -->
 <section class="border-t relative h-[300vh]" id="sticky-scroll-section" style="border-color:rgba(30,38,56,.5);background:rgba(11,16,32,.1)">
-  <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+  <div class="sticky top-0 h-[100dvh] w-full flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(circle at center,rgba(22,30,49,.2),transparent)"></div>
     <div class="px-5 sm:px-6 lg:px-8 z-10 flex flex-col w-full h-full max-w-7xl mx-auto justify-center">
       <div class="flex flex-col md:flex-row md:gap-16 gap-8 items-center">
@@ -1327,47 +1367,47 @@ body {
         <div class="md:w-5/12 w-full pt-16 md:pt-0">
           <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full" style="background:rgba(15,21,35,.6);border:1px solid rgba(30,38,56,1)">
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="var(--cool-400)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-        <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:var(--cool-200)">Trois étapes. Une seule qui compte vraiment.</span>
+        <span class="text-[11px] font-semibold tracking-wide" style="color:var(--cool-200)">Trois étapes. Une seule qui compte vraiment.</span>
           </div>
           <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-6" style="color:var(--cool-50)">Vous branchez.<br>L'IA travaille.<br><span style="color:var(--accent-blue)">Vous signez.</span></h2>
-          <p class="text-sm md:text-base leading-relaxed mb-10 hidden sm:block" style="color:var(--cool-400)">Ces trois étapes résument tout. La première prend 2 minutes. La deuxième tourne seule. La troisième — c'est là que vous entrez en scène.</p>
+          <p class="text-sm md:text-base leading-relaxed mb-10 max-w-[65ch] hidden sm:block" style="color:var(--cool-400)">Ces trois étapes résument tout. La première prend 2 minutes. La deuxième tourne seule. La troisième — c'est là que vous entrez en scène.</p>
           <div class="relative flex flex-col gap-12 md:gap-16">
             <div class="absolute left-[5px] top-2 bottom-2 w-[2px] rounded-full" style="background:rgba(30,38,56,.6)"></div>
             <div id="step-progress-line" class="absolute left-[5px] top-2 w-[2px] rounded-full transition-all duration-700 ease-out z-10" style="background:var(--accent-blue);box-shadow:0 0 12px var(--accent-blue);height:0%"></div>
             <!-- Step 1 -->
             <div id="step-1" class="relative pl-10 transition-opacity duration-700 opacity-100" style="opacity: 1;">
-              <div id="step-dot-1" class="absolute left-0 top-1.5 w-3 h-3 rounded-full z-20 transition-all duration-700" style="background:var(--accent-blue);box-shadow:0 0 12px rgba(77,163,255,.8)"></div>
+              <div id="step-dot-1" class="absolute left-0 top-1.5 w-3 h-3 rounded-full z-20 transition-all duration-700" style="background:var(--accent-blue);box-shadow:0 0 12px rgba(91,163,232,.8)"></div>
               <h4 id="step-title-1" class="font-display text-lg md:text-2xl font-bold mb-2 tracking-tight" style="color:var(--cool-50)">① Connectez vos sources · 2 clics</h4>
-              <p class="text-sm md:text-base leading-relaxed" style="color:var(--cool-400)">Site, portails, réseaux sociaux. En 2 clics, le système sait où chercher vos prochains mandats.<br><br>Vous ne paramétrez rien. Vous ne codez rien. Vous cliquez deux fois. C'est tout.</p>
+              <p class="text-sm md:text-base leading-relaxed max-w-[65ch]" style="color:var(--cool-400)">Site, portails, réseaux sociaux. En 2 clics, le système sait où chercher vos prochains mandats.<br><br>Vous ne paramétrez rien. Vous ne codez rien. Vous cliquez deux fois. C'est tout.</p>
             </div>
             <!-- Step 2 -->
             <div id="step-2" class="relative pl-10 transition-opacity duration-700 opacity-40" style="opacity: 0.4;">
               <div id="step-dot-2" class="absolute left-0 top-1.5 w-3 h-3 rounded-full z-20 transition-all duration-700" style="background: rgba(30, 38, 56, 0.8); box-shadow: none;"></div>
               <h4 id="step-title-2" class="font-display text-lg md:text-2xl font-bold mb-2 tracking-tight" style="color:var(--cool-400)">② L'IA qualifie, score, et attend le bon moment</h4>
-              <p class="text-sm md:text-base leading-relaxed" style="color:var(--cool-400)">Heat score comportemental. Moment de bascule détecté. Frictions identifiées. Zéro tri manuel. Zéro perte de temps. Pendant que vous faites des visites, l'IA analyse 847 signaux par lead. Quand un prospect est prêt — et seulement quand il est prêt — vous recevez une alerte.</p>
+              <p class="text-sm md:text-base leading-relaxed max-w-[65ch]" style="color:var(--cool-400)">Heat score comportemental. Moment de bascule détecté. Frictions identifiées. Zéro tri manuel. Zéro perte de temps. Pendant que vous faites des visites, l'IA analyse 847 signaux par lead. Quand un prospect est prêt — et seulement quand il est prêt — vous recevez une alerte.</p>
             </div>
             <!-- Step 3 -->
             <div id="step-3" class="relative pl-10 transition-opacity duration-700 opacity-40" style="opacity: 0.4;">
               <div id="step-dot-3" class="absolute left-0 top-1.5 w-3 h-3 rounded-full z-20 transition-all duration-700" style="background: rgba(30, 38, 56, 0.8); box-shadow: none;"></div>
               <h4 id="step-title-3" class="font-display text-lg md:text-2xl font-bold mb-2 tracking-tight" style="color:var(--cool-400)">③ Vous intervenez. Une seule fois. Pour closer.</h4>
-              <p class="text-sm md:text-base leading-relaxed" style="color:var(--cool-400)">Pas pour relancer. Pas pour qualifier. Pas pour expliquer. Juste pour confirmer le rendez-vous et signer le mandat.<br><br>C'est la seule étape qui vous appartient vraiment. Les deux autres, le système les fait mieux que vous. Et ça — ça ne devrait pas vous déranger.</p>
+              <p class="text-sm md:text-base leading-relaxed max-w-[65ch]" style="color:var(--cool-400)">Pas pour relancer. Pas pour qualifier. Pas pour expliquer. Juste pour confirmer le rendez-vous et signer le mandat.<br><br>C'est la seule étape qui vous appartient vraiment. Les deux autres, le système les fait mieux que vous. Et ça — ça ne devrait pas vous déranger.</p>
             </div>
           </div>
         </div>
 
         <!-- Right panel -->
         <div class="md:w-7/12 w-full mt-12 md:mt-0">
-          <div class="rounded-2xl border overflow-hidden relative w-full flex flex-col" style="border-color:rgba(30,38,56,.7);background:rgba(7,11,20,.85);backdrop-filter:blur(20px);height:450px;md:height:600px;box-shadow:0 0 40px rgba(77,163,255,.08)">
+          <div class="rounded-2xl border overflow-hidden relative w-full flex flex-col" style="border-color:rgba(30,38,56,.7);background:rgba(7,11,20,.92);height:450px;md:height:600px;box-shadow:var(--shadow-raised)">
             <div class="border-b px-5 py-3 flex items-center justify-between shrink-0" style="border-color:rgba(30,38,56,.6);background:rgba(255,255,255,.02)">
               <div class="flex items-center gap-3"><div class="flex gap-1.5"><div class="w-2.5 h-2.5 rounded-full" style="background:rgba(30,38,56,.8)"></div><div class="w-2.5 h-2.5 rounded-full" style="background:rgba(30,38,56,.8)"></div><div class="w-2.5 h-2.5 rounded-full" style="background:rgba(30,38,56,.8)"></div></div><span class="text-xs font-mono" style="color:var(--cool-400)">systeme1-setup</span></div>
               <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-1 rounded" style="color:var(--cool-400);background:rgba(22,30,49,.5)">Production</span>
             </div>
-            <div class="relative flex-1 overflow-hidden" style="background:radial-gradient(ellipse at top,rgba(77,163,255,.02),transparent)">
+            <div class="relative flex-1 overflow-hidden" style="background:radial-gradient(ellipse at top,rgba(91,163,232,.02),transparent)">
               <!-- Panel 1 -->
               <div id="panel-1" class="absolute inset-0 p-5 md:p-8 transition-all duration-700" style="opacity:1;transform:scale(1);pointer-events:auto;z-index:10">
-                <div class="w-full h-full rounded-xl p-6 flex flex-col" style="background:rgba(11,16,32,.9);border:1px solid rgba(30,38,56,.6);backdrop-filter:blur(12px)">
+                <div class="w-full h-full rounded-xl p-6 flex flex-col" style="background:rgba(11,16,32,.95);border:1px solid rgba(30,38,56,.6)">
                   <div class="flex items-center gap-4 mb-6">
-                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2)">
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M4 11a9 9 0 0118 0"></path><path d="M4 17a9 9 0 0118 0"></path><circle cx="13" cy="12" r="1"></circle></svg>
                     </div>
                     <div>
@@ -1385,7 +1425,7 @@ body {
                   </div>
                   <div class="mt-auto pt-5 border-t" style="border-color:rgba(30,38,56,.6)">
                     <div class="flex justify-between mb-2 text-xs" style="color:var(--cool-400)"><span>Progression</span><span style="color:var(--accent-blue)">100%</span></div>
-                    <div class="w-full h-2 rounded-full overflow-hidden" style="background:rgba(22,30,49,.8)"><div class="h-full rounded-full w-full" style="background:linear-gradient(to right,var(--accent-blue),var(--accent-indigo))"></div></div>
+                    <div class="w-full h-2 rounded-full overflow-hidden" style="background:rgba(22,30,49,.8)"><div class="h-full rounded-full w-full" style="background:linear-gradient(to right,var(--accent-blue),var(--accent-blue))"></div></div>
                   </div>
                 </div>
               </div>
@@ -1393,9 +1433,9 @@ body {
               <div id="panel-2" class="absolute inset-0 p-5 md:p-8 transition-all duration-700" style="opacity:0;transform:scale(.98);pointer-events:none;z-index:0">
                 <div class="w-full h-full rounded-xl p-6 flex flex-col" style="background:rgba(11,16,32,.9);border:1px solid rgba(30,38,56,.6)">
                   <div class="flex items-center gap-4 mb-6">
-                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center relative" style="background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.2)">
-                      <div class="absolute inset-0 rounded-2xl" style="background:rgba(77,163,255,.15);filter:blur(8px)"></div>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-indigo)" stroke-width="1.6" stroke-linecap="round" class="relative z-10"><circle cx="12" cy="12" r="3" fill="rgba(108,99,255,.3)"></circle><g style="animation:radarSpin 4s linear infinite;transform-origin:12px 12px"><line x1="12" y1="3" x2="12" y2="6" stroke="var(--accent-indigo)"></line><line x1="12" y1="18" x2="12" y2="21" stroke="var(--accent-indigo)" opacity=".4"></line><line x1="3" y1="12" x2="6" y2="12" stroke="var(--accent-indigo)" opacity=".6"></line><line x1="18" y1="12" x2="21" y2="12" stroke="var(--accent-indigo)" opacity=".6"></line></g></svg>
+                    <div class="w-14 h-14 rounded-2xl flex items-center justify-center relative" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">
+                      <div class="absolute inset-0 rounded-2xl" style="background:rgba(91,163,232,.15);filter:blur(8px)"></div>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round" class="relative z-10"><circle cx="12" cy="12" r="3" fill="rgba(91,163,232,.3)"></circle><g style="animation:radarSpin 4s linear infinite;transform-origin:12px 12px"><line x1="12" y1="3" x2="12" y2="6" stroke="var(--accent-blue)"></line><line x1="12" y1="18" x2="12" y2="21" stroke="var(--accent-blue)" opacity=".4"></line><line x1="3" y1="12" x2="6" y2="12" stroke="var(--accent-blue)" opacity=".6"></line><line x1="18" y1="12" x2="21" y2="12" stroke="var(--accent-blue)" opacity=".6"></line></g></svg>
                     </div>
                     <div><p class="font-bold" style="color:var(--cool-50)">Analyse IA en cours</p><p class="text-xs" style="color:var(--cool-400)">Heat score · Frictions · Moment de bascule</p></div>
                   </div>
@@ -1440,21 +1480,21 @@ body {
 <!-- ══════════════════════════════════════════
      CREDIBILITY Velox testimonials layout
 ═══════════════════════════════════════════ -->
-<section class="relative py-20 md:py-28 border-t" style="border-color:rgba(30,38,56,.5);background:var(--navy-950)">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(77,163,255,.04),transparent 60%);opacity:.5"></div>
+<section class="relative pt-16 pb-24 md:pt-24 md:pb-32 border-t" style="border-color:rgba(30,38,56,.5);background:var(--navy-950)">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(91,163,232,.04),transparent 60%);opacity:.5"></div>
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
       <!-- Left -->
       <div class="scroll-reveal">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full" style="background:rgba(15,21,35,.6);border:1px solid rgba(30,38,56,1)">
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-          <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:var(--cool-200)">Nordine Mouaouia · 20 ans · 34 000 décisions</span>
+          <span class="text-[11px] font-semibold tracking-wide" style="color:var(--cool-200)">Nordine Mouaouia · 20 ans · 34 000 décisions</span>
         </div>
         <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight mb-6" style="color:var(--cool-50)">20 ans à observer des vendeurs décider.<br>34 000 décisions de vendeurs analysées.<br><span style="color:var(--accent-blue)">Une question obsessionnelle : à quel moment exact basculent-ils ?</span></h2>
 
         <!-- Nordine card -->
         <div class="velox-card p-6 flex gap-4 items-start mb-6">
-          <div class="neu-inset w-12 h-12 rounded-[14px] flex items-center justify-center font-display font-extrabold flex-shrink-0" style="background:rgba(77,163,255,.08);color:var(--accent-blue);font-size:14px">NM</div>
+          <div class="neu-inset w-12 h-12 rounded-[14px] flex items-center justify-center font-display font-extrabold flex-shrink-0" style="background:rgba(91,163,232,.08);color:var(--accent-blue);font-size:14px">NM</div>
           <div>
             <p class="font-bold mb-1" style="color:var(--cool-50)">Nordine Mouaouia</p>
             <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Nordine Mouaouia n'est pas un entrepreneur du digital. Il est expert en neurosciences comportementales appliquées à l'immobilier — certifié RNCP, consultant au cabinet Système1.<br><br>Pendant 20 ans, il a étudié une seule chose : ce qui fait qu'un prospect dit oui — ou non. Pas la qualité du discours. Pas le prix de vente. Le moment. Le signal. La friction invisible.<br><br>Système1-Immo est la réponse à 20 ans de cette question. Embarquée dans un logiciel. Accessible à n'importe quel agent, en 5 minutes.</p>
@@ -1462,8 +1502,8 @@ body {
         </div>
 
         <!-- Quote -->
-        <div class="relative px-7 py-6 rounded-xl overflow-hidden" style="background:rgba(77,163,255,.06);border:1px solid rgba(77,163,255,.12)">
-          <span class="absolute top-[-8px] left-[18px] text-8xl font-extrabold select-none" style="color:rgba(77,163,255,.07);line-height:1">«</span>
+        <div class="relative px-7 py-6 rounded-xl overflow-hidden" style="background:rgba(91,163,232,.06);border:1px solid rgba(91,163,232,.12)">
+          <span class="absolute top-[-8px] left-[18px] text-8xl font-extrabold select-none" style="color:rgba(91,163,232,.07);line-height:1">«</span>
           <p class="text-base font-bold leading-snug relative" style="color:var(--cool-50)">"Mon travail n'est pas de convaincre.<br>Mon travail est de rendre la prochaine action évidente.<br>Ce réflexe, je l'ai embarqué dans un logiciel unique."</p>
           <p class="text-base font-semibold mt-1.5 relative" style="color:var(--accent-blue)">— Nordine Mouaouia · Expert neurosciences &amp; neuromarketing immobilier · Certification RNCP</p>
         </div>
@@ -1480,12 +1520,12 @@ body {
 
         <!-- Testimonial card Velox style -->
         <div class="relative group">
-          <div class="absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" style="background:linear-gradient(135deg,rgba(77,163,255,.08),rgba(108,99,255,.08));filter:blur(20px)"></div>
-          <div class="relative rounded-[28px] p-8 shadow-2xl transition-transform duration-500 group-hover:-translate-y-1" style="border:1px solid rgba(30,38,56,.6);background:rgba(11,16,32,.95);backdrop-filter:blur(20px)">
-            <svg class="w-8 h-8 mb-4" viewBox="0 0 24 24" fill="none" stroke="rgba(77,163,255,.3)" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zM15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
+          <div class="absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" style="background:linear-gradient(135deg,rgba(91,163,232,.08),rgba(91,163,232,.08));filter:blur(20px)"></div>
+          <div class="relative rounded-[28px] p-8 transition-transform duration-500 group-hover:-translate-y-1" style="border:1px solid rgba(30,38,56,.6);background:rgba(11,16,32,.95);box-shadow:var(--shadow-raised)">
+            <svg class="w-8 h-8 mb-4" viewBox="0 0 24 24" fill="none" stroke="rgba(91,163,232,.3)" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zM15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
             <blockquote id="t-quote" class="font-display text-xl font-bold tracking-tight leading-snug mb-8 transition-opacity duration-300" style="color: var(--cool-50); opacity: 0;">"Dès la première semaine, j'ai capturé 3 vendeurs qualifiés sans décrocher le téléphone. Le Scan Immo™ fait la présélection à ma place."</blockquote>
             <div class="flex items-center gap-4 border-t pt-5" style="border-color:rgba(22,30,49,.8)">
-              <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm" style="background: linear-gradient(135deg,var(--accent-blue),var(--accent-indigo)); color: white; opacity: 0;" id="t-avatar-initials">SC</div>
+              <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm" style="background: linear-gradient(135deg,var(--accent-blue),var(--primary-dark)); color: white; opacity: 0;" id="t-avatar-initials">SC</div>
               <div>
                 <p id="t-name" class="font-semibold transition-opacity duration-300" style="color: var(--cool-50); opacity: 0;">Sophie C.</p>
                 <p id="t-role" class="text-sm transition-opacity duration-300" style="color: var(--cool-400); opacity: 0;">Agent IAD · Lyon</p>
@@ -1513,8 +1553,8 @@ body {
 <!-- ══════════════════════════════════════════
      PRICING Velox layout + Système1 plans
 ═══════════════════════════════════════════ -->
-<section class="relative py-20 md:py-28 border-t" id="tarifs" style="border-color:rgba(30,38,56,.5);background:linear-gradient(var(--navy-950),var(--navy-900))">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(77,163,255,.04),transparent 60%);opacity:.5"></div>
+<section class="relative pt-16 pb-24 md:pt-24 md:pb-32 border-t" id="tarifs" style="border-color:rgba(30,38,56,.5);background:linear-gradient(var(--navy-950),var(--navy-900))">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(91,163,232,.04),transparent 60%);opacity:.5"></div>
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center mb-16 scroll-reveal">
       <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4" style="color:var(--cool-50)">Un mandat, c'est 5 000€.<br><span style="color:var(--accent-blue)">Cet abonnement, c'est <span id="hero-price">199€</span>/mois.</span></h2>
@@ -1528,7 +1568,7 @@ body {
         </button>
         <div class="flex items-center gap-2">
           <span id="billing-yearly" class="text-sm font-medium" style="color:var(--cool-400)">Annuel</span>
-          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2);color:var(--accent-blue)">2 mois offerts</span>
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2);color:var(--accent-blue)">2 mois offerts</span>
         </div>
       </div>
     </div>
@@ -1548,13 +1588,13 @@ body {
       <p class="text-center text-[11px]" style="color:rgba(152,162,179,.7)">Prochain palier : <span id="founder-next">249€/mois</span></p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto md:items-start">
       <!-- Solo Fondateur (featured) -->
-      <div class="flex flex-col p-8 relative scroll-reveal" style="background:rgba(11,16,32,.95);border:1px solid var(--accent-blue);border-radius:16px;backdrop-filter:blur(20px);animation:proGlow 4s ease-in-out infinite">
-        <div class="absolute top-0 inset-x-0 h-px" style="background:linear-gradient(to right,transparent,rgba(77,163,255,.5),transparent)"></div>
+      <div class="flex flex-col p-8 relative scroll-reveal md:-translate-y-6" style="background:rgba(11,16,32,.98);border:1px solid var(--accent-blue);border-radius:var(--r-md);box-shadow:var(--shadow-glow);animation:proGlow 4s var(--ease-smooth) infinite">
+        <div class="absolute top-0 inset-x-0 h-px" style="background:linear-gradient(to right,transparent,rgba(91,163,232,.5),transparent)"></div>
         <div class="flex justify-between items-center mb-2">
           <h3 class="font-display text-xl font-bold" style="color:var(--cool-50)">Solo Fondateur</h3>
-          <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2);color:var(--accent-blue)">★ FONDATEUR</span>
+          <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2);color:var(--accent-blue)">★ FONDATEUR</span>
         </div>
         <p class="text-sm mb-6" style="color:var(--cool-400)">Un mandat suffit à financer 2 ans d'abonnement.</p>
         <div class="mb-1">
@@ -1573,12 +1613,12 @@ body {
           <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>ActuImmo — veille marché IA</li>
           <li class="flex items-start gap-2 text-sm" style="color:var(--cool-200)"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2.5"><path d="M20 6L9 17l-5-5"></path></svg>Support prioritaire</li>
         </ul>
-        <a href="#rejoindre" class="neu-btn block text-center font-semibold text-sm py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">Démarrer 14 jours gratuits</a>
+        <a href="#rejoindre" class="neu-btn block text-center font-semibold text-sm py-3.5 rounded-xl text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">Démarrer 14 jours gratuits</a>
         <p class="text-xs text-center mt-2" style="color:rgba(152,162,179,.5)">Sans carte bancaire · Prix verrouillé 12 mois</p>
       </div>
 
       <!-- Agence -->
-      <div class="velox-card p-8 flex flex-col scroll-reveal delay-100">
+      <div class="velox-card p-8 flex flex-col scroll-reveal delay-100 md:mt-8">
         <h3 class="font-display text-xl font-bold mb-2" style="color:var(--cool-50)">Agence</h3>
         <p class="text-sm mb-6" style="color:var(--cool-400)">Pour le patron qui veut équiper toute son équipe.</p>
 
@@ -1608,7 +1648,7 @@ body {
   <!-- Garantie -->
   <div class="text-center max-w-xl mx-auto mt-12 scroll-reveal">
     <h3 class="font-display text-lg font-bold mb-4" style="color:var(--cool-50)">14 jours pour voir. Rien à perdre.</h3>
-    <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Pas de carte bancaire. Pas d'engagement. Pas de formulaire d'annulation compliqué. Si vous ne voyez pas vos premiers leads sous 48h, on vous explique pourquoi — et on corrige avec vous. Vous partez quand vous voulez. En 1 clic.<br><br>On préfère que vous restiez parce que ça marche. Pas parce que vous avez oublié de résilier.</p>
+    <p class="text-sm leading-relaxed max-w-[65ch] mx-auto" style="color:var(--cool-400)">Pas de carte bancaire. Pas d'engagement. Pas de formulaire d'annulation compliqué. Si vous ne voyez pas vos premiers leads sous 48h, on vous explique pourquoi — et on corrige avec vous. Vous partez quand vous voulez. En 1 clic.<br><br>On préfère que vous restiez parce que ça marche. Pas parce que vous avez oublié de résilier.</p>
   </div>
   </div>
 </section>
@@ -1616,15 +1656,15 @@ body {
 <!-- ══════════════════════════════════════════
      CE QUE VOUS TROUVEZ À L'INTÉRIEUR Grille features
 ═══════════════════════════════════════════ -->
-<section class="relative py-20 md:py-28 border-t" style="border-color:rgba(30,38,56,.5);background:var(--navy-950)">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 50% 40% at 50% 0%,rgba(108,99,255,.04),transparent 60%)"></div>
+<section class="relative pt-16 pb-24 md:pt-24 md:pb-32 border-t" style="border-color:rgba(30,38,56,.5);background:var(--navy-950)">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 50% 40% at 50% 0%,rgba(91,163,232,.04),transparent 60%)"></div>
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center mb-16 scroll-reveal">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full" style="background:rgba(15,21,35,.6);border:1px solid rgba(30,38,56,1)">
-        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="var(--accent-indigo)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
         <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:var(--cool-200)">CE QUE VOUS TROUVEZ À L'INTÉRIEUR</span>
       </div>
-      <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4" style="color:var(--cool-50)">Tout ce qu'il vous faut pour signer plus.<br><span style="color:var(--accent-indigo)">Rien que vous devez apprendre à utiliser.</span></h2>
+      <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4" style="color:var(--cool-50)">Tout ce qu'il vous faut pour signer plus.<br><span style="color:var(--accent-blue)">Rien que vous devez apprendre à utiliser.</span></h2>
       <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color:var(--cool-400)">Chaque fonctionnalité a été pensée pour un seul objectif : que votre prochain mandat arrive sans que vous décrochiez le téléphone. Pas en moins de travail. En travail mieux orienté.</p>
     </div>
 
@@ -1633,7 +1673,7 @@ body {
       <!-- 1. Carnet Terrain -->
       <div class="velox-card p-5 md:p-6 scroll-reveal group">
         <div class="flex items-center gap-3 mb-3">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2)">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"></path></svg>
           </div>
           <h3 class="font-display text-sm font-bold" style="color:var(--cool-50)">Carnet Terrain Magique</h3>
@@ -1666,8 +1706,8 @@ body {
       <!-- 4. Wizard Templates -->
       <div class="velox-card p-5 md:p-6 scroll-reveal group">
         <div class="flex items-center gap-3 mb-3">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.2)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-indigo)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
           </div>
           <h3 class="font-display text-sm font-bold" style="color:var(--cool-50)">8 designs email pro</h3>
         </div>
@@ -1677,7 +1717,7 @@ body {
       <!-- 5. Dashboard Météo -->
       <div class="velox-card p-5 md:p-6 scroll-reveal delay-100 group">
         <div class="flex items-center gap-3 mb-3">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2)">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"></path></svg>
           </div>
           <h3 class="font-display text-sm font-bold" style="color:var(--cool-50)">Briefing quotidien</h3>
@@ -1721,8 +1761,8 @@ body {
       <!-- 9. Post-transaction -->
       <div class="velox-card p-5 md:p-6 scroll-reveal delay-200 group">
         <div class="flex items-center gap-3 mb-3">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(108,99,255,.1);border:1px solid rgba(108,99,255,.2)">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-indigo)" stroke-width="1.6" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path></svg>
           </div>
           <h3 class="font-display text-sm font-bold" style="color:var(--cool-50)">Campagnes post-transaction</h3>
         </div>
@@ -1730,14 +1770,14 @@ body {
       </div>
 
       <!-- 10. Module Ambassadeur -->
-      <div class="velox-card p-5 md:p-6 scroll-reveal group" style="border:1px solid rgba(77,163,255,.15);background:rgba(11,16,32,.98)">
+      <div class="velox-card p-5 md:p-6 scroll-reveal group" style="border:1px solid rgba(91,163,232,.15);background:rgba(11,16,32,.98)">
         <div class="flex items-center gap-3 mb-3">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(77,163,255,.15),rgba(108,99,255,.15));border:1px solid rgba(77,163,255,.25)">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(91,163,232,.15),rgba(91,163,232,.15));border:1px solid rgba(91,163,232,.25)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path></svg>
           </div>
           <div>
             <h3 class="font-display text-sm font-bold" style="color:var(--cool-50)">Module Ambassadeur</h3>
-            <span class="text-[9px] font-bold px-1.5 py-px rounded" style="color:var(--accent-blue);background:rgba(77,163,255,.1);border:1px solid rgba(77,163,255,.2)">EXCLUSIF</span>
+            <span class="text-[9px] font-bold px-1.5 py-px rounded" style="color:var(--accent-blue);background:rgba(91,163,232,.1);border:1px solid rgba(91,163,232,.2)">EXCLUSIF</span>
           </div>
         </div>
         <p class="text-xs leading-relaxed" style="color:var(--cool-400)">À J+30, vos clients reçoivent un lien de parrainage automatique. Chaque recommandation est tracée. 2 à 3 mandats supplémentaires par an. Par client satisfait.</p>
@@ -1760,7 +1800,7 @@ body {
       <!-- 12. GMB + Réseaux sociaux -->
       <div class="velox-card p-5 md:p-6 scroll-reveal delay-200 group" style="border:1px solid rgba(82,199,122,.15);background:rgba(11,16,32,.98)">
         <div class="flex items-center gap-3 mb-3">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(82,199,122,.15),rgba(77,163,255,.1));border:1px solid rgba(82,199,122,.25)">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(82,199,122,.15),rgba(91,163,232,.1));border:1px solid rgba(82,199,122,.25)">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="1.6" stroke-linecap="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"></path><path d="M16 6l-4-4-4 4"></path><path d="M12 2v13"></path></svg>
           </div>
           <div>
@@ -1780,40 +1820,40 @@ body {
 <!-- ══════════════════════════════════════════
      BLOG Article phare fenêtre des 48h
 ══════════════════════════════════════════ -->
-<section class="py-20 md:py-28" id="blog" style="background:var(--navy-950)">
+<section class="pt-16 pb-24 md:pt-24 md:pb-32" id="blog" style="background:var(--navy-950)">
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
 
     <!-- En-tête section -->
     <div class="text-center mb-14 scroll-reveal">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full" style="background:rgba(77,163,255,.08);border:1px solid rgba(77,163,255,.18)">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full" style="background:rgba(91,163,232,.08);border:1px solid rgba(91,163,232,.18)">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="var(--cool-400)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 0 3-3h7z"></path></svg>
-        <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:var(--cool-200)">Ce que la science dit sur la vente immobilière.</span>
+        <span class="text-[11px] font-semibold tracking-wide" style="color:var(--cool-200)">Ce que la science dit sur la vente immobilière.</span>
       </div>
-      <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tight mb-4 sh-center fi" style="color:var(--cool-50)">Vos prospects ne sont pas rationnels.<br class="hidden md:block"> La bonne nouvelle : ça se prédit.</h2>
+      <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tighter leading-[1.05] mb-4 sh-center fi" style="color:var(--cool-50)">Vos prospects ne sont pas rationnels.<br class="hidden md:block"> La bonne nouvelle : ça se prédit.</h2>
       <p class="text-base md:text-lg max-w-2xl mx-auto" style="color:var(--cool-400)">Neurosciences, biais cognitifs, psychologie décisionnelle. Appliqués à l'immobilier par des experts terrain — pas des théoriciens. Chaque article = un levier concret à activer dès votre prochain rendez-vous.</p>
     </div>
 
     <!-- Card article phare -->
     <div class="max-w-3xl mx-auto scroll-reveal delay-100">
-      <a href="/blog/fenetre-48h.html" class="block rounded-2xl p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl" style="background:var(--navy-800);border:1px solid rgba(77,163,255,.15)">
+      <a href="/blog/fenetre-48h.html" class="block rounded-2xl p-8 md:p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl" style="background:var(--navy-800);border:1px solid rgba(91,163,232,.15)">
         <div class="flex items-center justify-between gap-4 mb-6">
           <div class="flex gap-2 flex-wrap">
-            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:rgba(77,163,255,.12);color:#4DA3FF;border:1px solid rgba(77,163,255,.25)">Psychologie</span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:rgba(91,163,232,.12);color:#5BA3E8;border:1px solid rgba(91,163,232,.25)">Psychologie</span>
             <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style="background:rgba(82,199,122,.12);color:#52C77A;border:1px solid rgba(82,199,122,.25)">✦ Disponible</span>
           </div>
           <span class="text-xs flex-shrink-0 font-medium" style="color:rgba(152,162,179,.5)">7 min de lecture</span>
         </div>
-        <h3 class="font-display text-2xl md:text-3xl font-bold mb-4 leading-tight" style="color:var(--cool-50)">Pourquoi votre prospect ne rappelle pas — la fenêtre des 48h</h3>
+        <h3 class="font-display text-2xl md:text-3xl font-bold tracking-tight mb-4 leading-[1.1]" style="color:var(--cool-50)">Pourquoi votre prospect ne rappelle pas — la fenêtre des 48h</h3>
         <p class="text-base leading-relaxed mb-8" style="color:var(--cool-400)">Il était chaud. Il vous a demandé de le rappeler. Vous l'avez rappelé. Silence. Ce qui se passe dans les 48 heures après un premier contact n'est pas rationnel. C'est neurologique.</p>
         <div class="flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm" style="background:linear-gradient(135deg,#4DA3FF,#6C63FF);color:#fff">S1</div>
+            <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm" style="background:linear-gradient(135deg,#5BA3E8,#5BA3E8);color:#fff">S1</div>
             <div>
               <div class="text-sm font-semibold" style="color:var(--cool-200)">Système1-Immo™</div>
               <div class="text-xs" style="color:var(--cool-400)">Neurosciences &amp; Vente immobilière</div>
             </div>
           </div>
-          <span class="inline-flex items-center gap-2 text-sm font-semibold" style="color:#4DA3FF">
+          <span class="inline-flex items-center gap-2 text-sm font-semibold" style="color:#5BA3E8">
             Lire l'article
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </span>
@@ -1838,7 +1878,7 @@ body {
 <!-- ══════════════════════════════════════════
      FAQ Velox card layout + Système1 content
 ═══════════════════════════════════════════ -->
-<section class="py-20 md:py-28 border-t" id="faq-s" style="border-color:rgba(30,38,56,.5);background:linear-gradient(180deg,var(--navy-900),var(--navy-950))">
+<section class="pt-16 pb-24 md:pt-24 md:pb-32 border-t" id="faq-s" style="border-color:rgba(30,38,56,.5);background:linear-gradient(180deg,var(--navy-900),var(--navy-950))">
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
     <div class="text-center mb-16 scroll-reveal">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full" style="background:rgba(15,21,35,.6);border:1px solid rgba(30,38,56,1)">
@@ -1854,13 +1894,13 @@ body {
 <!-- ══════════════════════════════════════════
      TIMELINE Comment ça marche en 48h
 ═══════════════════════════════════════════ -->
-<section class="relative py-20 md:py-28 border-t" style="border-color:rgba(30,38,56,.5);background:linear-gradient(var(--navy-950),rgba(11,16,32,.8))">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(77,163,255,.05),transparent 60%)"></div>
+<section class="relative pt-16 pb-24 md:pt-24 md:pb-32 border-t" style="border-color:rgba(30,38,56,.5);background:linear-gradient(var(--navy-950),rgba(11,16,32,.8))">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(91,163,232,.05),transparent 60%)"></div>
   <div class="w-full max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center mb-16 scroll-reveal">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full" style="background:rgba(15,21,35,.6);border:1px solid rgba(82,199,122,.2)">
         <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-        <span class="text-[10px] font-bold tracking-[.15em] uppercase" style="color:#52C77A">Ce qui se passe exactement après votre inscription.</span>
+        <span class="text-[11px] font-semibold tracking-wide" style="color:#52C77A">Ce qui se passe exactement après votre inscription.</span>
       </div>
       <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4" style="color:var(--cool-50)">14 jours.<br><span style="color:#52C77A">Voici exactement ce qui se passe.</span></h2>
       <p class="text-lg leading-relaxed max-w-xl mx-auto" style="color:var(--cool-400)">Pas de promesse floue. Pas de "résultats variables selon les profils". Voici ce que fait le système — et ce que vous faites — pendant 14 jours.</p>
@@ -1869,14 +1909,14 @@ body {
     <!-- Timeline -->
     <div class="relative">
       <!-- Ligne centrale desktop -->
-      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px" style="background:linear-gradient(to bottom,transparent,rgba(77,163,255,.3),rgba(82,199,122,.3),transparent)"></div>
+      <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px" style="background:linear-gradient(to bottom,transparent,rgba(91,163,232,.3),rgba(82,199,122,.3),transparent)"></div>
 
       <!-- Étape J+0 -->
       <div class="relative flex flex-col md:flex-row items-center gap-6 md:gap-12 mb-12 md:mb-16 scroll-reveal">
         <div class="md:w-1/2 md:text-right md:pr-12">
           <div class="velox-card p-5 md:p-6 inline-block" style="border-left:3px solid var(--accent-blue)">
             <div class="flex items-center gap-2 mb-2 md:justify-end">
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(77,163,255,.1)">J+0</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(91,163,232,.1)">J+0</span>
               <span class="text-xs font-bold" style="color:var(--cool-50)">5 minutes · Vous branchez. Tout démarre.</span>
             </div>
             <h4 class="font-display text-sm font-bold mb-1" style="color:var(--cool-50)">Vous créez votre compte. Vous connectez votre WhatsApp.</h4>
@@ -1884,7 +1924,7 @@ body {
           </div>
         </div>
         <!-- Dot central -->
-        <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full items-center justify-center z-10" style="background:var(--navy-950);border:2px solid var(--accent-blue);box-shadow:0 0 20px rgba(77,163,255,.3)">
+        <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full items-center justify-center z-10" style="background:var(--navy-950);border:2px solid var(--accent-blue);box-shadow:0 0 20px rgba(91,163,232,.3)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
         </div>
         <div class="md:w-1/2 md:pl-12"></div>
@@ -1893,13 +1933,13 @@ body {
       <!-- Étape J+1 -->
       <div class="relative flex flex-col md:flex-row items-center gap-6 md:gap-12 mb-12 md:mb-16 scroll-reveal delay-100">
         <div class="md:w-1/2 md:pr-12"></div>
-        <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full items-center justify-center z-10" style="background:var(--navy-950);border:2px solid var(--accent-blue);box-shadow:0 0 20px rgba(77,163,255,.2)">
+        <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full items-center justify-center z-10" style="background:var(--navy-950);border:2px solid var(--accent-blue);box-shadow:0 0 20px rgba(91,163,232,.2)">
           <span class="text-[10px] font-bold" style="color:var(--accent-blue)">J1</span>
         </div>
         <div class="md:w-1/2 md:pl-12">
           <div class="velox-card p-5 md:p-6 inline-block" style="border-left:3px solid var(--accent-blue)">
             <div class="flex items-center gap-2 mb-2">
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(77,163,255,.1)">J+1</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(91,163,232,.1)">J+1</span>
               <span class="text-xs font-bold" style="color:var(--cool-50)">Automatique · Vos premiers leads arrivent.</span>
             </div>
             <h4 class="font-display text-sm font-bold mb-1" style="color:var(--cool-50)">Le Sniper Web a scrappé LeBonCoin, SeLoger, PAP.</h4>
@@ -1929,13 +1969,13 @@ body {
       <!-- Étape J+7 -->
       <div class="relative flex flex-col md:flex-row items-center gap-6 md:gap-12 mb-12 md:mb-16 scroll-reveal delay-100">
         <div class="md:w-1/2 md:pr-12"></div>
-        <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full items-center justify-center z-10" style="background:var(--navy-950);border:2px solid var(--accent-indigo);box-shadow:0 0 20px rgba(108,99,255,.2)">
-          <span class="text-[10px] font-bold" style="color:var(--accent-indigo)">J7</span>
+        <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full items-center justify-center z-10" style="background:var(--navy-950);border:2px solid var(--accent-blue);box-shadow:0 0 20px rgba(91,163,232,.2)">
+          <span class="text-[10px] font-bold" style="color:var(--accent-blue)">J7</span>
         </div>
         <div class="md:w-1/2 md:pl-12">
-          <div class="velox-card p-5 md:p-6 inline-block" style="border-left:3px solid var(--accent-indigo)">
+          <div class="velox-card p-5 md:p-6 inline-block" style="border-left:3px solid var(--accent-blue)">
             <div class="flex items-center gap-2 mb-2">
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded" style="color:var(--accent-indigo);background:rgba(108,99,255,.1)">J+7</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded" style="color:var(--accent-blue);background:rgba(91,163,232,.1)">J+7</span>
               <span class="text-xs font-bold" style="color:var(--cool-50)">Chaque contact a son score.</span>
             </div>
             <h4 class="font-display text-sm font-bold mb-1" style="color:var(--cool-50)">L'IA a analysé les comportements de la semaine.</h4>
@@ -1975,11 +2015,11 @@ body {
 <!-- ══════════════════════════════════════════
      CTA + CONTACT Velox CTA box
 ═══════════════════════════════════════════ -->
-<section class="relative py-20 md:py-28" id="rejoindre">
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(77,163,255,.06),transparent 55%)"></div>
+<section class="relative pt-16 pb-24 md:pt-24 md:pb-32" id="rejoindre">
+  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(91,163,232,.06),transparent 55%)"></div>
   <div class="w-full max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
-    <div class="relative rounded-2xl border p-10 sm:p-16 text-center overflow-hidden scroll-reveal" style="border-color:rgba(30,38,56,.6);background:var(--navy-950);box-shadow:inset 0 0 40px rgba(77,163,255,.06),0 0 40px rgba(77,163,255,.06);animation:ctaPulse 3s ease-in-out infinite">
-      <p class="text-xs font-bold uppercase tracking-widest mb-4 relative z-10" style="color:var(--accent-blue)">En ce moment, dans votre secteur.</p>
+    <div class="relative rounded-2xl border p-10 sm:p-16 text-center overflow-hidden scroll-reveal" style="border-color:rgba(30,38,56,.6);background:var(--navy-950);box-shadow:inset 0 0 40px rgba(91,163,232,.06),0 0 40px rgba(91,163,232,.06);animation:ctaPulse 3s ease-in-out infinite">
+      <p class="text-sm font-semibold tracking-wide mb-4 relative z-10" style="color:var(--accent-blue)">En ce moment, dans votre secteur.</p>
       <h2 class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-6 relative z-10" style="color:var(--cool-50);text-shadow:0 0 15px rgba(255,255,255,.15)">Un vendeur cherche un agent.<br>Il vient de remplir un formulaire quelque part.<br><span style="color:var(--accent-blue)">La question : c’était le vôtre — ou celui d’un concurrent ?</span></h2>
       <div class="text-left max-w-md mx-auto mb-8 relative z-10 flex flex-col gap-2">
         <p class="text-sm" style="color:var(--cool-300)">✅  Premiers leads sous 48h — même sans base de contacts</p>
@@ -2025,7 +2065,7 @@ body {
                 <option value="Autre">Autre</option>
               </select>
             </div>
-            <button type="submit" id="submit-btn" class="sm:col-span-2 neu-btn font-semibold text-sm py-3.5 rounded-xl border-none cursor-pointer mt-1.5 text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">
+            <button type="submit" id="submit-btn" class="sm:col-span-2 neu-btn font-semibold text-sm py-3.5 rounded-xl border-none cursor-pointer mt-1.5 text-white" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">
               Je démarre ce soir — mes premiers leads sous 48h  →
             </button>
             <p id="form-feedback" class="sm:col-span-2 text-center text-xs hidden" style="color:#52C77A"></p>
@@ -2045,10 +2085,10 @@ body {
 ═══════════════════════════════════════════ -->
 <footer class="border-t relative z-10 pt-16 pb-10" style="border-color:rgba(30,38,56,.6);background:var(--navy-950)">
   <div class="w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-14">
-      <div class="col-span-2 lg:col-span-2">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
+      <div class="col-span-2 md:col-span-2">
         <div class="flex items-center gap-3 mb-5">
-          <div class="w-5 h-5 rounded flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">
+          <div class="w-5 h-5 rounded flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
           </div>
           <span class="font-display font-bold tracking-tight" style="color:var(--cool-50)">SYSTÈME1-IMMO™</span>
@@ -2069,16 +2109,7 @@ body {
         <ul class="flex flex-col gap-3 text-sm" style="color:var(--cool-400)">
   <li><a href="/blog/" class="hover:text-white transition-colors">Blog</a></li>
                   <li><a href="#faq-s" class="hover:text-white transition-colors">FAQ</a></li>
-          <li><a href="https://systeme1-immo.vercel.app/login" class="hover:text-white transition-colors">Connexion</a></li>
           <li><a href="#rejoindre" class="hover:text-white transition-colors">Essai gratuit</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-sm font-semibold mb-4" style="color:var(--cool-50)">Légal</h3>
-        <ul class="flex flex-col gap-3 text-sm" style="color:var(--cool-400)">
-          <li><a href="https://systeme1-immo.vercel.app/mentions-legales" class="hover:text-white transition-colors">Mentions légales</a></li>
-          <li><a href="https://systeme1-immo.vercel.app/confidentialite" class="hover:text-white transition-colors">Confidentialité</a></li>
-          <li><a href="https://systeme1-immo.vercel.app/cgu" class="hover:text-white transition-colors">CGU/CGV</a></li>
         </ul>
       </div>
     </div>
@@ -2108,7 +2139,7 @@ body {
   const pos = new Float32Array(1500*3);
   for(let i=0;i<1500*3;i+=3){pos[i]=(Math.random()-.5)*200;pos[i+1]=(Math.random()-.5)*100-20;pos[i+2]=(Math.random()-.5)*200;}
   geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
-  const mat = new THREE.PointsMaterial({size:.5,color:0x4da3ff,transparent:true,opacity:.15,blending:THREE.AdditiveBlending});
+  const mat = new THREE.PointsMaterial({size:.5,color:0x5ba3e8,transparent:true,opacity:.15,blending:THREE.AdditiveBlending});
   const particles = new THREE.Points(geo,mat);
   scene.add(particles);
   let mx=0,my=0;
@@ -2148,7 +2179,7 @@ body {
       const panel=document.getElementById(`panel-${i}`);
       if(i<=step){
         stepEl&&(stepEl.style.opacity='1');
-        dot&&Object.assign(dot.style,{background:'var(--accent-blue)',boxShadow:'0 0 12px rgba(77,163,255,.8)'});
+        dot&&Object.assign(dot.style,{background:'var(--accent-blue)',boxShadow:'0 0 12px rgba(91,163,232,.8)'});
         title&&(title.style.color='var(--cool-50)');
       } else {
         stepEl&&(stepEl.style.opacity='.4');
@@ -2377,12 +2408,12 @@ body {
 (function(){
   const faqs=[
     {q:"Combien de temps avant mes premiers leads ?",a:"48h. C'est la moyenne. Certains agents reçoivent leur premier rendez-vous le soir de leur inscription. Avec ou sans base de contacts existante. Les 14 jours gratuits sont là précisément pour que vous le vérifiez vous-même — sans nous croire sur parole.",borderColor:"#52C77A",glow:"hsla(145,50%,55%,.08)"},
-    {q:"Je m'engage pour combien de temps ?",a:"Pour rien. Aucun engagement, aucune durée minimale, aucun préavis. Si Système1-Immo ne vous apporte pas de leads concrets, vous partez en 1 clic. Sans email, sans formulaire, sans justification. On préfère que vous restiez parce que ça marche. Pas parce que vous avez oublié d'annuler.",borderColor:"#4DA3FF",glow:"hsla(213,78%,69%,.08)"},
+    {q:"Je m'engage pour combien de temps ?",a:"Pour rien. Aucun engagement, aucune durée minimale, aucun préavis. Si Système1-Immo ne vous apporte pas de leads concrets, vous partez en 1 clic. Sans email, sans formulaire, sans justification. On préfère que vous restiez parce que ça marche. Pas parce que vous avez oublié d'annuler.",borderColor:"#5BA3E8",glow:"hsla(213,78%,69%,.08)"},
     {q:"Je pars de zéro. Aucune base de contacts. Ça marche ?",a:"Oui. C'est même le cas d'usage pour lequel le système a été pensé en priorité. Dès votre activation, le Sniper Web scrape LeBonCoin, SeLoger et PAP en continu. Vos premiers leads arrivent dans le CRM, qualifiés et prêts à être contactés. Vous démarrez à zéro. Le système, lui, démarre à fond.",borderColor:"#E8A838",glow:"hsla(37,78%,56%,.08)"},
     {q:"Je ne suis pas à l'aise avec les outils digitaux. C'est fait pour moi ?",a:"Entièrement. Il n'y a pas de code, pas de paramétrage, pas de formation. Votre adresse email et votre numéro WhatsApp — c'est tout ce qu'on vous demande. Des agents de 55 ans ont tout configuré seuls en moins de 10 minutes. Et si vous bloquez quelque part : le support répond en moins de 2h. Pas un chatbot — une vraie personne.",borderColor:"#52C77A",glow:"hsla(145,50%,55%,.08)"},
     {q:"J'ai déjà un CRM. Je dois tout recommencer ?",a:"Non. Import CSV en 2 minutes — toutes vos données sont là. Ce que vous ajoutez : heat score IA, scoring comportemental, campagnes automatiques, détection du moment de bascule. Tout ce que votre CRM actuel ne fait probablement pas. Vous ne perdez rien. Vous gagnez le reste.",borderColor:"#E8A838",glow:"hsla(37,78%,56%,.08)"},
     {q:"Est-ce que je suis livré seul avec l'outil après l'inscription ?",a:"Non. Un onboarding guidé vous attend dès votre première connexion. Puis le support répond en moins de 2h — même le soir, même le week-end. Pas un bot. Une vraie personne qui connaît le terrain immobilier. Vous ne serez jamais seul face à un écran que vous ne comprenez pas.",borderColor:"#E05555",glow:"hsla(0,68%,60%,.08)"},
-    {q:"Il y a d'autres outils de génération de leads. Pourquoi Système1-Immo ?",a:"Parce que les autres sont des outils marketing adaptés à l'immobilier. Système1-Immo a été construit pour l'immobilier — par quelqu'un qui a analysé 34 000 décisions de vendeurs sur 20 ans de terrain. La détection de la fenêtre des 48h. Le scoring comportemental. Les séquences neuro-timées. Ça n'existe dans aucun CRM généraliste. Dans aucun outil de pub Facebook. Ici seulement.",borderColor:"#4DA3FF",glow:"hsla(213,78%,69%,.08)"},
+    {q:"Il y a d'autres outils de génération de leads. Pourquoi Système1-Immo ?",a:"Parce que les autres sont des outils marketing adaptés à l'immobilier. Système1-Immo a été construit pour l'immobilier — par quelqu'un qui a analysé 34 000 décisions de vendeurs sur 20 ans de terrain. La détection de la fenêtre des 48h. Le scoring comportemental. Les séquences neuro-timées. Ça n'existe dans aucun CRM généraliste. Dans aucun outil de pub Facebook. Ici seulement.",borderColor:"#5BA3E8",glow:"hsla(213,78%,69%,.08)"},
     {q:"Mes données et celles de mes prospects sont en sécurité ?",a:"Hébergement en Europe. Chiffrement de bout en bout. Conformité RGPD complète. Vos données vous appartiennent. Vous les exportez ou les supprimez quand vous voulez, en 1 clic. Aucune revente. Aucun partage. Jamais.",borderColor:"var(--accent-blue)",glow:"hsla(213,78%,69%,.08)"},
   ];
   const container=document.getElementById('faq-container');
@@ -2435,12 +2466,12 @@ body {
   MODULES.forEach(m=>{
     const div=document.createElement('div');
     div.className='flex items-center gap-3';
-    div.innerHTML=`<div class="neu-inset w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(77,163,255,.06)">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(77,163,255,.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+    div.innerHTML=`<div class="neu-inset w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(91,163,232,.06)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(91,163,232,.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
     </div>
     <div class="flex-1 min-w-0">
       <span class="text-xs font-semibold block" style="color:rgba(228,231,236,.8)">${m.name}</span>
-      <span class="text-[10px] block leading-tight" style="color:rgba(152,162,179,.5)">${m.desc}</span>${m.benefit?`<span class="text-[10px] block leading-tight mt-0.5" style="color:rgba(77,163,255,.5)">${m.benefit}</span>`:''}
+      <span class="text-[10px] block leading-tight" style="color:rgba(152,162,179,.5)">${m.desc}</span>${m.benefit?`<span class="text-[10px] block leading-tight mt-0.5" style="color:rgba(91,163,232,.5)">${m.benefit}</span>`:''}
     </div>
     ${m.soon?`<span class="text-[9px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full" style="color:#E8A838;background:rgba(232,168,56,.08);border:1px solid rgba(232,168,56,.15)">Bientôt</span>`:''}
     <div class="w-9 h-5 rounded-full flex items-center px-0.5 flex-shrink-0" style="background:${m.on?'rgba(82,199,122,.7)':'rgba(30,38,56,.8)'}">
@@ -2453,22 +2484,22 @@ body {
 // ── Apps Grid Premium ──
 (function(){
   const TOOLS=[
-    {name:"ImmoScore",desc:"Diagnostic d'annonce",color:"#4DA3FF",icon:'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',replaces:"Mailchimp",price:"30€"},
+    {name:"ImmoScore",desc:"Diagnostic d'annonce",color:"#5BA3E8",icon:'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',replaces:"Mailchimp",price:"30€"},
     {name:"Scan Immo",desc:"Capture vendeurs",color:"#52C77A",icon:'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>',replaces:"Hubspot",price:"100€"},
     {name:"Estimateur",desc:"Estimation pro",color:"#52C77A",icon:'<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"/>',replaces:"Zillow",price:"25€"},
-    {name:"CRM",desc:"Pipeline + Heat Score",color:"#4DA3FF",icon:'<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>',replaces:"Salesforce",price:"150€"},
+    {name:"CRM",desc:"Pipeline + Heat Score",color:"#5BA3E8",icon:'<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>',replaces:"Salesforce",price:"150€"},
     {name:"Scraping Web",desc:"Import auto",color:"#E8A838",icon:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>',replaces:"Zapier",price:"25€"},
-    {name:"Campagnes",desc:"54 templates auto",color:"#4DA3FF",icon:'<path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>',replaces:"Sendinblue",price:"95€"},
+    {name:"Campagnes",desc:"54 templates auto",color:"#5BA3E8",icon:'<path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>',replaces:"Sendinblue",price:"95€"},
     {name:"WhatsApp Pro",desc:"IA conversationnelle",color:"#52C77A",icon:'<path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>',replaces:"WA Business",price:"40€"},
-    {name:"Messagerie IA",desc:"Qualification 24/7",color:"#4DA3FF",icon:'<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>',replaces:"Intercom",price:"60€"},
-    {name:"Landing Page",desc:"Votre vitrine perso",color:"#4DA3FF",icon:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',replaces:"Webflow",price:"30€"},
+    {name:"Messagerie IA",desc:"Qualification 24/7",color:"#5BA3E8",icon:'<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/>',replaces:"Intercom",price:"60€"},
+    {name:"Landing Page",desc:"Votre vitrine perso",color:"#5BA3E8",icon:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',replaces:"Webflow",price:"30€"},
     {name:"Étude marché",desc:"Rapport IA quartier",color:"#E8A838",icon:'<path d="M18 20V10M12 20V4M6 20v-6"/>',replaces:"Statista",price:"90€"},
     {name:"GMB & Réseaux",desc:"Posts quotidiens",color:"#52C77A",icon:'<path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/>',replaces:"Localranker",price:"30€"},
     {name:"DPE",desc:"Diagnostic énergie",color:"#E8A838",icon:'<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>',replaces:"DocuSign",price:"20€",soon:true},
-    {name:"Portail Vendeur",desc:"Espace client dédié",color:"#4DA3FF",icon:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>',replaces:"Dropbox",price:"15€",soon:true},
+    {name:"Portail Vendeur",desc:"Espace client dédié",color:"#5BA3E8",icon:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>',replaces:"Dropbox",price:"15€",soon:true},
     {name:"Financement",desc:"Simulation prêt",color:"#E8A838",icon:'<circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 100 4h4a2 2 0 110 4H8M12 18V6"/>',replaces:"Stripe",price:"50€",soon:true},
-    {name:"Assurance",desc:"Protection",color:"#4DA3FF",icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',replaces:"AXA Pro",price:"45€",soon:true},
-    {name:"Réseaux Sociaux",desc:"Posts automatisés",color:"#4DA3FF",icon:'<path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>',replaces:"Hootsuite",price:"35€",soon:true},
+    {name:"Assurance",desc:"Protection",color:"#5BA3E8",icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',replaces:"AXA Pro",price:"45€",soon:true},
+    {name:"Réseaux Sociaux",desc:"Posts automatisés",color:"#5BA3E8",icon:'<path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>',replaces:"Hootsuite",price:"35€",soon:true},
   ];
   const grid=document.getElementById('apps-grid');
   let isFlipped=false;
@@ -2561,13 +2592,13 @@ body {
   }
   function render(){
     let inner='';
-    if(state==='input') inner=`<div class="flex gap-2 mb-4"><input id="is-url" type="text" value="${url}" placeholder="Collez l'URL de votre annonce (LeBonCoin, SeLoger...)" class="flex-1 rounded-lg px-3.5 py-2.5 text-sm outline-none transition-colors" style="background:rgba(30,38,56,.4);border:1px solid rgba(30,38,56,.8);color:var(--cool-50);font-family:Inter,sans-serif"><button id="is-analyze" class="px-4 py-2.5 rounded-lg font-semibold text-xs text-white flex items-center gap-1.5 whitespace-nowrap" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))" ${!url?'disabled style="opacity:.4;cursor:not-allowed"':''}>Analyser</button></div><div class="text-center py-6 text-sm" style="color:rgba(152,162,179,.4)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="mx-auto mb-2" style="opacity:.3"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Collez une URL d'annonce pour démarrer l'analyse</div>`;
-    else if(state==='loading') inner=`<div class="flex flex-col items-center py-8 gap-4"><div style="width:40px;height:40px;border:3px solid rgba(77,163,255,.2);border-top:3px solid var(--accent-blue);border-radius:50%;animation:spin 1s linear infinite"></div><p class="text-sm" style="color:var(--cool-400);animation:pulse 2s infinite">${MSGS[loadIdx]}</p></div>`;
+    if(state==='input') inner=`<div class="flex gap-2 mb-4"><input id="is-url" type="text" value="${url}" placeholder="Collez l'URL de votre annonce (LeBonCoin, SeLoger...)" class="flex-1 rounded-lg px-3.5 py-2.5 text-sm outline-none transition-colors" style="background:rgba(30,38,56,.4);border:1px solid rgba(30,38,56,.8);color:var(--cool-50);font-family:Geist,sans-serif"><button id="is-analyze" class="px-4 py-2.5 rounded-lg font-semibold text-xs text-white flex items-center gap-1.5 whitespace-nowrap" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))" ${!url?'disabled style="opacity:.4;cursor:not-allowed"':''}>Analyser</button></div><div class="text-center py-6 text-sm" style="color:rgba(152,162,179,.4)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" class="mx-auto mb-2" style="opacity:.3"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Collez une URL d'annonce pour démarrer l'analyse</div>`;
+    else if(state==='loading') inner=`<div class="flex flex-col items-center py-8 gap-4"><div style="width:40px;height:40px;border:3px solid rgba(91,163,232,.2);border-top:3px solid var(--accent-blue);border-radius:50%;animation:spin 1s linear infinite"></div><p class="text-sm" style="color:var(--cool-400);animation:pulse 2s infinite">${MSGS[loadIdx]}</p></div>`;
     else inner=`<div class="flex flex-col gap-4">${gauge(62)}<div class="rounded-lg border p-4" style="border-color:rgba(232,168,56,.25);background:rgba(232,168,56,.07)"><div class="flex items-start gap-2.5"><span style="color:#E8A838">⚠️</span><div><p class="text-sm font-semibold mb-1" style="color:var(--cool-50)">Point d'amélioration détecté</p><p class="text-xs leading-relaxed" style="color:var(--cool-400)">Votre description manque de structure émotionnelle elle liste des caractéristiques au lieu de projeter l'acheteur dans sa future vie.</p></div></div></div>
     <div class="relative"><div class="grid grid-cols-4 gap-2" style="filter:blur(4px);pointer-events:none">${AXES.map(a=>`<div class="rounded-lg p-3 text-center" style="background:rgba(255,255,255,.03);border:1px solid rgba(30,38,56,.6)"><div class="text-[10px] mb-1" style="color:rgba(152,162,179,.5)">${a}</div><div class="text-base font-bold" style="color:var(--cool-50)">${Math.floor(Math.random()*40+40)}</div></div>`).join('')}</div>
-    ${!emailDone?`<div class="absolute inset-0 flex flex-col items-center justify-center rounded-lg" style="background:rgba(11,16,32,.85);backdrop-filter:blur(4px)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round" class="mb-2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><p class="text-sm font-semibold mb-3" style="color:var(--cool-50)">Débloquez l'analyse complète (8 axes)</p><div class="flex gap-2 w-full max-w-[300px] mb-2"><input id="is-email" type="email" placeholder="Votre email professionnel" class="flex-1 rounded-lg px-3 py-2 text-xs outline-none" style="background:rgba(30,38,56,.5);border:1px solid rgba(30,38,56,.8);color:var(--cool-50);font-family:Inter,sans-serif"><button id="is-email-submit" class="px-3 py-2 rounded-lg font-semibold text-xs text-white whitespace-nowrap" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-indigo))">Recevoir</button></div><p class="text-[11px]" style="color:rgba(152,162,179,.4)">🔒 Gratuit. Aucun spam.</p></div>`:`<div class="absolute inset-0 flex flex-col items-center justify-center rounded-lg" style="background:rgba(11,16,32,.85);backdrop-filter:blur(4px)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2" stroke-linecap="round" class="mb-2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg><p class="font-semibold" style="color:var(--cool-50)">Rapport envoyé !</p></div>`}
+    ${!emailDone?`<div class="absolute inset-0 flex flex-col items-center justify-center rounded-lg" style="background:rgba(11,16,32,.85);backdrop-filter:blur(4px)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round" class="mb-2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><p class="text-sm font-semibold mb-3" style="color:var(--cool-50)">Débloquez l'analyse complète (8 axes)</p><div class="flex gap-2 w-full max-w-[300px] mb-2"><input id="is-email" type="email" placeholder="Votre email professionnel" class="flex-1 rounded-lg px-3 py-2 text-xs outline-none" style="background:rgba(30,38,56,.5);border:1px solid rgba(30,38,56,.8);color:var(--cool-50);font-family:Geist,sans-serif"><button id="is-email-submit" class="px-3 py-2 rounded-lg font-semibold text-xs text-white whitespace-nowrap" style="background:linear-gradient(135deg,var(--accent-blue),var(--primary-dark))">Recevoir</button></div><p class="text-[11px]" style="color:rgba(152,162,179,.4)">🔒 Gratuit. Aucun spam.</p></div>`:`<div class="absolute inset-0 flex flex-col items-center justify-center rounded-lg" style="background:rgba(11,16,32,.85);backdrop-filter:blur(4px)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2" stroke-linecap="round" class="mb-2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg><p class="font-semibold" style="color:var(--cool-50)">Rapport envoyé !</p></div>`}
     </div></div>`;
-    cont.innerHTML=`<div class="flex items-center gap-3 mb-5"><div class="neu-inset w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(77,163,255,.08)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div><h3 class="font-display text-lg font-bold" style="color:var(--cool-50)">ImmoScore™</h3><p class="text-xs" style="color:rgba(152,162,179,.5)">Analysez n'importe quelle annonce</p></div></div>
+    cont.innerHTML=`<div class="flex items-center gap-3 mb-5"><div class="neu-inset w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(91,163,232,.08)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="1.6" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div><h3 class="font-display text-lg font-bold" style="color:var(--cool-50)">ImmoScore™</h3><p class="text-xs" style="color:rgba(152,162,179,.5)">Analysez n'importe quelle annonce</p></div></div>
     <div class="rounded-xl p-5 mb-4" style="background:rgba(7,11,20,.5);border:1px solid rgba(30,38,56,.6)">${inner}</div>
     <p class="text-sm leading-relaxed" style="color:var(--cool-400)">L'IA analyse les photos, le texte, le pricing. Elle score 8 axes neurosciences et identifie ce qui bloque la décision de l'acheteur.</p>`;
     // Events
@@ -2633,7 +2664,7 @@ body {
       inner=`<div class="flex flex-col gap-4"><div class="flex flex-col items-center">${gauge(sc)}<p class="text-sm font-semibold mt-2" style="color:var(--cool-50)">Votre score de vente</p><p class="text-xs" style="color:var(--cool-400)">${sc>=60?"Bon potentiel, mais des axes à optimiser":"Plusieurs zones de risque identifiées"}</p></div>
       <div class="rounded-lg border p-3" style="border-color:rgba(232,168,56,.25);background:rgba(232,168,56,.07)"><div class="flex items-start gap-2"><span style="color:#E8A838">⚠️</span><div><p class="text-xs font-semibold mb-0.5" style="color:var(--cool-50)">Zone de risque détectée</p><p class="text-[11px] leading-relaxed" style="color:var(--cool-400)">Votre stratégie repose trop sur l'intuition sans système mesurable, votre CA reste imprévisible.</p></div></div></div>
       <div class="relative"><div class="grid grid-cols-4 gap-1.5" style="filter:blur(4px);pointer-events:none">${ZONES.map(z=>`<div class="rounded-lg p-2 text-center" style="background:rgba(255,255,255,.03);border:1px solid rgba(30,38,56,.5)"><div class="text-base mb-0.5">${z.icon}</div><div class="text-[9px] leading-tight" style="color:rgba(152,162,179,.4)">${z.label}</div><div class="text-sm font-bold mt-0.5" style="color:var(--cool-50)">${Math.floor(Math.random()*35+30)}</div></div>`).join('')}</div>
-      ${!emailDone?`<div class="absolute inset-0 flex flex-col items-center justify-center rounded-lg" style="background:rgba(11,16,32,.85);backdrop-filter:blur(4px)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="1.6" stroke-linecap="round" class="mb-2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><p class="text-xs font-semibold mb-2 text-center" style="color:var(--cool-50)">Vous voulez aller plus loin ?<br>Débloquez l'analyse des 7 zones.</p><div class="flex gap-2 w-full max-w-[280px] mb-1.5"><input id="scan-email" type="email" placeholder="Votre email pro" class="flex-1 rounded-lg px-3 py-2 text-[11px] outline-none" style="background:rgba(30,38,56,.5);border:1px solid rgba(30,38,56,.8);color:var(--cool-50);font-family:Inter,sans-serif"><button id="scan-email-submit" class="px-3 py-2 rounded-lg font-semibold text-[11px] whitespace-nowrap" style="background:rgba(82,199,122,.08);border:1px solid #52C77A;color:#52C77A">Recevoir</button></div><p class="text-[10px]" style="color:rgba(152,162,179,.4)">🔒 Gratuit · Aucun spam</p></div>`:`<div class="absolute inset-0 flex flex-col items-center justify-center rounded-lg" style="background:rgba(11,16,32,.85);backdrop-filter:blur(4px)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2" stroke-linecap="round" class="mb-2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg><p class="font-semibold" style="color:var(--cool-50)">Rapport envoyé !</p></div>`}
+      ${!emailDone?`<div class="absolute inset-0 flex flex-col items-center justify-center rounded-lg" style="background:rgba(11,16,32,.85);backdrop-filter:blur(4px)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="1.6" stroke-linecap="round" class="mb-2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><p class="text-xs font-semibold mb-2 text-center" style="color:var(--cool-50)">Vous voulez aller plus loin ?<br>Débloquez l'analyse des 7 zones.</p><div class="flex gap-2 w-full max-w-[280px] mb-1.5"><input id="scan-email" type="email" placeholder="Votre email pro" class="flex-1 rounded-lg px-3 py-2 text-[11px] outline-none" style="background:rgba(30,38,56,.5);border:1px solid rgba(30,38,56,.8);color:var(--cool-50);font-family:Geist,sans-serif"><button id="scan-email-submit" class="px-3 py-2 rounded-lg font-semibold text-[11px] whitespace-nowrap" style="background:rgba(82,199,122,.08);border:1px solid #52C77A;color:#52C77A">Recevoir</button></div><p class="text-[10px]" style="color:rgba(152,162,179,.4)">🔒 Gratuit · Aucun spam</p></div>`:`<div class="absolute inset-0 flex flex-col items-center justify-center rounded-lg" style="background:rgba(11,16,32,.85);backdrop-filter:blur(4px)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="2" stroke-linecap="round" class="mb-2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg><p class="font-semibold" style="color:var(--cool-50)">Rapport envoyé !</p></div>`}
       </div></div>`;
     }
     cont.innerHTML=`<div class="flex items-center gap-3 mb-5"><div class="neu-inset w-11 h-11 rounded-xl flex items-center justify-center" style="background:rgba(82,199,122,.08)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#52C77A" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div><div><h3 class="font-display text-lg font-bold" style="color:var(--cool-50)">Scan Immo™</h3><p class="text-xs" style="color:rgba(152,162,179,.5)">Le diagnostic qui capture vos vendeurs</p></div></div>
