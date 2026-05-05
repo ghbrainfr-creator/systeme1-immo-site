@@ -30,25 +30,6 @@
           "value": "public, max-age=86400"
         }
       ]
-    },
-    {
-      "source": "/blog/(.*)\\.html",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, stale-while-revalidate=86400"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/blog",
-      "destination": "/blog/index.html"
-    },
-    {
-      "source": "/blog/",
-      "destination": "/blog/index.html"
     }
   ]
 }
