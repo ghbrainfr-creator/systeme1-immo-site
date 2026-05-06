@@ -796,7 +796,6 @@
       <a href="#demo" class="hover:text-white transition relative group">Démo<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
       <a href="#pages" class="hover:text-white transition relative group">Pages & outils<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
       <a href="#dashboard" class="hover:text-white transition relative group">Back-office<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
-      <a href="#pricing" class="hover:text-white transition relative group">Tarifs<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
     </div>
     <a href="#cta-final" class="btn-primary magnetic ripple px-4 py-2 text-sm">Essayer gratuitement</a>
   </div>
@@ -854,10 +853,6 @@
         <a href="#demo" class="btn-primary magnetic ripple px-9 py-4 text-base">
           Voir Site Agent en démo live
           <iconify-icon icon="tabler:arrow-right" width="18" height="18" style="color:white"></iconify-icon>
-        </a>
-        <a href="#pricing" class="btn-secondary px-7 py-4 text-sm">
-          <iconify-icon icon="tabler:currency-euro" width="14" height="14"></iconify-icon>
-          Voir les tarifs
         </a>
       </div>
 
@@ -1105,7 +1100,7 @@
     </div>
 
     <div class="mt-12 text-center reveal">
-      <a href="#pricing" class="btn-primary magnetic ripple px-8 py-4">
+      <a href="#cta-final" class="btn-primary magnetic ripple px-8 py-4">
         Je veux une vitrine qui travaille quand je ne travaille pas
         <iconify-icon icon="tabler:arrow-right" width="18" height="18" style="color:white"></iconify-icon>
       </a>
@@ -1668,7 +1663,7 @@
         À votre place, le choix est simple.<br>
         <span style="color:var(--cool-400)">Vos prospects attendent. Leur décision est déjà en route.</span>
       </p>
-      <a href="#pricing" class="btn-primary magnetic ripple px-10 py-5 text-lg">
+      <a href="#cta-final" class="btn-primary magnetic ripple px-10 py-5 text-lg">
         Je passe du côté machine à leads
         <iconify-icon icon="tabler:arrow-right" width="20" height="20" style="color:white"></iconify-icon>
       </a>
@@ -1753,108 +1748,6 @@
         <p class="text-sm card-content-fill" style="color:var(--cool-400)">Un vrai humain vous répond rapidement, pas un bot IA. Onboarding personnalisé inclus dès l'inscription.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing" class="py-28 md:py-40 relative bg-gradient-section-2">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center mb-12 reveal">
-      <span class="badge-velox mb-4">TARIFS</span>
-      <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">Un prix clair.<br><span class="gradient-text">Sans engagement.</span></h2>
-
-      <!-- Price anchor (comparison CRO) -->
-      <div class="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-3 rounded-xl mt-6 mb-4" style="background:rgba(15,21,35,.6); border:1px solid rgba(91,163,232,.2)">
-        <span class="text-sm" style="color:var(--cool-400)">À comparer avec :</span>
-        <span class="text-sm line-through" style="color:var(--cool-500)">Agence web <strong>3 000€</strong> + 15€/mois</span>
-        <span class="w-1 h-1 rounded-full" style="background:var(--cool-500)"></span>
-        <span class="text-sm line-through" style="color:var(--cool-500)">Freelance <strong>1 500€</strong></span>
-        <span class="text-sm" style="color:var(--success)"><strong>→ Nous : à partir de 49€/mois, tout inclus</strong></span>
-      </div>
-
-      <p class="text-lg mt-4" style="color:var(--cool-400)">14 jours gratuits sur tous les plans. Sans CB. Annulation en 1 clic.</p>
-    </div>
-
-    <div class="flex items-center justify-center gap-4 mb-12 reveal">
-      <span class="text-sm" style="color:var(--cool-400)">Mensuel</span>
-      <button id="priceToggle" class="toggle toggle-bg relative w-16 h-8 rounded-full p-1" onclick="togglePricing()">
-        <span class="toggle-thumb block w-6 h-6 rounded-full" style="background:var(--accent-blue)"></span>
-      </button>
-      <span class="text-sm" style="color:var(--cool-400)">Annuel <span class="font-mono text-xs ml-1" style="color:var(--success)">−20%</span></span>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-
-      <div class="neu-card tilt p-8 reveal">
-        <div class="mb-6">
-          <div class="text-xs font-mono tracking-wider mb-2" style="color:var(--cool-500)">STARTER</div>
-          <h3 class="font-display text-2xl font-bold mb-1" style="color:var(--cool-50)">Je teste</h3>
-          <p class="text-sm" style="color:var(--cool-400)">Pour l'agent qui découvre.</p>
-        </div>
-        <div class="mb-6">
-          <span class="font-display text-6xl font-bold" style="color:var(--cool-50)" data-price-monthly="49" data-price-annual="39">49</span>
-          <span style="color:var(--cool-400)">€/mois</span>
-          <div class="text-xs mt-1 hidden" id="starter-annual-hint" style="color:var(--cool-500)">Soit 468€/an au lieu de 588€</div>
-        </div>
-        <a href="/signup?plan=starter" class="btn-secondary block text-center py-3 mb-6 justify-center">Essayer 14 jours</a>
-        <ul class="space-y-3 text-sm" style="color:var(--cool-400)">
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Accueil (11 blocs) + 2 pages</li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>100 leads/mois</li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Sous-domaine <span class="font-mono" style="color:var(--accent-blue)">.systeme1-immo.fr</span></li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Guide vendeur · Newsletter IA</li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Votre nom de domaine (au choix)</li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>CRM basique</li>
-        </ul>
-      </div>
-
-      <div class="neu-card card-glow tilt p-8 reveal relative md:scale-[1.04] z-10" style="border: 2px solid rgba(91,163,232,.55); transition-delay:0.1s; box-shadow: 0 30px 60px -20px rgba(91,163,232,.35), 0 0 0 1px rgba(91,163,232,.15) inset">
-        <div class="absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-bold px-5 py-1.5 rounded-full font-mono shadow-xl" style="background:linear-gradient(90deg,var(--accent-blue),var(--accent-purple)); color:white; box-shadow:0 12px 32px -8px rgba(91,163,232,.7); white-space: nowrap; letter-spacing:0.5px">⟡ CHOIX RECOMMANDÉ</div>
-        <div class="mb-6 mt-2">
-          <div class="text-xs font-mono tracking-wider mb-2" style="color:var(--accent-blue)">PRO</div>
-          <h3 class="font-display text-2xl font-bold mb-1" style="color:var(--cool-50)">J'accélère</h3>
-          <p class="text-sm" style="color:var(--cool-400)">Pour l'agent actif qui veut croître.</p>
-        </div>
-        <div class="mb-6">
-          <span class="font-display text-6xl font-bold" style="color:var(--cool-50)" data-price-monthly="99" data-price-annual="79">99</span>
-          <span style="color:var(--cool-400)">€/mois</span>
-          <div class="text-xs mt-1 hidden" id="pro-annual-hint" style="color:var(--cool-500)">Soit 948€/an au lieu de 1 188€</div>
-        </div>
-        <a href="/signup?plan=pro" class="btn-primary magnetic ripple block text-center py-3 mb-6 justify-center">Essayer 14 jours</a>
-        <ul class="space-y-3 text-sm">
-          <li class="flex gap-2 items-start" style="color:var(--cool-50)"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--accent-blue); flex-shrink:0; margin-top:2px"></iconify-icon><strong>Tout Starter +</strong></li>
-          <li class="flex gap-2 items-start" style="color:var(--cool-400)"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><strong style="color:var(--cool-50)">Toutes les pages</strong> activables</li>
-          <li class="flex gap-2 items-start" style="color:var(--cool-400)"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><strong style="color:var(--cool-50)">Roue des Leads</strong> exclusive</li>
-          <li class="flex gap-2 items-start" style="color:var(--cool-400)"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Leads illimités</li>
-          <li class="flex gap-2 items-start" style="color:var(--cool-400)"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>CRM complet + relances auto</li>
-          <li class="flex gap-2 items-start" style="color:var(--cool-400)"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Scan Immo™ & ImmoScore™</li>
-          <li class="flex gap-2 items-start" style="color:var(--cool-400)"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Support prioritaire</li>
-        </ul>
-      </div>
-
-      <div class="neu-card tilt p-8 reveal" style="transition-delay:0.2s">
-        <div class="mb-6">
-          <div class="text-xs font-mono tracking-wider mb-2" style="color:var(--cool-500)">AGENCE</div>
-          <h3 class="font-display text-2xl font-bold mb-1" style="color:var(--cool-50)">On scale</h3>
-          <p class="text-sm" style="color:var(--cool-400)">Pour les équipes de 3 agents et +.</p>
-        </div>
-        <div class="mb-6">
-          <span class="font-display text-6xl font-bold" style="color:var(--cool-50)" data-price-monthly="199" data-price-annual="159">199</span>
-          <span style="color:var(--cool-400)">€/mois</span>
-          <div class="text-xs mt-1 hidden" id="agence-annual-hint" style="color:var(--cool-500)">Soit 1 908€/an au lieu de 2 388€</div>
-        </div>
-        <a href="/signup?plan=agence" class="btn-secondary block text-center py-3 mb-6 justify-center">Essayer 14 jours</a>
-        <ul class="space-y-3 text-sm" style="color:var(--cool-400)">
-          <li class="flex gap-2 items-start" style="color:var(--cool-50)"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--accent-blue); flex-shrink:0; margin-top:2px"></iconify-icon><strong>Tout Pro +</strong></li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Jusqu'à 5 agents inclus</li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Dashboard manager</li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Branding agence</li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Partage de leads en équipe</li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Onboarding dédié</li>
-          <li class="flex gap-2 items-start"><iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon>Revue stratégique semestrielle</li>
-        </ul>
-      </div>
-    </div>
-    <p class="text-center text-sm mt-10 reveal" style="color:var(--cool-500)">+20€/agent supplémentaire au-delà de 5 · <a href="#" class="hover:underline" style="color:var(--accent-blue)">Plus de 10 agents ? Parlons-nous</a></p>
   </div>
 </section>
 
@@ -1961,7 +1854,7 @@
       <p class="text-lg max-w-2xl mx-auto mb-10" style="color:var(--cool-400)">
         Rejoignez les agents qui ont fait travailler leur vitrine.
       </p>
-      <a href="#pricing" class="btn-primary magnetic ripple px-10 py-5 text-lg">
+      <a href="#cta-final" class="btn-primary magnetic ripple px-10 py-5 text-lg">
         Créer ma vitrine maintenant
         <iconify-icon icon="tabler:arrow-right" width="20" height="20" style="color:white"></iconify-icon>
       </a>
@@ -1988,7 +1881,6 @@
         <li><a href="#demo" class="hover:text-white transition">Démo</a></li>
         <li><a href="#pages" class="hover:text-white transition">Pages & outils</a></li>
         <li><a href="#dashboard" class="hover:text-white transition">Back-office</a></li>
-        <li><a href="#pricing" class="hover:text-white transition">Tarifs</a></li>
       </ul>
     </div>
     <div>
@@ -2631,24 +2523,6 @@
   /* ============ LIVE TOAST HERO (removed in V22.1) ============ */
   // Mockup browser Hero retiré (redondant avec section Démo). Guard pour éviter erreurs.
 
-  /* ============ PRICING TOGGLE ============ */
-  function togglePricing() {
-    const toggle = document.getElementById('priceToggle');
-    const isAnnual = toggle.classList.toggle('annual');
-    document.querySelectorAll('[data-price-monthly]').forEach(el => {
-      const target = isAnnual ? el.dataset.priceAnnual : el.dataset.priceMonthly;
-      el.style.transform = 'translateY(-10px)'; el.style.opacity = '0';
-      setTimeout(() => {
-        el.textContent = target;
-        el.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-        el.style.transform = 'translateY(0)'; el.style.opacity = '1';
-      }, 200);
-    });
-    ['starter','pro','agence'].forEach(id => {
-      const hint = document.getElementById(id + '-annual-hint');
-      if (hint) hint.classList.toggle('hidden', !isAnnual);
-    });
-  }
 
   // CSS keyframe for toast-in
   const style = document.createElement('style');
