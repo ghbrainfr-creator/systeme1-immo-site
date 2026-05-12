@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>NeuroRecrut Immo™ : ton profil d'agent en 5 minutes</title>
+<meta name="description" content="Découvre ton archétype d'agent immobilier indépendant. Diagnostic neuro-comportemental gratuit, conçu sur les neurosciences appliquées par Nordine Mouaouia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ========================================================================
+   NEURORECRUT IMMO — Design System
+   Charte SYSTEME1-IMMO : GH Iris / GH Cyan
+   ======================================================================== */
+:root {
+  --iris: #010a30;
+  --iris-2: #050f3a;
+  --iris-3: #0a1648;
+  --cyan: #006fff;
+  --cyan-soft: #4a9bff;
+  --cyan-glow: rgba(0, 111, 255, 0.35);
+  --warm: #ff8a3d;
+  --warm-soft: #ffb37a;
+  --green: #16e0a3;
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.72);
+  --ink-mute: rgba(255, 255, 255, 0.48);
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --display: 'Syne', sans-serif;
+  --body: 'DM Sans', sans-serif;
+  --hand: 'Caveat', cursive;
+  --r: 18px;
+  --r-sm: 12px;
+  --r-lg: 28px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body {
+  background: var(--iris);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(0, 111, 255, 0.18), transparent 42%),
+    radial-gradient(circle at 82% 78%, rgba(255, 138, 61, 0.10), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(74, 155, 255, 0.06), transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.025 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  pointer-events: none; z-index: 1; opacity: 0.5; mix-blend-mode: overlay;
+}
+
+.app { position: relative; z-index: 2; max-width: 560px; margin: 0 auto; padding: 24px 20px 80px; min-height: 100vh; min-height: 100dvh; }
+
+/* ===== HEADER ===== */
+.header { display: flex; align-items: center; justify-content: space-between; padding: 8px 4px 28px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: -0.01em; }
+.brand-mark { width: 32px; height: 32px; border-radius: 9px; background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-soft) 100%); display: grid; place-items: center; box-shadow: 0 0 24px var(--cyan-glow); position: relative; }
+.brand-mark::before { content: ''; position: absolute; inset: 6px; border: 1.5px solid rgba(255,255,255,0.85); border-radius: 4px; transform: rotate(-12deg); }
+.brand-mark::after { content: ''; position: absolute; inset: 11px; background: var(--ink); border-radius: 50%; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.05; }
+.brand-text small { font-family: var(--body); font-weight: 500; font-size: 9.5px; color: var(--ink-mute); letter-spacing: 0.16em; text-transform: uppercase; margin-top: 2px; }
+.progress-pill { font-family: var(--body); font-weight: 600; font-size: 11px; color: var(--ink-soft); padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 100px; background: rgba(255,255,255,0.03); }
+
+/* ===== PROGRESS BAR ===== */
+.progress { height: 3px; background: var(--line); border-radius: 100px; overflow: hidden; margin-bottom: 32px; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--cyan) 0%, var(--warm) 100%); border-radius: 100px; transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 0 12px var(--cyan-glow); }
+
+/* ===== SCREENS ===== */
+.screen { display: none; animation: enter 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.screen.active { display: block; }
+@keyframes enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+  to { opacity: 0; transform: translateY(-8px); }
+}
+.screen.exiting { animation: fadeOut 0.3s forwards; }
+
+/* ===== TYPOGRAPHY ===== */
+.eyebrow { display: inline-block; font-family: var(--body); font-weight: 600; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan-soft); padding: 7px 14px; border: 1px solid rgba(0, 111, 255, 0.3); border-radius: 100px; background: rgba(0, 111, 255, 0.08); margin-bottom: 22px; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 8vw, 40px); line-height: 1.04; letter-spacing: -0.025em; margin-bottom: 18px; }
+h1 .accent { color: var(--warm); display: inline; }
+h1 .accent-cyan { background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-soft) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+h2 { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 6.5vw, 30px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; }
+.lead { font-size: 16px; line-height: 1.55; color: var(--ink-soft); margin-bottom: 28px; }
+.lead strong { color: var(--ink); font-weight: 600; }
+
+/* ===== CARDS ===== */
+.card { background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid var(--line-strong); border-radius: var(--r); padding: 22px; margin-bottom: 14px; backdrop-filter: blur(8px); }
+.card-q { background: linear-gradient(180deg, rgba(0,111,255,0.06) 0%, rgba(0,111,255,0.01) 100%); border: 1px solid rgba(0, 111, 255, 0.18); }
+
+/* ===== OPTIONS ===== */
+.option { display: block; width: 100%; text-align: left; padding: 18px 20px; margin-bottom: 10px; background: rgba(255,255,255,0.03); border: 1.5px solid var(--line-strong); border-radius: var(--r-sm); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.4; cursor: pointer; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; }
+.option::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: linear-gradient(90deg, var(--cyan) 0%, transparent 100%); opacity: 0.15; transition: width 0.4s ease; }
+.option:hover { border-color: rgba(0, 111, 255, 0.4); background: rgba(0,111,255,0.05); transform: translateY(-1px); }
+.option:hover::before { width: 100%; }
+.option:active { transform: scale(0.985); }
+.option.selected { border-color: var(--cyan); background: rgba(0, 111, 255, 0.12); box-shadow: 0 0 0 3px rgba(0, 111, 255, 0.18), 0 0 32px rgba(0, 111, 255, 0.12); }
+.option .option-label { font-weight: 500; }
+.option .option-tag { font-family: var(--body); font-size: 11px; color: var(--ink-mute); margin-top: 3px; letter-spacing: 0.04em; }
+
+/* ===== FEEDBACK BUBBLE ===== */
+.feedback { background: linear-gradient(135deg, rgba(0,111,255,0.12) 0%, rgba(255,138,61,0.06) 100%); border: 1px solid rgba(0, 111, 255, 0.25); border-radius: var(--r); padding: 18px 20px; margin: 20px 0 6px; display: none; position: relative; }
+.feedback.show { display: block; animation: feedbackIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes feedbackIn {
+  0% { opacity: 0; transform: translateY(8px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.feedback-icon { display: inline-block; width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-soft) 100%); color: white; font-size: 14px; line-height: 26px; text-align: center; margin-right: 10px; vertical-align: middle; box-shadow: 0 0 14px var(--cyan-glow); }
+.feedback-text { display: inline; font-size: 14.5px; line-height: 1.5; color: var(--ink); font-style: italic; }
+.feedback-text strong { font-style: normal; color: var(--cyan-soft); font-weight: 600; }
+
+/* ===== BUTTON ===== */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 17px 22px; background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-soft) 100%); color: white; font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: 0.005em; border: none; border-radius: var(--r-sm); cursor: pointer; transition: all 0.25s ease; box-shadow: 0 8px 24px rgba(0, 111, 255, 0.32), inset 0 1px 0 rgba(255,255,255,0.18); margin-top: 18px; position: relative; overflow: hidden; }
+.btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent); transition: left 0.6s; }
+.btn:hover::after { left: 100%; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(0, 111, 255, 0.42), inset 0 1px 0 rgba(255,255,255,0.18); }
+.btn:active { transform: translateY(0) scale(0.99); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.btn-warm { background: linear-gradient(135deg, var(--warm) 0%, var(--warm-soft) 100%); box-shadow: 0 8px 24px rgba(255, 138, 61, 0.32), inset 0 1px 0 rgba(255,255,255,0.18); }
+.btn-warm:hover { box-shadow: 0 14px 32px rgba(255, 138, 61, 0.42); }
+.btn-ghost { background: transparent; border: 1.5px solid var(--line-strong); color: var(--ink-soft); box-shadow: none; }
+.btn-ghost:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-1px); box-shadow: none; }
+.btn-pulse { animation: pulse 1.6s ease-in-out 3; }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(0, 111, 255, 0.32), inset 0 1px 0 rgba(255,255,255,0.18), 0 0 0 0 rgba(0, 111, 255, 0.5); }
+  50% { box-shadow: 0 8px 24px rgba(0, 111, 255, 0.32), inset 0 1px 0 rgba(255,255,255,0.18), 0 0 0 14px rgba(0, 111, 255, 0); }
+}
+
+/* ===== INTRO SCREEN ===== */
+.intro-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+.meta-chip { padding: 8px 12px; background: rgba(255,255,255,0.04); border: 1px solid var(--line-strong); border-radius: 100px; font-size: 12px; color: var(--ink-soft); }
+.meta-chip strong { color: var(--ink); font-weight: 600; }
+
+.signature { display: flex; align-items: center; gap: 12px; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+.sig-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--warm) 0%, var(--cyan) 100%); display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 14px; color: white; }
+.sig-text { line-height: 1.25; }
+.sig-text strong { font-family: var(--display); font-size: 14px; }
+.sig-text small { display: block; font-size: 11.5px; color: var(--ink-mute); }
+
+/* ===== PERCEPTION TEST ===== */
+.scene { position: relative; width: 100%; aspect-ratio: 4 / 3; background: linear-gradient(160deg, #1a1f3a 0%, #0a1230 100%); border-radius: var(--r); overflow: hidden; margin: 18px 0; border: 1px solid var(--line-strong); }
+.scene-overlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(1, 10, 48, 0.86); z-index: 10; backdrop-filter: blur(2px); transition: opacity 0.4s; }
+.scene-overlay.hidden { opacity: 0; pointer-events: none; }
+.scene-overlay-content { text-align: center; padding: 24px; }
+.countdown { font-family: var(--display); font-size: 64px; font-weight: 800; color: var(--cyan-soft); line-height: 1; margin-bottom: 12px; text-shadow: 0 0 32px var(--cyan-glow); }
+.scene-room { position: absolute; inset: 0; padding: 24px; }
+.scene-item { position: absolute; font-size: 22px; transition: transform 0.3s; }
+.scene-item.anomaly { filter: drop-shadow(0 0 8px rgba(255, 138, 61, 0.5)); }
+.scene-floor { position: absolute; bottom: 0; left: 0; right: 0; height: 35%; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%); }
+.scene-wall { position: absolute; top: 0; left: 0; right: 0; height: 65%; background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%); border-bottom: 1px solid var(--line); }
+
+/* ===== TEXTAREA ===== */
+.textarea-wrap { position: relative; margin: 14px 0 4px; }
+textarea { width: 100%; min-height: 90px; padding: 16px 18px; background: rgba(255,255,255,0.04); border: 1.5px solid var(--line-strong); border-radius: var(--r-sm); color: var(--ink); font-family: var(--body); font-size: 15.5px; line-height: 1.5; resize: none; transition: all 0.2s; }
+textarea:focus { outline: none; border-color: var(--cyan); background: rgba(0,111,255,0.05); box-shadow: 0 0 0 3px rgba(0, 111, 255, 0.12); }
+textarea::placeholder { color: var(--ink-mute); }
+.char-count { position: absolute; bottom: 10px; right: 14px; font-size: 11px; color: var(--ink-mute); }
+
+/* ===== SLIDER ===== */
+.slider-wrap { padding: 28px 8px 8px; }
+.slider-label { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 12px; color: var(--ink-mute); letter-spacing: 0.06em; text-transform: uppercase; }
+.slider-track { position: relative; height: 6px; background: rgba(255,255,255,0.08); border-radius: 100px; cursor: pointer; touch-action: none; user-select: none; }
+.slider-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 50%; background: linear-gradient(90deg, var(--cyan) 0%, var(--warm) 100%); border-radius: 100px; box-shadow: 0 0 14px var(--cyan-glow); transition: width 0.05s; }
+.slider-thumb { position: absolute; top: 50%; left: 50%; width: 28px; height: 28px; background: white; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 4px 16px rgba(0, 111, 255, 0.6), 0 0 0 4px rgba(0, 111, 255, 0.2); cursor: grab; transition: transform 0.1s, left 0.05s; }
+.slider-thumb:active { cursor: grabbing; transform: translate(-50%, -50%) scale(1.15); }
+.slider-value { text-align: center; font-family: var(--display); font-size: 56px; font-weight: 700; color: var(--cyan-soft); line-height: 1; margin-top: 24px; transition: color 0.3s; }
+.slider-value::after { content: '/100'; font-size: 18px; color: var(--ink-mute); margin-left: 4px; font-weight: 500; }
+.slider-feedback { text-align: center; font-size: 14px; color: var(--ink-soft); margin-top: 10px; min-height: 21px; transition: opacity 0.3s; }
+
+/* ===== RESTITUTION ===== */
+.recap { background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid var(--line-strong); border-radius: var(--r); padding: 24px; margin-bottom: 20px; }
+.recap-line { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px dashed var(--line); font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.recap-line:last-child { border-bottom: none; }
+.recap-line::before { content: '•'; color: var(--cyan); font-size: 22px; line-height: 1; margin-top: 1px; }
+.recap-line strong { color: var(--ink); font-weight: 600; }
+
+.archetype-card { background: linear-gradient(160deg, rgba(0, 111, 255, 0.18) 0%, rgba(255, 138, 61, 0.10) 100%); border: 1px solid rgba(0, 111, 255, 0.3); border-radius: var(--r-lg); padding: 30px 24px; text-align: center; margin: 20px 0 24px; position: relative; overflow: hidden; }
+.archetype-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 160px; height: 160px; background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%); }
+.archetype-card::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 140px; height: 140px; background: radial-gradient(circle, rgba(255, 138, 61, 0.25) 0%, transparent 70%); }
+.archetype-tag { position: relative; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan-soft); margin-bottom: 12px; font-weight: 600; }
+.archetype-name { position: relative; font-family: var(--display); font-size: 36px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 14px; }
+.archetype-name .ico { font-size: 28px; display: block; margin-bottom: 6px; }
+.archetype-quote { position: relative; font-family: var(--hand); font-size: 22px; color: var(--warm-soft); line-height: 1.3; }
+
+.user-quote { background: rgba(255, 138, 61, 0.08); border-left: 3px solid var(--warm); padding: 18px 20px; border-radius: 4px; margin: 16px 0; }
+.user-quote-tag { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm); font-weight: 600; margin-bottom: 8px; }
+.user-quote-text { font-family: var(--hand); font-size: 22px; line-height: 1.3; color: var(--ink); }
+
+.strength-list { list-style: none; margin: 16px 0 8px; }
+.strength-list li { display: flex; gap: 12px; padding: 10px 0; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); }
+.strength-list li::before { content: '↗'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+.strength-list li strong { color: var(--ink); font-weight: 600; }
+
+.warning-card { background: rgba(255, 138, 61, 0.08); border: 1px solid rgba(255, 138, 61, 0.25); border-radius: var(--r-sm); padding: 16px 18px; margin: 16px 0; }
+.warning-card .wt { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm); font-weight: 600; margin-bottom: 6px; }
+.warning-card p { font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+
+/* ===== SCARCITY ===== */
+.scarcity { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: rgba(22, 224, 163, 0.08); border: 1px solid rgba(22, 224, 163, 0.22); border-radius: var(--r-sm); margin: 18px 0; }
+.scarcity-text { font-size: 13px; color: var(--ink-soft); line-height: 1.4; }
+.scarcity-text strong { color: var(--green); font-weight: 600; }
+.scarcity-pulse { width: 8px; height: 8px; background: var(--green); border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 10px var(--green); animation: pulse-dot 1.5s ease-in-out infinite; }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+
+/* ===== SLOTS ===== */
+.slots-title { font-family: var(--display); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.slots-sub { font-size: 13px; color: var(--ink-mute); margin-bottom: 14px; }
+.slot { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; background: rgba(255,255,255,0.03); border: 1.5px solid var(--line-strong); border-radius: var(--r-sm); margin-bottom: 10px; cursor: pointer; transition: all 0.2s; }
+.slot:hover { border-color: var(--cyan); background: rgba(0, 111, 255, 0.06); transform: translateY(-1px); }
+.slot.selected { border-color: var(--cyan); background: rgba(0, 111, 255, 0.12); box-shadow: 0 0 0 3px rgba(0, 111, 255, 0.16); }
+.slot-info { display: flex; flex-direction: column; gap: 2px; }
+.slot-day { font-family: var(--display); font-weight: 700; font-size: 14px; }
+.slot-time { font-size: 12.5px; color: var(--ink-mute); }
+.slot-cta { font-size: 11px; color: var(--cyan-soft); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.divider-or { display: flex; align-items: center; gap: 12px; margin: 22px 0; color: var(--ink-mute); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+.divider-or::before, .divider-or::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+
+/* ===== EMAIL SOFT ===== */
+.email-soft { display: flex; gap: 10px; margin-top: 12px; }
+.email-soft input { flex: 1; padding: 14px 16px; background: rgba(255,255,255,0.04); border: 1.5px solid var(--line-strong); border-radius: var(--r-sm); color: var(--ink); font-family: var(--body); font-size: 14px; }
+.email-soft input:focus { outline: none; border-color: var(--cyan); background: rgba(0,111,255,0.05); }
+.email-soft button { width: auto; padding: 14px 18px; background: rgba(255,255,255,0.06); border: 1.5px solid var(--line-strong); color: var(--ink-soft); font-size: 13px; font-family: var(--display); font-weight: 600; border-radius: var(--r-sm); cursor: pointer; transition: all 0.2s; }
+.email-soft button:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+/* ===== FOOTER ===== */
+.footer { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--ink-mute); }
+.footer-brand { font-family: var(--display); font-weight: 700; color: var(--ink-soft); }
+
+/* ===== UTILS ===== */
+.spacer-sm { height: 8px; } .spacer { height: 16px; } .spacer-lg { height: 28px; }
+.center { text-align: center; }
+.fade-in { animation: enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+/* ===== CONFIRMATION ===== */
+.success-screen { text-align: center; padding: 30px 0; }
+.success-icon { width: 84px; height: 84px; border-radius: 50%; background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-soft) 100%); display: grid; place-items: center; margin: 0 auto 22px; box-shadow: 0 0 48px var(--cyan-glow); animation: successIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.success-icon::after { content: '✓'; font-family: var(--display); font-size: 40px; color: white; font-weight: 800; }
+@keyframes successIn { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+@media (max-width: 360px) {
+  .app { padding: 18px 16px 60px; }
+  h1 { font-size: 28px; }
+  .archetype-name { font-size: 30px; }
+}
+
+/* ========================================================================
+   CONFRONTATION EXISTENTIELLE — Aversion à la perte extrême
+   ======================================================================== */
+
+body.dark-mode { background: #000305; }
+body.dark-mode::before {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 138, 61, 0.08), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(0, 111, 255, 0.05), transparent 50%);
+}
+
+/* === ÉCRAN VISION (67 ans) === */
+.vision-stage { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; padding: 20px 0; }
+.vision-line { font-family: var(--display); font-weight: 600; font-size: 22px; line-height: 1.45; letter-spacing: -0.015em; margin-bottom: 18px; opacity: 0; transform: translateY(12px); color: var(--ink); }
+.vision-line.warm { color: var(--warm); }
+.vision-line.muted { color: var(--ink-soft); font-size: 18px; font-weight: 500; }
+.vision-line.large { font-size: 28px; line-height: 1.2; font-weight: 700; }
+.vision-line.show { animation: visionIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes visionIn {
+  0% { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.vision-pause { height: 1px; background: linear-gradient(90deg, transparent, var(--warm), transparent); margin: 24px auto; width: 60px; opacity: 0; }
+.vision-pause.show { animation: visionIn 0.8s 0.3s forwards; }
+
+/* === ÉCRAN REGRET === */
+.regret-intro { font-family: var(--display); font-size: 18px; font-weight: 600; color: var(--warm); margin-bottom: 8px; letter-spacing: -0.01em; }
+.regret-question { font-family: var(--display); font-size: 26px; font-weight: 700; line-height: 1.2; margin-bottom: 28px; letter-spacing: -0.02em; }
+.regret-card { display: block; width: 100%; text-align: left; padding: 22px 26px 22px 30px; margin-bottom: 12px; background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,138,61,0.04) 100%); border: 1.5px solid rgba(255, 138, 61, 0.18); border-radius: var(--r); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; font-style: italic; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); position: relative; }
+.regret-card::before { content: '«'; position: absolute; left: 10px; top: 6px; font-family: var(--display); font-size: 32px; color: rgba(255, 138, 61, 0.3); font-style: normal; line-height: 1; }
+.regret-card:hover { border-color: var(--warm); background: linear-gradient(180deg, rgba(255,138,61,0.08) 0%, rgba(255,138,61,0.04) 100%); transform: translateY(-1px); }
+.regret-card.selected { border-color: var(--warm); background: rgba(255, 138, 61, 0.12); box-shadow: 0 0 0 3px rgba(255, 138, 61, 0.18), 0 0 32px rgba(255, 138, 61, 0.18); }
+
+/* === ÉCRAN LETTRE === */
+.letter-intro { font-family: var(--hand); font-size: 22px; color: var(--warm-soft); margin-bottom: 8px; line-height: 1.3; }
+.letter-date { font-size: 12px; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 18px; }
+.letter-body { font-family: var(--body); font-size: 15.5px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 26px; }
+.letter-body strong { color: var(--ink); font-weight: 600; }
+
+.timeline-split { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 24px 0; }
+.timeline-card { padding: 22px 20px; border-radius: var(--r); position: relative; overflow: hidden; }
+.timeline-card.action { background: linear-gradient(160deg, rgba(0, 111, 255, 0.14) 0%, rgba(22, 224, 163, 0.06) 100%); border: 1px solid rgba(0, 111, 255, 0.3); }
+.timeline-card.inaction { background: linear-gradient(160deg, rgba(20, 20, 20, 0.6) 0%, rgba(60, 30, 30, 0.3) 100%); border: 1px solid rgba(255, 100, 100, 0.18); }
+.timeline-tag { display: inline-block; font-family: var(--body); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 11px; border-radius: 100px; margin-bottom: 12px; font-weight: 600; }
+.timeline-card.action .timeline-tag { background: rgba(0, 111, 255, 0.18); color: var(--cyan-soft); }
+.timeline-card.inaction .timeline-tag { background: rgba(255, 100, 100, 0.14); color: #ff8888; }
+.timeline-title { font-family: var(--display); font-weight: 700; font-size: 18px; margin-bottom: 10px; letter-spacing: -0.015em; }
+.timeline-card.inaction .timeline-title { color: rgba(255, 200, 200, 0.85); }
+.timeline-text { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+.timeline-card.inaction .timeline-text { color: rgba(255, 220, 220, 0.55); font-style: italic; }
+
+/* === ÉCRAN COÛT === */
+.cost-stat { text-align: center; padding: 26px 16px; border-radius: var(--r); margin-bottom: 14px; background: linear-gradient(180deg, rgba(255, 100, 100, 0.06) 0%, rgba(255, 100, 100, 0.02) 100%); border: 1px solid rgba(255, 100, 100, 0.18); }
+.cost-period { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255, 150, 150, 0.7); font-weight: 600; margin-bottom: 10px; }
+.cost-value { font-family: var(--display); font-size: clamp(36px, 12vw, 54px); font-weight: 800; line-height: 1; letter-spacing: -0.03em; margin-bottom: 8px; background: linear-gradient(135deg, #ff7070 0%, #ff9050 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.cost-label { font-size: 14px; color: var(--ink-soft); line-height: 1.4; }
+.cost-final { margin-top: 24px; padding: 22px 20px; background: linear-gradient(160deg, rgba(0,0,0,0.4) 0%, rgba(255,138,61,0.08) 100%); border: 1px solid rgba(255, 138, 61, 0.25); border-radius: var(--r); }
+.cost-final-text { font-family: var(--display); font-size: 17px; font-weight: 600; line-height: 1.4; letter-spacing: -0.01em; }
+.cost-final-text .warm { color: var(--warm); }
+
+/* === ÉCRAN TÉMOIGNAGE === */
+.witness-card { background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid var(--line-strong); border-radius: var(--r); padding: 26px 22px; margin-bottom: 20px; position: relative; }
+.witness-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.witness-avatar { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--cyan) 0%, var(--warm) 100%); display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 18px; color: white; flex-shrink: 0; }
+.witness-meta { line-height: 1.3; }
+.witness-name { font-family: var(--display); font-weight: 700; font-size: 16px; }
+.witness-tag { font-size: 12px; color: var(--cyan-soft); font-weight: 500; margin-top: 2px; }
+.witness-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+.witness-num { padding: 12px 14px; background: rgba(0, 111, 255, 0.06); border: 1px solid rgba(0, 111, 255, 0.18); border-radius: var(--r-sm); text-align: center; }
+.witness-num-val { font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--cyan-soft); }
+.witness-num-lbl { font-size: 11px; color: var(--ink-mute); margin-top: 2px; }
+.witness-quote-box { padding: 18px 20px; background: rgba(255, 138, 61, 0.06); border-left: 3px solid var(--warm); border-radius: 4px; font-family: var(--hand); font-size: 22px; line-height: 1.35; color: var(--ink); }
+.witness-context { font-size: 11px; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+.witness-irreversible { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--warm); margin-top: 16px; text-align: center; letter-spacing: -0.01em; line-height: 1.4; }
+
+/* === ÉCRAN SIGNATURE === */
+.pact-frame { padding: 30px 26px; background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,138,61,0.04) 100%); border: 1.5px solid rgba(255, 138, 61, 0.3); border-radius: var(--r-lg); margin: 24px 0; position: relative; }
+.pact-frame::before, .pact-frame::after { content: ''; position: absolute; width: 24px; height: 24px; border-color: var(--warm); }
+.pact-frame::before { top: 8px; left: 8px; border-top: 2px solid; border-left: 2px solid; border-top-left-radius: 8px; }
+.pact-frame::after { bottom: 8px; right: 8px; border-bottom: 2px solid; border-right: 2px solid; border-bottom-right-radius: 8px; }
+.pact-date { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warm); font-weight: 600; margin-bottom: 16px; }
+.pact-text { font-family: var(--display); font-size: 19px; line-height: 1.5; font-weight: 600; letter-spacing: -0.015em; color: var(--ink); }
+.pact-text em { font-style: italic; color: var(--warm); font-weight: 700; }
+.pact-line { height: 1px; background: rgba(255, 138, 61, 0.3); margin: 18px 0; }
+
+.pact-name-input { display: inline-block; background: transparent; border: none; border-bottom: 1.5px dashed rgba(255, 138, 61, 0.5); color: var(--warm); font-family: var(--display); font-weight: 700; font-size: 19px; padding: 2px 4px; min-width: 110px; width: auto; text-align: center; }
+.pact-name-input:focus { outline: none; border-bottom-color: var(--warm); background: rgba(255, 138, 61, 0.06); }
+.pact-name-input::placeholder { color: rgba(255, 138, 61, 0.4); font-style: italic; }
+
+@keyframes breath {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 28px rgba(255, 138, 61, 0.36), inset 0 1px 0 rgba(255,255,255,0.18); }
+  50% { transform: scale(1.015); box-shadow: 0 12px 40px rgba(255, 138, 61, 0.55), inset 0 1px 0 rgba(255,255,255,0.18); }
+}
+.btn-breath { animation: breath 2.4s ease-in-out infinite; }
+
+.commit-btn { background: linear-gradient(135deg, var(--warm) 0%, var(--warm-soft) 100%); font-size: 16px; padding: 20px 22px; line-height: 1.3; flex-direction: column; gap: 4px; box-shadow: 0 8px 28px rgba(255, 138, 61, 0.36), inset 0 1px 0 rgba(255,255,255,0.18); }
+.commit-btn small { font-family: var(--body); font-weight: 500; font-size: 12px; letter-spacing: 0.02em; opacity: 0.85; text-transform: none; }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-text">
+        <span>NeuroRecrut Immo™</span>
+        <small>Système 1 Immo™</small>
+      </div>
+    </div>
+    <div class="progress-pill" id="progressPill">Étape 0 / 9</div>
+  </header>
+
+  <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+  <!-- ============ ÉCRAN 0 : INTRO ============ -->
+  <section class="screen active" id="screen-intro">
+    <div class="eyebrow">Diagnostic Neuro-Comportemental</div>
+    <h1>Et si tu étais déjà <span class="accent-cyan">agent immobilier</span>, sans le savoir ?</h1>
+    <p class="lead">Pas un test de personnalité. Un <strong>scanner de potentiel</strong>, calibré sur 22 ans de terrain et les neurosciences appliquées à la décision d'achat.<br><br>5 minutes. 8 questions. Ton archétype d'agent indépendant à la fin.</p>
+
+    <div class="card">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div style="font-size: 32px;">🧠</div>
+        <div style="font-size: 14px; line-height: 1.4; color: var(--ink-soft);">Tu n'auras pas une note. Tu auras <strong style="color: var(--ink);">une lecture de toi</strong> que les RH classiques ne sauront jamais te donner.</div>
+      </div>
+    </div>
+
+    <div class="intro-meta">
+      <span class="meta-chip"><strong>5 min</strong></span>
+      <span class="meta-chip"><strong>100%</strong> confidentiel</span>
+      <span class="meta-chip">Aucune réponse fausse</span>
+    </div>
+
+    <button class="btn btn-warm btn-pulse" onclick="startQuiz()">Lancer mon diagnostic →</button>
+
+    <div class="signature">
+      <div class="sig-avatar">NM</div>
+      <div class="sig-text">
+        <strong>Nordine Mouaouia</strong>
+        <small>Fondateur Système1-Immo™ · Neuro-immobilier</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ÉCRAN 1 : TEST PERCEPTIF (AMORÇAGE) ============ -->
+  <section class="screen" id="screen-perception">
+    <div class="eyebrow">Étape 1 / 9 · Amorçage</div>
+    <h2>Avant le quiz, un test de 4 secondes.</h2>
+    <p class="lead">Tu vas voir une scène d'intérieur. <strong>Combien d'éléments à corriger</strong> tu repères ? L'œil de l'agent, c'est ça.</p>
+
+    <div class="scene" id="scene">
+      <div class="scene-wall"></div>
+      <div class="scene-floor"></div>
+      <div class="scene-room" id="sceneRoom" style="opacity: 0;">
+        <div class="scene-item anomaly" style="top: 18%; left: 12%;">🖼️</div>
+        <div class="scene-item" style="top: 22%; left: 60%;">🪟</div>
+        <div class="scene-item anomaly" style="top: 48%; left: 20%;">📦</div>
+        <div class="scene-item" style="top: 50%; left: 75%;">🪴</div>
+        <div class="scene-item anomaly" style="bottom: 12%; left: 35%;">👟</div>
+        <div class="scene-item" style="bottom: 18%; left: 8%;">🛋️</div>
+        <div class="scene-item anomaly" style="top: 40%; left: 50%;">🍽️</div>
+        <div class="scene-item" style="bottom: 20%; right: 14%;">🪑</div>
+      </div>
+      <div class="scene-overlay" id="sceneOverlay">
+        <div class="scene-overlay-content">
+          <div class="countdown" id="countdown">3</div>
+          <div style="font-size: 13px; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase;">Concentre-toi</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="perceptionAnswer" style="display: none;">
+      <p class="lead" style="margin-top: 8px;">Combien d'éléments te dérangent visuellement ?</p>
+      <button class="option" onclick="answerPerception(1)">Moins de 3</button>
+      <button class="option" onclick="answerPerception(2)">Entre 3 et 5</button>
+      <button class="option" onclick="answerPerception(3)">Plus de 5</button>
+    </div>
+
+    <div class="feedback" id="perceptionFeedback">
+      <span class="feedback-icon">✓</span>
+      <span class="feedback-text" id="perceptionFeedbackText"></span>
+    </div>
+
+    <button class="btn" id="perceptionNext" style="display: none;" onclick="goToQuestion(1)">Continuer →</button>
+  </section>
+
+  <!-- ============ ÉCRANS QUESTIONS DYNAMIQUES ============ -->
+  <section class="screen" id="screen-question">
+    <div class="eyebrow" id="qEyebrow">Étape 2 / 9</div>
+    <h2 id="qTitle"></h2>
+    <p class="lead" id="qIntro" style="display: none;"></p>
+    <div id="qContext" style="display: none;"></div>
+    <div id="qOptions"></div>
+    <div id="qTextarea" style="display: none;">
+      <div class="textarea-wrap">
+        <textarea id="qFreeText" maxlength="120" placeholder="Écris dans tes mots, en une ligne..."></textarea>
+        <div class="char-count" id="qCharCount">0 / 120</div>
+      </div>
+    </div>
+    <div id="qSlider" style="display: none;">
+      <div class="slider-wrap">
+        <div class="slider-label"><span>Pas du tout</span><span>Totalement</span></div>
+        <div class="slider-track" id="sliderTrack">
+          <div class="slider-fill" id="sliderFill"></div>
+          <div class="slider-thumb" id="sliderThumb"></div>
+        </div>
+        <div class="slider-value" id="sliderValue">50</div>
+        <div class="slider-feedback" id="sliderFeedback">Glisse le curseur avec ton doigt</div>
+      </div>
+    </div>
+    <div class="feedback" id="qFeedback">
+      <span class="feedback-icon">✓</span>
+      <span class="feedback-text" id="qFeedbackText"></span>
+    </div>
+    <button class="btn" id="qNext" style="display: none;" onclick="nextQuestion()">Question suivante →</button>
+  </section>
+
+  <!-- ============ ÉCRAN VISION : 67 ans ============ -->
+  <section class="screen" id="screen-vision">
+    <div class="vision-stage" id="visionStage">
+      <div class="vision-line muted" id="vL1">[Prénom],</div>
+      <div class="vision-line" id="vL2">Ferme les yeux 3 secondes.</div>
+      <div class="vision-pause" id="vP1"></div>
+      <div class="vision-line large" id="vL3">Tu as 67 ans.</div>
+      <div class="vision-line" id="vL4">Tu es assis dans ton salon.</div>
+      <div class="vision-line muted" id="vL5">Quelqu'un que tu aimes te demande :</div>
+      <div class="vision-line warm" id="vL6">« Tu as fait quoi de ta vie professionnelle ? »</div>
+      <div class="vision-pause" id="vP2"></div>
+    </div>
+    <button class="btn btn-warm" id="visionNext" style="display: none;" onclick="goToRegret()">Je suis prêt à répondre →</button>
+  </section>
+
+  <!-- ============ ÉCRAN REGRET : choix du regret ============ -->
+  <section class="screen" id="screen-regret">
+    <div class="regret-intro">À 67 ans.</div>
+    <div class="regret-question">Quelle est la phrase que tu ne veux <strong style="color: var(--warm);">surtout pas</strong> entendre sortir de ta propre bouche ?</div>
+    <button class="regret-card" onclick="answerRegret(0, this)" data-key="place">J'ai gagné ma vie, mais je n'ai jamais su si j'étais à ma place.</button>
+    <button class="regret-card" onclick="answerRegret(1, this)" data-key="ose">J'ai été stable. Mais je n'ai jamais osé.</button>
+    <button class="regret-card" onclick="answerRegret(2, this)" data-key="autres">J'ai laissé d'autres faire le métier que j'aurais aimé faire.</button>
+    <button class="regret-card" onclick="answerRegret(3, this)" data-key="peur">J'ai écouté la peur plus que l'envie.</button>
+
+    <div class="feedback" id="regretFeedback">
+      <span class="feedback-icon">✓</span>
+      <span class="feedback-text" id="regretFeedbackText"></span>
+    </div>
+    <button class="btn btn-warm" id="regretNext" style="display: none;" onclick="showLetter()">Continuer →</button>
+  </section>
+
+  <!-- ============ ÉCRAN LETTRE : du soi futur ============ -->
+  <section class="screen" id="screen-letter">
+    <div class="letter-intro">La lettre que ton toi de 2031 t'écrit aujourd'hui.</div>
+    <div class="letter-date" id="letterDate">25 avril 2026</div>
+    <div class="letter-body">
+      <strong id="letterPrenom">[Prénom]</strong>,<br><br>
+      Je suis toi, dans 5 ans.<br><br>
+      Tu te souviens du jour où tu as fait ce diagnostic ?<br>
+      Le <span id="letterDateInline">jour où tu lis ça</span>.<br><br>
+      <strong>Voilà ce qui s'est passé après.</strong>
+    </div>
+
+    <div class="timeline-split">
+      <div class="timeline-card action">
+        <span class="timeline-tag">↗ Si tu cliques</span>
+        <div class="timeline-title">La version qui a osé</div>
+        <div class="timeline-text" id="timelineActionText">
+          Tu as appelé. Tu as eu un peu peur la veille. Tu as signé ton 1er mandat à <strong style="color: var(--ink);">J+47</strong>.<br><br>
+          Tu n'es plus en train de te demander si tu es à ta place. Tu sais. Et tu transmets, maintenant.
+        </div>
+      </div>
+      <div class="timeline-card inaction">
+        <span class="timeline-tag">↓ Si tu fermes l'onglet</span>
+        <div class="timeline-title" id="timelineInactionTitle">La version qui a hésité</div>
+        <div class="timeline-text" id="timelineInactionText">
+          Tu as fermé. Tu t'es dit "plus tard". Tu en parles encore "un jour".<br><br>
+          Et chaque fois qu'un agent passe devant ta fenêtre, tu détournes le regard. Parce que tu sais.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-warm btn-pulse" onclick="showCost()">Voir le coût réel d'attendre →</button>
+  </section>
+
+  <!-- ============ ÉCRAN COÛT : aversion à la perte ============ -->
+  <section class="screen" id="screen-cost">
+    <div class="eyebrow" style="border-color: rgba(255, 100, 100, 0.3); color: #ff8888; background: rgba(255, 100, 100, 0.08);">Coût d'inaction</div>
+    <h2>Voici ce que coûte chaque mois d'attente.</h2>
+    <p class="lead">Pas un futur abstrait. Des chiffres précis. Des familles précises.</p>
+
+    <div class="cost-stat">
+      <div class="cost-period">Dans 1 mois sans bouger</div>
+      <div class="cost-value" id="cost1">4</div>
+      <div class="cost-label">mandats que tu aurais pu signer<br>partis chez quelqu'un d'autre</div>
+    </div>
+
+    <div class="cost-stat">
+      <div class="cost-period">Dans 6 mois sans bouger</div>
+      <div class="cost-value" id="cost6">24 000€</div>
+      <div class="cost-label">de commissions<br>dans la poche d'un autre agent</div>
+    </div>
+
+    <div class="cost-stat">
+      <div class="cost-period">Dans 12 mois sans bouger</div>
+      <div class="cost-value" id="cost12">1</div>
+      <div class="cost-label">client qui aurait dit « merci, sans toi… »<br>que tu n'entendras <strong style="color: #ff9090;">jamais</strong></div>
+    </div>
+
+    <div class="cost-final">
+      <div class="cost-final-text">
+        Ce que tu rates n'est pas un futur abstrait.<br>
+        <span class="warm">Ce sont des familles qui en ce moment travaillent avec quelqu'un d'autre.</span>
+      </div>
+    </div>
+
+    <button class="btn btn-warm" onclick="showWitness()">Continuer →</button>
+  </section>
+
+  <!-- ============ ÉCRAN TÉMOIGNAGE : preuve sociale de regret ============ -->
+  <section class="screen" id="screen-witness">
+    <div class="eyebrow">Quelqu'un comme toi</div>
+    <h2 id="witnessTitle">Sarah a osé. Voici ce qu'elle dit aujourd'hui.</h2>
+
+    <div class="witness-card">
+      <div class="witness-header">
+        <div class="witness-avatar" id="witnessInitials">S</div>
+        <div class="witness-meta">
+          <div class="witness-name" id="witnessName">Sarah, 34 ans</div>
+          <div class="witness-tag" id="witnessProfile">Ancienne assistante de direction · Closer Empathique</div>
+        </div>
+      </div>
+
+      <div class="witness-numbers">
+        <div class="witness-num">
+          <div class="witness-num-val" id="witnessY1">47 000€</div>
+          <div class="witness-num-lbl">1ère année</div>
+        </div>
+        <div class="witness-num">
+          <div class="witness-num-val" id="witnessY2">89 000€</div>
+          <div class="witness-num-lbl">2ème année</div>
+        </div>
+      </div>
+
+      <div class="witness-context">Au RDV bilan, J+365</div>
+      <div class="witness-quote-box" id="witnessQuote">
+        « Le seul truc que je regrette, c'est de ne pas avoir osé 2 ans plus tôt. Ces 2 ans, je ne les rattraperai jamais. »
+      </div>
+
+      <div class="witness-irreversible">Le temps perdu ne se rattrape pas.<br>Il se constate.</div>
+    </div>
+
+    <button class="btn btn-warm" onclick="showSignature()">Je veux signer mon engagement →</button>
+  </section>
+
+  <!-- ============ ÉCRAN SIGNATURE : pacte avec soi-même ============ -->
+  <section class="screen" id="screen-signature">
+    <div class="eyebrow" style="color: var(--warm); border-color: rgba(255, 138, 61, 0.3); background: rgba(255, 138, 61, 0.08);">Pacte avec toi-même</div>
+    <h2>Avant de continuer, signe.</h2>
+    <p class="lead">Pas un papier. Un engagement envers toi. Lis cette phrase à voix haute. Puis signe.</p>
+
+    <div class="pact-frame">
+      <div class="pact-date" id="pactDate">25 avril 2026</div>
+      <div class="pact-text">
+        Aujourd'hui, moi <input type="text" class="pact-name-input" id="pactName" placeholder="ton prénom" maxlength="20">,<br><br>
+        je m'engage envers <em>moi-même</em><br>
+        à ne plus jamais dire <em>« j'aurais dû »</em>.<br><br>
+        À partir de maintenant, je sais.<br>
+        Et savoir,<br>
+        <em>ça oblige.</em>
+      </div>
+      <div class="pact-line"></div>
+      <div class="pact-date">Signature</div>
+      <div style="font-family: var(--hand); font-size: 28px; color: var(--warm-soft); margin-top: 8px; min-height: 36px;" id="pactSignature">_________________</div>
+    </div>
+
+    <button class="btn btn-warm btn-breath" id="signBtn" onclick="signPact()" disabled style="opacity: 0.5;">Je signe →</button>
+    <p style="text-align: center; font-size: 12px; color: var(--ink-mute); margin-top: 14px;">Écris ton prénom dans le pacte pour activer la signature.</p>
+  </section>
+
+  <!-- ============ ÉCRAN RESTITUTION ============ -->
+  <section class="screen" id="screen-result">
+    <div class="eyebrow">Ton diagnostic</div>
+    <h2 style="margin-bottom: 24px;" id="resultGreeting">Voilà ce que tu viens de me dire.</h2>
+
+    <div id="pactReminder" style="display: none; padding: 16px 18px; background: linear-gradient(160deg, rgba(255,138,61,0.10) 0%, rgba(255,138,61,0.04) 100%); border: 1px solid rgba(255, 138, 61, 0.25); border-radius: var(--r-sm); margin-bottom: 22px;">
+      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm); font-weight: 600; margin-bottom: 6px;">⚡ Tu as signé ton pacte</div>
+      <div style="font-family: var(--hand); font-size: 19px; color: var(--ink); line-height: 1.3;" id="pactReminderText">"Ne plus jamais dire j'aurais dû."</div>
+    </div>
+
+    <div class="recap" id="resultRecap"></div>
+
+    <div class="archetype-card">
+      <div class="archetype-tag">Ton archétype</div>
+      <div class="archetype-name">
+        <span class="ico" id="archIco">🎯</span>
+        <span id="archName">Le Closer Empathique</span>
+      </div>
+      <div class="archetype-quote" id="archQuote">« Tu lis les gens avant les murs. »</div>
+    </div>
+
+    <div id="userQuoteWrap" class="user-quote" style="display: none;">
+      <div class="user-quote-tag">Ce que tu apporteras</div>
+      <div class="user-quote-text" id="userQuoteText"></div>
+    </div>
+
+    <h2 style="font-size: 20px; margin-top: 24px; margin-bottom: 8px;">Tes 3 forces, validées par tes réponses</h2>
+    <ul class="strength-list" id="strengthList"></ul>
+
+    <div class="warning-card" id="warningCard" style="display: none;">
+      <div class="wt">⚡ Ton point de bascule</div>
+      <p id="warningText"></p>
+    </div>
+
+    <div class="scarcity">
+      <div class="scarcity-pulse"></div>
+      <div class="scarcity-text">Cette semaine, <strong>14 candidats</strong> ont passé le diagnostic. Il reste <strong>3 créneaux</strong> d'échange direct sur les 72h.</div>
+    </div>
+
+    <h2 style="font-size: 20px; margin-top: 28px; margin-bottom: 14px;">Ce qui se passe maintenant</h2>
+
+    <div class="slots-title">Réserve ton échange de 30 min</div>
+    <div class="slots-sub">Direct avec un agent référent. Pas un commercial.</div>
+
+    <div class="slot" data-slot="1" onclick="selectSlot(1, this)">
+      <div class="slot-info">
+        <span class="slot-day" id="slot1Day">Mardi</span>
+        <span class="slot-time" id="slot1Time">14h00 · 30 min</span>
+      </div>
+      <span class="slot-cta">Réserver →</span>
+    </div>
+    <div class="slot" data-slot="2" onclick="selectSlot(2, this)">
+      <div class="slot-info">
+        <span class="slot-day" id="slot2Day">Mercredi</span>
+        <span class="slot-time" id="slot2Time">10h30 · 30 min</span>
+      </div>
+      <span class="slot-cta">Réserver →</span>
+    </div>
+    <div class="slot" data-slot="3" onclick="selectSlot(3, this)">
+      <div class="slot-info">
+        <span class="slot-day" id="slot3Day">Jeudi</span>
+        <span class="slot-time" id="slot3Time">17h30 · 30 min</span>
+      </div>
+      <span class="slot-cta">Réserver →</span>
+    </div>
+
+    <button class="btn commit-btn" id="confirmSlot" style="display: none;" onclick="confirmSlot()">
+      <span>Tenir ma signature →</span>
+      <small>Réserver l'échange qui rend ce diagnostic réel</small>
+    </button>
+
+    <div class="divider-or">ou</div>
+
+    <div class="card" style="padding: 18px;">
+      <div style="font-size: 14px; color: var(--ink-soft); margin-bottom: 4px;"><strong style="color: var(--ink);">Pas prêt à parler tout de suite ?</strong></div>
+      <div style="font-size: 13px; color: var(--ink-mute);">Reçois ton rapport complet (8 pages) par email.</div>
+      <div class="email-soft">
+        <input type="email" id="softEmail" placeholder="ton@email.com">
+        <button onclick="sendReport()">Envoyer</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="footer-brand">SYSTEME1-IMMO™</span>
+      <span>Diagnostic Neuro · v1.0</span>
+    </div>
+  </section>
+
+  <!-- ============ ÉCRAN CONFIRMATION ============ -->
+  <section class="screen" id="screen-success">
+    <div class="success-screen">
+      <div class="success-icon"></div>
+      <h2 id="successTitle">Ton créneau est tenu.</h2>
+      <p class="lead" id="successText">Tu vas recevoir un SMS dans l'heure. Pas un mail automatique : un message direct, avec le prénom de la personne qui t'attend.</p>
+      <div class="card" style="text-align: left;">
+        <div style="font-size: 13px; color: var(--ink-mute); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; font-weight: 600;">Ce que tu vas recevoir</div>
+        <ul class="strength-list" style="margin: 0;">
+          <li>Ton <strong>rapport personnalisé</strong> de 8 pages, avec tes réponses citées</li>
+          <li>Le lien direct vers ton créneau (visio ou téléphone, ton choix)</li>
+          <li>Un <strong>SMS personnel</strong> dans l'heure qui suit</li>
+        </ul>
+      </div>
+      <p style="font-size: 13px; color: var(--ink-mute); margin-top: 20px; line-height: 1.5;">Garde la sensation que tu as choisie en question 4. C'est elle qui te portera dans tes 90 premiers jours.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============================================================
+   NEURORECRUT IMMO — Moteur dynamique
+   Architecture neuro-comportementale en 12 couches
+   ============================================================ */
+
+// ---- ÉTAT GLOBAL ----
+const state = {
+  currentScreen: 'intro',
+  currentQ: 0,
+  perception: null,
+  answers: {},
+  freeTexts: { motivation: '', regret: '', readiness: 50 },
+  scores: {
+    empathie: 0,
+    ambition: 0,
+    strategie: 0,
+    connexion: 0,
+    lucidite: 0
+  },
+  archetype: null,
+  selectedSlot: null,
+  peurDominante: null
+};
+
+// ---- ARCHÉTYPES ----
+const archetypes = {
+  closer_empathique: {
+    name: 'Le Closer Empathique',
+    ico: '🤝',
+    quote: '« Tu lis les gens avant les murs. »',
+    pitch: 'Tu signes parce qu\'on te fait confiance, pas parce que tu pousses.',
+    forces: [
+      { strong: 'Lecture émotionnelle ultra-rapide', text: 'tu détectes en 30 secondes ce qu\'un client n\'ose pas dire' },
+      { strong: 'Confiance instinctive', text: 'les gens te disent oui avant même que tu finisses ta phrase' },
+      { strong: 'Recommandation naturelle', text: '60% de tes futurs mandats viendront de bouche-à-oreille' }
+    ],
+    bascule: 'La prospection téléphonique froide. C\'est la peur n°1 des Closers Empathiques. La bonne nouvelle : 30 jours de méthode structurée et c\'est réglé. Tu ne vas pas devenir un commercial de choc. Tu vas garder ton style, en l\'outillant.'
+  },
+  stratege_analytique: {
+    name: 'Le Stratège Analytique',
+    ico: '🎯',
+    quote: '« Tu vois la transaction avant les autres. »',
+    pitch: 'Tu transformes chaque mandat en équation gagnante.',
+    forces: [
+      { strong: 'Lecture de marché chirurgicale', text: 'tu fixes le bon prix là où les autres tâtonnent' },
+      { strong: 'Négociation maîtrisée', text: 'tu défends une position parce que tu l\'as construite, pas parce qu\'on te l\'a apprise' },
+      { strong: 'Décision rapide sous pression', text: 'tu gardes la tête froide quand les vendeurs paniquent' }
+    ],
+    bascule: 'Le risque, c\'est de paraître froid. Le top 5% des stratèges apprennent à habiller leur expertise d\'humanité. C\'est exactement ce que tu vas développer en 60 jours.'
+  },
+  batisseur_confiance: {
+    name: 'Le Bâtisseur de Confiance',
+    ico: '🛡️',
+    quote: '« Tu ne vends pas vite. Tu vends bien. »',
+    pitch: 'Tu construis des relations qui durent 20 ans, pas 20 jours.',
+    forces: [
+      { strong: 'Patience stratégique', text: 'tu suis un prospect 6 mois quand d\'autres l\'abandonnent à 6 jours' },
+      { strong: 'Loyauté qui paye', text: 'tes clients t\'envoient leurs enfants, leurs frères, leurs collègues' },
+      { strong: 'Pédagogie naturelle', text: 'tu expliques sans condescendance, tu rassures sans mentir' }
+    ],
+    bascule: 'Ton défi : accélérer sans trahir ton style. Il existe des techniques de cadrage qui font signer plus vite, sans pression. On en parle en RDV.'
+  },
+  connecteur_social: {
+    name: 'Le Connecteur Social',
+    ico: '🌐',
+    quote: '« Tu ne cherches pas les mandats. Ils te trouvent. »',
+    pitch: 'Ton réseau est ton actif principal. Tu l\'actives sans même t\'en rendre compte.',
+    forces: [
+      { strong: 'Visibilité naturelle', text: 'on t\'identifie comme "celui qui s\'y connaît", même hors transaction' },
+      { strong: 'Prescription organique', text: 'tu reçois 4 à 8 leads chauds par mois sans rien demander' },
+      { strong: 'Énergie communicative', text: 'tu rends une visite enthousiasmante, même un T2 banal' }
+    ],
+    bascule: 'Ta force est aussi ton risque : disperser ton énergie. Le métier rentable demande des routines courtes, ciblées, répétables. C\'est ça qu\'on installe ensemble.'
+  },
+  architecte_histoires: {
+    name: 'L\'Architecte d\'Histoires',
+    ico: '🎨',
+    quote: '« Tu ne décris pas un bien. Tu projettes une vie. »',
+    pitch: 'Tu transformes une annonce en évidence émotionnelle.',
+    forces: [
+      { strong: 'Storytelling instinctif', text: 'tu donnes envie d\'une maison à des gens qui n\'en cherchaient pas' },
+      { strong: 'Mise en scène intuitive', text: 'tu sais quel détail mettre en avant pour qui' },
+      { strong: 'Création de désir', text: 'tes annonces génèrent 3x plus de demandes que la moyenne' }
+    ],
+    bascule: 'Ton risque : trop habiller, pas assez chiffrer. L\'agent qui dure équilibre l\'émotion et la donnée. C\'est exactement ce qu\'on travaille en formation.'
+  }
+};
+
+// ---- BANQUE DE QUESTIONS ----
+const questions = {
+  q1: {
+    eyebrow: 'Étape 2 / 9 · Émotionnel',
+    title: 'Tu passes en voiture devant une maison à vendre. Que se passe-t-il dans ta tête en premier ?',
+    options: [
+      { text: 'Je me demande qui vit dedans, leur histoire', score: { empathie: 3, connexion: 2 }, fb: 'Tu lis les gens avant les murs. <strong>C\'est rare.</strong>' },
+      { text: 'Je calcule combien elle vaut', score: { strategie: 3, ambition: 2 }, fb: 'Tu as déjà l\'instinct du chiffre. <strong>On va creuser ça.</strong>' },
+      { text: 'J\'imagine ma propre vie dedans', score: { empathie: 2, connexion: 1, ambition: 1 }, fb: 'Tu projettes. <strong>C\'est exactement ce que font les acheteurs</strong>, et c\'est ce qui te permettra de les comprendre.' },
+      { text: 'Je remarque les détails que les autres ne voient pas', score: { strategie: 2, lucidite: 2 }, fb: 'Tu as l\'œil. <strong>La plupart des gens passent à côté</strong> de ce que tu vois.' }
+    ]
+  },
+  q2_empathie: {
+    eyebrow: 'Étape 3 / 9 · Lecture humaine',
+    title: 'Quand quelqu\'un te raconte un problème, qu\'est-ce que tu fais le plus souvent ?',
+    options: [
+      { text: 'J\'écoute longtemps avant de parler', score: { empathie: 3, connexion: 2 }, fb: 'Le silence stratégique. <strong>C\'est l\'arme n°1 des meilleurs négociateurs.</strong>' },
+      { text: 'Je propose une solution rapidement', score: { strategie: 2, ambition: 2 }, fb: 'Tu es un solver. <strong>Tu rassures par l\'action.</strong>' },
+      { text: 'Je pose des questions pour comprendre', score: { empathie: 2, lucidite: 2, strategie: 1 }, fb: 'Tu cherches le vrai besoin. <strong>C\'est exactement la posture de découverte vendeur.</strong>' },
+      { text: 'Je raconte une histoire qui ressemble', score: { connexion: 3, empathie: 1 }, fb: 'Tu crées du lien par le miroir. <strong>Tes clients se sentiront jamais jugés.</strong>' }
+    ]
+  },
+  q2_strategie: {
+    eyebrow: 'Étape 3 / 9 · Décision',
+    title: 'Devant une décision financière importante, tu fais quoi en premier ?',
+    options: [
+      { text: 'Je liste pour et contre', score: { strategie: 3, lucidite: 1 }, fb: 'Pensée structurée. <strong>Tu vas calmer des vendeurs paniqués naturellement.</strong>' },
+      { text: 'Je consulte 2 ou 3 personnes de confiance', score: { connexion: 2, lucidite: 2 }, fb: 'Tu as un réseau de validation. <strong>C\'est un actif énorme dans ce métier.</strong>' },
+      { text: 'J\'écoute mon instinct, puis je vérifie', score: { empathie: 1, strategie: 2, ambition: 1 }, fb: 'Intuition + vérification. <strong>C\'est exactement le pattern des top closers.</strong>' },
+      { text: 'Je calcule le pire scénario', score: { strategie: 2, lucidite: 3 }, fb: 'Tu protèges ton terrain. <strong>Tes clients se sentiront en sécurité.</strong>' }
+    ]
+  },
+  q2_projection: {
+    eyebrow: 'Étape 3 / 9 · Désir',
+    title: 'Quand tu veux quelque chose vraiment fort, qu\'est-ce qui se passe en toi ?',
+    options: [
+      { text: 'Je visualise tous les jours, jusqu\'à l\'avoir', score: { ambition: 3, connexion: 1 }, fb: 'Tu projettes physiquement. <strong>C\'est un trait des fondateurs et des top performers.</strong>' },
+      { text: 'Je construis un plan étape par étape', score: { strategie: 3, lucidite: 1 }, fb: 'Tu transformes le rêve en système. <strong>C\'est le contraire d\'un commercial chaotique.</strong>' },
+      { text: 'J\'en parle à des proches qui me poussent', score: { connexion: 3, empathie: 1 }, fb: 'Tu fonctionnes en énergie collective. <strong>Tu vas construire une tribu de clients fidèles.</strong>' },
+      { text: 'Je passe à l\'action avant d\'avoir tout préparé', score: { ambition: 3, lucidite: 1 }, fb: 'Tu apprends en marchant. <strong>C\'est l\'ADN des indépendants qui réussissent.</strong>' }
+    ]
+  },
+  q2_detail: {
+    eyebrow: 'Étape 3 / 9 · Œil',
+    title: 'Dans ton quotidien, qu\'est-ce que tu remarques que les autres ne voient pas ?',
+    options: [
+      { text: 'Les non-dits dans une conversation', score: { empathie: 3, lucidite: 2 }, fb: 'Tu lis entre les lignes. <strong>Les vendeurs te diront leurs vraies raisons.</strong>' },
+      { text: 'Les défauts cachés d\'un produit ou d\'une pièce', score: { strategie: 3, lucidite: 1 }, fb: 'Tu protèges les autres avant qu\'ils se trompent. <strong>C\'est ça, la confiance durable.</strong>' },
+      { text: 'Les opportunités que personne n\'a saisies', score: { strategie: 2, ambition: 3 }, fb: 'Tu as l\'instinct du coup. <strong>Le marché immobilier est rempli de pépites cachées.</strong>' },
+      { text: 'Les gens qui se sentent à l\'écart', score: { empathie: 3, connexion: 2 }, fb: 'Tu vois l\'invisible humain. <strong>Tu vas créer un lien que personne d\'autre ne crée.</strong>' }
+    ]
+  },
+  q3_empathie: {
+    eyebrow: 'Étape 4 / 9 · Vérité',
+    title: 'Beaucoup de gens comme toi pensent : "je suis trop empathique pour vendre". C\'est vrai pour toi ?',
+    options: [
+      { text: 'Oui, c\'est exactement ce que je me dis', score: { lucidite: 3, empathie: 1 }, fb: 'Tu n\'es pas seul. <strong>64% des meilleurs agents pensent ça au début.</strong> Et c\'est exactement leur empathie qui les a rendus n°1.', peur: 'empathie_bloquante' },
+      { text: 'Un peu, mais pas vraiment', score: { lucidite: 2, empathie: 1 }, fb: 'Tu sens la nuance. <strong>C\'est déjà un signe de maturité professionnelle.</strong>', peur: 'doute_modere' },
+      { text: 'Non, pour moi c\'est une force', score: { empathie: 2, ambition: 2 }, fb: 'Tu as compris quelque chose que <strong>beaucoup mettent 5 ans à comprendre.</strong>', peur: null },
+      { text: 'Je n\'avais jamais formulé ça comme ça', score: { lucidite: 3 }, fb: 'Le fait de te poser la question maintenant <strong>change déjà ta lecture du métier.</strong>', peur: 'decouverte' }
+    ]
+  },
+  q3_finance: {
+    eyebrow: 'Étape 4 / 9 · Vérité',
+    title: 'Le revenu variable d\'un agent indépendant. À quel point ça te tend ?',
+    options: [
+      { text: 'Beaucoup. C\'est ma peur n°1', score: { lucidite: 3 }, fb: 'Tu es lucide. <strong>La majorité des candidats te diraient le contraire</strong> pour faire bonne figure. Cette lucidité est un avantage.', peur: 'finance' },
+      { text: 'Ça me challenge plus que ça ne me bloque', score: { ambition: 3, lucidite: 1 }, fb: 'Tu transformes la pression en moteur. <strong>C\'est le pattern des top 10%.</strong>', peur: null },
+      { text: 'J\'ai prévu une transition douce', score: { strategie: 3, lucidite: 2 }, fb: 'Tu pilotes ton risque. <strong>C\'est exactement ce qu\'on apprend en 1ère année à ceux qui n\'y pensent pas.</strong>', peur: 'transition' },
+      { text: 'Honnêtement, je n\'ai pas chiffré', score: { lucidite: 2 }, fb: 'Pas grave. <strong>On chiffrera ensemble en RDV</strong>, c\'est plus rassurant que de le faire seul.', peur: 'inconnu' }
+    ]
+  },
+  q3_regard: {
+    eyebrow: 'Étape 4 / 9 · Vérité',
+    title: '"Encore un agent immobilier..." Tu redoutes ce regard des autres ?',
+    options: [
+      { text: 'Oui, c\'est ce qui me freine le plus', score: { lucidite: 3, empathie: 1 }, fb: 'Tu nommes ce que <strong>80% des candidats ressentent sans oser le dire.</strong> Et c\'est exactement ce qui va te rendre différent une fois en poste.', peur: 'regard' },
+      { text: 'Un peu, mais ça ne me bloquera pas', score: { ambition: 2, lucidite: 2 }, fb: 'Tu as déjà fait la part des choses. <strong>C\'est mature.</strong>', peur: null },
+      { text: 'Non, je ferai mon métier autrement', score: { ambition: 3, connexion: 2 }, fb: 'Tu as une vision propre. <strong>C\'est ça qui crée les marques personnelles fortes.</strong>', peur: null },
+      { text: 'Je n\'avais jamais vraiment pensé à ça', score: { lucidite: 1 }, fb: 'Tant mieux. <strong>L\'angle mort est plus facile à corriger que la peur consciente.</strong>', peur: 'angle_mort' }
+    ]
+  },
+  q4: {
+    eyebrow: 'Étape 5 / 9 · Sensation',
+    title: 'Imagine ce moment précis : un client te dit "merci, sans toi on n\'aurait jamais trouvé". Qu\'est-ce que tu ressens dans le corps ?',
+    intro: 'Pas une réponse mentale. Une sensation physique.',
+    options: [
+      { text: 'Une chaleur dans la poitrine', score: { empathie: 3, connexion: 2 }, fb: 'Garde cette sensation. <strong>C\'est elle qui te portera dans les jours difficiles.</strong>' },
+      { text: 'Une fierté calme, presque silencieuse', score: { lucidite: 3, ambition: 1 }, fb: 'La fierté discrète. <strong>C\'est le moteur des agents qui durent 20 ans.</strong>' },
+      { text: 'Une envie immédiate d\'en aider un autre', score: { empathie: 2, ambition: 3 }, fb: 'Tu es en boucle de don. <strong>Ton chiffre va suivre, mécaniquement.</strong>' },
+      { text: 'Un soulagement, comme un poids qui tombe', score: { lucidite: 3, connexion: 1 }, fb: 'Tu portes leurs problèmes comme les tiens. <strong>C\'est le signe d\'un guide, pas d\'un vendeur.</strong>' }
+    ]
+  },
+  q5: {
+    eyebrow: 'Étape 6 / 9 · Lucidité',
+    title: 'Honnêtement, qu\'est-ce qui te freine vraiment, là, maintenant ?',
+    intro: 'Il n\'y a pas de mauvaise réponse. La lucidité est la 1ère qualité d\'un bon agent.',
+    options: [
+      { text: 'L\'argent au début', score: { lucidite: 3 }, fb: '<strong>La lucidité est un avantage.</strong> Tu vas négocier ton plan de démarrage avec les yeux ouverts. On en parle en RDV.', peur: 'finance' },
+      { text: 'Le regard des autres sur ce métier', score: { lucidite: 2, empathie: 1 }, fb: 'Tu nommes ce que <strong>peu osent dire</strong>. Et c\'est exactement ce qui va te rendre différent.', peur: 'regard' },
+      { text: 'Ne pas savoir prospecter', score: { lucidite: 3 }, fb: 'C\'est la peur n°1 et <strong>la plus rapide à régler</strong>. 30 jours d\'accompagnement structuré et tu as tes 3 premiers mandats.', peur: 'prospection' },
+      { text: 'Quitter un CDI / une zone de confort', score: { lucidite: 3, strategie: 1 }, fb: 'Tu mesures le coût du changement. C\'est sain. <strong>Maintenant pose-toi l\'autre question : le coût de ne pas changer dans 2 ans.</strong>', peur: 'transition' },
+      { text: 'Rien, je suis prêt', score: { ambition: 3, lucidite: 1 }, fb: 'Alors la question n\'est plus "est-ce que tu peux". <strong>La question est "comment tu veux démarrer".</strong>', peur: null }
+    ]
+  },
+  q6: {
+    eyebrow: 'Étape 7 / 9 · Vision',
+    title: 'Dans 12 mois, tu te lèves un matin. Quel est le signe que tu as bien fait de tenter ?',
+    options: [
+      { text: 'Un client m\'envoie un message de remerciement', score: { empathie: 3, connexion: 2 }, fb: 'Cette image que tu viens de choisir, <strong>c\'est ta boussole</strong>. À chaque moment de doute dans tes 90 premiers jours, ton cerveau y reviendra.' },
+      { text: 'Mon premier gros chèque est sur le compte', score: { ambition: 3, strategie: 1 }, fb: 'Cette image, <strong>c\'est ta boussole</strong>. Concrète, mesurable, légitime. Aucun agent qui dure ne s\'en cache.' },
+      { text: 'Je passe devant une maison que j\'ai vendue, fierté', score: { connexion: 2, empathie: 2, ambition: 1 }, fb: 'Cette image, <strong>c\'est ta boussole</strong>. Le territoire devient ton actif émotionnel et professionnel.' },
+      { text: 'Mes proches voient que je m\'épanouis', score: { connexion: 3, empathie: 1 }, fb: 'Cette image, <strong>c\'est ta boussole</strong>. Le regard des tiens est ton ancre la plus puissante.' },
+      { text: 'J\'ai gagné en liberté, je gère mon temps', score: { ambition: 2, lucidite: 2 }, fb: 'Cette image, <strong>c\'est ta boussole</strong>. La liberté est rare. Elle ne vient qu\'avec la maîtrise du métier.' }
+    ]
+  }
+};
+
+// ---- DÉTERMINATION DE L'ARCHÉTYPE ----
+function computeArchetype() {
+  const s = state.scores;
+  const sorted = Object.entries(s).sort((a, b) => b[1] - a[1]);
+  const dom = sorted[0][0];
+  const sec = sorted[1][0];
+
+  if (dom === 'empathie' && (sec === 'connexion' || sec === 'lucidite')) return 'closer_empathique';
+  if (dom === 'strategie' && (sec === 'ambition' || sec === 'lucidite')) return 'stratege_analytique';
+  if (dom === 'connexion' && (sec === 'empathie' || sec === 'ambition')) return 'connecteur_social';
+  if (dom === 'ambition' && sec === 'connexion') return 'connecteur_social';
+  if (dom === 'ambition' && (sec === 'empathie' || sec === 'connexion')) return 'architecte_histoires';
+  if (dom === 'lucidite' && sec === 'empathie') return 'batisseur_confiance';
+  if (dom === 'empathie') return 'closer_empathique';
+  if (dom === 'strategie') return 'stratege_analytique';
+  if (dom === 'connexion') return 'connecteur_social';
+  if (dom === 'ambition') return 'architecte_histoires';
+  return 'batisseur_confiance';
+}
+
+// ---- HELPERS DOM ----
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  state.currentScreen = id;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function setProgress(step) {
+  const pct = (step / 9) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPill').textContent = `Étape ${step} / 9`;
+}
+
+// ---- INTRO → PERCEPTION ----
+function startQuiz() {
+  showScreen('perception');
+  setProgress(1);
+  runPerception();
+}
+
+// ---- TEST PERCEPTIF ----
+function runPerception() {
+  const overlay = document.getElementById('sceneOverlay');
+  const room = document.getElementById('sceneRoom');
+  const cd = document.getElementById('countdown');
+
+  let n = 3;
+  cd.textContent = n;
+  const tick = setInterval(() => {
+    n--;
+    if (n > 0) cd.textContent = n;
+    else {
+      clearInterval(tick);
+      overlay.classList.add('hidden');
+      room.style.transition = 'opacity 0.3s';
+      room.style.opacity = '1';
+      setTimeout(() => {
+        room.style.transition = 'opacity 0.5s';
+        room.style.opacity = '0.35';
+        document.getElementById('perceptionAnswer').style.display = 'block';
+      }, 4000);
+    }
+  }, 1000);
+}
+
+function answerPerception(level) {
+  state.perception = level;
+  state.scores.lucidite += 1;
+  if (level >= 2) state.scores.strategie += 2;
+  if (level === 3) state.scores.empathie += 1;
+
+  document.getElementById('perceptionAnswer').style.display = 'none';
+
+  const fb = document.getElementById('perceptionFeedback');
+  const fbt = document.getElementById('perceptionFeedbackText');
+  const messages = {
+    1: 'Tu as un œil <strong>sélectif</strong>. Tu repères le détail qui compte, pas tous les détails. C\'est exactement le pattern des agents qui ne perdent pas leurs clients dans des objections inutiles.',
+    2: 'Tu as repéré la zone moyenne. <strong>C\'est le pattern des agents top 30%</strong> : assez pour rassurer, pas trop pour ne pas effrayer. Tu as déjà l\'œil.',
+    3: 'Tu as l\'œil ultra-fin. <strong>C\'est rare.</strong> Les agents qui repèrent autant sont ceux qui font les meilleurs home staging et les meilleures contre-visites.'
+  };
+  fbt.innerHTML = messages[level];
+  fb.classList.add('show');
+  document.getElementById('perceptionNext').style.display = 'flex';
+}
+
+// ---- ROUTING DES QUESTIONS ----
+const questionFlow = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
+
+function getQ2Key() {
+  const q1answer = state.answers.q1;
+  if (!q1answer && q1answer !== 0) return 'q2_empathie';
+  return ['q2_empathie', 'q2_strategie', 'q2_projection', 'q2_detail'][q1answer];
+}
+
+function getQ3Key() {
+  const s = state.scores;
+  if (s.empathie >= s.strategie && s.empathie >= s.ambition) return 'q3_empathie';
+  if (s.ambition >= 4) return 'q3_finance';
+  return 'q3_regard';
+}
+
+function getQuestionKey(qNum) {
+  if (qNum === 1) return 'q1';
+  if (qNum === 2) return getQ2Key();
+  if (qNum === 3) return getQ3Key();
+  if (qNum === 4) return 'q4';
+  if (qNum === 5) return 'q5';
+  if (qNum === 6) return 'q6';
+  return null;
+}
+
+// ---- AFFICHAGE QUESTION ----
+function goToQuestion(qNum) {
+  state.currentQ = qNum;
+  setProgress(qNum + 1);
+
+  if (qNum === 7) return showFreeTextQuestion();
+  if (qNum === 8) return showSliderQuestion();
+  if (qNum === 9) return showResult();
+
+  showScreen('question');
+  const key = getQuestionKey(qNum);
+  const q = questions[key];
+  state._currentQuestionKey = key;
+
+  document.getElementById('qEyebrow').textContent = q.eyebrow;
+  document.getElementById('qTitle').textContent = q.title;
+
+  const intro = document.getElementById('qIntro');
+  if (q.intro) { intro.textContent = q.intro; intro.style.display = 'block'; }
+  else intro.style.display = 'none';
+
+  document.getElementById('qFeedback').classList.remove('show');
+  document.getElementById('qNext').style.display = 'none';
+  document.getElementById('qTextarea').style.display = 'none';
+  document.getElementById('qSlider').style.display = 'none';
+
+  const opts = document.getElementById('qOptions');
+  opts.style.display = 'block';
+  opts.innerHTML = '';
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML = `<div class="option-label">${opt.text}</div>`;
+    btn.onclick = () => answerQuestion(idx);
+    opts.appendChild(btn);
+  });
+}
+
+function answerQuestion(idx) {
+  const key = state._currentQuestionKey;
+  const q = questions[key];
+  const opt = q.options[idx];
+
+  const qNum = state.currentQ;
+  state.answers[`q${qNum}`] = idx;
+  state.answers[`q${qNum}_key`] = key;
+  state.answers[`q${qNum}_text`] = opt.text;
+
+  Object.entries(opt.score).forEach(([dim, val]) => {
+    state.scores[dim] += val;
+  });
+
+  if (opt.peur && !state.peurDominante) state.peurDominante = opt.peur;
+
+  const btns = document.querySelectorAll('#qOptions .option');
+  btns.forEach((b, i) => {
+    b.classList.toggle('selected', i === idx);
+    b.disabled = true;
+    b.style.cursor = 'default';
+  });
+
+  document.getElementById('qFeedbackText').innerHTML = opt.fb;
+  document.getElementById('qFeedback').classList.add('show');
+
+  setTimeout(() => {
+    document.getElementById('qNext').style.display = 'flex';
+  }, 600);
+}
+
+function nextQuestion() {
+  goToQuestion(state.currentQ + 1);
+}
+
+// ---- Q7 : champ libre (motivation) ----
+function showFreeTextQuestion() {
+  showScreen('question');
+  state._currentQuestionKey = 'q7';
+  document.getElementById('qEyebrow').textContent = 'Étape 8 / 9 · Engagement';
+  document.getElementById('qTitle').innerHTML = 'Termine cette phrase, dans <strong style="color: var(--warm);">tes mots</strong> :';
+  document.getElementById('qIntro').textContent = '« Si je tente ce métier, ce que je veux vraiment apporter à mes clients, c\'est… »';
+  document.getElementById('qIntro').style.display = 'block';
+  document.getElementById('qOptions').style.display = 'none';
+  document.getElementById('qSlider').style.display = 'none';
+  document.getElementById('qTextarea').style.display = 'block';
+  document.getElementById('qFeedback').classList.remove('show');
+  document.getElementById('qNext').style.display = 'none';
+
+  const ta = document.getElementById('qFreeText');
+  ta.value = '';
+  ta.focus();
+
+  ta.oninput = function() {
+    document.getElementById('qCharCount').textContent = `${this.value.length} / 120`;
+    if (this.value.trim().length > 8) {
+      document.getElementById('qNext').style.display = 'flex';
+    } else {
+      document.getElementById('qNext').style.display = 'none';
+    }
+  };
+
+  document.getElementById('qNext').onclick = () => {
+    state.freeTexts.motivation = ta.value.trim();
+
+    document.getElementById('qTextarea').style.display = 'none';
+    document.getElementById('qIntro').style.display = 'none';
+    document.getElementById('qTitle').innerHTML = 'C\'est ce qu\'on cherche.';
+
+    const echo = document.createElement('div');
+    echo.className = 'user-quote';
+    echo.style.opacity = '0';
+    echo.style.transform = 'translateY(8px)';
+    echo.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+    echo.innerHTML = `
+      <div class="user-quote-tag">Tes mots</div>
+      <div class="user-quote-text">« ${state.freeTexts.motivation} »</div>
+    `;
+    document.getElementById('qOptions').style.display = 'block';
+    document.getElementById('qOptions').innerHTML = '';
+    document.getElementById('qOptions').appendChild(echo);
+    setTimeout(() => { echo.style.opacity = '1'; echo.style.transform = 'translateY(0)'; }, 100);
+
+    document.getElementById('qFeedbackText').innerHTML = 'Pas un commercial. <strong>Quelqu\'un qui apporte ça.</strong> C\'est avec cette phrase qu\'on ouvrira ton entretien.';
+    setTimeout(() => document.getElementById('qFeedback').classList.add('show'), 600);
+
+    state.scores.lucidite += 2;
+    state.scores.empathie += 1;
+
+    document.getElementById('qNext').onclick = () => goToQuestion(8);
+    document.getElementById('qNext').innerHTML = 'Continuer →';
+  };
+}
+
+// ---- Q8 : slider ----
+function showSliderQuestion() {
+  showScreen('question');
+  state._currentQuestionKey = 'q8';
+  document.getElementById('qEyebrow').textContent = 'Étape 9 / 9 · Bascule';
+  document.getElementById('qTitle').textContent = 'À quel point tu te sens prêt à découvrir ton profil complet ?';
+  document.getElementById('qIntro').textContent = 'Glisse le curseur avec ton doigt. Pas de bouton. Une décision.';
+  document.getElementById('qIntro').style.display = 'block';
+  document.getElementById('qOptions').style.display = 'none';
+  document.getElementById('qOptions').innerHTML = '';
+  document.getElementById('qTextarea').style.display = 'none';
+  document.getElementById('qSlider').style.display = 'block';
+  document.getElementById('qFeedback').classList.remove('show');
+  document.getElementById('qNext').style.display = 'none';
+  document.getElementById('qNext').innerHTML = 'Voir mon archétype →';
+  document.getElementById('qNext').onclick = () => showVision();
+
+  initSlider();
+}
+
+function initSlider() {
+  const track = document.getElementById('sliderTrack');
+  const fill = document.getElementById('sliderFill');
+  const thumb = document.getElementById('sliderThumb');
+  const valDisplay = document.getElementById('sliderValue');
+  const fbDisplay = document.getElementById('sliderFeedback');
+
+  let value = 50;
+  let isDragging = false;
+  let hasInteracted = false;
+
+  function setValue(v) {
+    value = Math.max(0, Math.min(100, v));
+    fill.style.width = value + '%';
+    thumb.style.left = value + '%';
+    valDisplay.textContent = Math.round(value);
+
+    if (value < 30) valDisplay.style.color = 'var(--ink-mute)';
+    else if (value < 65) valDisplay.style.color = 'var(--cyan-soft)';
+    else valDisplay.style.color = 'var(--warm)';
+
+    if (hasInteracted) {
+      if (value < 50) fbDisplay.textContent = 'Tu es prudent. C\'est un trait des bons agents.';
+      else if (value < 80) fbDisplay.textContent = 'Tu as l\'élan juste : ni précipité, ni en retrait.';
+      else fbDisplay.textContent = 'Tu es en mode décision. Concret, pas marketing.';
+    }
+
+    state.freeTexts.readiness = Math.round(value);
+  }
+
+  function getPositionFromEvent(e) {
+    const rect = track.getBoundingClientRect();
+    const clientX = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+
+  function onStart(e) {
+    isDragging = true;
+    hasInteracted = true;
+    setValue(getPositionFromEvent(e));
+    e.preventDefault();
+  }
+  function onMove(e) {
+    if (!isDragging) return;
+    setValue(getPositionFromEvent(e));
+    e.preventDefault();
+  }
+  function onEnd() {
+    if (isDragging) {
+      isDragging = false;
+      document.getElementById('qNext').style.display = 'flex';
+      if (value > 70) state.scores.ambition += 2;
+      else if (value > 40) state.scores.lucidite += 1;
+    }
+  }
+
+  track.addEventListener('mousedown', onStart);
+  track.addEventListener('touchstart', onStart, { passive: false });
+  thumb.addEventListener('mousedown', onStart);
+  thumb.addEventListener('touchstart', onStart, { passive: false });
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('touchmove', onMove, { passive: false });
+  document.addEventListener('mouseup', onEnd);
+  document.addEventListener('touchend', onEnd);
+  track.addEventListener('click', (e) => { hasInteracted = true; setValue(getPositionFromEvent(e)); onEnd(); });
+
+  setValue(50);
+}
+
+// ============================================================
+// CONFRONTATION EXISTENTIELLE
+// ============================================================
+
+function getCandidatePrenom() {
+  return state.candidatePrenom || 'toi';
+}
+
+function showVision() {
+  document.body.classList.add('dark-mode');
+  showScreen('vision');
+  setProgress(9);
+
+  const prenom = getCandidatePrenom();
+  document.getElementById('vL1').textContent = prenom !== 'toi' ? prenom + ',' : 'Maintenant…';
+
+  const lines = ['vL1', 'vL2', 'vP1', 'vL3', 'vL4', 'vL5', 'vL6', 'vP2'];
+  const delays = [200, 1400, 2400, 3200, 4400, 5500, 6600, 8200];
+
+  lines.forEach((id, i) => {
+    setTimeout(() => {
+      document.getElementById(id).classList.add('show');
+    }, delays[i]);
+  });
+
+  setTimeout(() => {
+    const btn = document.getElementById('visionNext');
+    btn.style.display = 'flex';
+    btn.classList.add('btn-pulse');
+  }, 9200);
+}
+
+function goToRegret() {
+  showScreen('regret');
+}
+
+const regretFeedbacks = {
+  place: 'Tu viens de nommer la peur la plus profonde. <strong>Ne jamais savoir si tu étais à ta place.</strong> C\'est exactement ce que ce diagnostic vient de te révéler. Tu sais maintenant.',
+  ose: 'La stabilité sans audace, <strong>c\'est la mort lente du potentiel</strong>. Tu viens de choisir la phrase que 78% des gens prononcent à 60 ans. Tu peux encore l\'éviter.',
+  autres: 'Voir d\'autres faire ce que tu aurais pu faire. <strong>C\'est le regret le plus douloureux selon les études</strong> (Gilovich, 1995). Et tu viens de le nommer avant qu\'il arrive.',
+  peur: 'La peur n\'est pas le problème. <strong>L\'écouter plus que l\'envie, oui.</strong> Tu viens d\'identifier exactement ce qui sépare ceux qui font de ceux qui regrettent.'
+};
+
+function answerRegret(idx, el) {
+  const cards = document.querySelectorAll('.regret-card');
+  cards.forEach(c => { c.classList.remove('selected'); c.disabled = true; });
+  el.classList.add('selected');
+
+  const key = el.dataset.key;
+  state.regretChoisi = key;
+  state.regretText = el.textContent.trim().replace(/^«?\s*|\s*»?$/g, '');
+
+  document.getElementById('regretFeedbackText').innerHTML = regretFeedbacks[key];
+  document.getElementById('regretFeedback').classList.add('show');
+  setTimeout(() => {
+    document.getElementById('regretNext').style.display = 'flex';
+  }, 700);
+}
+
+function showLetter() {
+  showScreen('letter');
+
+  const prenom = getCandidatePrenom();
+  document.getElementById('letterPrenom').textContent = prenom;
+
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('letterDate').textContent = dateStr;
+  document.getElementById('letterDateInline').textContent = dateStr;
+
+  const inactionTexts = {
+    place: 'Tu as fermé l\'onglet. Et 5 ans plus tard, la phrase est sortie de ta bouche : <em>« Je n\'ai jamais su si j\'étais à ma place. »</em><br><br>Personne ne pouvait te répondre à part toi.',
+    ose: 'Tu n\'as pas osé. Tu es resté stable. Et chaque dimanche soir, la même boule au ventre est revenue. <em>« Et si j\'avais tenté ? »</em>',
+    autres: 'Tu as fermé. 6 mois plus tard, un de tes amis t\'annonçait son passage à l\'immobilier. Tu as souri. À l\'intérieur, quelque chose s\'est cassé.',
+    peur: 'Tu as écouté la peur. Encore une fois. Et chaque année qui passe, l\'envie qu\'il restait s\'éteint un peu plus. C\'est ça, le vrai coût.'
+  };
+
+  const fallbackText = 'Tu as fermé. Tu t\'es dit "plus tard". Tu en parles encore "un jour". Et chaque fois qu\'un agent passe, tu détournes le regard. Parce que tu sais.';
+
+  document.getElementById('timelineInactionText').innerHTML =
+    inactionTexts[state.regretChoisi] || fallbackText;
+}
+
+function showCost() {
+  showScreen('cost');
+
+  animateCount('cost1', 0, 4, 1200, '');
+  setTimeout(() => animateCount('cost6', 0, 24000, 1800, ' €'), 600);
+  setTimeout(() => animateCount('cost12', 0, 1, 1200, ''), 1400);
+}
+
+function animateCount(elId, from, to, duration, suffix) {
+  const el = document.getElementById(elId);
+  const start = performance.now();
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(from + (to - from) * eased);
+    el.textContent = (suffix === ' €' ? value.toLocaleString('fr-FR') + ' €' : value + suffix);
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const witnessByArchetype = {
+  closer_empathique: {
+    name: 'Sarah, 34 ans',
+    initials: 'S',
+    profile: 'Ancienne assistante de direction · Closer Empathique',
+    y1: '47 000€',
+    y2: '89 000€',
+    quote: '« Le seul truc que je regrette, c\'est de ne pas avoir osé 2 ans plus tôt. Ces 2 ans, je ne les rattraperai jamais. »',
+    title: 'Sarah a osé. Voici ce qu\'elle dit aujourd\'hui.'
+  },
+  stratege_analytique: {
+    name: 'Karim, 41 ans',
+    initials: 'K',
+    profile: 'Ancien analyste financier · Stratège Analytique',
+    y1: '62 000€',
+    y2: '124 000€',
+    quote: '« J\'ai attendu 3 ans avant de basculer. 3 années où j\'aurais pu construire mon portefeuille. Personne ne me les rendra. »',
+    title: 'Karim a basculé. Voici ce qu\'il regrette.'
+  },
+  batisseur_confiance: {
+    name: 'Catherine, 47 ans',
+    initials: 'C',
+    profile: 'Ancienne enseignante · Bâtisseuse de Confiance',
+    y1: '38 000€',
+    y2: '71 000€',
+    quote: '« J\'avais peur que ce soit "trop commercial". J\'ai mis 4 ans à comprendre que c\'était un métier d\'écoute. 4 ans perdus. »',
+    title: 'Catherine a fini par oser. Voici ce qu\'elle dit.'
+  },
+  connecteur_social: {
+    name: 'Maxime, 29 ans',
+    initials: 'M',
+    profile: 'Ancien commercial B2B · Connecteur Social',
+    y1: '54 000€',
+    y2: '102 000€',
+    quote: '« Mon réseau était déjà là. Je ne le savais pas. Si j\'avais activé 18 mois plus tôt, j\'aurais doublé mes 24 premiers mois. »',
+    title: 'Maxime a basculé. Son seul regret.'
+  },
+  architecte_histoires: {
+    name: 'Inès, 36 ans',
+    initials: 'I',
+    profile: 'Ancienne directrice artistique · Architecte d\'Histoires',
+    y1: '51 000€',
+    y2: '94 000€',
+    quote: '« Je me disais "ce métier ne me ressemble pas". J\'avais tort. Il manquait juste quelqu\'un comme moi pour le faire autrement. »',
+    title: 'Inès a fait le saut. Voici son seul regret.'
+  }
+};
+
+function showWitness() {
+  if (!state.archetype) state.archetype = computeArchetype();
+
+  const w = witnessByArchetype[state.archetype] || witnessByArchetype.closer_empathique;
+  document.getElementById('witnessTitle').textContent = w.title;
+  document.getElementById('witnessName').textContent = w.name;
+  document.getElementById('witnessInitials').textContent = w.initials;
+  document.getElementById('witnessProfile').textContent = w.profile;
+  document.getElementById('witnessY1').textContent = w.y1;
+  document.getElementById('witnessY2').textContent = w.y2;
+  document.getElementById('witnessQuote').textContent = w.quote;
+
+  showScreen('witness');
+}
+
+function showSignature() {
+  showScreen('signature');
+
+  const today = new Date();
+  document.getElementById('pactDate').textContent =
+    today.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).toUpperCase();
+
+  const input = document.getElementById('pactName');
+  const sigEl = document.getElementById('pactSignature');
+  const btn = document.getElementById('signBtn');
+
+  input.value = '';
+  input.focus();
+
+  input.oninput = function() {
+    const v = this.value.trim();
+    state.candidatePrenom = v;
+    if (v.length >= 2) {
+      sigEl.textContent = v;
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    } else {
+      sigEl.textContent = '_________________';
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+    }
+  };
+}
+
+function signPact() {
+  const prenom = document.getElementById('pactName').value.trim();
+  if (prenom.length < 2) return;
+  state.candidatePrenom = prenom;
+  state.pactSigned = true;
+  state.pactTimestamp = new Date().toISOString();
+
+  document.body.classList.remove('dark-mode');
+  showResult();
+}
+
+function showResult() {
+  setProgress(9);
+  if (!state.archetype) state.archetype = computeArchetype();
+  const arch = archetypes[state.archetype];
+
+  showScreen('result');
+
+  const prenom = state.candidatePrenom || '';
+  if (prenom && state.pactSigned) {
+    document.getElementById('resultGreeting').innerHTML =
+      `${prenom}, voilà l'agent que tu viens de <span style="color: var(--warm);">signer</span>.`;
+    document.getElementById('pactReminder').style.display = 'block';
+  } else {
+    document.getElementById('resultGreeting').textContent = 'Voilà ce que tu viens de me dire.';
+  }
+
+  const recap = document.getElementById('resultRecap');
+  recap.innerHTML = '';
+  const recapLines = buildRecap();
+  recapLines.forEach(line => {
+    const div = document.createElement('div');
+    div.className = 'recap-line';
+    div.innerHTML = line;
+    recap.appendChild(div);
+  });
+
+  document.getElementById('archIco').textContent = arch.ico;
+  document.getElementById('archName').textContent = arch.name;
+  document.getElementById('archQuote').textContent = arch.quote;
+
+  const list = document.getElementById('strengthList');
+  list.innerHTML = '';
+  arch.forces.forEach(f => {
+    const li = document.createElement('li');
+    li.innerHTML = `<div><strong>${f.strong}</strong> : ${f.text}</div>`;
+    list.appendChild(li);
+  });
+
+  if (arch.bascule) {
+    document.getElementById('warningCard').style.display = 'block';
+    document.getElementById('warningText').innerHTML = arch.bascule;
+  }
+
+  if (state.freeTexts.motivation) {
+    document.getElementById('userQuoteWrap').style.display = 'block';
+    document.getElementById('userQuoteText').textContent = '« ' + state.freeTexts.motivation + ' »';
+  }
+
+  setSlotDates();
+}
+
+function buildRecap() {
+  const lines = [];
+  if (state.answers.q1_text) lines.push(`Tu as dit : <strong>« ${state.answers.q1_text.toLowerCase()} »</strong>`);
+  if (state.answers.q3_text) lines.push(`Tu as reconnu : <strong>« ${state.answers.q3_text.toLowerCase()} »</strong>`);
+  if (state.answers.q4_text) lines.push(`Tu as choisi cette sensation : <strong>« ${state.answers.q4_text.toLowerCase()} »</strong>`);
+  if (state.answers.q6_text) lines.push(`Tu as visualisé ta réussite ainsi : <strong>« ${state.answers.q6_text.toLowerCase()} »</strong>`);
+  return lines;
+}
+
+function setSlotDates() {
+  const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+  const today = new Date();
+  for (let i = 1; i <= 3; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() + (i + 1));
+    const dayName = days[d.getDay()];
+    const dateStr = d.getDate() + ' ' + d.toLocaleDateString('fr-FR', { month: 'short' });
+    document.getElementById(`slot${i}Day`).textContent = dayName + ' ' + dateStr;
+  }
+}
+
+function selectSlot(num, el) {
+  state.selectedSlot = num;
+  document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+  const btn = document.getElementById('confirmSlot');
+  btn.style.display = 'flex';
+  btn.classList.add('btn-pulse');
+  setTimeout(() => btn.classList.remove('btn-pulse'), 5000);
+}
+
+function confirmSlot() {
+  showScreen('success');
+  setProgress(9);
+  document.getElementById('progressPill').textContent = 'Terminé ✓';
+
+  if (state.pactSigned && state.candidatePrenom) {
+    document.getElementById('successTitle').innerHTML =
+      `${state.candidatePrenom}, ta signature est tenue.`;
+    document.getElementById('successText').innerHTML =
+      `Tu vas recevoir un SMS dans l'heure. Pas un mail automatique : un message direct, avec le prénom de la personne qui t'attend. <strong>Et qui sait déjà ce que tu as signé.</strong>`;
+  }
+
+  const payload = {
+    archetype: state.archetype,
+    archetype_name: archetypes[state.archetype].name,
+    scores: state.scores,
+    answers: state.answers,
+    motivation: state.freeTexts.motivation,
+    readiness: state.freeTexts.readiness,
+    peur_dominante: state.peurDominante,
+    perception: state.perception,
+    candidat_prenom: state.candidatePrenom || null,
+    regret_choisi: state.regretChoisi || null,
+    regret_text: state.regretText || null,
+    pact_signed: state.pactSigned || false,
+    pact_timestamp: state.pactTimestamp || null,
+    slot: state.selectedSlot,
+    timestamp: new Date().toISOString()
+  };
+  console.log('NeuroRecrut payload :', payload);
+}
+
+function sendReport() {
+  const email = document.getElementById('softEmail').value.trim();
+  if (!email || !/.+@.+\..+/.test(email)) {
+    alert('Glisse une adresse mail valide.');
+    return;
+  }
+  showScreen('success');
+  document.getElementById('successTitle').textContent = 'Ton rapport part dans 2 minutes.';
+  document.getElementById('successText').textContent = 'Tu vas recevoir ton diagnostic complet (8 pages) avec tes réponses citées et ton plan de démarrage. Ouvre ton email.';
+  document.getElementById('progressPill').textContent = 'Rapport envoyé ✓';
+
+  const payload = {
+    type: 'soft_capture',
+    email,
+    archetype: state.archetype,
+    scores: state.scores,
+    motivation: state.freeTexts.motivation,
+    timestamp: new Date().toISOString()
+  };
+  console.log('Soft capture payload :', payload);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setProgress(0);
+});
+</script>
+
+</body>
+</html>
