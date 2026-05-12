@@ -1922,12 +1922,13 @@
       Les 11 blocs de conversion qui transforment une vitrine en outil de capture.<br>
       Méthode issue de <strong style="color:var(--cool-200)">1 250 transactions réelles</strong>. Gratuit, sans pub.
     </p>
-    <form id="exitForm" class="space-y-3">
-      <input type="email" class="modal-input" placeholder="Votre email d'agent" required id="exitEmail" />
-      <button type="submit" class="btn-primary magnetic ripple w-full py-3 justify-center">
-        Recevoir le guide gratuitement
-        <iconify-icon icon="tabler:send" width="16" height="16" style="color:white"></iconify-icon>
+    <form id="exitForm" class="space-y-3" novalidate>
+      <input type="email" class="modal-input" placeholder="Votre email d'agent" required id="exitEmail" autocomplete="email" />
+      <button type="submit" id="exitSubmit" class="btn-primary magnetic ripple w-full py-3 justify-center">
+        <span id="exitSubmitLabel">Recevoir le guide gratuitement</span>
+        <iconify-icon id="exitSubmitIcon" icon="tabler:send" width="16" height="16" style="color:white"></iconify-icon>
       </button>
+      <p id="exitError" class="hidden text-xs text-center font-mono" style="color:#FF7A7A" role="alert" aria-live="polite"></p>
     </form>
     <p class="text-xs mt-4 font-mono" style="color:var(--cool-500)">Sans spam. Désabonnement en 1 clic. <iconify-icon icon="tabler:lock" width="10" height="10" style="color:var(--cool-500)"></iconify-icon> Email chiffré.</p>
 
@@ -2086,11 +2087,51 @@
     modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
 
-    form.addEventListener('submit', (e) => {
+    const emailInput = document.getElementById('exitEmail');
+    const submitBtn = document.getElementById('exitSubmit');
+    const submitLabel = document.getElementById('exitSubmitLabel');
+    const submitIcon = document.getElementById('exitSubmitIcon');
+    const errorEl = document.getElementById('exitError');
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function setError(msg) {
+      if (!msg) { errorEl.classList.add('hidden'); errorEl.textContent = ''; return; }
+      errorEl.textContent = msg;
+      errorEl.classList.remove('hidden');
+    }
+    function setLoading(loading) {
+      submitBtn.disabled = loading;
+      submitBtn.style.opacity = loading ? '0.7' : '';
+      submitBtn.style.cursor = loading ? 'wait' : '';
+      submitLabel.textContent = loading ? 'Envoi en cours…' : 'Recevoir le guide gratuitement';
+      submitIcon.setAttribute('icon', loading ? 'tabler:loader-2' : 'tabler:send');
+      if (loading) submitIcon.classList.add('animate-spin'); else submitIcon.classList.remove('animate-spin');
+    }
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      form.classList.add('hidden');
-      successBlock.classList.remove('hidden');
-      setTimeout(close, 3500);
+      setError('');
+      const email = emailInput.value.trim();
+      if (!EMAIL_RE.test(email)) { setError('Email invalide'); return; }
+
+      setLoading(true);
+      try {
+        const r = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        if (!r.ok) {
+          const data = await r.json().catch(() => ({}));
+          throw new Error(data.error || 'network_error');
+        }
+        form.classList.add('hidden');
+        successBlock.classList.remove('hidden');
+        setTimeout(close, 4000);
+      } catch (err) {
+        setLoading(false);
+        setError(err.message === 'invalid_email' ? 'Email invalide' : 'Envoi impossible — réessayez dans un instant.');
+      }
     });
   })();
 
