@@ -394,7 +394,7 @@ h2 {
 .scene {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
   background:
     radial-gradient(ellipse at 50% 100%, rgba(0,111,255,.08), transparent 60%),
     linear-gradient(170deg, var(--iris-card) 0%, var(--iris-deep) 100%);
@@ -407,8 +407,8 @@ h2 {
 .scene-grid {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(0,111,255,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,111,255,0.08) 1px, transparent 1px);
+    linear-gradient(rgba(0,111,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,111,255,0.05) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: linear-gradient(180deg, transparent 0%, black 25%, black 100%);
 }
@@ -434,23 +434,99 @@ h2 {
   letter-spacing: 0.16em; text-transform: uppercase;
   font-family: ui-monospace, monospace;
 }
-.scene-items {
-  position: absolute; inset: 0;
+
+/* ===== MOCKUP FICHE BIEN ===== */
+.scene-mockup {
+  position: absolute; inset: 16px;
+  background: var(--white);
+  color: var(--iris);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex; flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 14px 36px -12px rgba(0,0,0,.55);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s var(--ease-smooth);
+  overflow: hidden;
 }
-.scene-item {
-  position: absolute;
-  border-radius: 6px;
-  background: rgba(0,111,255,.18);
-  border: 1px solid rgba(0,111,255,.35);
+.mockup-header {
+  display: flex; align-items: center; gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ECECEC;
 }
-.scene-item.anomaly {
-  background: rgba(232,111,111,.18);
-  border-color: rgba(232,111,111,.6);
-  box-shadow: 0 0 16px rgba(232,111,111,.35);
+.mockup-photo {
+  width: 52px; height: 52px;
+  border-radius: 10px;
+  background: var(--iris);
+  display: grid; place-items: center;
+  color: var(--cyan);
+  flex-shrink: 0;
 }
-.scene-item.circle { border-radius: 50%; }
+.mockup-photo iconify-icon { font-size: 28px; color: var(--cyan); }
+.mockup-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 14.5px;
+  color: var(--iris); line-height: 1.2;
+}
+.mockup-subtitle {
+  font-size: 11px; color: #7A7A8A;
+  font-family: ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  margin-top: 3px;
+}
+.mockup-price {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, var(--iris) 0%, var(--iris-elev) 100%);
+  color: var(--white);
+  border-radius: 10px;
+}
+.mockup-price-main {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 20px;
+  letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 8px;
+}
+.mockup-price-m2 {
+  font-size: 10.5px; color: rgba(255,255,255,.55);
+  font-family: ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+.mockup-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.mockup-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px;
+  background: #F4F5FA;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: var(--iris);
+  line-height: 1.2;
+}
+.mockup-row iconify-icon { color: var(--cyan); font-size: 15px; flex-shrink: 0; }
+.mockup-row strong { font-weight: 600; }
+.anom {
+  display: inline-grid; place-items: center;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #FF4757;
+  margin-left: auto;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(255,71,87,.18);
+  animation: anomPulse 1.4s ease-in-out infinite;
+}
+.anom iconify-icon { color: white; font-size: 10px; }
+@keyframes anomPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(255,71,87,.18); }
+  50% { box-shadow: 0 0 0 6px rgba(255,71,87,.05); }
+}
+@media (max-width: 360px) {
+  .mockup-details { grid-template-columns: 1fr; }
+  .mockup-row { font-size: 12px; padding: 7px 9px; }
+}
 
 /* ===== TEXTAREA ===== */
 .textarea-wrap { position: relative; margin: 14px 0 4px; }
@@ -1304,13 +1380,34 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
       <iconify-icon icon="ph:eye-duotone"></iconify-icon>
       Étape 01 · Amorçage
     </div>
-    <h2>Avant le quiz, un test de 4 secondes.</h2>
-    <p class="lead">Tu vas voir un plan d'intérieur stylisé. <strong>Combien d'éléments à corriger</strong> tu repères ? L'œil de l'agent, c'est ça.</p>
+    <h2>Une fiche bien arrive sur ton bureau.</h2>
+    <p class="lead">4 secondes pour la scanner. <strong>Combien d'anomalies tu repères ?</strong> C'est exactement le geste qui sépare un agent qu'on prend au sérieux d'un agent qu'on rappelle jamais.</p>
 
     <div class="scene" id="scene" aria-hidden="true">
-      <div class="scene-grid"></div>
-      <div class="scene-items" id="sceneItems">
-        <!-- éléments injectés via JS -->
+      <div class="scene-mockup" id="sceneMockup">
+        <div class="mockup-header">
+          <div class="mockup-photo"><iconify-icon icon="ph:house-line-duotone"></iconify-icon></div>
+          <div>
+            <div class="mockup-title">Appartement T2 · Argelès-sur-Mer</div>
+            <div class="mockup-subtitle">Mandat exclusif · Réf 2026-0414</div>
+          </div>
+        </div>
+
+        <div class="mockup-price">
+          <div>
+            <div class="mockup-price-main">580 000 €<span class="anom" aria-label="anomalie"><iconify-icon icon="ph:warning-bold"></iconify-icon></span></div>
+            <div class="mockup-price-m2">6 105 €/m²</div>
+          </div>
+        </div>
+
+        <div class="mockup-details">
+          <div class="mockup-row"><iconify-icon icon="ph:ruler"></iconify-icon><strong>95&nbsp;m²</strong><span class="anom" aria-label="anomalie"><iconify-icon icon="ph:warning-bold"></iconify-icon></span></div>
+          <div class="mockup-row"><iconify-icon icon="ph:bed"></iconify-icon><strong>5</strong>&nbsp;chambres<span class="anom" aria-label="anomalie"><iconify-icon icon="ph:warning-bold"></iconify-icon></span></div>
+          <div class="mockup-row"><iconify-icon icon="ph:shower"></iconify-icon><strong>2</strong>&nbsp;SDB</div>
+          <div class="mockup-row"><iconify-icon icon="ph:thermometer"></iconify-icon>DPE&nbsp;<strong>H</strong><span class="anom" aria-label="anomalie"><iconify-icon icon="ph:warning-bold"></iconify-icon></span></div>
+          <div class="mockup-row"><iconify-icon icon="ph:buildings"></iconify-icon>Étage&nbsp;<strong>4/3</strong><span class="anom" aria-label="anomalie"><iconify-icon icon="ph:warning-bold"></iconify-icon></span></div>
+          <div class="mockup-row"><iconify-icon icon="ph:coins"></iconify-icon>Charges&nbsp;<strong>0&nbsp;€</strong><span class="anom" aria-label="anomalie"><iconify-icon icon="ph:warning-bold"></iconify-icon></span></div>
+        </div>
       </div>
       <div class="scene-overlay" id="sceneOverlay">
         <div style="text-align: center;">
@@ -1321,7 +1418,7 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
     </div>
 
     <div id="perceptionAnswer" style="display: none;">
-      <p class="lead" style="margin-top: 8px;">Combien d'éléments te dérangent visuellement ?</p>
+      <p class="lead" style="margin-top: 8px;">Combien d'anomalies tu as comptées sur la fiche ?</p>
       <button class="option" onclick="answerPerception(1)"><div class="opt-content"><div class="opt-marker"><iconify-icon icon="ph:check-bold"></iconify-icon></div><div>Moins de 3</div></div></button>
       <button class="option" onclick="answerPerception(2)"><div class="opt-content"><div class="opt-marker"><iconify-icon icon="ph:check-bold"></iconify-icon></div><div>Entre 3 et 5</div></div></button>
       <button class="option" onclick="answerPerception(3)"><div class="opt-content"><div class="opt-marker"><iconify-icon icon="ph:check-bold"></iconify-icon></div><div>Plus de 5</div></div></button>
@@ -1947,37 +2044,13 @@ function setProgress(step) {
 function startQuiz() {
   showScreen('perception');
   setProgress(1);
-  buildSceneItems();
   runPerception();
 }
 
 /* ---- SCENE ---- */
-function buildSceneItems() {
-  const items = [
-    { x: 12, y: 18, w: 14, h: 16, anomaly: true },
-    { x: 60, y: 22, w: 10, h: 12, circle: true },
-    { x: 22, y: 48, w: 12, h: 10, anomaly: true },
-    { x: 76, y: 50, w: 8, h: 8, circle: true },
-    { x: 35, y: 72, w: 16, h: 10, anomaly: true },
-    { x: 8, y: 78, w: 14, h: 14 },
-    { x: 52, y: 42, w: 10, h: 10, anomaly: true, circle: true },
-    { x: 78, y: 76, w: 12, h: 8 }
-  ];
-  const container = document.getElementById('sceneItems');
-  container.innerHTML = '';
-  items.forEach(it => {
-    const el = document.createElement('div');
-    el.className = 'scene-item' + (it.anomaly ? ' anomaly' : '') + (it.circle ? ' circle' : '');
-    el.style.left = it.x + '%';
-    el.style.top = it.y + '%';
-    el.style.width = it.w + '%';
-    el.style.height = it.h + '%';
-    container.appendChild(el);
-  });
-}
 function runPerception() {
   const overlay = document.getElementById('sceneOverlay');
-  const items = document.getElementById('sceneItems');
+  const mockup = document.getElementById('sceneMockup');
   const cd = document.getElementById('countdown');
   let n = 3;
   cd.textContent = n;
@@ -1987,9 +2060,10 @@ function runPerception() {
     else {
       clearInterval(tick);
       overlay.classList.add('hidden');
-      items.style.opacity = '1';
+      mockup.style.opacity = '1';
       setTimeout(() => {
-        items.style.opacity = '0.4';
+        mockup.style.opacity = '0.32';
+        mockup.style.filter = 'blur(2px)';
         document.getElementById('perceptionAnswer').style.display = 'block';
       }, 4000);
     }
