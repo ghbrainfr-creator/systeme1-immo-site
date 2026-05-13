@@ -1744,16 +1744,20 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
       </div>
     </div>
 
-    <!-- ===== WHATSAPP CTA + AGENDA ===== -->
+    <!-- ===== WHATSAPP CTA + AGENDA + EMAIL ===== -->
     <div class="whatsapp-cta" id="whatsappCta" style="display: none;">
       <div class="whatsapp-cta-header">
         <iconify-icon icon="ph:whatsapp-logo-duotone"></iconify-icon>
-        <div class="whatsapp-cta-title">Confirme depuis ton mobile</div>
+        <div class="whatsapp-cta-title">Confirme avec Nordine</div>
       </div>
-      <div class="whatsapp-cta-desc">Un message pré-rempli arrive sur WhatsApp. Nordine te répond en moins de 2h. Tu peux aussi ajouter le créneau à ton agenda en un clic.</div>
+      <div class="whatsapp-cta-desc">Trois canaux au choix. Le message arrive pré-rempli avec ton archétype et le créneau choisi. Nordine te répond en moins de 2h.</div>
       <a class="btn btn-whatsapp" id="whatsappBtn" href="#" target="_blank" rel="noopener">
         <iconify-icon icon="ph:whatsapp-logo-bold"></iconify-icon>
         Confirmer sur WhatsApp
+      </a>
+      <a class="btn btn-secondary" id="emailBtn" href="#" style="margin-top: 10px;">
+        <iconify-icon icon="ph:envelope-simple-duotone"></iconify-icon>
+        Envoyer par email
       </a>
       <a class="btn btn-secondary" id="agendaBtn" href="#" target="_blank" rel="noopener" style="margin-top: 10px;">
         <iconify-icon icon="ph:calendar-plus-duotone"></iconify-icon>
@@ -1805,6 +1809,7 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
 
 const CONFIG = {
   whatsapp: '33648772996',
+  email: 'n.mouaouia@guyhoquet.com',
   brandName: 'GH ELNE'
 };
 
@@ -2644,6 +2649,39 @@ function updateWhatsappLink() {
 
   const ag = document.getElementById('agendaBtn');
   ag.href = calUrl;
+
+  // Email pro Guy Hoquet : mailto: pré-rempli (audit trail côté Nordine)
+  const subject = 'Test agent GH ELNE — ' + prenom + ' · ' + arch.name;
+  let body = 'Bonjour Nordine,\n\n';
+  body += 'Je viens de compléter le test agent GH ELNE. Voici mon récap.\n\n';
+  body += 'Prénom : ' + prenom + '\n';
+  body += 'Archétype : ' + arch.name + '\n';
+  body += arch.quote + '\n\n';
+  body += 'Mes 3 forces validées :\n';
+  arch.forces.forEach(f => { body += '- ' + f.strong + '\n'; });
+  if (state.freeTexts.motivation) {
+    body += '\nCe que je veux apporter à mes clients :\n« ' + state.freeTexts.motivation + ' »\n';
+  }
+  body += '\nCréneau souhaité (30 min) :\n' + dateStr + ' à ' + time + '\n';
+  if (state.pactSigned) {
+    body += '\nPacte signé : « Ne plus jamais dire j\'aurais dû. »\n';
+  }
+  body += '\nLien pour ajouter ce RDV à ton agenda en 1 clic :\n' + calUrl + '\n\n';
+  body += 'Merci de me confirmer ce créneau par retour.\nÀ très vite,\n' + prenom;
+
+  const mailto = 'mailto:' + CONFIG.email
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body=' + encodeURIComponent(body);
+  const em = document.getElementById('emailBtn');
+  em.href = mailto;
+  em.onclick = () => {
+    setTimeout(() => {
+      document.getElementById('successTitle').textContent = (state.candidatePrenom || '') + ' ton email est parti.';
+      document.getElementById('successText').textContent = 'Tu retrouveras la copie dans tes « Envoyés ». Nordine te répond sous 2h.';
+      logPayload();
+      showScreen('success');
+    }, 800);
+  };
 }
 
 function logPayload() {
