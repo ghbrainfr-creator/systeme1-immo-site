@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#0F0A30">
-<title>NeuroRecrut Immo — Diagnostic GH ELNE</title>
-<meta name="description" content="Diagnostic neuro-comportemental d'agent immobilier indépendant. 5 minutes. Calibré sur 22 ans de terrain et les neurosciences de la décision d'achat. GH ELNE — Nordine Mouaouia.">
+<title>Test agent — GH ELNE</title>
+<meta name="description" content="Le test qui te dit, en 5 minutes, si l'agent immobilier indépendant que tu pourrais déjà être attend juste que tu te décides. GH ELNE — Nordine Mouaouia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1254,7 +1254,7 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
       <div class="brand-mark"><iconify-icon icon="ph:building-office-duotone"></iconify-icon></div>
       <div class="brand-text">
         <span class="brand-name">GH ELNE</span>
-        <span class="brand-sub">NeuroRecrut Immo · v1.0</span>
+        <span class="brand-sub">Test agent · 5 min</span>
       </div>
     </div>
     <div class="step-pill" id="stepPill">00 · 09</div>
@@ -1263,18 +1263,18 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
   <div class="quiz-progress"><div class="quiz-progress-fill" id="progressFill"></div></div>
 
   <!-- ============ ÉCRAN 0 : INTRO ============ -->
-  <section class="screen active" id="screen-intro" aria-label="Introduction au diagnostic">
+  <section class="screen active" id="screen-intro" aria-label="Introduction au test">
     <div class="eyebrow">
-      <iconify-icon icon="ph:waveform-duotone"></iconify-icon>
-      Diagnostic neuro-comportemental
+      <iconify-icon icon="ph:hourglass-medium-duotone"></iconify-icon>
+      5 min · 8 questions
     </div>
     <h1>Et si tu étais déjà <span class="gradient-text">agent immobilier</span>, sans le savoir ?</h1>
-    <p class="lead">Pas un test de personnalité. Un <strong>scanner de potentiel</strong>, calibré sur 22 ans de terrain et les neurosciences appliquées à la décision d'achat.<br><br>5 minutes. 8 questions. Ton archétype d'agent indépendant à la fin.</p>
+    <p class="lead">Si tu es ici, c'est que tu y as <strong>déjà pensé</strong>. Sans en parler. Sans poser la question à voix haute.<br><br>5 minutes pour transformer cette pensée en réponse. Pas un entretien. Pas un score RH. Une mise à plat honnête, calibrée sur <strong>22 ans de terrain et 1 250 ventes</strong>.</p>
 
     <div class="neu-card">
       <div style="display: flex; align-items: flex-start; gap: 14px;">
-        <iconify-icon icon="ph:brain-duotone" style="color: var(--cyan); font-size: 32px; flex-shrink: 0;"></iconify-icon>
-        <div style="font-size: 14.5px; line-height: 1.55; color: var(--ink-soft);">Tu n'auras pas une note. Tu auras <strong style="color: var(--white);">une lecture de toi</strong> que les RH classiques ne sauront jamais te donner.</div>
+        <iconify-icon icon="ph:compass-tool-duotone" style="color: var(--cyan); font-size: 32px; flex-shrink: 0;"></iconify-icon>
+        <div style="font-size: 14.5px; line-height: 1.55; color: var(--ink-soft);">Tu ne sortiras pas d'ici avec une note. Tu sortiras avec <strong style="color: var(--white);">une décision</strong> — ou la confirmation que ce n'est pas le bon moment. Les deux sont utiles.</div>
       </div>
     </div>
 
@@ -1672,7 +1672,7 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
 
     <div class="footer">
       <span class="footer-brand">GH ELNE</span>
-      <span>Diagnostic Neuro · v1.0</span>
+      <span>Test agent · v1.0</span>
     </div>
   </section>
 
@@ -1698,7 +1698,7 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
 
 <script>
 /* ============================================================
-   GH ELNE — NeuroRecrut Immo
+   GH ELNE — Test agent
    Moteur dynamique
    ============================================================ */
 
@@ -2493,7 +2493,7 @@ function updateWhatsappLink() {
   const time = state.selectedTime;
   const dateStr = date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
   let msg = 'Bonjour Nordine,\n\n';
-  msg += 'Je viens de terminer le diagnostic NeuroRecrut Immo.\n\n';
+  msg += 'Je viens de terminer le test agent GH ELNE.\n\n';
   msg += '— Mon prénom : ' + prenom + '\n';
   msg += '— Mon archétype : ' + arch.name + '\n';
   msg += '— ' + arch.quote + '\n\n';
@@ -2540,7 +2540,7 @@ function logPayload() {
     slot_time: state.selectedTime,
     timestamp: new Date().toISOString()
   };
-  console.log('GH ELNE NeuroRecrut payload :', payload);
+  console.log('GH ELNE payload :', payload);
 }
 
 function sendReport() {
