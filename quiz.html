@@ -1744,26 +1744,18 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
       </div>
     </div>
 
-    <!-- ===== WHATSAPP CTA + EMAIL + AGENDA ===== -->
+    <!-- ===== WHATSAPP + AGENDA ===== -->
     <div class="whatsapp-cta" id="whatsappCta" style="display: none;">
       <div class="whatsapp-cta-header">
         <iconify-icon icon="ph:whatsapp-logo-duotone"></iconify-icon>
         <div class="whatsapp-cta-title">Confirme avec Nordine</div>
       </div>
-      <div class="whatsapp-cta-desc">Trois canaux au choix. Pour que Nordine puisse te répondre par email, laisse ton adresse ci-dessous.</div>
-
-      <div class="email-input-wrap" style="margin-bottom: 14px;">
-        <input type="email" id="candidateEmail" placeholder="ton@email.com (optionnel)" autocomplete="email" inputmode="email" style="width: 100%; padding: 14px 16px; background: rgba(7,11,20,0.5); border: 1.5px solid var(--line-mid); border-radius: 10px; color: var(--white); font-family: 'Geist', sans-serif; font-size: 14.5px;">
-      </div>
+      <div class="whatsapp-cta-desc">Deux façons : WhatsApp pour l'instant, ou ajouter le créneau à ton agenda (Nordine reçoit l'invitation automatiquement).</div>
 
       <a class="btn btn-whatsapp" id="whatsappBtn" href="#" target="_blank" rel="noopener">
         <iconify-icon icon="ph:whatsapp-logo-bold"></iconify-icon>
         Confirmer sur WhatsApp
       </a>
-      <button class="btn btn-secondary" id="emailBtn" type="button" style="margin-top: 10px;">
-        <iconify-icon icon="ph:envelope-simple-duotone" id="emailBtnIcon"></iconify-icon>
-        <span id="emailBtnLabel">Envoyer par email</span>
-      </button>
       <a class="btn btn-secondary" id="agendaBtn" href="#" target="_blank" rel="noopener" style="margin-top: 10px;">
         <iconify-icon icon="ph:calendar-plus-duotone"></iconify-icon>
         Ajouter à mon agenda
@@ -2607,7 +2599,8 @@ function buildCalendarUrl() {
     dates: fmtCalDate(start) + '/' + fmtCalDate(end),
     details: details,
     location: 'Visio ou téléphone · à confirmer sur WhatsApp +33 6 48 77 29 96',
-    ctz: 'Europe/Paris'
+    ctz: 'Europe/Paris',
+    add: CONFIG.email
   });
   return 'https://calendar.google.com/calendar/render?' + params.toString();
 }
@@ -2654,90 +2647,13 @@ function updateWhatsappLink() {
 
   const ag = document.getElementById('agendaBtn');
   ag.href = calUrl;
-
-  // Email pro Guy Hoquet : mailto: pré-rempli (audit trail côté Nordine)
-  const subject = 'Test agent GH ELNE — ' + prenom + ' · ' + arch.name;
-  let body = 'Bonjour Nordine,\n\n';
-  body += 'Je viens de compléter le test agent GH ELNE. Voici mon récap.\n\n';
-  body += 'Prénom : ' + prenom + '\n';
-  body += 'Archétype : ' + arch.name + '\n';
-  body += arch.quote + '\n\n';
-  body += 'Mes 3 forces validées :\n';
-  arch.forces.forEach(f => { body += '- ' + f.strong + '\n'; });
-  if (state.freeTexts.motivation) {
-    body += '\nCe que je veux apporter à mes clients :\n« ' + state.freeTexts.motivation + ' »\n';
-  }
-  body += '\nCréneau souhaité (30 min) :\n' + dateStr + ' à ' + time + '\n';
-  if (state.pactSigned) {
-    body += '\nPacte signé : « Ne plus jamais dire j\'aurais dû. »\n';
-  }
-  body += '\nLien pour ajouter ce RDV à ton agenda en 1 clic :\n' + calUrl + '\n\n';
-  body += 'Merci de me confirmer ce créneau par retour.\nÀ très vite,\n' + prenom;
-
-  const mailto = 'mailto:' + CONFIG.email
-    + '?subject=' + encodeURIComponent(subject)
-    + '&body=' + encodeURIComponent(body);
-
-  const em = document.getElementById('emailBtn');
-  const emLabel = document.getElementById('emailBtnLabel');
-  const emIcon = document.getElementById('emailBtnIcon');
-
-  em.onclick = async (e) => {
-    e.preventDefault();
-    const candidateEmail = (document.getElementById('candidateEmail').value || '').trim();
-    if (candidateEmail && !/.+@.+\..+/.test(candidateEmail)) {
-      alert('Adresse email invalide.');
-      return;
-    }
-    emLabel.textContent = 'Envoi en cours…';
-    emIcon.setAttribute('icon', 'svg-spinners:ring-resize');
-    em.disabled = true;
-
-    const payload = {
-      prenom,
-      email: candidateEmail || null,
-      archetype_name: arch.name,
-      archetype_quote: arch.quote,
-      forces: arch.forces.map(f => f.strong),
-      motivation: state.freeTexts.motivation || null,
-      slot_date: dateStr,
-      slot_time: time,
-      pact_signed: !!state.pactSigned,
-      calendar_url: calUrl
-    };
-
-    let sentViaApi = false;
-    try {
-      const r = await fetch('/api/send-confirmation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (r.ok) sentViaApi = true;
-      else console.warn('API send failed, fallback to mailto', await r.text());
-    } catch (err) {
-      console.warn('API unreachable, fallback to mailto', err);
-    }
-
-    emLabel.textContent = 'Envoyer par email';
-    emIcon.setAttribute('icon', 'ph:envelope-simple-duotone');
-    em.disabled = false;
-
-    if (sentViaApi) {
-      document.getElementById('successTitle').textContent = (state.candidatePrenom || '') + ' ton message est envoyé.';
-      document.getElementById('successText').textContent = 'Nordine vient de recevoir ton récap sur son email pro. Il te répond sous 2h.';
+  ag.onclick = () => {
+    setTimeout(() => {
+      document.getElementById('successTitle').textContent = (state.candidatePrenom || '') + ' ton RDV est dans ton agenda.';
+      document.getElementById('successText').textContent = 'Nordine reçoit l\'invitation automatiquement. Il confirme sous 2h.';
       logPayload();
       showScreen('success');
-    } else {
-      // Fallback: ouvre le client mail du candidat avec brouillon pré-rempli
-      window.location.href = mailto;
-      setTimeout(() => {
-        document.getElementById('successTitle').textContent = (state.candidatePrenom || '') + ' ton brouillon est ouvert.';
-        document.getElementById('successText').textContent = 'Clique « Envoyer » dans ton client mail pour finaliser. Nordine te répond sous 2h.';
-        logPayload();
-        showScreen('success');
-      }, 800);
-    }
+    }, 800);
   };
 }
 
