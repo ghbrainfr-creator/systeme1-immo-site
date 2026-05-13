@@ -12,8 +12,21 @@ function esc(s) {
 }
 
 export default async function handler(req, res) {
+  // Health check via GET — utilisé pour vérifier la config sans envoyer d'email
+  if (req.method === 'GET') {
+    return res.status(200).json({
+      status: 'ok',
+      method: 'GET',
+      resend_key_configured: !!process.env.RESEND_API_KEY,
+      target_recipient: TO,
+      from: FROM,
+      timestamp: new Date().toISOString(),
+      note: 'POST to this endpoint with candidate payload to send email.'
+    });
+  }
+
   if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
+    res.setHeader('Allow', 'POST, GET');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
