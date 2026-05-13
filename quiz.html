@@ -1744,16 +1744,20 @@ body.dark-mode .ambient-bg { background: radial-gradient(ellipse 80% 60% at 50% 
       </div>
     </div>
 
-    <!-- ===== WHATSAPP CTA ===== -->
+    <!-- ===== WHATSAPP CTA + AGENDA ===== -->
     <div class="whatsapp-cta" id="whatsappCta" style="display: none;">
       <div class="whatsapp-cta-header">
         <iconify-icon icon="ph:whatsapp-logo-duotone"></iconify-icon>
         <div class="whatsapp-cta-title">Confirme depuis ton mobile</div>
       </div>
-      <div class="whatsapp-cta-desc">Un message pré-rempli avec ton archétype et le créneau choisi. Nordine te répond en moins de 2h.</div>
+      <div class="whatsapp-cta-desc">Un message pré-rempli arrive sur WhatsApp. Nordine te répond en moins de 2h. Tu peux aussi ajouter le créneau à ton agenda en un clic.</div>
       <a class="btn btn-whatsapp" id="whatsappBtn" href="#" target="_blank" rel="noopener">
         <iconify-icon icon="ph:whatsapp-logo-bold"></iconify-icon>
         Confirmer sur WhatsApp
+      </a>
+      <a class="btn btn-secondary" id="agendaBtn" href="#" target="_blank" rel="noopener" style="margin-top: 10px;">
+        <iconify-icon icon="ph:calendar-plus-duotone"></iconify-icon>
+        Ajouter à mon agenda
       </a>
     </div>
 
@@ -2558,6 +2562,47 @@ function selectSlot(time, el) {
 }
 
 /* ============================================================
+   GOOGLE CALENDAR URL BUILDER
+   ============================================================ */
+function pad2(n) { return String(n).padStart(2, '0'); }
+function fmtCalDate(d) {
+  return d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate())
+       + 'T' + pad2(d.getHours()) + pad2(d.getMinutes()) + '00';
+}
+function buildCalendarUrl() {
+  if (!state.selectedDate || !state.selectedTime) return '#';
+  const arch = archetypes[state.archetype];
+  const prenom = state.candidatePrenom || 'Candidat';
+  const [h, m] = state.selectedTime.split(':').map(Number);
+  const start = new Date(state.selectedDate);
+  start.setHours(h, m, 0, 0);
+  const end = new Date(start);
+  end.setMinutes(end.getMinutes() + 30);
+  const title = 'Échange GH ELNE · Nordine × ' + prenom + ' (' + arch.name + ')';
+  const details = [
+    'Test agent GH ELNE — récap candidat',
+    '',
+    'Prénom : ' + prenom,
+    'Archétype : ' + arch.name,
+    arch.quote,
+    '',
+    'Forces validées :',
+    ...arch.forces.map(f => '• ' + f.strong),
+    state.freeTexts.motivation ? '\nCe qu\'il veut apporter : « ' + state.freeTexts.motivation + ' »' : '',
+    state.pactSigned ? '\nPacte signé : "Ne plus jamais dire j\'aurais dû."' : ''
+  ].filter(Boolean).join('\n');
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: title,
+    dates: fmtCalDate(start) + '/' + fmtCalDate(end),
+    details: details,
+    location: 'Visio ou téléphone · à confirmer sur WhatsApp +33 6 48 77 29 96',
+    ctz: 'Europe/Paris'
+  });
+  return 'https://calendar.google.com/calendar/render?' + params.toString();
+}
+
+/* ============================================================
    WHATSAPP LINK BUILDER
    ============================================================ */
 function updateWhatsappLink() {
@@ -2566,27 +2611,29 @@ function updateWhatsappLink() {
   const date = state.selectedDate;
   const time = state.selectedTime;
   const dateStr = date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+  const calUrl = buildCalendarUrl();
+
   let msg = 'Bonjour Nordine,\n\n';
   msg += 'Je viens de terminer le test agent GH ELNE.\n\n';
-  msg += '— Mon prénom : ' + prenom + '\n';
-  msg += '— Mon archétype : ' + arch.name + '\n';
-  msg += '— ' + arch.quote + '\n\n';
-  msg += 'Mes 3 forces validées :\n';
+  msg += 'Prénom : ' + prenom + '\n';
+  msg += 'Archétype : ' + arch.name + '\n';
+  msg += arch.quote + '\n\n';
+  msg += 'Forces :\n';
   arch.forces.forEach(f => { msg += '• ' + f.strong + '\n'; });
-  msg += '\n';
   if (state.freeTexts.motivation) {
-    msg += 'Ce que je veux apporter à mes clients :\n« ' + state.freeTexts.motivation + ' »\n\n';
+    msg += '\nCe que je veux apporter : « ' + state.freeTexts.motivation + ' »\n';
   }
-  msg += 'Je souhaite réserver l\'échange de 30 min :\n';
-  msg += '→ ' + dateStr + ' à ' + time + '\n\n';
+  msg += '\nCréneau souhaité (30 min) :\n' + dateStr + ' à ' + time + '\n';
   if (state.pactSigned) {
-    msg += 'J\'ai signé mon pacte : "Ne plus jamais dire j\'aurais dû."\n\n';
+    msg += '\nPacte signé : « Ne plus jamais dire j\'aurais dû. »\n';
   }
-  msg += 'Confirme-moi par retour quand tu peux, à bientôt.';
+  msg += '\nAjoute ce RDV à ton agenda en 1 clic :\n' + calUrl + '\n\n';
+  msg += 'Confirme-moi quand tu peux. À bientôt.';
+
   const url = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg);
-  const btn = document.getElementById('whatsappBtn');
-  btn.href = url;
-  btn.onclick = () => {
+  const wa = document.getElementById('whatsappBtn');
+  wa.href = url;
+  wa.onclick = () => {
     setTimeout(() => {
       document.getElementById('successTitle').textContent = (state.candidatePrenom || '') + ' ton message est parti.';
       document.getElementById('successText').textContent = 'Nordine te répond en moins de 2h sur WhatsApp. Garde ton téléphone à portée.';
@@ -2594,6 +2641,9 @@ function updateWhatsappLink() {
       showScreen('success');
     }, 800);
   };
+
+  const ag = document.getElementById('agendaBtn');
+  ag.href = calUrl;
 }
 
 function logPayload() {
