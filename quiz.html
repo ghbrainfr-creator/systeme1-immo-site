@@ -2803,7 +2803,53 @@ window.addEventListener('scroll', () => {
   document.getElementById('scrollProgress').style.width = scrolled + '%';
 }, { passive: true });
 
-document.addEventListener('DOMContentLoaded', () => { setProgress(0); });
+document.addEventListener('DOMContentLoaded', () => {
+  setProgress(0);
+  // Test candidate mode — ouvre l'URL avec ?test=1 pour sauter direct à la restitution
+  if (new URLSearchParams(window.location.search).get('test') === '1') {
+    setTimeout(runTestCandidate, 100);
+  }
+});
+
+function runTestCandidate() {
+  // Candidat fictif : Sophie, Closer Empathique, créneau J+2 14:00
+  state.candidatePrenom = 'Sophie';
+  state.pactSigned = true;
+  state.pactTimestamp = new Date().toISOString();
+  state.perception = 2;
+  state.freeTexts.motivation = 'les rassurer comme je l\'aurais voulu pour ma mère, sans pression et avec patience';
+  state.freeTexts.readiness = 82;
+  state.peurDominante = 'finance';
+
+  // Scores forcés pour donner "Closer Empathique"
+  state.scores = { empathie: 9, ambition: 3, strategie: 4, connexion: 6, lucidite: 8 };
+
+  // Réponses fictives pour alimenter le recap
+  state.answers = {
+    q1: 0, q1_text: 'Je me demande qui vit dedans, leur histoire',
+    q2: 0, q2_text: 'J\'écoute longtemps avant de parler',
+    q3: 0, q3_text: 'Oui, c\'est exactement ce que je me dis',
+    q4: 0, q4_text: 'Une chaleur dans la poitrine',
+    q5: 2, q5_text: 'Ne pas savoir prospecter',
+    q6: 0, q6_text: 'Un client m\'envoie un message de remerciement'
+  };
+
+  // Force l'archétype et l'écran
+  state.archetype = computeArchetype();
+  showResult();
+
+  // Auto-sélectionne le 1er jour ouvré du calendrier (J+2 typiquement)
+  setTimeout(() => {
+    const days = document.querySelectorAll('.cal-day.available');
+    if (days.length) {
+      days[0].click();
+      setTimeout(() => {
+        const slot = document.querySelector('.cal-slot-btn[data-time="14:00"]');
+        if (slot) slot.click();
+      }, 200);
+    }
+  }, 600);
+}
 </script>
 
 </body>
