@@ -3,157 +3,54 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Le Pacte de Discrétion : vendre sans annonce publique · Système1-Immo™</title>
-<meta name="description" content="Le guide de la vente off-market : protocole confidentiel pour vendre un bien sans annonce publique, sans visites de curieux, sans signature sur la façade." />
-<meta name="theme-color" content="#070B14">
+<title>Le Pacte de Discrétion : vendre sans annonce publique · Guy Hoquet L'Immobilier</title>
+<meta name="description" content="Guide de la vente off-market : protocole confidentiel pour vendre un bien sans annonce publique, sans visites de curieux, sans signature sur la façade." />
+<meta name="theme-color" content="#1A2C5A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy-950:#070B14;--navy-900:#0B1020;--navy-800:#0F1523;--navy-700:#161E31;--navy-600:#1E2638;
-    --cool-50:#F5F7FB;--cool-200:#E4E7EC;--cool-400:#98A2B3;--cool-500:#64748B;
-    --accent-blue:#5BA3E8;--accent-blue-dark:#3B8DE0;--accent-purple:#A78BFA;--success:#52C77A;--danger:#F87171;--gold:#D4B062;
-    --r-sm:10px;--r-md:16px;--r-lg:22px;
-    --shadow-raised:0 10px 30px -12px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.04) inset;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
-  html{scroll-behavior:smooth}
-  body{font-family:'Geist',system-ui,sans-serif;background:var(--navy-950);color:var(--cool-200);line-height:1.65;position:relative;overflow-x:hidden}
-  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
-  .display{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em;color:var(--cool-50)}
-  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-  .wrap{max-width:880px;margin:0 auto;padding:64px 28px 96px;position:relative;z-index:2}
-
-  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .brand-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#8E6F2D);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff;font-size:18px;box-shadow:var(--shadow-raised)}
-  .brand-name{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--cool-50);font-size:15px;letter-spacing:-.01em}
-  .brand-sub{font-size:11px;color:var(--cool-500);font-family:ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
-  .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(212,176,98,.3);background:rgba(212,176,98,.08);border-radius:999px;font-size:11px;color:var(--gold);font-family:ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase}
-
-  .cover{padding:48px 0 32px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:64px}
-  .cover .series{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px}
-  .cover h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,5.5vw,64px);line-height:1.05;color:var(--cool-50);letter-spacing:-.03em;margin-bottom:24px}
-  .cover h1 .accent{background:linear-gradient(135deg,var(--gold),#8E6F2D);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .cover .sub{font-size:19px;color:var(--cool-400);max-width:640px;margin-bottom:36px;font-style:italic}
-  .meta{display:flex;gap:32px;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(255,255,255,.06)}
-  .meta-item .lbl{font-family:ui-monospace,monospace;font-size:11px;color:var(--cool-500);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
-  .meta-item .val{font-family:'Space Grotesk',sans-serif;color:var(--cool-50);font-weight:500;font-size:15px}
-
-  .intro{font-size:18px;color:var(--cool-200);margin-bottom:56px;padding:32px 36px;background:linear-gradient(180deg,rgba(212,176,98,.06),rgba(212,176,98,.02));border-left:3px solid var(--gold);border-radius:0 var(--r-md) var(--r-md) 0}
-  .intro strong{color:var(--cool-50)}
-  .intro em{color:var(--gold);font-style:normal;font-weight:500}
-
-  /* ===== POUR QUI ===== */
-  .for-who{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:48px 0}
-  .who{padding:24px;background:var(--navy-800);border:1px solid rgba(255,255,255,.06);border-radius:var(--r-md)}
-  .who .icon{width:36px;height:36px;border-radius:8px;background:rgba(212,176,98,.1);color:var(--gold);display:grid;place-items:center;font-family:ui-monospace,monospace;font-weight:700;font-size:14px;margin-bottom:14px}
-  .who h4{font-family:'Space Grotesk',sans-serif;color:var(--cool-50);font-weight:600;font-size:17px;margin-bottom:6px;letter-spacing:-.01em}
-  .who p{color:var(--cool-400);font-size:14px}
-  @media(max-width:680px){.for-who{grid-template-columns:1fr}}
-
-  /* ===== SECTION ===== */
-  .section{margin-bottom:56px}
-  .section-header{display:flex;gap:24px;align-items:baseline;margin-bottom:20px}
-  .section-num{font-family:ui-monospace,monospace;font-size:14px;color:var(--gold);letter-spacing:.1em;flex-shrink:0;padding-top:6px}
-  .section h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;color:var(--cool-50);line-height:1.2;letter-spacing:-.02em}
-  .section .body{padding-left:56px}
-  .section p{margin-bottom:16px;color:var(--cool-200);font-size:16px}
-  .section p strong{color:var(--cool-50)}
-  .section blockquote{margin:24px 0;padding:16px 22px;border-left:2px solid var(--gold);font-style:italic;color:var(--cool-400);font-size:15px}
-  @media(max-width:680px){.section .body{padding-left:0}}
-
-  /* ===== STEPS ===== */
-  .steps{margin:36px 0;display:grid;gap:14px}
-  .step{display:grid;grid-template-columns:54px 1fr;gap:18px;align-items:start;padding:20px 22px;background:var(--navy-800);border:1px solid rgba(255,255,255,.06);border-radius:var(--r-md)}
-  .step-n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:28px;color:var(--gold);letter-spacing:-.02em;line-height:1}
-  .step h4{font-family:'Space Grotesk',sans-serif;color:var(--cool-50);font-weight:600;font-size:17px;margin-bottom:4px;letter-spacing:-.01em}
-  .step p{color:var(--cool-400);font-size:14.5px;margin:0}
-
-  /* ===== PROS-CONS ===== */
-  .pc{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:36px 0}
-  .pc-col{padding:24px;border-radius:var(--r-md);border:1px solid rgba(255,255,255,.06);background:var(--navy-800)}
-  .pc-col.up{border-color:rgba(82,199,122,.2)}
-  .pc-col.down{border-color:rgba(248,113,113,.18)}
-  .pc-col .lbl{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
-  .pc-col.up .lbl{color:var(--success)}
-  .pc-col.down .lbl{color:var(--danger)}
-  .pc-col ul{list-style:none;padding:0}
-  .pc-col li{padding:8px 0;font-size:14px;color:var(--cool-200);position:relative;padding-left:18px}
-  .pc-col li::before{content:'';position:absolute;left:0;top:14px;width:8px;height:2px;background:var(--cool-500);border-radius:2px}
-  .pc-col.up li::before{background:var(--success)}
-  .pc-col.down li::before{background:var(--danger)}
-  @media(max-width:680px){.pc{grid-template-columns:1fr}}
-
-  /* ===== PACTE BOX (signature) ===== */
-  .pacte{margin:64px 0;padding:42px 40px;background:linear-gradient(180deg,rgba(212,176,98,.06),rgba(15,21,35,1));border:1px solid rgba(212,176,98,.25);border-radius:var(--r-lg);text-align:center;box-shadow:var(--shadow-raised)}
-  .pacte .seal{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8E6F2D);display:grid;place-items:center;margin:0 auto 18px;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0B1020;font-size:22px;box-shadow:0 8px 24px -8px rgba(212,176,98,.4)}
-  .pacte h3{font-family:'Space Grotesk',sans-serif;font-size:24px;color:var(--cool-50);letter-spacing:-.02em;margin-bottom:10px}
-  .pacte p{color:var(--cool-400);max-width:520px;margin:0 auto 18px;font-size:15px}
-  .pacte .quote{font-style:italic;color:var(--gold);font-size:14px;letter-spacing:.02em}
-
-  /* ===== CTA ===== */
-  .cta{margin-top:64px;padding:40px;background:var(--navy-800);border:1px solid rgba(212,176,98,.2);border-radius:var(--r-lg);box-shadow:var(--shadow-raised)}
-  .cta h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:24px;color:var(--cool-50);margin-bottom:10px;letter-spacing:-.01em}
-  .cta p{color:var(--cool-400);margin-bottom:24px;font-size:15px}
-  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:linear-gradient(135deg,var(--gold),#8E6F2D);color:#0B1020;border-radius:12px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 20px -8px rgba(212,176,98,.5);transition:transform .2s}
-  .btn:hover{transform:translateY(-1px)}
-  .btn-ghost{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;color:var(--cool-200);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;text-decoration:none;margin-left:8px}
-
-  footer{margin-top:64px;padding-top:28px;border-top:1px solid rgba(255,255,255,.06);text-align:center;color:var(--cool-500);font-size:12px}
-  footer a{color:var(--cool-400);text-decoration:none}
-
-  @media print{
-    body{background:#fff;color:#111}
-    body::before{display:none}
-    .wrap{max-width:none;padding:24px}
-    .display,h1,h2,h3,h4{color:#111}
-    .cover h1 .accent{background:none;-webkit-text-fill-color:#8E6F2D;color:#8E6F2D}
-    .intro,.who,.step,.pc-col,.pacte,.cta{background:#FDFBF6;color:#111;border-color:#E4E7EC;box-shadow:none}
-    .section p,.section p strong{color:#222}
-    .who p,.step p,.pc-col li,.cta p,.pacte p{color:#333}
-    .btn{background:#8E6F2D;color:#fff}
-    .section,.pacte,.cta{page-break-inside:avoid}
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="gh-style.css">
 </head>
 <body>
 <div class="wrap">
 
   <div class="topbar">
     <div class="brand">
-      <div class="brand-mark">S1</div>
+      <div class="brand-mark">
+        <svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg" aria-label="Guy Hoquet">
+          <polygon points="21,4 38,36 4,36" fill="#1A2C5A"/>
+          <text x="21" y="30" text-anchor="middle" fill="#fff" font-family="Montserrat,sans-serif" font-size="15" font-weight="700">G</text>
+        </svg>
+      </div>
       <div>
-        <div class="brand-name">Système1-Immo™</div>
-        <div class="brand-sub">Guide vendeur · 03 · Privé</div>
+        <div class="brand-name">Guy Hoquet</div>
+        <div class="brand-sub">L'Immobilier · Guide 03 · Privé</div>
       </div>
     </div>
     <div style="display:flex;gap:10px;align-items:center">
-      <div class="chip"><span>●</span> Confidentiel · 6 min</div>
-      <a href="pacte-discretion.pdf" download class="chip" style="text-decoration:none;cursor:pointer">↓ PDF</a>
+      <div class="chip">Confidentiel · 6 min</div>
+      <a href="pacte-discretion.pdf" download class="chip solid" style="text-decoration:none">↓ PDF</a>
     </div>
   </div>
 
   <header class="cover">
-    <div class="series">Collection privée — Vente discrète</div>
-    <h1>Le <span class="accent">Pacte de Discrétion</span> : vendre sans annonce publique.</h1>
+    <div class="series">Collection privée · Vente discrète</div>
+    <h1>Le <span class="accent">Pacte de Discrétion</span> :<br>vendre sans annonce publique.</h1>
     <p class="sub">Un protocole confidentiel pour vendre votre bien sans signature sur la façade, sans curieux dans le séjour, et souvent à un meilleur prix.</p>
     <div class="meta">
       <div class="meta-item"><div class="lbl">Audience</div><div class="val">Vendeurs sensibles</div></div>
       <div class="meta-item"><div class="lbl">Type</div><div class="val">Off-market · confidentiel</div></div>
       <div class="meta-item"><div class="lbl">Engagement</div><div class="val">NDA possible</div></div>
-      <div class="meta-item"><div class="lbl">Publié par</div><div class="val">Votre agent · Système1-Immo</div></div>
+      <div class="meta-item"><div class="lbl">Édité par</div><div class="val">Votre agence Guy Hoquet</div></div>
     </div>
   </header>
 
   <div class="intro">
-    <p>Pour <em>une partie</em> des vendeurs, publier une annonce sur Internet est <strong>l'inverse de ce qu'il faut faire</strong>. Pas parce que c'est inefficace — parce que c'est trop visible. Voici comment ces vendeurs procèdent.</p>
+    <p>Pour <em>une partie</em> des vendeurs, publier une annonce sur Internet est <strong>l'inverse de ce qu'il faut faire</strong>. Pas parce que c'est inefficace — parce que c'est trop visible. Voici comment ces vendeurs procèdent avec Guy Hoquet.</p>
   </div>
 
-  <!-- POUR QUI -->
   <section class="section">
-    <div class="section-header"><div class="section-num">01.</div><h2>Pour qui le Pacte est conçu</h2></div>
+    <div class="section-header"><div class="section-num">01</div><h2>Pour qui le Pacte est conçu</h2></div>
     <div class="body">
       <p>La vente discrète n'est pas un luxe réservé aux biens d'exception. Elle répond à <strong>quatre profils précis</strong> de vendeurs, dont vous reconnaîtrez peut-être un.</p>
     </div>
@@ -182,9 +79,8 @@
     </div>
   </div>
 
-  <!-- COMMENT ÇA MARCHE -->
   <section class="section">
-    <div class="section-header"><div class="section-num">02.</div><h2>Comment le Pacte fonctionne, étape par étape</h2></div>
+    <div class="section-header"><div class="section-num">02</div><h2>Comment le Pacte fonctionne, étape par étape</h2></div>
     <div class="body">
       <p>Le Pacte n'est pas une promesse vague. C'est un <strong>protocole en six étapes</strong>, formalisé par avenant au mandat, et signé conjointement.</p>
     </div>
@@ -209,7 +105,7 @@
       <div class="step-n">03</div>
       <div>
         <h4>Diffusion en cercle qualifié</h4>
-        <p>Présentation au portefeuille acheteurs de l'agent — uniquement à ceux dont le profil, le budget, et l'accord bancaire de principe sont déjà vérifiés. Pas de diffusion à froid.</p>
+        <p>Présentation au portefeuille acheteurs du réseau Guy Hoquet — uniquement à ceux dont le profil, le budget, et l'accord bancaire de principe sont déjà vérifiés. Pas de diffusion à froid.</p>
       </div>
     </div>
     <div class="step">
@@ -235,9 +131,8 @@
     </div>
   </div>
 
-  <!-- AVANTAGES / LIMITES -->
   <section class="section">
-    <div class="section-header"><div class="section-num">03.</div><h2>Ce que le Pacte vous fait gagner — et ce qu'il coûte</h2></div>
+    <div class="section-header"><div class="section-num">03</div><h2>Ce que le Pacte vous fait gagner — et ce qu'il coûte</h2></div>
     <div class="body">
       <p>Il faut le dire honnêtement : la vente off-market <strong>n'est pas optimale dans tous les cas</strong>. Voici, en transparence, l'équation réelle.</p>
     </div>
@@ -268,7 +163,7 @@
   </div>
 
   <section class="section">
-    <div class="section-header"><div class="section-num">04.</div><h2>Pourquoi cela fonctionne (mieux qu'on ne le croit)</h2></div>
+    <div class="section-header"><div class="section-num">04</div><h2>Pourquoi cela fonctionne (mieux qu'on ne le croit)</h2></div>
     <div class="body">
       <p>Contre-intuitivement, <strong>la rareté perçue augmente la valeur perçue</strong>. Un bien qui n'est pas accessible à tous, qui se mérite, qui se présente <em>sur invitation</em>, déclenche un autre type d'achat : l'achat d'opportunité.</p>
       <p>Statistiques internes des réseaux off-market français : sur les 18 derniers mois, les biens vendus en discret se sont conclus à <strong>+2,1 % au-dessus du prix de mandat</strong>, contre −3,1 % pour les biens classiques. Pas magique — psychologique.</p>
@@ -276,25 +171,28 @@
     </div>
   </section>
 
-  <!-- PACTE / SCEAU -->
   <div class="pacte">
-    <div class="seal">S1</div>
-    <h3>Le Pacte de Discrétion</h3>
-    <p>Engagement réciproque, signé par votre agent et par vous. Si une seule clause est violée, le mandat est rompu sans indemnité.</p>
+    <div class="seal">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+        <polygon points="30,8 54,50 6,50" fill="none" stroke="#22B4D8" stroke-width="2"/>
+        <text x="30" y="42" text-anchor="middle" fill="#fff" font-family="Montserrat,sans-serif" font-size="18" font-weight="700">G</text>
+      </svg>
+    </div>
+    <h3>Le Pacte de Discrétion Guy Hoquet</h3>
+    <p>Engagement réciproque, signé par votre conseiller et par vous. Si une seule clause est violée, le mandat est rompu sans indemnité.</p>
     <p class="quote">« Votre bien, votre rythme, votre cercle. »</p>
   </div>
 
-  <!-- CTA -->
   <div class="cta">
     <h3>Discuter en confidence d'une vente discrète ?</h3>
-    <p>Échange privé de 30 minutes avec votre agent Système1-Immo, sous engagement de confidentialité. Aucune trace écrite, aucun fichier ouvert sans votre accord explicite.</p>
+    <p>Échange privé de 30 minutes avec votre conseiller Guy Hoquet, sous engagement de confidentialité. Aucune trace écrite, aucun fichier ouvert sans votre accord explicite.</p>
     <a class="btn" href="#contact">Demander un entretien privé →</a>
-    <a class="btn-ghost" href="https://systeme1-immo.fr">systeme1-immo.fr</a>
+    <a class="btn-ghost" href="https://www.guy-hoquet.com">guy-hoquet.com</a>
   </div>
 
   <footer>
-    <p>© Système1-Immo™ · Guide vendeur 03/2026 · Collection privée — vente off-market</p>
-    <p style="margin-top:6px"><a href="https://systeme1-immo.fr">systeme1-immo.fr</a></p>
+    <p>© Guy Hoquet L'Immobilier · Guide vendeur 03/2026 · Collection privée — vente off-market</p>
+    <p style="margin-top:6px">Édité avec <a href="https://systeme1-immo.fr">Système1-Immo™</a></p>
   </footer>
 
 </div>
