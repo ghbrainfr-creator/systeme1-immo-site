@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Les 7 erreurs qui coûtent 20 000€ à la vente · Système1-Immo™</title>
+<meta name="description" content="Le guide vendeur Système1-Immo : 7 erreurs récurrentes qui font perdre en moyenne 20 000€ sur le prix de vente d'un bien immobilier." />
+<meta name="theme-color" content="#070B14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#070B14;--navy-900:#0B1020;--navy-800:#0F1523;--navy-700:#161E31;--navy-600:#1E2638;
+    --cool-50:#F5F7FB;--cool-200:#E4E7EC;--cool-400:#98A2B3;--cool-500:#64748B;
+    --accent-blue:#5BA3E8;--accent-blue-dark:#3B8DE0;--accent-purple:#A78BFA;--success:#52C77A;--danger:#F87171;
+    --r-sm:10px;--r-md:16px;--r-lg:22px;
+    --shadow-raised:0 10px 30px -12px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.04) inset;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth}
+  body{font-family:'Geist',system-ui,sans-serif;background:var(--navy-950);color:var(--cool-200);line-height:1.6;position:relative;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+  .display{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em;color:var(--cool-50)}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .wrap{max-width:880px;margin:0 auto;padding:64px 28px 96px;position:relative;z-index:2}
+
+  /* ===== HEADER ===== */
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff;font-size:18px;box-shadow:var(--shadow-raised)}
+  .brand-name{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--cool-50);font-size:15px;letter-spacing:-.01em}
+  .brand-sub{font-size:11px;color:var(--cool-500);font-family:ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(91,163,232,.25);background:rgba(91,163,232,.08);border-radius:999px;font-size:11px;color:var(--accent-blue);font-family:ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase}
+
+  /* ===== COVER ===== */
+  .cover{padding:48px 0 32px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:64px}
+  .cover .series{font-family:ui-monospace,monospace;font-size:12px;color:var(--cool-400);letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px}
+  .cover h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,5.5vw,64px);line-height:1.05;color:var(--cool-50);letter-spacing:-.03em;margin-bottom:24px}
+  .cover h1 .accent{background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .cover .sub{font-size:19px;color:var(--cool-400);max-width:640px;margin-bottom:36px}
+  .meta{display:flex;gap:32px;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(255,255,255,.06)}
+  .meta-item .lbl{font-family:ui-monospace,monospace;font-size:11px;color:var(--cool-500);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+  .meta-item .val{font-family:'Space Grotesk',sans-serif;color:var(--cool-50);font-weight:500;font-size:15px}
+
+  /* ===== INTRO ===== */
+  .intro{font-size:18px;color:var(--cool-200);margin-bottom:64px;padding:28px 32px;background:linear-gradient(180deg,rgba(91,163,232,.05),rgba(167,139,250,.03));border-left:3px solid var(--accent-blue);border-radius:0 var(--r-md) var(--r-md) 0}
+  .intro strong{color:var(--cool-50)}
+
+  /* ===== STAT ROW ===== */
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:72px}
+  .stat{padding:24px;background:var(--navy-800);border:1px solid rgba(255,255,255,.06);border-radius:var(--r-md)}
+  .stat .n{font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:700;color:var(--cool-50);letter-spacing:-.02em;display:block;margin-bottom:4px}
+  .stat .n .unit{font-size:18px;color:var(--accent-blue);margin-left:4px}
+  .stat .lbl{font-size:13px;color:var(--cool-400);line-height:1.4}
+  @media(max-width:680px){.stat-row{grid-template-columns:1fr}}
+
+  /* ===== SECTION ===== */
+  .section{margin-bottom:56px;padding-bottom:0}
+  .section-header{display:flex;gap:24px;align-items:baseline;margin-bottom:20px}
+  .section-num{font-family:ui-monospace,monospace;font-size:14px;color:var(--accent-blue);letter-spacing:.1em;flex-shrink:0;padding-top:6px}
+  .section h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:28px;color:var(--cool-50);line-height:1.2;letter-spacing:-.02em}
+  .section .body{padding-left:56px}
+  .section p{margin-bottom:16px;color:var(--cool-200);font-size:16px}
+  .section p strong{color:var(--cool-50)}
+  @media(max-width:680px){.section .body{padding-left:0}}
+
+  .cost{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.25);border-radius:8px;color:var(--danger);font-family:ui-monospace,monospace;font-size:13px;margin-top:8px}
+  .fix{margin-top:18px;padding:18px 20px;background:rgba(82,199,122,.06);border:1px solid rgba(82,199,122,.2);border-radius:var(--r-sm)}
+  .fix .lbl{font-family:ui-monospace,monospace;font-size:11px;color:var(--success);letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+  .fix p{margin:0;font-size:15px}
+
+  /* ===== TOTAL BOX ===== */
+  .total{margin:80px 0;padding:40px;background:linear-gradient(135deg,rgba(91,163,232,.08),rgba(167,139,250,.05));border:1px solid rgba(91,163,232,.2);border-radius:var(--r-lg);text-align:center}
+  .total .lbl{font-family:ui-monospace,monospace;font-size:12px;color:var(--accent-blue);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+  .total .big{font-family:'Space Grotesk',sans-serif;font-size:clamp(48px,7vw,72px);font-weight:700;color:var(--cool-50);letter-spacing:-.03em;line-height:1}
+  .total .big .unit{color:var(--accent-blue);font-size:.55em;margin-left:6px}
+  .total .sub{margin-top:14px;color:var(--cool-400);font-size:15px}
+
+  /* ===== CTA ===== */
+  .cta{margin-top:72px;padding:40px;background:var(--navy-800);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg);box-shadow:var(--shadow-raised)}
+  .cta h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:24px;color:var(--cool-50);margin-bottom:10px;letter-spacing:-.01em}
+  .cta p{color:var(--cool-400);margin-bottom:24px;font-size:15px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-blue-dark));color:#fff;border-radius:12px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 20px -8px rgba(91,163,232,.5);transition:transform .2s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;color:var(--cool-200);font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;text-decoration:none;margin-left:8px}
+
+  /* ===== FOOTER ===== */
+  footer{margin-top:64px;padding-top:28px;border-top:1px solid rgba(255,255,255,.06);text-align:center;color:var(--cool-500);font-size:12px}
+  footer a{color:var(--cool-400);text-decoration:none}
+
+  /* ===== PRINT ===== */
+  @media print{
+    body{background:#fff;color:#111}
+    body::before{display:none}
+    .wrap{max-width:none;padding:24px}
+    .display,h1,h2,h3{color:#111}
+    .cover h1 .accent{background:none;-webkit-text-fill-color:#3B8DE0;color:#3B8DE0}
+    .intro{background:#F5F7FB;color:#111;border-left-color:#3B8DE0}
+    .intro strong{color:#000}
+    .stat{background:#F5F7FB;border-color:#E4E7EC;color:#111}
+    .stat .n,.section h2,.cta h3,.total .big{color:#111}
+    .section p,.section p strong{color:#222}
+    .total{background:#F5F7FB;border-color:#E4E7EC}
+    .cta{background:#F5F7FB;border-color:#E4E7EC;box-shadow:none}
+    .cta p{color:#444}
+    .btn{background:#3B8DE0;box-shadow:none}
+    .section{page-break-inside:avoid}
+    .cta{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">S1</div>
+      <div>
+        <div class="brand-name">Système1-Immo™</div>
+        <div class="brand-sub">Guide vendeur · 01</div>
+      </div>
+    </div>
+    <div class="chip"><span>●</span> Lecture · 9 min</div>
+  </div>
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="series">Guide vendeur — Édition 2026</div>
+    <h1>Les 7 erreurs qui coûtent <span class="accent">20 000 €</span> à la vente de votre bien.</h1>
+    <p class="sub">Un audit lucide des décisions qui font perdre, en moyenne, l'équivalent d'une voiture neuve sur le prix final. Et comment les éviter sans rien céder.</p>
+    <div class="meta">
+      <div class="meta-item"><div class="lbl">Audience</div><div class="val">Propriétaires vendeurs</div></div>
+      <div class="meta-item"><div class="lbl">Format</div><div class="val">PDF · 8 pages</div></div>
+      <div class="meta-item"><div class="lbl">Sources</div><div class="val">FNAIM, Notaires de France, INSEE</div></div>
+      <div class="meta-item"><div class="lbl">Publié par</div><div class="val">Votre agent · Système1-Immo</div></div>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>En 2025, le vendeur français moyen a perdu <strong>22 800 € sur le prix de vente initial</strong> de son bien — non pas à cause du marché, mais à cause de <strong>7 décisions évitables</strong> prises dans les 30 premiers jours de mise en vente. Ce guide les liste, dans l'ordre où elles surviennent, avec le coût réel mesuré et le correctif.</p>
+  </div>
+
+  <!-- STAT ROW -->
+  <div class="stat-row">
+    <div class="stat"><span class="n">−12<span class="unit">%</span></span><div class="lbl">de prix moyen pour un bien qui dépasse 90 jours en ligne</div></div>
+    <div class="stat"><span class="n">×4,2</span><div class="lbl">de clics sur une annonce avec photos pro vs. amateur</div></div>
+    <div class="stat"><span class="n">68<span class="unit">%</span></span><div class="lbl">des acheteurs décident dans les 90 secondes de visite</div></div>
+  </div>
+
+  <!-- ERREURS -->
+  <section class="section">
+    <div class="section-header"><div class="section-num">01.</div><h2>Surévaluer le prix de mise en vente "au cas où"</h2></div>
+    <div class="body">
+      <p>C'est l'erreur racine. Le réflexe « on commence haut, on baissera si besoin » <strong>brûle le bien sur le marché</strong>. Les 21 premiers jours concentrent 70 % des contacts qualifiés. Un prix trop haut = pas de visites = annonce qui s'enkyste = obligation de baisser visiblement = perception « il y a un problème ».</p>
+      <p>Résultat mesuré : un bien surévalué de 8 % au départ se vend en moyenne <strong>6 à 10 % en dessous</strong> de sa valeur de marché, après 4 mois.</p>
+      <span class="cost">Coût moyen — 18 000 à 32 000 €</span>
+      <div class="fix">
+        <div class="lbl">Le correctif</div>
+        <p>Demander 2 avis de valeur indépendants <em>avant</em> de fixer le prix. Viser le haut de la fourchette de marché, pas au-delà. Le vrai levier : la qualité de l'annonce, pas le prix d'affichage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header"><div class="section-num">02.</div><h2>Publier des photos prises au smartphone</h2></div>
+    <div class="body">
+      <p>Un acheteur scanne 40 annonces en une soirée. Il décide en <strong>1,7 seconde par photo</strong> s'il clique ou continue. Photos sombres, cadrages tordus, contre-jours = il passe. Vous n'aurez jamais la deuxième chance.</p>
+      <p>Statistique métier : une annonce avec reportage photo professionnel reçoit <strong>4,2× plus de clics</strong> et <strong>2,8× plus de demandes de visite</strong>. À prix égal.</p>
+      <span class="cost">Coût moyen — 8 000 à 15 000 €</span>
+      <div class="fix">
+        <div class="lbl">Le correctif</div>
+        <p>Reportage photo pro (200–400 €), tourné en lumière naturelle, le matin ou en fin de journée. Inclure systématiquement : 1 photo extérieure cadrée, 1 séjour grand-angle, 1 cuisine, 1 chambre principale, 1 vue dégagée. Pas plus de 15 photos au total.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header"><div class="section-num">03.</div><h2>Écrire une annonce qui décrit, au lieu de projeter</h2></div>
+    <div class="body">
+      <p><em>« T3 de 65 m² au 3<sup>e</sup> étage, double séjour, cuisine séparée, salle de bains. »</em> Cette annonce n'attire personne. Elle informe. Or l'acheteur n'achète pas un plan — il achète <strong>une vie possible</strong>.</p>
+      <p>Une bonne annonce projette : qui vivra ici, comment, à quel moment de la journée. Elle nomme le quartier, le bruit (ou son absence), la lumière, ce qu'on entend depuis la fenêtre.</p>
+      <span class="cost">Coût moyen — 5 000 à 9 000 €</span>
+      <div class="fix">
+        <div class="lbl">Le correctif</div>
+        <p>Règle des 3 lignes : ligne 1 = pour qui c'est fait, ligne 2 = ce qui rend ce bien unique, ligne 3 = la projection sensorielle (« lumière du matin sur la table de cuisine », « calme de cour intérieure »). Le reste, c'est la fiche technique.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header"><div class="section-num">04.</div><h2>Improviser les visites</h2></div>
+    <div class="body">
+      <p>68 % des acheteurs <strong>se décident dans les 90 premières secondes</strong> d'une visite. Pas dans la deuxième pièce — dans l'entrée. Une odeur, un meuble mal placé, une ampoule grillée, et l'achat émotionnel ne se produit pas. Tout ce qui se dira ensuite sera de la justification logique pour ne pas acheter.</p>
+      <span class="cost">Coût moyen — 4 000 à 12 000 €</span>
+      <div class="fix">
+        <div class="lbl">Le correctif</div>
+        <p>Protocole pré-visite : aération 30 min avant, lumières toutes allumées (même en plein jour), volumes vides, table dressée légèrement, surfaces nettes. Pas de bougies parfumées (ça sent le « on cache quelque chose »). Et surtout : <strong>le propriétaire ne reste pas pendant la visite</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header"><div class="section-num">05.</div><h2>Refuser de négocier "par principe"</h2></div>
+    <div class="body">
+      <p>Un acheteur qui négocie est un acheteur <em>qui veut</em>. Refuser sèchement = perdre 9 fois sur 10 l'offre, sans renégociation. Le bien retourne en ligne, accumule 30 jours de plus, et la prochaine offre arrive <strong>3 à 5 % plus basse</strong> que celle refusée.</p>
+      <span class="cost">Coût moyen — 6 000 à 14 000 €</span>
+      <div class="fix">
+        <div class="lbl">Le correctif</div>
+        <p>Préparer dès le départ <strong>3 prix dans la tête</strong> : le prix affiché, le prix-cible (votre vraie attente), le prix-plancher (en dessous, vous refusez). Toute offre entre prix-cible et prix-plancher se travaille, ne se refuse pas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header"><div class="section-num">06.</div><h2>Découvrir le DPE trop tard</h2></div>
+    <div class="body">
+      <p>Depuis 2025, l'étiquette énergétique <strong>conditionne 41 % des décisions</strong> d'achat. Un DPE F ou G qui apparaît en cours de processus = renégociation systématique du prix, parfois rétractation. Une remise à niveau (isolation, chaudière) avant mise en vente coûte 4 000 à 8 000 €, et fait gagner <strong>15 à 25 000 €</strong> sur le prix final.</p>
+      <span class="cost">Coût moyen — 12 000 à 25 000 €</span>
+      <div class="fix">
+        <div class="lbl">Le correctif</div>
+        <p>Faire réaliser le DPE <strong>avant</strong> de fixer le prix, pas après. Si le résultat est mauvais : soit on travaille 1 à 2 postes (souvent isolation toiture + VMC) pour gagner une lettre, soit on intègre l'argument « budget travaux » dans le prix d'affichage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header"><div class="section-num">07.</div><h2>Choisir son agent au feeling, pas sur la méthode</h2></div>
+    <div class="body">
+      <p>« Il était sympa, on l'a pris. » C'est l'erreur la plus chère, parce qu'elle décide des six précédentes. Un agent qui n'a ni méthode de prix, ni protocole de visite, ni stratégie de diffusion, ne vendra pas <em>moins bien</em> — il vendra <strong>moins cher et plus tard</strong>.</p>
+      <span class="cost">Coût moyen — variable, souvent le plus élevé</span>
+      <div class="fix">
+        <div class="lbl">Le correctif</div>
+        <p>3 questions à poser avant de signer un mandat : (1) <em>Sur quelle base fixez-vous le prix ?</em> (2) <em>Combien de prospects qualifiés avez-vous dans votre portefeuille pour ce type de bien ?</em> (3) <em>Quel est votre délai moyen de vente, données à l'appui ?</em> Si les trois réponses sont floues, changez d'interlocuteur.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOTAL -->
+  <div class="total">
+    <div class="lbl">Coût cumulé moyen des 7 erreurs</div>
+    <div class="big">53 000<span class="unit">€</span></div>
+    <div class="sub">Sur un bien estimé à 280 000 €. Toutes ces erreurs sont évitables — la plupart, dans les 14 premiers jours.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h3>Vous voulez vendre sans laisser 20 000 € sur la table ?</h3>
+    <p>30 minutes au téléphone avec votre agent Système1-Immo : audit gratuit de votre bien, estimation argumentée, plan de mise en vente sur 21 jours. Sans engagement.</p>
+    <a class="btn" href="#contact">Réserver mon audit gratuit →</a>
+    <a class="btn-ghost" href="https://systeme1-immo.fr">systeme1-immo.fr</a>
+  </div>
+
+  <footer>
+    <p>© Système1-Immo™ · Guide vendeur 01/2026 · Données : FNAIM, Notaires de France, INSEE, Meilleurs Agents</p>
+    <p style="margin-top:6px"><a href="https://systeme1-immo.fr">systeme1-immo.fr</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
