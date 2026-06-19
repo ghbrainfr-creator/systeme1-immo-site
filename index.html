@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Site Agent · La vitrine qui ne dort jamais · Système1-Immo™</title>
-<meta name="description" content="La seule vitrine immobilière conçue avec les neurosciences du consommateur. Capture, qualifie et alimente votre CRM 24h/24. Branchée en 5 minutes." />
+<meta name="description" content="Votre vitrine capture les leads, Juliette les qualifie et les relance avec la science du comportement. Vous restez la star locale. Branchée en 5 minutes." />
 <meta name="theme-color" content="#070B14">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,10 +93,7 @@
   .progress-bar { position: fixed; top:0; left:0; right:0; height:2px; z-index:100; }
   .progress-fill {
     height:100%; width:0%; transition: width 0.1s ease-out;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple), var(--accent-blue));
-    background-size: 200% 100%;
-    animation: shimmer 3s linear infinite;
-    box-shadow: 0 0 10px var(--accent-blue);
+    background: var(--accent-blue);
   }
   @keyframes shimmer { 0%{background-position:0% 0%} 100%{background-position:200% 0%} }
 
@@ -160,9 +157,8 @@
   .card-glow { position: relative; }
   .card-glow::after {
     content:''; position:absolute; inset:-1px; z-index:-1;
-    background: conic-gradient(from var(--angle, 0deg), #5BA3E8, #A78BFA, #5BA3E8);
-    border-radius: inherit; filter: blur(12px); opacity:.55;
-    animation: rotate-border 6s linear infinite;
+    background: rgba(91,163,232,.18);
+    border-radius: inherit; opacity:.6;
   }
   @keyframes rotate-border { to { --angle: 360deg; } }
   @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
@@ -230,17 +226,14 @@
   .word { display: inline-block; opacity: 0; transform: translateY(30px); animation: wordIn 0.8s var(--ease-smooth) forwards; }
   @keyframes wordIn { to { opacity:1; transform:translateY(0); } }
 
+  /* Emphase : couleur pleine. Texte arc-en-ciel animé retiré (calmage, ban gradient-text) */
   .gradient-text {
-    background: linear-gradient(120deg, #5BA3E8 0%, #A78BFA 50%, #5BA3E8 100%);
-    background-size: 200% 100%;
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    animation: gradient-flow 5s linear infinite;
+    color: var(--accent-blue);
   }
   @keyframes gradient-flow { from{background-position:0% 0} to{background-position:200% 0} }
 
-  /* FIX: .word.gradient-text needs BOTH animations */
   .word.gradient-text {
-    animation: wordIn 0.8s var(--ease-smooth) forwards, gradient-flow 5s linear infinite;
+    animation: wordIn 0.8s var(--ease-smooth) forwards;
   }
 
   /* ============ HERO PARALLAX ============ */
@@ -740,6 +733,38 @@
 
   iconify-icon { display: inline-block; vertical-align: middle; color: var(--accent-blue); }
 
+  /* ============ JULIETTE DEMO VIDEOS ============ */
+  .jul-video-wrap{position:relative;background:#000;line-height:0;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
+  .jul-video{width:100%;height:auto;display:block;cursor:pointer}
+  .jul-sound{position:absolute;bottom:12px;right:12px;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:rgba(7,11,20,.72);border:1px solid rgba(91,163,232,.4);backdrop-filter:blur(8px);color:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s ease,opacity .3s ease}
+  .jul-sound:hover{background:rgba(91,163,232,.35)}
+  .jul-video-wrap.sound-on .jul-sound{opacity:0;pointer-events:none}
+
+  /* ============ APP SHOTS (captures réelles back-office) ============ */
+  .app-shot{background:var(--card-bg);border:1px solid rgba(30,38,56,1);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 40px 100px -40px rgba(0,0,0,.9),0 0 0 1px rgba(91,163,232,.12)}
+  .app-shot-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid rgba(30,38,56,1);background:rgba(15,21,35,.7)}
+  .app-dot{width:11px;height:11px;border-radius:50%;opacity:.55}
+  .app-url{display:inline-flex;align-items:center;gap:6px;margin-left:10px;font-family:ui-monospace,monospace;font-size:12px;color:var(--cool-400)}
+  .app-shot img{width:100%;height:auto;display:block}
+  .app-shot figcaption{padding:14px 18px;font-size:14px;color:var(--cool-400);border-top:1px solid rgba(30,38,56,1)}
+
+  /* ============ CAROUSEL (back-office) ============ */
+  .carousel{position:relative}
+  .carousel-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px;scrollbar-width:none;-ms-overflow-style:none}
+  .carousel-track::-webkit-scrollbar{display:none}
+  .carousel-slide{flex:0 0 88%;scroll-snap-align:center}
+  @media (min-width:1024px){.carousel-slide{flex:0 0 80%}}
+  @media (max-width:640px){.carousel-slide{flex:0 0 92%}}
+  .carousel-arrow{position:absolute;top:44%;transform:translateY(-50%);z-index:6;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(7,11,20,.82);border:1px solid rgba(91,163,232,.4);backdrop-filter:blur(8px);cursor:pointer;transition:background .2s ease,opacity .2s ease}
+  .carousel-arrow:hover{background:rgba(91,163,232,.4)}
+  .carousel-arrow:disabled{opacity:.25;cursor:default}
+  .carousel-prev{left:-8px}
+  .carousel-next{right:-8px}
+  @media (max-width:640px){.carousel-arrow{display:none}}
+  .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
+  .carousel-dot{width:8px;height:8px;border-radius:50%;background:rgba(152,162,179,.35);border:0;padding:0;cursor:pointer;transition:background .25s ease,width .25s ease}
+  .carousel-dot.active{background:var(--accent-blue);width:22px;border-radius:4px}
+
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
@@ -755,8 +780,7 @@
   <div class="mesh-blob mesh-b2"></div>
   <div class="mesh-blob mesh-b3"></div>
 </div>
-<canvas id="particles"></canvas>
-<div class="cursor-blob" id="cursorBlob"></div>
+<!-- Particules + halo curseur retirés (calmage visuel) -->
 
 <!-- SCROLL PROGRESS -->
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
@@ -771,33 +795,37 @@
       </span>
       <div>
         <div class="text-sm font-semibold" style="color:var(--cool-50)">Votre vitrine en ligne ce soir.</div>
-        <div class="text-xs sticky-cta-hide-mobile" style="color:var(--cool-400)">14 jours gratuits · Sans CB · Annulation 1 clic</div>
+        <div class="text-xs sticky-cta-hide-mobile" style="color:var(--cool-400)">Réponse par WhatsApp ou email · Sans engagement</div>
       </div>
     </div>
-    <a href="#cta-final" class="btn-primary magnetic ripple px-6 py-3 text-sm">
-      Créer ma vitrine
-      <iconify-icon icon="tabler:arrow-right" width="16" height="16" style="color:white"></iconify-icon>
-    </a>
+    <div class="flex items-center gap-2">
+      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Site%20Agent." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-6 py-3 text-sm">
+        Je veux plus d'info
+        <iconify-icon icon="tabler:brand-whatsapp" width="16" height="16" style="color:white"></iconify-icon>
+      </a>
+      <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Site%20Agent" class="btn-secondary magnetic ripple px-4 py-3 text-sm" aria-label="Nous écrire par email" title="Par email">
+        <iconify-icon icon="tabler:mail" width="16" height="16" style="color:var(--accent-blue)"></iconify-icon>
+      </a>
+    </div>
   </div>
 </div>
 
 <!-- NAV -->
 <nav class="sticky top-0 z-50 border-b border-navy-600/40" style="background:rgba(7,11,20,.85);backdrop-filter:blur(20px);box-shadow:0 4px 20px rgba(0,0,0,.3)">
   <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-3 select-none group">
-      <div class="w-6 h-6 rounded flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-blue-dark));box-shadow:0 2px 10px rgba(91,163,232,.2)">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
-      <span class="font-display font-bold text-lg tracking-tight text-cool-50">
-        SYSTÈME1-<strong>IMMO</strong><sup class="text-[10px] text-cool-400 align-super">™</sup>
-      </span>
+    <a href="#" class="flex items-center select-none" aria-label="Système1-Immo, accueil">
+      <img src="assets/logo.webp" alt="Système1-Immo" class="h-8 md:h-10 w-auto" />
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm text-cool-400">
+      <a href="#juliette" class="hover:text-white transition relative group">Juliette<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
       <a href="#demo" class="hover:text-white transition relative group">Démo<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
       <a href="#pages" class="hover:text-white transition relative group">Pages & outils<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
       <a href="#dashboard" class="hover:text-white transition relative group">Back-office<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
     </div>
-    <a href="#cta-final" class="btn-primary magnetic ripple px-4 py-2 text-sm">Essayer gratuitement</a>
+    <div class="flex items-center gap-2">
+      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Site%20Agent." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-4 py-2 text-sm">Je veux plus d'info</a>
+      <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Site%20Agent" class="btn-secondary magnetic ripple px-3 py-2 text-sm" aria-label="Nous écrire par email" title="Par email"><iconify-icon icon="tabler:mail" width="16" height="16" style="color:var(--accent-blue)"></iconify-icon></a>
+    </div>
   </div>
 </nav>
 
@@ -805,9 +833,7 @@
 <section class="spotlight relative overflow-hidden" id="hero" onmousemove="updateMouse(event, this)">
   <div class="grid-bg absolute inset-0"></div>
 
-  <!-- Floating shapes for depth -->
-  <div class="floating-shape" style="width: 300px; height: 300px; top: 10%; left: 8%; animation-delay: -5s"></div>
-  <div class="floating-shape" style="width: 250px; height: 250px; top: 20%; right: 10%; animation-delay: -12s; background: radial-gradient(circle, rgba(167,139,250,.3), transparent 70%)"></div>
+  <!-- Formes flottantes du hero retirées (calmage visuel) -->
 
   <div class="relative max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 hero-parallax" id="heroContent">
     <div class="max-w-5xl mx-auto text-center">
@@ -836,7 +862,7 @@
 
       <!-- [3] Sub-text : 1 ligne, uniquement l'autorité (le WHAT est déjà dans le Hero) -->
       <p class="text-base md:text-lg max-w-2xl mx-auto mb-7 leading-relaxed reveal" style="transition-delay:0.95s; color:var(--cool-200)">
-        Conçue par <strong style="color:var(--cool-50)">Nordine Mouaouia</strong>. 25 ans d'immobilier, <strong style="color:var(--cool-50)">1 250 ventes</strong>, certifié en psychologie du consommateur immobilier.
+        Conçue par <strong style="color:var(--cool-50)">Nordine Mouaouia</strong> (25 ans d'immobilier, <strong style="color:var(--cool-50)">1 250 ventes</strong>, certifié en psychologie du consommateur immobilier) et <strong style="color:var(--cool-50)">Freddy Nazon</strong> (ancien marchand de biens et développeur).
       </p>
 
       <!-- [3.5] Teaser résultat factuel + Zeigarnik open loop (curiosité) -->
@@ -858,10 +884,10 @@
 
       <!-- [5] Trust chip · Zero-Price Effect renforcé -->
       <div class="reveal inline-flex items-center gap-3 px-5 py-2.5 rounded-full flex-wrap" style="transition-delay:1.3s; background:rgba(82,199,122,.08); border:1px solid rgba(82,199,122,.3)">
-        <iconify-icon icon="tabler:gift" width="18" height="18" style="color:var(--success)"></iconify-icon>
-        <span class="text-sm font-bold" style="color:var(--cool-50); letter-spacing:0.5px">14 JOURS GRATUITS</span>
+        <iconify-icon icon="tabler:sparkles" width="18" height="18" style="color:var(--success)"></iconify-icon>
+        <span class="text-sm font-bold" style="color:var(--cool-50); letter-spacing:0.5px">TARIF FONDATEUR</span>
         <span class="w-1 h-1 rounded-full" style="background:var(--cool-500)"></span>
-        <span class="text-sm font-semibold" style="color:var(--cool-200)">Sans CB</span>
+        <span class="text-sm font-semibold" style="color:var(--cool-200)">Sans engagement</span>
         <span class="w-1 h-1 rounded-full" style="background:var(--cool-500)"></span>
         <span class="text-sm font-semibold" style="color:var(--cool-200)">Annulation 1 clic</span>
       </div>
@@ -899,22 +925,12 @@
 
 <!-- SCARCITY BAR -->
 <section class="scarcity-bar relative z-10">
-  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between gap-4 flex-wrap">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(167,139,250,.15); border:1px solid rgba(167,139,250,.3)">
-        <iconify-icon icon="tabler:flame" width="20" height="20" style="color:var(--accent-purple)"></iconify-icon>
-      </div>
-      <div>
-        <div class="font-display font-semibold text-sm flex items-center gap-2" style="color:var(--cool-50)">
-          Accès bêta · Limité à <strong style="color:var(--accent-blue)">500 agents</strong> en France
-          <span class="px-2 py-0.5 rounded text-[10px] font-mono" style="background:rgba(167,139,250,.15); color:var(--accent-purple); border:1px solid rgba(167,139,250,.3)">OUVERT</span>
-        </div>
-        <div class="text-xs mt-0.5" style="color:var(--cool-400)">Inscriptions ouvertes · Accès prioritaire aux premiers inscrits</div>
-      </div>
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-center gap-3 flex-wrap text-center">
+    <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(91,163,232,.15); border:1px solid rgba(91,163,232,.3)">
+      <iconify-icon icon="tabler:sparkles" width="20" height="20" style="color:var(--accent-blue)"></iconify-icon>
     </div>
-    <div class="flex items-center gap-3 text-xs" style="color:var(--cool-400)">
-      <span>Premiers inscrits :</span>
-      <span class="font-display font-semibold text-sm" style="color:var(--cool-50)">IAD France · Guy Hoquet</span>
+    <div class="font-display font-semibold text-sm md:text-base" style="color:var(--cool-50)">
+      Aujourd'hui, ce qui compte : la visibilité et un accompagnement premium pour vos clients. <span style="color:var(--accent-blue)">Système1-Immo vous l'offre.</span>
     </div>
   </div>
 </section>
@@ -1050,7 +1066,7 @@
   <div class="relative max-w-7xl mx-auto px-6">
     <div class="max-w-3xl mx-auto text-center mb-16 reveal">
       <span class="badge-velox mb-4">HIER, SUR LA VITRINE DE NORDINE</span>
-      <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight leading-[1.05]" style="color:var(--cool-50)">Sa vitrine a travaillé<br><span class="gradient-text">sans lui.</span></h2>
+      <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight leading-[1.05]" style="color:var(--cool-50)">Sa vitrine a attrapé le lead.<br><span class="gradient-text">Juliette a fait le reste.</span></h2>
       <p class="text-lg mt-4" style="color:var(--cool-400)">Voilà son journal de bord.</p>
     </div>
 
@@ -1066,7 +1082,7 @@
                 <span class="text-sm font-medium flex items-center gap-1.5" style="color:var(--success)"><span class="live-dot"></span> Intention détectée</span>
               </div>
               <p class="text-sm" style="color:var(--cool-400)">Un visiteur, une estimation immobilière demandée.</p>
-              <p class="text-sm mt-1" style="color:var(--cool-300)">→ La vitrine a reconnu le signal.</p>
+              <p class="text-sm mt-1" style="color:var(--cool-300)">→ Juliette repère l'intention.</p>
             </div>
           </div>
         </div>
@@ -1077,8 +1093,8 @@
           <div class="flex items-start gap-4">
             <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-mono text-xs" style="background:rgba(91,163,232,.1); border:1px solid rgba(91,163,232,.25); color:var(--accent-blue)">22h41</div>
             <div class="flex-1">
-              <div class="font-display font-semibold text-lg mb-1" style="color:var(--cool-50)">Diagnostic Scan Immo™ complété</div>
-              <p class="text-sm" style="color:var(--cool-400)">Fiche vendeur générée automatiquement.</p>
+              <div class="font-display font-semibold text-lg mb-1" style="color:var(--cool-50)">Juliette qualifie le lead</div>
+              <p class="text-sm" style="color:var(--cool-400)">Fiche vendeur générée à partir du Scan Immo™.</p>
               <p class="text-sm mt-1" style="color:var(--cool-300)">→ Pendant qu'il dormait.</p>
             </div>
           </div>
@@ -1090,8 +1106,8 @@
           <div class="flex items-start gap-4">
             <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center font-mono text-xs" style="background:rgba(91,163,232,.2); border:1px solid rgba(91,163,232,.45); color:var(--accent-blue)">07h14</div>
             <div class="flex-1">
-              <div class="font-display font-semibold text-lg mb-1" style="color:var(--cool-50)">Fiche prête dans le CRM</div>
-              <p class="text-sm" style="color:var(--cool-400)">Notification envoyée sur son téléphone.</p>
+              <div class="font-display font-semibold text-lg mb-1" style="color:var(--cool-50)">Juliette le prévient</div>
+              <p class="text-sm" style="color:var(--cool-400)">Fiche prête dans le CRM, notification envoyée sur son téléphone.</p>
               <p class="text-sm mt-1" style="color:var(--cool-300)">→ Au réveil. <span class="font-semibold" style="color:var(--accent-blue)">Prêt à appeler.</span></p>
             </div>
           </div>
@@ -1100,11 +1116,101 @@
     </div>
 
     <div class="mt-12 text-center reveal">
-      <a href="#cta-final" class="btn-primary magnetic ripple px-8 py-4">
-        Je veux une vitrine qui travaille quand je ne travaille pas
-        <iconify-icon icon="tabler:arrow-right" width="18" height="18" style="color:white"></iconify-icon>
+      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Site%20Agent." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-8 py-4">
+        Je veux plus d'info
+        <iconify-icon icon="tabler:brand-whatsapp" width="18" height="18" style="color:white"></iconify-icon>
       </a>
-      <p class="text-sm font-mono mt-4" style="color:var(--cool-500)">Opérationnelle ce soir · 14 jours gratuits, sans CB</p>
+      <p class="text-sm font-mono mt-4" style="color:var(--cool-500)">Réponse rapide par WhatsApp ou email · Sans engagement</p>
+    </div>
+  </div>
+</section>
+
+<!-- JULIETTE — assistante IA (Acte 2 : la révélation) -->
+<section id="juliette" class="py-28 md:py-40 relative overflow-hidden bg-gradient-section-1">
+  <div class="relative max-w-5xl mx-auto px-6">
+    <div class="text-center mb-14 reveal">
+      <span class="badge-velox mb-4">
+        <span class="live-dot"></span>
+        VOTRE ASSISTANTE · JULIETTE
+      </span>
+      <h2 class="font-display text-4xl md:text-6xl font-bold mb-6 mt-6 tracking-tight leading-[1.08]" style="color:var(--cool-50)">
+        Vos leads ne tombent pas dans un tableur.<br>
+        <span class="gradient-text">Ils tombent sur Juliette.</span>
+      </h2>
+      <p class="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style="color:var(--cool-400)">
+        Juliette, c'est votre assistante. Pas un chatbot, pas un CRM à remplir à la main. Elle connaît le métier, elle parle comme vous, et elle travaille pendant que vous êtes en visite.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 cards-grid">
+      <div class="neu-card p-8 reveal">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(91,163,232,.18),rgba(91,163,232,.04));border:1px solid rgba(91,163,232,.25)">
+          <iconify-icon icon="tabler:clock-heart" width="28" height="28"></iconify-icon>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-3" style="color:var(--cool-50)">Elle entretient chaque contact</h3>
+        <p class="text-sm leading-relaxed card-content-fill" style="color:var(--cool-400)">Relance au bon moment, jamais au mauvais. Aucun lead oublié, aucun qui dort dans un tableur.</p>
+      </div>
+      <div class="neu-card p-8 reveal" style="transition-delay:0.1s">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(91,163,232,.18),rgba(91,163,232,.04));border:1px solid rgba(91,163,232,.25)">
+          <iconify-icon icon="tabler:message-heart" width="28" height="28"></iconify-icon>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-3" style="color:var(--cool-50)">Elle écrit avec la science du comportement</h3>
+        <p class="text-sm leading-relaxed card-content-fill" style="color:var(--cool-400)">La même que Nordine a affinée sur 1 250 ventes. Des mots qui obtiennent des réponses, parce qu'ils parlent au vendeur.</p>
+      </div>
+      <div class="neu-card p-8 reveal" style="transition-delay:0.2s">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-4" style="background:linear-gradient(135deg,rgba(82,199,122,.18),rgba(82,199,122,.04));border:1px solid rgba(82,199,122,.25)">
+          <iconify-icon icon="tabler:shield-check" width="28" height="28" style="color:var(--success)"></iconify-icon>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-3" style="color:var(--cool-50)">Elle n'invente rien</h3>
+        <p class="text-sm leading-relaxed card-content-fill" style="color:var(--cool-400)">Juliette ne s'appuie que sur les données de votre CRM : aucun bien, aucun acheteur, aucun fait inventé. Un doute, elle vous demande. Et vous pouvez valider chaque message avant qu'il parte.</p>
+      </div>
+    </div>
+
+    <!-- JULIETTE EN ACTION — 2 cas d'usage réels (extraits de l'app) -->
+    <div class="mt-16 reveal" id="juliette-demos">
+      <div class="text-center mb-8">
+        <span class="badge-velox mb-3">JULIETTE EN ACTION · 2 CAS RÉELS</span>
+        <h3 class="font-display text-2xl md:text-4xl font-semibold mt-4 tracking-tight" style="color:var(--cool-50)">Vous lui parlez. Elle exécute.</h3>
+        <p class="text-base mt-3 max-w-2xl mx-auto" style="color:var(--cool-400)">Des extraits réels de l'application. <span style="color:var(--cool-200)">Cliquez pour activer le son.</span></p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <figure class="neu-card p-0" style="overflow:hidden">
+          <div class="jul-video-wrap" data-jul-video>
+            <video class="jul-video" src="assets/juliette-cas-1-crm-voix.mp4" poster="assets/juliette-cas-1.jpg" muted loop playsinline preload="metadata" aria-label="Juliette met à jour une fiche CRM à la voix"></video>
+            <button class="jul-sound" type="button" aria-label="Activer le son">
+              <iconify-icon icon="tabler:volume" width="16" height="16" style="color:white"></iconify-icon>
+              <span>Activer le son</span>
+            </button>
+          </div>
+          <figcaption class="p-5">
+            <div class="font-display font-semibold" style="color:var(--cool-50)">« Mets à jour sa fiche »</div>
+            <p class="text-sm mt-1" style="color:var(--cool-400)">À la voix, en sortant d'une visite : Juliette met à jour le CRM et pose le rappel.</p>
+          </figcaption>
+        </figure>
+        <figure class="neu-card p-0" style="overflow:hidden">
+          <div class="jul-video-wrap" data-jul-video>
+            <video class="jul-video" src="assets/juliette-cas-2-message-doc.mp4" poster="assets/juliette-cas-2.jpg" muted loop playsinline preload="metadata" aria-label="Juliette prépare un message avec le bon document et l'envoie après validation"></video>
+            <button class="jul-sound" type="button" aria-label="Activer le son">
+              <iconify-icon icon="tabler:volume" width="16" height="16" style="color:white"></iconify-icon>
+              <span>Activer le son</span>
+            </button>
+          </div>
+          <figcaption class="p-5">
+            <div class="font-display font-semibold" style="color:var(--cool-50)">« Prépare le bon document »</div>
+            <p class="text-sm mt-1" style="color:var(--cool-400)">Elle retrouve le contact, joint le dossier vendeur, et envoie après votre validation.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="text-center mt-14 reveal">
+      <p class="text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-8" style="color:var(--cool-300)">
+        Vous, vous faites le seul geste qu'aucune IA ne fera : serrer les mains, être présent, être <strong style="color:var(--cool-50)">la star locale</strong>. Juliette tient le reste.
+      </p>
+      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Site%20Agent." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-9 py-4 text-base">
+        Je veux plus d'info
+        <iconify-icon icon="tabler:brand-whatsapp" width="18" height="18" style="color:white"></iconify-icon>
+      </a>
     </div>
   </div>
 </section>
@@ -1196,184 +1302,93 @@
   </div>
 </section>
 
-<!-- DASHBOARD BACK-OFFICE avec PRODUCT TOUR animé -->
+<!-- BACK-OFFICE — carrousel de captures réelles de l'app -->
 <section id="dashboard" class="py-28 md:py-40 relative bg-gradient-section-1">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center mb-16 reveal">
+    <div class="max-w-3xl mx-auto text-center mb-12 reveal">
       <span class="badge-velox mb-4">
         <span class="live-dot"></span>
-        PRODUCT TOUR · BACK-OFFICE EN DIRECT
+        LE BACK-OFFICE · EN VRAI
       </span>
-      <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">Un clic. <span class="gradient-text">Tout démarre.</span></h2>
-      <p class="text-lg mt-4" style="color:var(--cool-400)">Regardez ce qui se passe quand un agent active la Roue des Leads. En direct, dans son back-office. Sans trucage.</p>
+      <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">Votre poste de pilotage.</h2>
+      <p class="text-lg mt-4" style="color:var(--cool-400)">Pas une maquette. L'application réelle, où Juliette travaille avec vous. <span style="color:var(--cool-200)">Faites défiler →</span></p>
     </div>
 
-    <div class="grid lg:grid-cols-5 gap-6 max-w-6xl mx-auto reveal-scale">
+    <div class="carousel reveal max-w-6xl mx-auto" data-carousel>
+      <button class="carousel-arrow carousel-prev" type="button" aria-label="Capture précédente" data-carousel-prev>
+        <iconify-icon icon="tabler:chevron-left" width="22" height="22" style="color:white"></iconify-icon>
+      </button>
+      <div class="carousel-track" data-carousel-track>
 
-      <!-- Left: Dashboard mockup with animated tour -->
-      <div class="lg:col-span-3 neu-card p-6 relative" id="tourScene">
-        <div class="flex items-center justify-between mb-6">
-          <div>
-            <div class="text-xs font-mono tracking-wider mb-1" style="color:var(--cool-500)">APERÇU BACK-OFFICE</div>
-            <div class="flex items-center gap-2">
-              <span class="live-dot"></span>
-              <span class="font-display font-semibold" style="color:var(--cool-50)">Publiée</span>
-              <span class="text-xs font-mono ml-2" style="color:var(--cool-400)">nordine-mouaouia.systeme1-immo.fr</span>
-            </div>
+        <figure class="carousel-slide app-shot">
+          <div class="app-shot-bar">
+            <span class="app-dot" style="background:#E94F5C"></span>
+            <span class="app-dot" style="background:#F5C145"></span>
+            <span class="app-dot" style="background:var(--success)"></span>
+            <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · Tableau de bord</span>
           </div>
-          <div class="flex gap-2">
-            <button class="px-3 py-1.5 rounded-lg text-xs flex items-center gap-1.5" style="background:rgba(30,38,56,.6);color:var(--cool-400);border:1px solid rgba(30,38,56,1)">
-              <iconify-icon icon="tabler:player-pause-filled" width="12" height="12" style="color:var(--cool-400)"></iconify-icon>
-              Pause
-            </button>
-            <button class="px-3 py-1.5 rounded-lg text-xs flex items-center gap-1.5" style="background:rgba(91,163,232,.15);color:var(--accent-blue);border:1px solid rgba(91,163,232,.3)">
-              <iconify-icon icon="tabler:edit" width="12" height="12"></iconify-icon>
-              Modifier
-            </button>
-          </div>
-        </div>
+          <img src="assets/app-dashboard.webp" alt="Tableau de bord, Juliette met à jour une fiche à la voix" loading="lazy" />
+          <figcaption>Vous parlez à <strong style="color:var(--cool-200)">Juliette</strong> : elle met à jour vos fiches et pose vos rappels, mains-libres.</figcaption>
+        </figure>
 
-        <!-- Stats grid -->
-        <div class="grid grid-cols-3 gap-3 mb-6">
-          <div class="dash-stat">
-            <div class="text-xs font-mono mb-1" style="color:var(--cool-500)">VISITEURS · 7J</div>
-            <div class="font-display text-2xl font-bold" style="color:var(--cool-50)"><span class="counter" data-target="247" data-suffix="">0</span></div>
-            <svg viewBox="0 0 100 30" class="mt-2 w-full h-6"><polyline class="dash-sparkline" points="0,22 15,18 30,20 45,10 60,14 75,6 90,8 100,4" /></svg>
+        <figure class="carousel-slide app-shot">
+          <div class="app-shot-bar">
+            <span class="app-dot" style="background:#E94F5C"></span>
+            <span class="app-dot" style="background:#F5C145"></span>
+            <span class="app-dot" style="background:var(--success)"></span>
+            <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · CRM</span>
           </div>
-          <div class="dash-stat">
-            <div class="text-xs font-mono mb-1" style="color:var(--cool-500)">LEADS · 7J</div>
-            <div class="font-display text-2xl font-bold" style="color:var(--accent-blue)"><span class="counter" data-target="14" data-suffix="">0</span></div>
-            <div class="flex gap-1 mt-2 items-end h-6">
-              <div class="dash-bar flex-1" style="height: 30%; animation-delay:0.1s"></div>
-              <div class="dash-bar flex-1" style="height: 55%; animation-delay:0.2s"></div>
-              <div class="dash-bar flex-1" style="height: 42%; animation-delay:0.3s"></div>
-              <div class="dash-bar flex-1" style="height: 70%; animation-delay:0.4s"></div>
-              <div class="dash-bar flex-1" style="height: 60%; animation-delay:0.5s"></div>
-              <div class="dash-bar flex-1" style="height: 85%; animation-delay:0.6s"></div>
-              <div class="dash-bar flex-1" style="height: 95%; animation-delay:0.7s"></div>
-            </div>
-          </div>
-          <div class="dash-stat">
-            <div class="text-xs font-mono mb-1" style="color:var(--cool-500)">CONVERSION</div>
-            <div class="font-display text-2xl font-bold" style="color:var(--success)"><span class="counter" data-target="5" data-suffix=",7%">0</span></div>
-            <div class="mt-2 h-6 flex items-center">
-              <div class="w-full h-1.5 rounded-full" style="background:rgba(30,38,56,1)">
-                <div class="h-full rounded-full" style="width:57%;background:linear-gradient(90deg,var(--success),var(--accent-blue))"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <img src="assets/app-crm-liste.webp" alt="Liste CRM de 45 leads qualifiés et enrichis automatiquement par l'IA" loading="lazy" />
+          <figcaption>Tous vos leads au même endroit, <strong style="color:var(--cool-200)">qualifiés et enrichis automatiquement</strong> : température, profil, projet, et la prochaine action.</figcaption>
+        </figure>
 
-        <!-- MODULE TOGGLE (target of tour cursor) -->
-        <div class="text-xs font-mono mb-3" style="color:var(--cool-500)">MODULES ACTIFS</div>
-        <div class="p-3 rounded-lg flex items-center gap-3 mb-4" id="tourToggleRow" style="background:rgba(7,11,20,.5);border:1px solid rgba(167,139,250,.25)">
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(167,139,250,.15);border:1px solid rgba(167,139,250,.3)">
-            <iconify-icon icon="tabler:rotate-clockwise-2" width="18" height="18" style="color:var(--accent-purple)"></iconify-icon>
+        <figure class="carousel-slide app-shot">
+          <div class="app-shot-bar">
+            <span class="app-dot" style="background:#E94F5C"></span>
+            <span class="app-dot" style="background:#F5C145"></span>
+            <span class="app-dot" style="background:var(--success)"></span>
+            <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · Fiche contact</span>
           </div>
-          <div class="flex-1 min-w-0">
-            <div class="text-sm font-semibold" style="color:var(--cool-50)">La Roue des Leads <span class="text-[10px] px-1.5 py-0.5 ml-1 rounded" style="background:rgba(167,139,250,.15);color:var(--accent-purple);border:1px solid rgba(167,139,250,.3)">EXCLUSIF</span></div>
-            <div class="text-xs" style="color:var(--cool-400)">Convertit la curiosité en leads qualifiés</div>
-          </div>
-          <div class="module-toggle" id="tourToggle" style="width:40px;height:22px;border-radius:12px;background:rgba(30,38,56,1);position:relative;transition:background .4s;flex-shrink:0"></div>
-        </div>
+          <img src="assets/app-crm-fiche.webp" alt="Fiche contact CRM avec le résumé de Juliette : qui est le contact, parcours relationnel, prochaine action" loading="lazy" />
+          <figcaption>Sur chaque fiche, <strong style="color:var(--cool-200)">Juliette résume qui est le contact</strong> : son projet, son historique, et la prochaine action à mener.</figcaption>
+        </figure>
 
-        <!-- Animated tour cursor -->
-        <div class="tour-cursor" id="tourCursor" style="top: 40px; left: 40px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M4 2 L4 22 L9 17 L12 24 L14 23 L11 16 L18 16 Z" fill="#ffffff" stroke="#0F1523" stroke-width="1.2" stroke-linejoin="round"/>
-          </svg>
-        </div>
+        <figure class="carousel-slide app-shot">
+          <div class="app-shot-bar">
+            <span class="app-dot" style="background:#E94F5C"></span>
+            <span class="app-dot" style="background:#F5C145"></span>
+            <span class="app-dot" style="background:var(--success)"></span>
+            <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · Messagerie</span>
+          </div>
+          <img src="assets/app-messagerie.webp" alt="Messagerie, Juliette prépare un message avec le dossier vendeur, envoyé après validation" loading="lazy" />
+          <figcaption>Juliette prépare le message avec le bon document. <strong style="color:var(--cool-200)">Vous validez, ça part.</strong></figcaption>
+        </figure>
 
-        <!-- Animated toast (appears after toggle ON) -->
-        <div class="tour-toast" id="tourToast">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(82,199,122,.15); border:1px solid rgba(82,199,122,.3)">
-            <iconify-icon icon="tabler:bolt-filled" width="16" height="16" style="color:var(--success)"></iconify-icon>
+        <figure class="carousel-slide app-shot">
+          <div class="app-shot-bar">
+            <span class="app-dot" style="background:#E94F5C"></span>
+            <span class="app-dot" style="background:#F5C145"></span>
+            <span class="app-dot" style="background:var(--success)"></span>
+            <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · Sniper Web</span>
           </div>
-          <div class="flex-1 min-w-0">
-            <div class="text-xs font-mono" style="color:var(--success)">MODULE ACTIVÉ</div>
-            <div class="text-sm font-medium" style="color:var(--cool-50)">La Roue des Leads tourne</div>
-          </div>
-        </div>
+          <img src="assets/app-sniper.webp" alt="Sniper Web, annonces immobilières collectées automatiquement sur les portails" loading="lazy" />
+          <figcaption>Le <strong style="color:var(--cool-200)">Sniper Web</strong> collecte les annonces des portails, tout seul, sur vos zones.</figcaption>
+        </figure>
 
-        <!-- Recent leads -->
-        <div class="text-xs font-mono mb-3" style="color:var(--cool-500)">LEADS RÉCENTS · APERÇU</div>
-        <div class="space-y-2" id="tourLeadsList">
-          <div class="tour-lead-row flex items-center gap-3 p-3 rounded-lg" data-tour-lead="1" style="background:rgba(7,11,20,.5);border:1px solid rgba(167,139,250,.3);box-shadow:0 0 20px -5px rgba(167,139,250,.25)">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-display font-bold" style="background:linear-gradient(135deg,#A78BFA,#7C3AED);color:white">TL</div>
-            <div class="flex-1 min-w-0">
-              <div class="text-sm font-medium truncate" style="color:var(--cool-50)">Thomas L. <span class="text-xs font-normal" style="color:var(--cool-400)">· vendeur</span></div>
-              <div class="text-xs flex items-center gap-1" style="color:var(--accent-purple)">
-                <iconify-icon icon="tabler:rotate-clockwise-2" width="10" height="10" style="color:var(--accent-purple)"></iconify-icon>
-                Via Roue des Leads · à l'instant
-              </div>
-            </div>
-            <span class="px-2 py-1 rounded text-[10px] font-mono" style="background:rgba(82,199,122,.15);color:var(--success);border:1px solid rgba(82,199,122,.3)">NOUVEAU</span>
-          </div>
-          <div class="tour-lead-row flex items-center gap-3 p-3 rounded-lg" data-tour-lead="2" style="background:rgba(7,11,20,.5);border:1px solid rgba(30,38,56,.6)">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-display font-bold" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-blue-dark));color:white">SM</div>
-            <div class="flex-1 min-w-0">
-              <div class="text-sm font-medium truncate" style="color:var(--cool-50)">Sophie M. <span class="text-xs font-normal" style="color:var(--cool-400)">· vendeur</span></div>
-              <div class="text-xs" style="color:var(--cool-500)">Via Scan Immo™ · il y a 14 min</div>
-            </div>
-            <span class="px-2 py-1 rounded text-[10px] font-mono" style="background:rgba(82,199,122,.15);color:var(--success);border:1px solid rgba(82,199,122,.3)">QUALIFIÉ</span>
-          </div>
-          <div class="tour-lead-row flex items-center gap-3 p-3 rounded-lg" data-tour-lead="3" style="background:rgba(7,11,20,.5);border:1px solid rgba(30,38,56,.6)">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-display font-bold" style="background:linear-gradient(135deg,#F59E0B,#D97706);color:white">CV</div>
-            <div class="flex-1 min-w-0">
-              <div class="text-sm font-medium truncate" style="color:var(--cool-50)">Claudine V. <span class="text-xs font-normal" style="color:var(--cool-400)">· Guide téléchargé</span></div>
-              <div class="text-xs" style="color:var(--cool-500)">Via Guide vendeur · il y a 3h</div>
-            </div>
-            <span class="px-2 py-1 rounded text-[10px] font-mono" style="background:rgba(245,158,11,.15);color:#F59E0B;border:1px solid rgba(245,158,11,.3)">À RAPPELER</span>
-          </div>
-        </div>
       </div>
-
-      <!-- Right: Features list -->
-      <div class="lg:col-span-2 space-y-4">
-        <div class="neu-card p-5 flex items-start gap-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(91,163,232,.15);border:1px solid rgba(91,163,232,.25)">
-            <iconify-icon icon="tabler:world" width="20" height="20"></iconify-icon>
-          </div>
-          <div>
-            <div class="font-display font-semibold" style="color:var(--cool-50)">Domaine personnalisé</div>
-            <p class="text-sm mt-1" style="color:var(--cool-400)">votreagence.fr au lieu de votresite.systeme1-immo.fr. En 1 clic.</p>
-          </div>
-        </div>
-
-        <div class="neu-card p-5 flex items-start gap-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(91,163,232,.15);border:1px solid rgba(91,163,232,.25)">
-            <iconify-icon icon="tabler:users" width="20" height="20"></iconify-icon>
-          </div>
-          <div>
-            <div class="font-display font-semibold" style="color:var(--cool-50)">CRM intégré</div>
-            <p class="text-sm mt-1" style="color:var(--cool-400)">Tous les leads atterrissent dans votre CRM. Export CSV à tout moment.</p>
-          </div>
-        </div>
-
-        <div class="neu-card p-5 flex items-start gap-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(91,163,232,.15);border:1px solid rgba(91,163,232,.25)">
-            <iconify-icon icon="tabler:settings" width="20" height="20"></iconify-icon>
-          </div>
-          <div>
-            <div class="font-display font-semibold" style="color:var(--cool-50)">Tout se configure</div>
-            <p class="text-sm mt-1" style="color:var(--cool-400)">Activez/désactivez les pages. Refaites le wizard. Archivez. En 1 clic.</p>
-          </div>
-        </div>
-
-        <div class="neu-card p-5 flex items-start gap-4">
-          <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(82,199,122,.15);border:1px solid rgba(82,199,122,.25)">
-            <iconify-icon icon="tabler:shield-check" width="20" height="20" style="color:var(--success)"></iconify-icon>
-          </div>
-          <div>
-            <div class="font-display font-semibold" style="color:var(--cool-50)">Vos données, vos leads</div>
-            <p class="text-sm mt-1" style="color:var(--cool-400)">Pas de verrou. Pas d'engagement. Export et suppression à la demande.</p>
-          </div>
-        </div>
-      </div>
+      <button class="carousel-arrow carousel-next" type="button" aria-label="Capture suivante" data-carousel-next>
+        <iconify-icon icon="tabler:chevron-right" width="22" height="22" style="color:white"></iconify-icon>
+      </button>
+      <div class="carousel-dots" data-carousel-dots></div>
     </div>
+
+    <p class="text-center text-sm mt-8 reveal" style="color:var(--cool-400)">
+      Captures réelles de l'application. <a href="#juliette" class="hover:underline" style="color:var(--accent-blue)">Revoir Juliette en action ↑</a>
+    </p>
   </div>
 </section>
-<!-- ANGLE NEUROSCIENCES (SANS biais nommés) -->
+
+<!-- NOTRE DIFFÉRENCE · Juliette + science du comportement -->
 <section class="py-28 md:py-40 relative overflow-hidden bg-gradient-section-4">
   <div class="relative max-w-5xl mx-auto px-6">
     <div class="text-center mb-12 reveal">
@@ -1384,7 +1399,7 @@
       </h2>
       <p class="text-lg md:text-xl max-w-3xl mx-auto mt-6 leading-relaxed" style="color:var(--cool-400)">
         Un prospect ne décide pas avec des chiffres. Il décide avec ses émotions, sa perception, son instinct. Sa logique vient ensuite, pour justifier le choix.<br>
-        C'est la base des <strong style="color:var(--accent-blue)">neurosciences du consommateur</strong>. Et c'est ce qui guide chaque ligne de votre vitrine.
+        C'est la base de la <strong style="color:var(--accent-blue)">science du comportement</strong>. Cette compétence, Juliette l'a, et elle l'utilise sur chaque message qu'elle écrit en votre nom.
       </p>
     </div>
 
@@ -1451,6 +1466,18 @@
         <h3 class="font-display text-xl font-semibold mb-2" style="color:var(--cool-50)">Accueil · 11 blocs de conversion</h3>
         <p class="text-sm mb-2 font-medium" style="color:var(--cool-200)">Hero, outils gratuits, problèmes-vendeur, promesse, témoignages, FAQ, CTA…</p>
         <p class="text-sm italic card-content-fill" style="color:var(--cool-400)">Chaque bloc est écrit. Chaque mot est testé. Vous ne partez jamais d'une page blanche.</p>
+      </div>
+
+      <div class="neu-card card-glow tilt p-6 reveal" style="border-color:rgba(91,163,232,.45); transition-delay:0.05s">
+        <div class="card-content-top flex items-start justify-between mb-4">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(91,163,232,.25),rgba(91,163,232,.05)); border:1px solid rgba(91,163,232,.35)">
+            <iconify-icon icon="tabler:sparkles" width="28" height="28"></iconify-icon>
+          </div>
+          <span class="badge-velox" style="padding:3px 10px; font-size:9px; color:var(--accent-blue); border-color:rgba(91,163,232,.35)">LE CŒUR</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold mb-2" style="color:var(--cool-50)">Juliette · votre assistante</h3>
+        <p class="text-sm mb-2 font-medium" style="color:var(--cool-200)">Chaque lead tombe sur Juliette : elle qualifie, relance et fait vivre votre CRM, en votre nom.</p>
+        <p class="text-sm italic card-content-fill" style="color:var(--cool-400)">Zéro saisie. Elle n'invente rien, et vous validez avant envoi. Export CSV à tout moment.</p>
       </div>
 
       <div class="neu-card tilt p-6 reveal" style="transition-delay:0.1s">
@@ -1535,18 +1562,6 @@
         <h3 class="font-display text-xl font-semibold mb-2" style="color:var(--cool-50)">Newsletter IA</h3>
         <p class="text-sm mb-2 font-medium" style="color:var(--cool-200)">Vos contacts reçoivent chaque mois l'analyse du marché. Écrite par l'IA, signée vous.</p>
         <p class="text-sm italic card-content-fill" style="color:var(--cool-400)">Vous restez présent dans leur esprit. Mois après mois, sans effort de votre part.</p>
-      </div>
-
-      <div class="neu-card tilt p-6 reveal" style="transition-delay:0.2s">
-        <div class="card-content-top flex items-start justify-between mb-4">
-          <div class="w-14 h-14 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,rgba(91,163,232,.18),rgba(91,163,232,.04)); border:1px solid rgba(91,163,232,.25)">
-            <iconify-icon icon="tabler:users" width="28" height="28"></iconify-icon>
-          </div>
-          <span class="badge-velox" style="padding:3px 10px; font-size:9px">INTÉGRÉ</span>
-        </div>
-        <h3 class="font-display text-xl font-semibold mb-2" style="color:var(--cool-50)">CRM intégré</h3>
-        <p class="text-sm mb-2 font-medium" style="color:var(--cool-200)">Tous les leads de votre vitrine arrivent directement dans votre CRM, qualifiés et tagués.</p>
-        <p class="text-sm italic card-content-fill" style="color:var(--cool-400)">Zéro saisie manuelle. Relances auto. Export CSV à tout moment.</p>
       </div>
 
     </div>
@@ -1642,15 +1657,15 @@
             <div class="font-display text-2xl font-bold mb-5 gradient-text">La machine à leads</div>
             <ul class="space-y-3.5">
               <li class="ba-line-right flex gap-3 items-start" style="color:var(--cool-200)"><iconify-icon icon="tabler:check" width="18" height="18" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><span><strong style="color:var(--cool-50)">Collègue qui travaille 24/7</strong> : capture, qualifie, relance.</span></li>
-              <li class="ba-line-right flex gap-3 items-start" style="color:var(--cool-200)"><iconify-icon icon="tabler:check" width="18" height="18" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><span><strong style="color:var(--cool-50)">Copy calibrée neurosciences</strong>, testée sur 1 250 transactions.</span></li>
-              <li class="ba-line-right flex gap-3 items-start" style="color:var(--cool-200)"><iconify-icon icon="tabler:check" width="18" height="18" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><span><strong style="color:var(--cool-50)">CRM intégré</strong>, relances auto, dashboard temps réel.</span></li>
-              <li class="ba-line-right flex gap-3 items-start" style="color:var(--cool-200)"><iconify-icon icon="tabler:check" width="18" height="18" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><span><strong style="color:var(--cool-50)">49 à 199€/mois</strong>, tout compris, annulable en 1 clic.</span></li>
+              <li class="ba-line-right flex gap-3 items-start" style="color:var(--cool-200)"><iconify-icon icon="tabler:check" width="18" height="18" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><span><strong style="color:var(--cool-50)">Écrite avec la science du comportement</strong>, affinée sur 1 250 ventes.</span></li>
+              <li class="ba-line-right flex gap-3 items-start" style="color:var(--cool-200)"><iconify-icon icon="tabler:check" width="18" height="18" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><span><strong style="color:var(--cool-50)">Juliette fait vivre votre CRM</strong> : elle relance, qualifie, n'invente rien.</span></li>
+              <li class="ba-line-right flex gap-3 items-start" style="color:var(--cool-200)"><iconify-icon icon="tabler:check" width="18" height="18" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><span><strong style="color:var(--cool-50)">Profitez du tarif fondateur</strong>, réservé aux premiers. Abonnement sans engagement.</span></li>
               <li class="ba-line-right flex gap-3 items-start" style="color:var(--cool-200)"><iconify-icon icon="tabler:check" width="18" height="18" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><span><strong style="color:var(--cool-50)">Opérationnelle dès ce soir</strong>, sans effort d'installation.</span></li>
               <li class="ba-line-right flex gap-3 items-start" style="color:var(--cool-200)"><iconify-icon icon="tabler:check" width="18" height="18" style="color:var(--success); flex-shrink:0; margin-top:2px"></iconify-icon><span><strong style="color:var(--cool-50)">Elle accueille, qualifie, notifie</strong>. Vous validez et appelez.</span></li>
             </ul>
             <div class="mt-6 pt-6 border-t border-navy-600/40">
               <div class="text-xs font-mono tracking-wider mb-1" style="color:var(--success)">RÉSULTAT</div>
-              <div class="font-display text-xl font-bold" style="color:var(--cool-50)">Un système de capture, 24h/24.</div>
+              <div class="font-display text-xl font-bold" style="color:var(--cool-50)">Un système de capture et d'entretien, 24h/24.</div>
             </div>
           </div>
         </div>
@@ -1663,11 +1678,17 @@
         À votre place, le choix est simple.<br>
         <span style="color:var(--cool-400)">Vos prospects attendent. Leur décision est déjà en route.</span>
       </p>
-      <a href="#cta-final" class="btn-primary magnetic ripple px-10 py-5 text-lg">
-        Je passe du côté machine à leads
-        <iconify-icon icon="tabler:arrow-right" width="20" height="20" style="color:white"></iconify-icon>
-      </a>
-      <p class="text-sm font-mono mt-4" style="color:var(--cool-500)">14 jours gratuits · Sans CB · Annulation 1 clic</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Site%20Agent." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-10 py-5 text-lg">
+          Je veux plus d'info
+          <iconify-icon icon="tabler:brand-whatsapp" width="20" height="20" style="color:white"></iconify-icon>
+        </a>
+        <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Site%20Agent" class="btn-secondary magnetic ripple px-8 py-5 text-base">
+          Par email
+          <iconify-icon icon="tabler:mail" width="18" height="18" style="color:var(--accent-blue)"></iconify-icon>
+        </a>
+      </div>
+      <p class="text-sm font-mono mt-4" style="color:var(--cool-500)">Réponse par WhatsApp ou email · Sans engagement</p>
     </div>
   </div>
 </section>
@@ -1722,23 +1743,23 @@
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-12 reveal">
       <span class="badge-velox mb-4">VOS GARANTIES</span>
-      <h2 class="font-display text-3xl md:text-5xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">Zéro risque. <span class="gradient-text">Zéro engagement.</span></h2>
-      <p class="text-base mt-3 max-w-2xl mx-auto" style="color:var(--cool-400)">Sans CB. Sans engagement. Sans justification à donner.</p>
+      <h2 class="font-display text-3xl md:text-5xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">Sans engagement. <span class="gradient-text">Sans verrou.</span></h2>
+      <p class="text-base mt-3 max-w-2xl mx-auto" style="color:var(--cool-400)">Abonnement au mois, sans engagement. Vous partez quand vous voulez.</p>
     </div>
     <div class="grid md:grid-cols-3 gap-6 cards-grid">
       <div class="guarantee-card p-8 text-center reveal">
         <div class="mx-auto w-14 h-14 rounded-full flex items-center justify-center mb-4" style="background:rgba(82,199,122,.12); border:1px solid rgba(82,199,122,.3)">
-          <iconify-icon icon="tabler:clock-check" width="28" height="28" style="color:var(--success)"></iconify-icon>
+          <iconify-icon icon="tabler:lock-open" width="28" height="28" style="color:var(--success)"></iconify-icon>
         </div>
-        <h3 class="font-display text-lg font-semibold mb-2" style="color:var(--cool-50)">14 jours d'essai complet</h3>
-        <p class="text-sm card-content-fill" style="color:var(--cool-400)">Toutes les fonctionnalités Pro activées. Sans carte bancaire. Vous testez en conditions réelles avec vos vrais prospects.</p>
+        <h3 class="font-display text-lg font-semibold mb-2" style="color:var(--cool-50)">Sans engagement</h3>
+        <p class="text-sm card-content-fill" style="color:var(--cool-400)">Vous payez au mois. Vous arrêtez quand vous voulez, en 1 clic. Pas de contrat, pas de durée minimale.</p>
       </div>
       <div class="guarantee-card p-8 text-center reveal" style="transition-delay:0.1s">
         <div class="mx-auto w-14 h-14 rounded-full flex items-center justify-center mb-4" style="background:rgba(82,199,122,.12); border:1px solid rgba(82,199,122,.3)">
           <iconify-icon icon="tabler:shield-check" width="28" height="28" style="color:var(--success)"></iconify-icon>
         </div>
-        <h3 class="font-display text-lg font-semibold mb-2" style="color:var(--cool-50)">30 jours satisfait ou remboursé</h3>
-        <p class="text-sm card-content-fill" style="color:var(--cool-400)">Si après 30 jours vous n'êtes pas satisfait, on vous rembourse intégralement. Sur simple email, sans justification.</p>
+        <h3 class="font-display text-lg font-semibold mb-2" style="color:var(--cool-50)">Vos données, vos leads</h3>
+        <p class="text-sm card-content-fill" style="color:var(--cool-400)">Tout vous appartient. Export CSV à tout moment, aucun verrouillage. Le jour où vous partez, vous repartez avec vos contacts.</p>
       </div>
       <div class="guarantee-card p-8 text-center reveal" style="transition-delay:0.2s">
         <div class="mx-auto w-14 h-14 rounded-full flex items-center justify-center mb-4" style="background:rgba(82,199,122,.12); border:1px solid rgba(82,199,122,.3)">
@@ -1768,10 +1789,24 @@
       </details>
       <details class="neu-card p-6 reveal cursor-pointer" style="transition-delay:0.05s">
         <summary class="flex justify-between items-center">
-          <span class="font-display text-lg font-semibold" style="color:var(--cool-50)">Qu'est-ce que les "neurosciences du consommateur" concrètement ?</span>
+          <span class="font-display text-lg font-semibold" style="color:var(--cool-50)">Qu'est-ce que la « science du comportement » concrètement ?</span>
           <iconify-icon icon="tabler:plus" width="20" height="20" class="faq-icon transition-transform duration-300" style="color:var(--accent-blue)"></iconify-icon>
         </summary>
-        <p class="mt-4 leading-relaxed" style="color:var(--cool-400)">C'est l'étude scientifique de la façon dont votre prospect prend une décision. Nous avons intégré ces principes dans la structure, le wording et l'ordre des blocs de votre vitrine. Vous ne voyez pas la mécanique. Le prospect, lui, y répond.</p>
+        <p class="mt-4 leading-relaxed" style="color:var(--cool-400)">C'est l'étude de la façon dont un vendeur prend sa décision : ce qui le rassure, ce qui le fait avancer. On a intégré ces principes dans la structure et les mots de votre vitrine, et Juliette s'en sert dans chaque message. Vous ne voyez pas la mécanique. Le vendeur, lui, y répond.</p>
+      </details>
+      <details class="neu-card p-6 reveal cursor-pointer" style="transition-delay:0.07s">
+        <summary class="flex justify-between items-center">
+          <span class="font-display text-lg font-semibold" style="color:var(--cool-50)">Juliette peut-elle envoyer une bêtise en mon nom ?</span>
+          <iconify-icon icon="tabler:plus" width="20" height="20" class="faq-icon transition-transform duration-300" style="color:var(--accent-blue)"></iconify-icon>
+        </summary>
+        <p class="mt-4 leading-relaxed" style="color:var(--cool-400)">Non. Juliette ne s'appuie que sur les données de votre CRM : elle ne mentionnera jamais un bien, un acheteur ou un fait qui n'y existe pas. En cas de doute, elle vous demande au lieu de deviner. Et vous pouvez exiger de valider chaque message avant qu'il parte.</p>
+      </details>
+      <details class="neu-card p-6 reveal cursor-pointer" style="transition-delay:0.09s">
+        <summary class="flex justify-between items-center">
+          <span class="font-display text-lg font-semibold" style="color:var(--cool-50)">La « science du comportement », c'est de la manipulation ?</span>
+          <iconify-icon icon="tabler:plus" width="20" height="20" class="faq-icon transition-transform duration-300" style="color:var(--accent-blue)"></iconify-icon>
+        </summary>
+        <p class="mt-4 leading-relaxed" style="color:var(--cool-400)">Non. Manipuler, c'est pousser quelqu'un vers une décision qu'il ne veut pas. On fait l'inverse : on enlève les frictions sur une décision qu'il a déjà envie de prendre. On rend facile à dire oui à quelqu'un qui hésitait à le formuler.</p>
       </details>
       <details class="neu-card p-6 reveal cursor-pointer" style="transition-delay:0.1s">
         <summary class="flex justify-between items-center">
@@ -1847,33 +1882,35 @@
   <div class="relative max-w-4xl mx-auto px-6 text-center">
     <div class="reveal-scale">
       <h2 class="font-display text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight" style="color:var(--cool-50)">
-        Votre prospection s'arrête là.<br>
-        <span class="gradient-text">Votre vitrine prend le relais.</span><br>
-        <span style="color:var(--cool-400)">Vous, vous restez décideur.</span>
+        Vous restez la star locale.<br>
+        <span class="gradient-text">Juliette fait le reste.</span>
       </h2>
       <p class="text-lg max-w-2xl mx-auto mb-10" style="color:var(--cool-400)">
-        Rejoignez les agents qui ont fait travailler leur vitrine.
+        Vous serrez les mains. Votre vitrine attrape les leads, Juliette les qualifie et les relance. Parlons de votre situation.
       </p>
-      <a href="#cta-final" class="btn-primary magnetic ripple px-10 py-5 text-lg">
-        Créer ma vitrine maintenant
-        <iconify-icon icon="tabler:arrow-right" width="20" height="20" style="color:white"></iconify-icon>
-      </a>
-      <p class="text-sm font-mono mt-6" style="color:var(--cool-500)">14 jours gratuits · Sans CB · Opérationnelle ce soir</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Site%20Agent." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-10 py-5 text-lg">
+          Je veux plus d'info
+          <iconify-icon icon="tabler:brand-whatsapp" width="20" height="20" style="color:white"></iconify-icon>
+        </a>
+        <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Site%20Agent" class="btn-secondary magnetic ripple px-8 py-5 text-base">
+          Par email
+          <iconify-icon icon="tabler:mail" width="18" height="18" style="color:var(--accent-blue)"></iconify-icon>
+        </a>
+      </div>
+      <p class="text-sm font-mono mt-6" style="color:var(--cool-500)">Réponse rapide · Sans engagement</p>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="border-t border-navy-600/40 py-12 relative">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-sm">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 text-sm">
     <div>
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-6 h-6 rounded flex items-center justify-center" style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-blue-dark))">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
-        <span class="font-display font-bold text-lg" style="color:var(--cool-50)">SYSTÈME1-<strong>IMMO</strong><sup class="text-[10px]" style="color:var(--cool-400)">™</sup></span>
+      <div class="mb-4">
+        <img src="assets/logo.webp" alt="Système1-Immo" class="h-10 w-auto" />
       </div>
-      <p style="color:var(--cool-400)">La vitrine immobilière conçue avec les neurosciences du consommateur.</p>
+      <p style="color:var(--cool-400)">La vitrine immobilière conçue avec la science du comportement.</p>
     </div>
     <div>
       <div class="font-semibold mb-3" style="color:var(--cool-50)">Produit</div>
@@ -1883,6 +1920,7 @@
         <li><a href="#dashboard" class="hover:text-white transition">Back-office</a></li>
       </ul>
     </div>
+<!-- ARCHIVÉ — hors prod. Ressources / blog SEO (transition vers blog IA). À réactiver quand le blog IA sera prêt : remettre cette colonne + repasser le footer en md:grid-cols-4.
     <div>
       <div class="font-semibold mb-3" style="color:var(--cool-50)">Ressources</div>
       <ul class="space-y-2" style="color:var(--cool-400)">
@@ -1891,12 +1929,14 @@
         <li><a href="#" class="hover:text-white transition">Aide</a></li>
       </ul>
     </div>
+    -->
     <div>
       <div class="font-semibold mb-3" style="color:var(--cool-50)">Légal</div>
       <ul class="space-y-2" style="color:var(--cool-400)">
-        <li><a href="#" class="hover:text-white transition">CGU</a></li>
-        <li><a href="#" class="hover:text-white transition">Confidentialité</a></li>
-        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+        <li><a href="mentions-legales.html" class="hover:text-white transition">Mentions légales</a></li>
+        <li><a href="cgu.html" class="hover:text-white transition">CGU</a></li>
+        <li><a href="confidentialite.html" class="hover:text-white transition">Confidentialité</a></li>
+        <li><a href="mailto:contact@systeme1-immo.fr" class="hover:text-white transition">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -1930,7 +1970,7 @@
       </button>
       <p id="exitError" class="hidden text-xs text-center font-mono" style="color:#FF7A7A" role="alert" aria-live="polite"></p>
     </form>
-    <p class="text-xs mt-4 font-mono" style="color:var(--cool-500)">Sans spam. Désabonnement en 1 clic. <iconify-icon icon="tabler:lock" width="10" height="10" style="color:var(--cool-500)"></iconify-icon> Email chiffré.</p>
+    <p class="text-xs mt-4 font-mono" style="color:var(--cool-500)">Sans spam. Désabonnement en 1 clic. <iconify-icon icon="tabler:lock" width="10" height="10" style="color:var(--cool-500)"></iconify-icon> Email chiffré. · <a href="confidentialite.html" target="_blank" rel="noopener" style="color:var(--accent-blue)">Confidentialité</a></p>
 
     <!-- Confirmation (after submit) -->
     <div id="exitSuccess" class="hidden mt-6 text-center">
@@ -2011,47 +2051,7 @@
     tick();
   })();
 
-  /* ============ CTA SOUND (Web Audio, pas de fichier) ============ */
-  (function ctaSound() {
-    let audioCtx = null;
-    function getCtx() {
-      if (!audioCtx) {
-        try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-        catch(e) { return null; }
-      }
-      return audioCtx;
-    }
-    function click(kind) {
-      const ctx = getCtx(); if (!ctx) return;
-      const now = ctx.currentTime;
-      const o1 = ctx.createOscillator();
-      const o2 = ctx.createOscillator();
-      const g = ctx.createGain();
-      o1.connect(g); o2.connect(g); g.connect(ctx.destination);
-      // Primary: "tock" sound — short high-freq
-      o1.type = 'sine';
-      o1.frequency.setValueAtTime(kind === 'primary' ? 1200 : 800, now);
-      o1.frequency.exponentialRampToValueAtTime(kind === 'primary' ? 400 : 300, now + 0.08);
-      // Harmonics
-      o2.type = 'triangle';
-      o2.frequency.setValueAtTime(kind === 'primary' ? 600 : 400, now);
-      o2.frequency.exponentialRampToValueAtTime(200, now + 0.08);
-      g.gain.setValueAtTime(kind === 'primary' ? 0.15 : 0.08, now);
-      g.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
-      o1.start(now); o2.start(now);
-      o1.stop(now + 0.12); o2.stop(now + 0.12);
-    }
-    document.querySelectorAll('.btn-primary').forEach(el => {
-      el.addEventListener('click', () => click('primary'));
-    });
-    document.querySelectorAll('.btn-secondary, .ab-toggle').forEach(el => {
-      el.addEventListener('click', () => click('secondary'));
-    });
-    // Also on sticky CTA
-    document.querySelectorAll('.sticky-cta a').forEach(el => {
-      el.addEventListener('click', () => click('primary'));
-    });
-  })();
+  /* Son Web Audio au clic retiré (calmage, son non sollicité) */
 
   /* ============ EXIT-INTENT POPUP ============ */
   (function exitIntent() {
@@ -2250,7 +2250,7 @@
       { y: 900,  hold: 3500, label: "Outils gratuits · Scan Immo · ImmoScore · Estimation DVF" },
       { y: 1380, hold: 3000, label: "1 250 transactions · 25 ans · 98% · 130 avis Google" },
       { y: 1700, hold: 3500, label: "Vendre après 55 ans : les pièges à éviter" },
-      { y: 2400, hold: 4000, label: "Neurosciences · Le prix n'est pas le problème" },
+      { y: 2400, hold: 4000, label: "Le prix n'est pas le problème" },
       { y: 2900, hold: 2800, label: "Le Guide Complet du Vendeur · Gratuit" },
       { y: 3150, hold: 4000, label: "Ce que Nordine fait concrètement · 6 étapes" },
       { y: 3850, hold: 3500, label: "Comment ça se passe, de A à Z" },
@@ -2330,86 +2330,84 @@
     });
   })();
 
-  /* ============ CURSOR TRAIL ============ */
-  const blob = document.getElementById('cursorBlob');
-  let mx = window.innerWidth/2, my = window.innerHeight/2;
-  let bx = mx, by = my;
-  window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
-  function animateBlob() {
-    bx += (mx - bx) * 0.12;
-    by += (my - by) * 0.12;
-    blob.style.transform = `translate(${bx}px, ${by}px) translate(-50%, -50%)`;
-    requestAnimationFrame(animateBlob);
-  }
-  animateBlob();
+  /* Halo curseur retiré (calmage visuel) */
 
-  /* ============ PARTICLES ============ */
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
+  /* Réseau de particules retiré (calmage visuel, tell IA froid) */
 
-  class Particle {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.3;
-      this.vy = (Math.random() - 0.5) * 0.3;
-      this.r = Math.random() * 1.5 + 0.5;
-      this.color = Math.random() > 0.7 ? '#A78BFA' : '#5BA3E8';
-      this.alpha = Math.random() * 0.5 + 0.3;
-    }
-    update() {
-      this.x += this.vx; this.y += this.vy;
-      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = this.color + Math.floor(this.alpha * 255).toString(16).padStart(2,'0');
-      ctx.fill();
-    }
-  }
-
-  function initParticles() {
-    particles = [];
-    const count = Math.min(50, Math.floor(window.innerWidth / 25));
-    for (let i = 0; i < count; i++) particles.push(new Particle());
-  }
-  initParticles();
-  window.addEventListener('resize', initParticles);
-
-  function drawConnections() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i+1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const d = Math.sqrt(dx*dx + dy*dy);
-        if (d < 120) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(91,163,232,${(1 - d/120) * 0.15})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
+  /* ============ JULIETTE DEMO VIDEOS (auto-loop muet + clic pour le son) ============ */
+  (function julietteVideos(){
+    const wraps = document.querySelectorAll('[data-jul-video]');
+    if (!wraps.length) return;
+    const vids = [];
+    wraps.forEach(w => {
+      const v = w.querySelector('video');
+      const btn = w.querySelector('.jul-sound');
+      if (!v) return;
+      vids.push(v);
+      function enableSound(){
+        vids.forEach(o => { if (o !== v){ o.muted = true; o.controls = false; const ow = o.closest('[data-jul-video]'); if (ow) ow.classList.remove('sound-on'); } });
+        v.muted = false; v.controls = true; v.play().catch(()=>{}); w.classList.add('sound-on');
       }
-    }
-  }
+      v.addEventListener('click', (e) => { if (v.muted){ e.preventDefault(); enableSound(); } });
+      if (btn) btn.addEventListener('click', enableSound);
+    });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const v = e.target;
+        if (e.isIntersecting) { if (v.muted) v.play().catch(()=>{}); }
+        else if (v.muted) { v.pause(); }
+      });
+    }, { threshold: 0.35 });
+    vids.forEach(v => io.observe(v));
+  })();
 
-  function tickParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    drawConnections();
-    requestAnimationFrame(tickParticles);
-  }
-  tickParticles();
+  /* ============ CAROUSEL BACK-OFFICE ============ */
+  (function carousels(){
+    document.querySelectorAll('[data-carousel]').forEach(c => {
+      const track = c.querySelector('[data-carousel-track]');
+      if (!track) return;
+      const slides = Array.from(track.children);
+      const prev = c.querySelector('[data-carousel-prev]');
+      const next = c.querySelector('[data-carousel-next]');
+      const dotsWrap = c.querySelector('[data-carousel-dots]');
+      if (!slides.length) return;
+      function current(){
+        const mid = track.getBoundingClientRect().left + track.clientWidth/2;
+        let best = 0, bd = Infinity;
+        slides.forEach((s,i) => { const r = s.getBoundingClientRect(); const sc = r.left + r.width/2; const d = Math.abs(sc - mid); if (d < bd){ bd = d; best = i; } });
+        return best;
+      }
+      function centerOn(i){
+        const s = slides[i]; if (!s) return;
+        const delta = s.getBoundingClientRect().left - track.getBoundingClientRect().left - (track.clientWidth - s.clientWidth)/2;
+        track.scrollBy({ left: delta, behavior: 'smooth' });
+      }
+      let dots = [];
+      if (dotsWrap){
+        slides.forEach((s,i) => {
+          const b = document.createElement('button');
+          b.className = 'carousel-dot' + (i===0 ? ' active' : '');
+          b.type = 'button';
+          b.setAttribute('aria-label', 'Vue ' + (i+1));
+          b.addEventListener('click', () => centerOn(i));
+          dotsWrap.appendChild(b);
+        });
+        dots = Array.from(dotsWrap.children);
+      }
+      function update(){
+        const i = current();
+        dots.forEach((d,k) => d.classList.toggle('active', k===i));
+        if (prev) prev.disabled = i===0;
+        if (next) next.disabled = i===slides.length-1;
+      }
+      if (prev) prev.addEventListener('click', () => centerOn(Math.max(0, current()-1)));
+      if (next) next.addEventListener('click', () => centerOn(Math.min(slides.length-1, current()+1)));
+      let raf;
+      track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
+      update();
+    });
+  })();
 
   /* ============ SCROLL PROGRESS + STICKY CTA ============ */
   const progressFill = document.getElementById('progressFill');

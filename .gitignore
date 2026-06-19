@@ -1,0 +1,7 @@
+# Fichiers non liés au site (parasites)
+.agents/
+big-*.mp4
+
+# Fichiers temporaires
+*.tmp
+_*.tmp
