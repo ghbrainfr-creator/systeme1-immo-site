@@ -187,34 +187,34 @@
 
   /* ============ BUTTONS ============ */
   .btn-primary {
-    position: relative;
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(180deg, #5BA3E8 0%, #3B8DE0 100%);
-    color: white; font-weight: 600;
-    box-shadow: 0 1px 0 rgba(255,255,255,.18) inset, 0 8px 28px -8px rgba(91,163,232,.65);
-    transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease;
-    overflow: hidden;
-    border-radius: 12px;
+    position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--accent-blue);
+    color: var(--navy-950); font-weight: 700;
+    border-radius: 8px;
+    transition: background 0.25s ease;
   }
-  .btn-primary::before {
-    content:''; position:absolute; inset:0;
-    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%);
-    transform: translateX(-100%); transition: transform 0.6s ease;
-  }
-  .btn-primary:hover::before { transform: translateX(100%); }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 20px 44px -8px rgba(91,163,232,.85); }
-  .btn-primary:active { transform: translateY(0); }
+  .btn-primary iconify-icon { color: var(--navy-950) !important; }
+  .btn-primary:hover { background: #7DB8EE; }
+  .btn-primary:active { background: #4E97DE; }
 
   .btn-secondary {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(15,21,35,.6);
-    border: 1px solid rgba(91,163,232,.25);
+    position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(91,163,232,.35);
     color: var(--cool-50); font-weight: 500;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    border-radius: 12px;
+    border-radius: 8px;
+    transition: border-color 0.25s ease, background 0.25s ease;
   }
-  .btn-secondary:hover { border-color: rgba(91,163,232,.6); background: rgba(15,21,35,.9); transform: translateY(-1px); }
+  .btn-secondary:hover { border-color: rgba(91,163,232,.7); background: rgba(91,163,232,.07); }
+
+  /* text-roll au survol (déclaudisation : remplace magnetic + ripple + sweep) */
+  .btn-primary .roll, .btn-secondary .roll { display: inline-grid; overflow: hidden; }
+  .btn-primary .roll > span, .btn-secondary .roll > span { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.42s cubic-bezier(0.7,0,0.2,1); }
+  .btn-primary .roll > span:nth-child(2), .btn-secondary .roll > span:nth-child(2) { transform: translateY(120%); }
+  .btn-primary:hover .roll > span:nth-child(1), .btn-secondary:hover .roll > span:nth-child(1) { transform: translateY(-120%); }
+  .btn-primary:hover .roll > span:nth-child(2), .btn-secondary:hover .roll > span:nth-child(2) { transform: translateY(0); }
 
   .magnetic { transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1); }
 
@@ -812,11 +812,11 @@
       </div>
     </div>
     <div class="flex items-center gap-2">
-      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-6 py-3 text-sm">
+      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary px-6 py-3 text-sm">
         Je veux plus d'info
         <iconify-icon icon="tabler:brand-whatsapp" width="16" height="16" style="color:white"></iconify-icon>
       </a>
-      <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Syst%C3%A8me1-Immo" class="btn-secondary magnetic ripple px-4 py-3 text-sm" aria-label="Nous écrire par email" title="Par email">
+      <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Syst%C3%A8me1-Immo" class="btn-secondary px-4 py-3 text-sm" aria-label="Nous écrire par email" title="Par email">
         <iconify-icon icon="tabler:mail" width="16" height="16" style="color:var(--accent-blue)"></iconify-icon>
       </a>
     </div>
@@ -836,8 +836,8 @@
       <a href="#dashboard" class="hover:text-white transition relative group">Back-office<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
     </div>
     <div class="flex items-center gap-2">
-      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-4 py-2 text-sm">Je veux plus d'info</a>
-      <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Syst%C3%A8me1-Immo" class="btn-secondary magnetic ripple px-3 py-2 text-sm" aria-label="Nous écrire par email" title="Par email"><iconify-icon icon="tabler:mail" width="16" height="16" style="color:var(--accent-blue)"></iconify-icon></a>
+      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary px-4 py-2 text-sm">Je veux plus d'info</a>
+      <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Syst%C3%A8me1-Immo" class="btn-secondary px-3 py-2 text-sm" aria-label="Nous écrire par email" title="Par email"><iconify-icon icon="tabler:mail" width="16" height="16" style="color:var(--accent-blue)"></iconify-icon></a>
     </div>
   </div>
 </nav>
@@ -894,7 +894,7 @@
 
       <!-- [4] CTAs : verbe d'action mesurable + loss aversion + time anchor -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5 reveal" style="transition-delay:1.15s">
-        <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-9 py-4 text-base">
+        <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary px-9 py-4 text-base">
           Je veux plus d'info
           <iconify-icon icon="tabler:arrow-right" width="18" height="18" style="color:white"></iconify-icon>
         </a>
@@ -1142,7 +1142,7 @@
     </div>
 
     <div class="mt-12 text-center reveal">
-      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-8 py-4">
+      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary px-8 py-4">
         Je veux plus d'info
         <iconify-icon icon="tabler:brand-whatsapp" width="18" height="18" style="color:white"></iconify-icon>
       </a>
@@ -1233,7 +1233,7 @@
       <p class="text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-8" style="color:var(--cool-300)">
         Vous, vous faites le seul geste qu'aucune IA ne fera : serrer les mains, être présent, être <strong style="color:var(--cool-50)">la star locale</strong>. Juliette tient le reste.
       </p>
-      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-9 py-4 text-base">
+      <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary px-9 py-4 text-base">
         Je veux plus d'info
         <iconify-icon icon="tabler:brand-whatsapp" width="18" height="18" style="color:white"></iconify-icon>
       </a>
@@ -1705,11 +1705,11 @@
         <span style="color:var(--cool-400)">Vos prospects attendent. Leur décision est déjà en route.</span>
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-10 py-5 text-lg">
+        <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary px-10 py-5 text-lg">
           Je veux plus d'info
           <iconify-icon icon="tabler:brand-whatsapp" width="20" height="20" style="color:white"></iconify-icon>
         </a>
-        <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Syst%C3%A8me1-Immo" class="btn-secondary magnetic ripple px-8 py-5 text-base">
+        <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Syst%C3%A8me1-Immo" class="btn-secondary px-8 py-5 text-base">
           Par email
           <iconify-icon icon="tabler:mail" width="18" height="18" style="color:var(--accent-blue)"></iconify-icon>
         </a>
@@ -1922,11 +1922,11 @@
         Vous serrez les mains. Votre site remplit votre CRM, Juliette l'entretient et relance. Parlons de votre situation.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary magnetic ripple px-10 py-5 text-lg">
+        <a href="https://wa.me/33632360308?text=Bonjour%2C%20je%20veux%20plus%20d%27infos%20sur%20Syst%C3%A8me1-Immo." target="_blank" rel="noopener" class="btn-primary px-10 py-5 text-lg">
           Je veux plus d'info
           <iconify-icon icon="tabler:brand-whatsapp" width="20" height="20" style="color:white"></iconify-icon>
         </a>
-        <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Syst%C3%A8me1-Immo" class="btn-secondary magnetic ripple px-8 py-5 text-base">
+        <a href="mailto:contact@systeme1-immo.fr?subject=Je%20veux%20plus%20d%27info%20sur%20Syst%C3%A8me1-Immo" class="btn-secondary px-8 py-5 text-base">
           Par email
           <iconify-icon icon="tabler:mail" width="18" height="18" style="color:var(--accent-blue)"></iconify-icon>
         </a>
@@ -2001,7 +2001,7 @@
     </p>
     <form id="exitForm" class="space-y-3" novalidate>
       <input type="email" class="modal-input" placeholder="Votre email d'agent" required id="exitEmail" autocomplete="email" />
-      <button type="submit" id="exitSubmit" class="btn-primary magnetic ripple w-full py-3 justify-center">
+      <button type="submit" id="exitSubmit" class="btn-primary w-full py-3 justify-center">
         <span id="exitSubmitLabel">Recevoir le guide gratuitement</span>
         <iconify-icon id="exitSubmitIcon" icon="tabler:send" width="16" height="16" style="color:white"></iconify-icon>
       </button>
@@ -2508,6 +2508,12 @@
       el.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
     });
     el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  });
+
+  /* ============ TEXT-ROLL BUTTONS (déclaudisation) ============ */
+  document.querySelectorAll('a.btn-primary, a.btn-secondary').forEach(b => {
+    const html = b.innerHTML.trim();
+    b.innerHTML = '<span class="roll"><span>'+html+'</span><span aria-hidden="true">'+html+'</span></span>';
   });
 
   /* ============ MAGNETIC ============ */
