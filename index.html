@@ -735,10 +735,12 @@
 
   /* ============ JULIETTE DEMO VIDEOS ============ */
   .jul-video-wrap{position:relative;background:#000;line-height:0;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
-  .jul-video{width:100%;height:auto;display:block;cursor:pointer}
+  .jul-video{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer}
   .jul-sound{position:absolute;bottom:12px;right:12px;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:rgba(7,11,20,.72);border:1px solid rgba(91,163,232,.4);backdrop-filter:blur(8px);color:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s ease,opacity .3s ease}
   .jul-sound:hover{background:rgba(91,163,232,.35)}
   .jul-video-wrap.sound-on .jul-sound{opacity:0;pointer-events:none}
+  /* Mobile : contrôles natifs visibles → on masque le bouton custom (géré côté JS) */
+  @media (max-width:767px){ .jul-video-wrap .jul-sound{display:none} }
 
   /* ============ APP SHOTS (captures réelles back-office) ============ */
   .app-shot{background:var(--card-bg);border:1px solid rgba(30,38,56,1);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 40px 100px -40px rgba(0,0,0,.9),0 0 0 1px rgba(91,163,232,.12)}
@@ -1173,7 +1175,7 @@
         <h3 class="font-display text-2xl md:text-4xl font-semibold mt-4 tracking-tight" style="color:var(--cool-50)">Vous lui parlez. Elle exécute.</h3>
         <p class="text-base mt-3 max-w-2xl mx-auto" style="color:var(--cool-400)">Des extraits réels de l'application. <span style="color:var(--cool-200)">Cliquez pour activer le son.</span></p>
       </div>
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid gap-8">
         <figure class="neu-card p-0" style="overflow:hidden">
           <div class="jul-video-wrap" data-jul-video>
             <video class="jul-video" src="assets/juliette-cas-1-crm-voix.mp4" poster="assets/juliette-cas-1.jpg" muted loop playsinline preload="metadata" aria-label="Juliette met à jour une fiche CRM à la voix"></video>
@@ -2055,6 +2057,11 @@
 
   /* ============ EXIT-INTENT POPUP ============ */
   (function exitIntent() {
+    // POP-UP « Guide Vitrine Parfaite » DÉSACTIVÉ le 2026-06-22 (mis de côté, réactivable).
+    // Le markup #exitModal reste en place mais n'est jamais affiché.
+    // Pour le réactiver plus tard : repasser ENABLED à true.
+    const ENABLED = false;
+    if (!ENABLED) return;
     const modal = document.getElementById('exitModal');
     const closeBtn = document.getElementById('exitClose');
     const form = document.getElementById('exitForm');
@@ -2339,11 +2346,13 @@
     const wraps = document.querySelectorAll('[data-jul-video]');
     if (!wraps.length) return;
     const vids = [];
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
     wraps.forEach(w => {
       const v = w.querySelector('video');
       const btn = w.querySelector('.jul-sound');
       if (!v) return;
       vids.push(v);
+      if (isMobile) { v.controls = true; return; } // mobile : contrôles natifs (lecture + son + plein écran)
       function enableSound(){
         vids.forEach(o => { if (o !== v){ o.muted = true; o.controls = false; const ow = o.closest('[data-jul-video]'); if (ow) ow.classList.remove('sound-on'); } });
         v.muted = false; v.controls = true; v.play().catch(()=>{}); w.classList.add('sound-on');
