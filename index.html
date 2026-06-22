@@ -164,6 +164,23 @@
 
   .tilt { transform-style: preserve-3d; transition: transform 0.2s ease-out, border-color 0.3s; }
 
+  /* ============ VIEWFINDER — déclaudisation (Juliette + Comment ça marche) ============ */
+  .vf-section .neu-card { background: var(--navy-900); box-shadow: none; border-radius: 4px; }
+  .vf-section .neu-card::before {
+    content:''; position:absolute; inset:auto; top:10px; left:10px; width:14px; height:14px; z-index:2;
+    border:0; border-top:2px solid var(--accent-blue); border-left:2px solid var(--accent-blue);
+    border-radius:0; background:none; opacity:.4; pointer-events:none;
+    transition: width .35s cubic-bezier(.7,0,.2,1), height .35s cubic-bezier(.7,0,.2,1), opacity .35s ease;
+  }
+  .vf-section .neu-card::after {
+    content:''; position:absolute; inset:auto; bottom:10px; right:10px; width:14px; height:14px; z-index:2;
+    border:0; border-bottom:2px solid var(--accent-blue); border-right:2px solid var(--accent-blue);
+    opacity:.4; pointer-events:none;
+    transition: width .35s cubic-bezier(.7,0,.2,1), height .35s cubic-bezier(.7,0,.2,1), opacity .35s ease;
+  }
+  .vf-section .neu-card:hover { transform: none; border-color: rgba(91,163,232,.35); }
+  .vf-section .neu-card:hover::before, .vf-section .neu-card:hover::after { width:22px; height:22px; opacity:1; }
+
   /* Animated gradient border */
   .card-glow { position: relative; }
   .card-glow::after {
@@ -1152,7 +1169,7 @@
 </section>
 
 <!-- JULIETTE — assistante IA (Acte 2 : la révélation) -->
-<section id="juliette" class="py-28 md:py-40 relative overflow-hidden bg-gradient-section-1">
+<section id="juliette" class="py-28 md:py-40 relative overflow-hidden bg-gradient-section-1 vf-section">
   <div class="relative max-w-5xl mx-auto px-6">
     <div class="text-center mb-14 reveal">
       <span class="badge-velox mb-4">
@@ -1601,7 +1618,7 @@
 
 
 <!-- HOW IT WORKS -->
-<section class="py-28 md:py-40 relative bg-gradient-section-4">
+<section class="py-28 md:py-40 relative bg-gradient-section-4 vf-section">
   <div class="max-w-7xl mx-auto px-6">
     <div class="max-w-3xl mx-auto text-center mb-16 reveal">
       <span class="badge-velox mb-4">COMMENT ÇA MARCHE</span>
@@ -1613,17 +1630,17 @@
         <path class="connect-line" d="M 0,2 L 100,2" />
       </svg>
 
-      <div class="neu-card tilt p-8 reveal relative z-10">
+      <div class="neu-card p-8 reveal relative z-10">
         <div class="absolute -top-4 left-8 w-10 h-10 rounded-xl flex items-center justify-center font-display font-bold shadow-lg" style="background:var(--accent-blue); color:var(--navy-950); box-shadow:0 10px 30px -10px rgba(91,163,232,.6)">1</div>
         <h3 class="font-display text-xl font-semibold mb-3 mt-4" style="color:var(--cool-50)">Répondez au wizard</h3>
         <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Votre nom, votre zone, vos spécialités, votre téléphone. 5 questions. 3 minutes.</p>
       </div>
-      <div class="neu-card tilt p-8 reveal relative z-10" style="transition-delay:0.15s">
+      <div class="neu-card p-8 reveal relative z-10" style="transition-delay:0.15s">
         <div class="absolute -top-4 left-8 w-10 h-10 rounded-xl flex items-center justify-center font-display font-bold" style="background:var(--accent-blue); color:var(--navy-950); box-shadow:0 10px 30px -10px rgba(91,163,232,.6)">2</div>
         <h3 class="font-display text-xl font-semibold mb-3 mt-4" style="color:var(--cool-50)">Activez vos pages</h3>
         <p class="text-sm leading-relaxed" style="color:var(--cool-400)">Nos biens, Avis clients, Guide vendeur, Roue des Leads, Scan Immo™… Activez ce que vous voulez.</p>
       </div>
-      <div class="neu-card tilt p-8 reveal relative z-10" style="transition-delay:0.3s">
+      <div class="neu-card p-8 reveal relative z-10" style="transition-delay:0.3s">
         <div class="absolute -top-4 left-8 w-10 h-10 rounded-xl flex items-center justify-center font-display font-bold" style="background:var(--accent-blue); color:var(--navy-950); box-shadow:0 10px 30px -10px rgba(91,163,232,.6)">3</div>
         <h3 class="font-display text-xl font-semibold mb-3 mt-4" style="color:var(--cool-50)">Partagez votre URL</h3>
         <p class="text-sm leading-relaxed" style="color:var(--cool-400)"><span class="font-mono" style="color:var(--accent-blue)">votresite.systeme1-immo.fr</span>, ou connectez votre propre domaine.</p>
