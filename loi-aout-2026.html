@@ -21,6 +21,14 @@
   a{color:var(--accent)}
   h1{color:#fff} h2{color:#fff}
   .ok{color:var(--success)} .warn{color:var(--amber)}
+  .loi-form{ display:flex; flex-direction:column; gap:8px; max-width:420px; margin:0 auto }
+  .loi-row{ display:flex; gap:8px }
+  .loi-input{ flex:1; width:100%; background:var(--navy-950); border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:12px 14px; color:#fff; font-size:15px; font-family:inherit }
+  .loi-input::placeholder{ color:var(--cool-500) }
+  .loi-input:focus{ outline:none; border-color:var(--accent) }
+  .loi-btn{ background:linear-gradient(135deg,#5BA3E8,#3B8DE0); color:#fff; font-weight:600; border:none; border-radius:10px; padding:13px 20px; cursor:pointer; font-size:15px; font-family:inherit }
+  .loi-btn:disabled{ opacity:.7; cursor:wait }
+  .loi-dl{ display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#5BA3E8,#3B8DE0); color:#fff !important; text-decoration:none; font-weight:600; border-radius:10px; padding:13px 22px; margin-top:10px }
 </style>
 </head>
 <body>
@@ -68,11 +76,24 @@
     <div class="card" style="text-align:center">
       <h2 class="font-display" style="font-size:20px;margin-bottom:6px">Bonus : la checklist complète en PDF</h2>
       <p style="color:var(--cool-400);margin-bottom:14px">« Loi du 11 août : ma to-do d'agent en règle. » Gratuit.</p>
-      <form id="loiLeadForm" class="flex flex-col sm:flex-row gap-2 justify-center" novalidate>
-        <input type="email" required placeholder="Votre email d'agent" autocomplete="email" style="background:var(--navy-950);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 14px;color:#fff;min-width:240px" />
-        <button type="submit" style="background:linear-gradient(135deg,#5BA3E8,#3B8DE0);color:#fff;font-weight:600;border:none;border-radius:10px;padding:12px 20px;cursor:pointer">Recevoir la checklist</button>
+      <form id="loiLeadForm" class="loi-form" novalidate>
+        <div class="loi-row">
+          <input id="loiPrenom" type="text" required placeholder="Prénom" autocomplete="given-name" class="loi-input" />
+          <input id="loiNom" type="text" required placeholder="Nom" autocomplete="family-name" class="loi-input" />
+        </div>
+        <input id="loiEmail" type="email" required placeholder="Votre email d'agent" autocomplete="email" class="loi-input" />
+        <input id="loiHoney" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+        <button id="loiSubmit" type="submit" class="loi-btn">Recevoir la checklist (PDF)</button>
       </form>
-      <p style="font-size:12px;color:var(--cool-400);margin-top:8px">Le cœur de l'explication est 100% gratuit et sans email. Le PDF, c'est juste un bonus.</p>
+      <p id="loiError" role="alert" aria-live="polite" style="display:none;font-size:12px;color:#FF7A7A;margin-top:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace"></p>
+      <div id="loiSuccess" style="display:none">
+        <p class="ok" style="font-weight:600"><span id="loiHello"></span>votre checklist est prête.</p>
+        <a id="loiDownload" class="loi-dl" href="/assets/checklist-loi-11-aout.pdf" target="_blank" rel="noopener" download>
+          <iconify-icon icon="tabler:download" width="18"></iconify-icon> Télécharger ma checklist (PDF)
+        </a>
+        <p style="font-size:12px;color:var(--cool-400);margin-top:10px">Le téléchargement ne démarre pas ? <a href="/assets/checklist-loi-11-aout.pdf" target="_blank" rel="noopener">Cliquez ici</a>.</p>
+      </div>
+      <p style="font-size:12px;color:var(--cool-400);margin-top:8px">Le cœur de l'explication, au-dessus, est 100% gratuit. Le PDF, c'est le bonus à emporter.</p>
     </div>
 
     <div class="card">
@@ -84,5 +105,70 @@
       </ul>
     </div>
   </main>
+
+  <script>
+  /* Câblage du formulaire lead — capture (prénom, nom, email) via FormSubmit
+     (formsubmit.co, sans backend), puis livraison EN LIGNE du PDF (bouton). */
+  (function loiLead() {
+    const form = document.getElementById('loiLeadForm');
+    if (!form) return;
+    const prenomInput = document.getElementById('loiPrenom');
+    const nomInput = document.getElementById('loiNom');
+    const emailInput = document.getElementById('loiEmail');
+    const submitBtn = document.getElementById('loiSubmit');
+    const errorEl = document.getElementById('loiError');
+    const successEl = document.getElementById('loiSuccess');
+    const honeyInput = document.getElementById('loiHoney');
+    const helloEl = document.getElementById('loiHello');
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const DEFAULT_LABEL = 'Recevoir la checklist (PDF)';
+
+    function setError(msg) {
+      if (!msg) { errorEl.style.display = 'none'; errorEl.textContent = ''; return; }
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+    }
+    function setLoading(loading) {
+      submitBtn.disabled = loading;
+      submitBtn.textContent = loading ? 'Un instant…' : DEFAULT_LABEL;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      setError('');
+      const prenom = prenomInput.value.trim();
+      const nom = nomInput.value.trim();
+      const email = emailInput.value.trim();
+      if (!prenom || !nom) { setError('Indiquez votre prénom et votre nom.'); return; }
+      if (!EMAIL_RE.test(email)) { setError('Email invalide.'); return; }
+
+      setLoading(true);
+      try {
+        const r = await fetch('https://formsubmit.co/ajax/frednordimmo@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            Prénom: prenom,
+            Nom: nom,
+            Email: email,
+            _subject: 'Nouveau lead · Checklist Loi 11 août — ' + prenom + ' ' + nom,
+            _template: 'table',
+            _captcha: 'false',
+            _honey: honeyInput.value,
+          }),
+        });
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok || data.success !== 'true') throw new Error('network_error');
+
+        helloEl.textContent = 'C’est noté, ' + prenom + ' — ';
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+      } catch (err) {
+        setLoading(false);
+        setError('Réessayez dans un instant.');
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
