@@ -181,10 +181,10 @@
   .vf-section .neu-card:hover { transform: none; border-color: rgba(91,163,232,.35); }
   .vf-section .neu-card:hover::before, .vf-section .neu-card:hover::after { width:22px; height:22px; opacity:1; }
 
-  /* ============ SECTION HEADERS — déclaudisation (B · filet d'accent) ============ */
-  .sec-head { border-top: 2px solid var(--accent-blue); padding-top: 18px; text-align: left; }
-  .sec-head .sec-label { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--cool-400); margin-bottom: 4px; background: none; border: 0; padding: 0; }
-  .sec-head h2 { margin-left: 0; margin-right: 0; }
+  /* ============ SECTION HEADERS — déclaudisation (label mono centré, sans pill ni dégradé) ============ */
+  .sec-head { text-align: center; margin-left: auto; margin-right: auto; }
+  .sec-head .sec-label { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 10px; background: none; border: 0; padding: 0; }
+  .sec-head h2 { margin-left: auto; margin-right: auto; }
 
   /* Animated gradient border */
   .card-glow { position: relative; }
