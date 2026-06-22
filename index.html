@@ -181,6 +181,11 @@
   .vf-section .neu-card:hover { transform: none; border-color: rgba(91,163,232,.35); }
   .vf-section .neu-card:hover::before, .vf-section .neu-card:hover::after { width:22px; height:22px; opacity:1; }
 
+  /* ============ SECTION HEADERS — déclaudisation (B · filet d'accent) ============ */
+  .sec-head { border-top: 2px solid var(--accent-blue); padding-top: 18px; text-align: left; }
+  .sec-head .sec-label { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--cool-400); margin-bottom: 4px; background: none; border: 0; padding: 0; }
+  .sec-head h2 { margin-left: 0; margin-right: 0; }
+
   /* Animated gradient border */
   .card-glow { position: relative; }
   .card-glow::after {
@@ -1007,8 +1012,8 @@
 <!-- PROBLEM -->
 <section class="py-28 md:py-40 spotlight relative bg-gradient-section-2" onmousemove="updateMouse(event, this)">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-      <span class="badge-velox mb-4">LE PROBLÈME</span>
+    <div class="max-w-3xl sec-head mb-16 reveal">
+      <span class="sec-label">LE PROBLÈME</span>
       <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight leading-[1.1]" style="color:var(--cool-50)">
         <span style="color:var(--accent-blue)">Trois outils testés.</span><br>
         Aucun conçu pour qualifier un vendeur.
@@ -1053,8 +1058,8 @@
 <!-- LE SHIFT 2026 · Positionnement structurel -->
 <section class="py-28 md:py-40 relative overflow-hidden bg-gradient-section-2">
   <div class="relative max-w-5xl mx-auto px-6">
-    <div class="text-center mb-16 reveal">
-      <span class="badge-velox mb-4">LE SHIFT 2026</span>
+    <div class="sec-head mb-16 reveal">
+      <span class="sec-label">LE SHIFT 2026</span>
       <h2 class="font-display text-5xl md:text-7xl font-bold mb-6 mt-6 tracking-tight leading-[1.05]" style="color:var(--cool-50)">
         Le réseau ne vend plus.<br>
         <span class="gradient-text">Votre marque perso, si.</span>
@@ -1107,8 +1112,8 @@
 <section id="solution" class="py-28 md:py-40 relative overflow-hidden">
   <div class="absolute inset-0 bg-gradient-to-b from-transparent via-accent-blue/5 to-transparent"></div>
   <div class="relative max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-      <span class="badge-velox mb-4">HIER, SUR LA VITRINE DE NORDINE</span>
+    <div class="max-w-3xl sec-head mb-16 reveal">
+      <span class="sec-label">HIER, SUR LA VITRINE DE NORDINE</span>
       <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight leading-[1.05]" style="color:var(--cool-50)">Votre site remplit le CRM.<br><span class="gradient-text">Juliette l'entretient.</span></h2>
       <p class="text-lg mt-4" style="color:var(--cool-400)">Voilà son journal de bord.</p>
     </div>
@@ -1171,8 +1176,8 @@
 <!-- JULIETTE — assistante IA (Acte 2 : la révélation) -->
 <section id="juliette" class="py-28 md:py-40 relative overflow-hidden bg-gradient-section-1 vf-section">
   <div class="relative max-w-5xl mx-auto px-6">
-    <div class="text-center mb-14 reveal">
-      <span class="badge-velox mb-4">
+    <div class="sec-head mb-14 reveal">
+      <span class="sec-label">
         <span class="live-dot"></span>
         VOTRE ASSISTANTE · JULIETTE
       </span>
@@ -1261,8 +1266,8 @@
 <!-- DEMO : IFRAME LIVE (desktop + phone) -->
 <section id="demo" class="py-24 md:py-40 relative bg-gradient-section-3 overflow-hidden">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-      <span class="badge-velox mb-4">DÉMO · VITRINE EN LIGNE</span>
+    <div class="max-w-3xl sec-head mb-16 reveal">
+      <span class="sec-label">DÉMO · VITRINE EN LIGNE</span>
       <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">Regardez-la travailler<br>pour <span class="gradient-text">Nordine</span>, <span style="color:var(--accent-blue)">en ce moment</span>.</h2>
       <p class="text-lg mt-4" style="color:var(--cool-400)">Ce n'est pas une maquette. C'est sa vitrine en production. Elle accueille, qualifie, notifie. Pendant qu'il est en visite.</p>
     </div>
@@ -1348,8 +1353,8 @@
 <!-- BACK-OFFICE — carrousel de captures réelles de l'app -->
 <section id="dashboard" class="py-28 md:py-40 relative bg-gradient-section-1">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center mb-12 reveal">
-      <span class="badge-velox mb-4">
+    <div class="max-w-3xl sec-head mb-12 reveal">
+      <span class="sec-label">
         <span class="live-dot"></span>
         LE BACK-OFFICE · EN VRAI
       </span>
@@ -1434,8 +1439,8 @@
 <!-- NOTRE DIFFÉRENCE · Juliette + science du comportement -->
 <section class="py-28 md:py-40 relative overflow-hidden bg-gradient-section-4">
   <div class="relative max-w-5xl mx-auto px-6">
-    <div class="text-center mb-12 reveal">
-      <span class="badge-velox mb-4">NOTRE DIFFÉRENCE</span>
+    <div class="sec-head mb-12 reveal">
+      <span class="sec-label">NOTRE DIFFÉRENCE</span>
       <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight leading-[1.05]" style="color:var(--cool-50)">
         Votre prospect ne lit pas.<br>
         <span class="gradient-text">Il ressent.</span>
@@ -1488,8 +1493,8 @@
 <!-- PAGES & OUTILS (contenu réel du back-office) -->
 <section id="pages" class="py-28 md:py-40 spotlight relative bg-gradient-section-1" onmousemove="updateMouse(event, this)">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-      <div class="badge-velox mb-4">
+    <div class="max-w-3xl sec-head mb-16 reveal">
+      <div class="sec-label">
         <iconify-icon icon="tabler:apps" width="14" height="14" style="color:var(--accent-blue)"></iconify-icon>
         PAGES & OUTILS · TOUT INCLUS
       </div>
@@ -1620,8 +1625,8 @@
 <!-- HOW IT WORKS -->
 <section class="py-28 md:py-40 relative bg-gradient-section-4 vf-section">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-      <span class="badge-velox mb-4">COMMENT ÇA MARCHE</span>
+    <div class="max-w-3xl sec-head mb-16 reveal">
+      <span class="sec-label">COMMENT ÇA MARCHE</span>
       <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">De l'idée à la mise en ligne :<br><span class="gradient-text">5 minutes.</span></h2>
     </div>
     <div class="grid md:grid-cols-3 gap-6 relative cards-grid">
@@ -1653,8 +1658,8 @@
 <!-- BEFORE / AFTER — DRAMATIC -->
 <section class="py-28 md:py-40 relative bg-gradient-section-2 overflow-hidden">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="max-w-3xl mx-auto text-center mb-16 reveal">
-      <span class="badge-velox mb-4">AVANT · APRÈS</span>
+    <div class="max-w-3xl sec-head mb-16 reveal">
+      <span class="sec-label">AVANT · APRÈS</span>
       <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">Un site classique<br>vs. <span class="gradient-text">Système1-Immo</span>.</h2>
       <p class="text-lg mt-6" style="color:var(--cool-400)">La même idée. Deux exécutions. Deux résultats à l'opposé.</p>
     </div>
@@ -1784,8 +1789,8 @@
 <!-- GARANTIES · RISK REVERSAL -->
 <section class="py-16 md:py-20 relative bg-gradient-section-3">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-12 reveal">
-      <span class="badge-velox mb-4">VOS GARANTIES</span>
+    <div class="sec-head mb-12 reveal">
+      <span class="sec-label">VOS GARANTIES</span>
       <h2 class="font-display text-3xl md:text-5xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">Sans engagement. <span class="gradient-text">Sans verrou.</span></h2>
       <p class="text-base mt-3 max-w-2xl mx-auto" style="color:var(--cool-400)">Abonnement au mois, sans engagement. Vous partez quand vous voulez.</p>
     </div>
@@ -1818,8 +1823,8 @@
 <!-- FAQ -->
 <section id="faq" class="py-28 md:py-40">
   <div class="max-w-3xl mx-auto px-6">
-    <div class="text-center mb-12 reveal">
-      <span class="badge-velox mb-4">FAQ</span>
+    <div class="sec-head mb-12 reveal">
+      <span class="sec-label">FAQ</span>
       <h2 class="font-display text-5xl md:text-7xl font-bold mb-4 mt-6 tracking-tight" style="color:var(--cool-50)">Vos questions.<br><span class="gradient-text">Nos réponses.</span></h2>
     </div>
     <div class="space-y-3">
