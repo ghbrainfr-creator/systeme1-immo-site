@@ -39,6 +39,8 @@ body{
 .brand-sub{font-size:11px;color:var(--gh-ink-2);font-family:'Montserrat',sans-serif;letter-spacing:.16em;text-transform:uppercase;margin-top:2px;font-weight:500}
 .chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid var(--gh-blue);background:transparent;border-radius:999px;font-size:10.5px;color:var(--gh-blue);font-family:'Montserrat',sans-serif;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
 .chip.solid{background:var(--gh-blue);color:#fff;border-color:var(--gh-blue)}
+/* mobile : l'en-tête passe à la ligne plutôt que de déborder (≤320px / chips longs) */
+@media(max-width:680px){.topbar{flex-wrap:wrap;row-gap:16px}}
 
 /* ===== COVER ===== */
 .cover{padding:32px 0 40px;margin-bottom:56px;border-bottom:1px solid var(--gh-line)}
@@ -126,6 +128,13 @@ footer a{color:var(--gh-blue);text-decoration:none;font-weight:600}
 .row label{color:var(--gh-ink);font-size:14px;font-weight:500}
 .row input[type=range]{flex:1;max-width:340px;accent-color:var(--gh-blue)}
 .row .val{font-family:'Montserrat',sans-serif;color:var(--gh-blue);font-weight:700;min-width:120px;text-align:right;font-size:14px}
+/* mobile : le label prend toute la ligne, curseur + valeur en dessous (sinon .val 120px déborde) */
+@media(max-width:560px){
+  .row{flex-wrap:wrap;column-gap:12px;row-gap:6px}
+  .row label{flex:1 1 100%}
+  .row input[type=range]{flex:1 1 auto;max-width:none;min-width:0}
+  .row .val{min-width:auto}
+}
 .simu-out{margin-top:22px;padding:22px;background:var(--gh-beige);border-radius:var(--r-sm)}
 .simu-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed rgba(16,17,19,.1);font-size:13.5px}
 .simu-row:last-child{border-bottom:0;padding-top:14px;margin-top:6px;border-top:1px solid var(--gh-blue);font-size:15px;font-weight:700}
