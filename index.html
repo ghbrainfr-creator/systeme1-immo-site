@@ -783,14 +783,34 @@
 
   iconify-icon { display: inline-block; vertical-align: middle; color: var(--accent-blue); }
 
-  /* ============ JULIETTE DEMO VIDEOS ============ */
-  .jul-video-wrap{position:relative;background:#000;line-height:0;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
-  .jul-video{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;cursor:pointer}
-  .jul-sound{position:absolute;bottom:12px;right:12px;display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:rgba(7,11,20,.72);border:1px solid rgba(91,163,232,.4);backdrop-filter:blur(8px);color:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s ease,opacity .3s ease}
-  .jul-sound:hover{background:rgba(91,163,232,.35)}
-  .jul-video-wrap.sound-on .jul-sound{opacity:0;pointer-events:none}
-  /* Mobile : contrôles natifs visibles → on masque le bouton custom (géré côté JS) */
-  @media (max-width:767px){ .jul-video-wrap .jul-sound{display:none} }
+  /* ============ JULIETTE DEMO VIDEOS — vignettes YouTube + lightbox ============ */
+  .jul-thumb{position:relative;display:block;width:100%;margin:0;padding:0;border:0;background:#000;line-height:0;cursor:pointer;aspect-ratio:16/9;overflow:hidden;border-radius:var(--r-lg) var(--r-lg) 0 0}
+  .jul-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease-smooth)}
+  .jul-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,20,.05) 0%,rgba(7,11,20,.4) 100%);transition:background .3s ease}
+  .jul-thumb:hover img{transform:scale(1.04)}
+  .jul-thumb:hover::after{background:linear-gradient(180deg,rgba(7,11,20,.1) 0%,rgba(7,11,20,.5) 100%)}
+  .jul-thumb:focus-visible{outline:2px solid var(--accent-blue);outline-offset:3px}
+  .jul-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:74px;height:74px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(91,163,232,.92);box-shadow:0 10px 30px -8px rgba(59,141,224,.7),0 0 0 8px rgba(255,255,255,.08);transition:transform .25s var(--ease-spring),background .25s ease}
+  .jul-thumb:hover .jul-play{transform:translate(-50%,-50%) scale(1.08);background:#6FB4F0}
+  .jul-play iconify-icon{color:#fff;margin-left:3px}
+  .jul-badge{position:absolute;bottom:12px;right:12px;z-index:2;display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:7px;background:rgba(7,11,20,.78);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:11px;font-weight:600;font-family:ui-monospace,monospace;line-height:1;backdrop-filter:blur(6px)}
+  .jul-badge iconify-icon{color:#fff}
+  /* Lightbox */
+  .jul-lightbox{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+  .jul-lightbox.open{opacity:1;visibility:visible}
+  .jul-lightbox-backdrop{position:absolute;inset:0;background:rgba(3,7,15,.88);backdrop-filter:blur(10px);cursor:pointer}
+  .jul-lightbox-inner{position:relative;z-index:1;width:100%;max-width:1100px;transform:scale(.96);transition:transform .3s var(--ease-smooth)}
+  .jul-lightbox.open .jul-lightbox-inner{transform:scale(1)}
+  .jul-lightbox-video{width:100%;max-height:82vh;display:block;border-radius:14px;background:#000;box-shadow:0 40px 120px -30px rgba(0,0,0,.9),0 0 0 1px rgba(91,163,232,.18)}
+  .jul-lightbox-title{color:var(--cool-200);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;margin-top:14px;text-align:center}
+  .jul-lightbox-close{position:absolute;top:-14px;right:-14px;z-index:3;width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(15,21,35,.96);border:1px solid rgba(91,163,232,.3);color:#fff;cursor:pointer;transition:transform .15s ease,background .2s ease}
+  .jul-lightbox-close:hover{background:rgba(91,163,232,.3);transform:scale(1.06)}
+  @media (max-width:640px){
+    .jul-lightbox{padding:12px}
+    .jul-lightbox-close{top:-6px;right:-6px;width:40px;height:40px}
+    .jul-play{width:62px;height:62px}
+    .jul-lightbox-video{max-height:72vh}
+  }
 
   /* ============ APP SHOTS (captures réelles back-office) ============ */
   .app-shot{background:var(--card-bg);border:1px solid rgba(30,38,56,1);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 40px 100px -40px rgba(0,0,0,.9),0 0 0 1px rgba(91,163,232,.12)}
@@ -1250,30 +1270,26 @@
       <div class="sec-head mb-8">
         <span class="sec-label">JULIETTE EN ACTION · 2 CAS RÉELS</span>
         <h3 class="font-display text-2xl md:text-4xl font-semibold mt-4 tracking-tight" style="color:var(--cool-50)">Vous lui parlez. Elle exécute.</h3>
-        <p class="text-base mt-3 max-w-2xl mx-auto" style="color:var(--cool-400)">Des extraits réels de l'application. <span style="color:var(--cool-200)">Cliquez pour activer le son.</span></p>
+        <p class="text-base mt-3 max-w-2xl mx-auto" style="color:var(--cool-400)">Des extraits réels de l'application. <span style="color:var(--cool-200)">Cliquez pour lancer la vidéo.</span></p>
       </div>
-      <div class="grid gap-8">
+      <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
         <figure class="neu-card p-0" style="overflow:hidden">
-          <div class="jul-video-wrap" data-jul-video>
-            <video class="jul-video" src="assets/juliette-cas-1-crm-voix.mp4" poster="assets/juliette-cas-1.jpg" muted loop playsinline preload="metadata" aria-label="Juliette met à jour une fiche CRM à la voix"></video>
-            <button class="jul-sound" type="button" aria-label="Activer le son">
-              <iconify-icon icon="tabler:volume" width="16" height="16" style="color:white"></iconify-icon>
-              <span>Activer le son</span>
-            </button>
-          </div>
+          <button class="jul-thumb" type="button" data-jul-open data-src="assets/juliette-cas-1-crm-voix.mp4" data-title="« Mets à jour sa fiche » — à la voix, Juliette met à jour le CRM et pose le rappel" aria-label="Lire la vidéo : Mets à jour sa fiche">
+            <img src="assets/juliette-cas-1.jpg" alt="Juliette met à jour une fiche CRM à la voix" loading="lazy" />
+            <span class="jul-play" aria-hidden="true"><iconify-icon icon="tabler:player-play-filled" width="30" height="30"></iconify-icon></span>
+            <span class="jul-badge" aria-hidden="true"><iconify-icon icon="tabler:player-play-filled" width="11" height="11"></iconify-icon> Vidéo</span>
+          </button>
           <figcaption class="p-5">
             <div class="font-display font-semibold" style="color:var(--cool-50)">« Mets à jour sa fiche »</div>
             <p class="text-sm mt-1" style="color:var(--cool-400)">À la voix, en sortant d'une visite : Juliette met à jour le CRM et pose le rappel.</p>
           </figcaption>
         </figure>
         <figure class="neu-card p-0" style="overflow:hidden">
-          <div class="jul-video-wrap" data-jul-video>
-            <video class="jul-video" src="assets/juliette-cas-2-message-doc.mp4" poster="assets/juliette-cas-2.jpg" muted loop playsinline preload="metadata" aria-label="Juliette prépare un message avec le bon document et l'envoie après validation"></video>
-            <button class="jul-sound" type="button" aria-label="Activer le son">
-              <iconify-icon icon="tabler:volume" width="16" height="16" style="color:white"></iconify-icon>
-              <span>Activer le son</span>
-            </button>
-          </div>
+          <button class="jul-thumb" type="button" data-jul-open data-src="assets/juliette-cas-2-message-doc.mp4" data-title="« Prépare le bon document » — Juliette joint le dossier vendeur et envoie après votre validation" aria-label="Lire la vidéo : Prépare le bon document">
+            <img src="assets/juliette-cas-2.jpg" alt="Juliette prépare un message avec le bon document et l'envoie après validation" loading="lazy" />
+            <span class="jul-play" aria-hidden="true"><iconify-icon icon="tabler:player-play-filled" width="30" height="30"></iconify-icon></span>
+            <span class="jul-badge" aria-hidden="true"><iconify-icon icon="tabler:player-play-filled" width="11" height="11"></iconify-icon> Vidéo</span>
+          </button>
           <figcaption class="p-5">
             <div class="font-display font-semibold" style="color:var(--cool-50)">« Prépare le bon document »</div>
             <p class="text-sm mt-1" style="color:var(--cool-400)">Elle retrouve le contact, joint le dossier vendeur, et envoie après votre validation.</p>
@@ -2429,34 +2445,40 @@
 
   /* Réseau de particules retiré (calmage visuel, tell IA froid) */
 
-  /* ============ JULIETTE DEMO VIDEOS (auto-loop muet + clic pour le son) ============ */
-  (function julietteVideos(){
-    const wraps = document.querySelectorAll('[data-jul-video]');
-    if (!wraps.length) return;
-    const vids = [];
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    wraps.forEach(w => {
-      const v = w.querySelector('video');
-      const btn = w.querySelector('.jul-sound');
-      if (!v) return;
-      vids.push(v);
-      if (isMobile) { v.controls = true; return; } // mobile : contrôles natifs (lecture + son + plein écran)
-      function enableSound(){
-        vids.forEach(o => { if (o !== v){ o.muted = true; o.controls = false; const ow = o.closest('[data-jul-video]'); if (ow) ow.classList.remove('sound-on'); } });
-        v.muted = false; v.controls = true; v.play().catch(()=>{}); w.classList.add('sound-on');
+  /* ============ JULIETTE DEMO VIDEOS — lightbox YouTube-style ============ */
+  (function julietteLightbox(){
+    function init(){
+      const lb = document.getElementById('julLightbox');
+      const vid = document.getElementById('julLightboxVideo');
+      const titleEl = document.getElementById('julLightboxTitle');
+      if (!lb || !vid) return;
+      const closeBtn = lb.querySelector('.jul-lightbox-close');
+      let lastFocus = null;
+      function open(src, title){
+        lastFocus = document.activeElement;
+        vid.src = src;
+        titleEl.textContent = title || '';
+        lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        vid.muted = false; vid.currentTime = 0;
+        vid.play().catch(()=>{});
+        if (closeBtn) closeBtn.focus();
       }
-      v.addEventListener('click', (e) => { if (v.muted){ e.preventDefault(); enableSound(); } });
-      if (btn) btn.addEventListener('click', enableSound);
-    });
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        const v = e.target;
-        if (e.isIntersecting) { if (v.muted) v.play().catch(()=>{}); }
-        else if (v.muted) { v.pause(); }
+      function close(){
+        if (!lb.classList.contains('open')) return;
+        lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        vid.pause(); vid.removeAttribute('src'); vid.load();
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      document.querySelectorAll('[data-jul-open]').forEach(b => {
+        b.addEventListener('click', () => open(b.getAttribute('data-src'), b.getAttribute('data-title')));
       });
-    }, { threshold: 0.35 });
-    vids.forEach(v => io.observe(v));
+      lb.querySelectorAll('[data-jul-close]').forEach(el => el.addEventListener('click', close));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
   })();
 
   /* ============ CAROUSEL BACK-OFFICE ============ */
@@ -2830,6 +2852,18 @@
     boot();
   })();
 </script>
+
+<!-- LIGHTBOX VIDÉOS JULIETTE (lifting) -->
+<div class="jul-lightbox" id="julLightbox" role="dialog" aria-modal="true" aria-label="Lecteur vidéo Juliette" aria-hidden="true">
+  <div class="jul-lightbox-backdrop" data-jul-close></div>
+  <div class="jul-lightbox-inner">
+    <button class="jul-lightbox-close" type="button" data-jul-close aria-label="Fermer la vidéo">
+      <iconify-icon icon="tabler:x" width="22" height="22"></iconify-icon>
+    </button>
+    <video class="jul-lightbox-video" id="julLightboxVideo" controls playsinline preload="metadata"></video>
+    <div class="jul-lightbox-title" id="julLightboxTitle"></div>
+  </div>
+</div>
 
 </body>
 </html>
