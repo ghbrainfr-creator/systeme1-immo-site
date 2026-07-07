@@ -12,27 +12,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          navy: { 950:'#070B14', 900:'#0B1020', 800:'#0F1523', 700:'#161E31', 600:'#1E2638' },
-          cool: { 50:'#F5F7FB', 200:'#E4E7EC', 400:'#98A2B3', 500:'#64748B' },
-          accent: { blue:'#5BA3E8', blueDark:'#3B8DE0' },
-          success: '#52C77A',
-        },
-        fontFamily: {
-          display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-          body: ['"Geist"', 'system-ui', 'sans-serif'],
-          mono: ['ui-monospace','SFMono-Regular','Menlo','monospace'],
-        },
-      }
-    }
-  }
-</script>
+<link rel="stylesheet" href="tailwind.min.css">
+<link rel="preload" as="image" href="assets/app-dashboard.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/logo.webp">
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" async></script>
 <style>
   :root {
     --accent-blue: #5BA3E8;
@@ -841,6 +824,9 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   }
+
+  /* ============ CONTENT-VISIBILITY (skip paint hors viewport) ============ */
+  .cv-auto { content-visibility: auto; contain-intrinsic-size: 1px 800px; }
 </style>
 </head>
 <body class="min-h-screen">
@@ -883,7 +869,7 @@
 <nav class="sticky top-0 z-50 border-b border-navy-600/40" style="background:rgba(7,11,20,.85);backdrop-filter:blur(20px);box-shadow:0 4px 20px rgba(0,0,0,.3)">
   <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="#" class="flex items-center select-none" aria-label="Système1-Immo, accueil">
-      <img src="assets/logo.webp" alt="Système1-Immo" class="h-8 md:h-10 w-auto" />
+      <img src="assets/logo.webp" alt="Système1-Immo" width="800" height="204" class="h-8 md:h-10 w-auto" />
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm text-cool-400">
       <a href="#juliette" class="hover:text-white transition relative group">Juliette<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
@@ -1002,7 +988,7 @@
           <span class="app-dot" style="background:var(--success)"></span>
           <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · Tableau de bord</span>
         </div>
-        <img src="assets/app-dashboard.webp" alt="Aperçu de l'application Système1-Immo : tableau de bord où Juliette met à jour une fiche à la voix" loading="eager" />
+        <img src="assets/app-dashboard.webp" alt="Aperçu de l'application Système1-Immo : tableau de bord où Juliette met à jour une fiche à la voix" width="1366" height="782" loading="eager" />
       </div>
       <!-- un seul badge flottant conservé, calmé (matche les chips de la maquette) -->
       <div class="hidden lg:flex items-center gap-2.5 absolute -bottom-5 -left-5 neu-card p-3" style="max-width:230px">
@@ -1275,7 +1261,7 @@
       <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
         <figure class="neu-card p-0" style="overflow:hidden">
           <button class="jul-thumb" type="button" data-jul-open data-src="assets/juliette-cas-1-crm-voix.mp4" data-title="« Mets à jour sa fiche » — à la voix, Juliette met à jour le CRM et pose le rappel" aria-label="Lire la vidéo : Mets à jour sa fiche">
-            <img src="assets/juliette-cas-1.jpg" alt="Juliette met à jour une fiche CRM à la voix" loading="lazy" />
+            <img src="assets/juliette-cas-1.jpg" alt="Juliette met à jour une fiche CRM à la voix" width="1280" height="732" loading="lazy" />
             <span class="jul-play" aria-hidden="true"><iconify-icon icon="tabler:player-play-filled" width="30" height="30"></iconify-icon></span>
             <span class="jul-badge" aria-hidden="true"><iconify-icon icon="tabler:player-play-filled" width="11" height="11"></iconify-icon> Vidéo</span>
           </button>
@@ -1286,7 +1272,7 @@
         </figure>
         <figure class="neu-card p-0" style="overflow:hidden">
           <button class="jul-thumb" type="button" data-jul-open data-src="assets/juliette-cas-2-message-doc.mp4" data-title="« Prépare le bon document » — Juliette joint le dossier vendeur et envoie après votre validation" aria-label="Lire la vidéo : Prépare le bon document">
-            <img src="assets/juliette-cas-2.jpg" alt="Juliette prépare un message avec le bon document et l'envoie après validation" loading="lazy" />
+            <img src="assets/juliette-cas-2.jpg" alt="Juliette prépare un message avec le bon document et l'envoie après validation" width="1280" height="732" loading="lazy" />
             <span class="jul-play" aria-hidden="true"><iconify-icon icon="tabler:player-play-filled" width="30" height="30"></iconify-icon></span>
             <span class="jul-badge" aria-hidden="true"><iconify-icon icon="tabler:player-play-filled" width="11" height="11"></iconify-icon> Vidéo</span>
           </button>
@@ -1346,6 +1332,7 @@
           <img class="device-image-track" id="deviceTrack"
                src="site-desktop.webp"
                alt="Vitrine Système1-Immo · Nordine Mouaouia · aperçu défilant"
+               width="1280" height="7402"
                loading="eager" />
           <div class="waypoint-caption visible" style="opacity:.9">
             <iconify-icon icon="tabler:eye" width="14" height="14" style="color:var(--accent-blue)"></iconify-icon>
@@ -1371,6 +1358,7 @@
           <img class="phone-image-track" id="phoneTrack"
                src="site-mobile.webp"
                alt="Vitrine mobile"
+               width="390" height="11268"
                loading="eager" />
         </div>
       </div>
@@ -1422,7 +1410,7 @@
             <span class="app-dot" style="background:var(--success)"></span>
             <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · Tableau de bord</span>
           </div>
-          <img src="assets/app-dashboard.webp" alt="Tableau de bord, Juliette met à jour une fiche à la voix" loading="lazy" />
+          <img src="assets/app-dashboard.webp" alt="Tableau de bord, Juliette met à jour une fiche à la voix" width="1366" height="782" loading="lazy" />
           <figcaption>Vous parlez à <strong style="color:var(--cool-200)">Juliette</strong> : elle met à jour vos fiches et pose vos rappels, mains-libres.</figcaption>
         </figure>
 
@@ -1433,7 +1421,7 @@
             <span class="app-dot" style="background:var(--success)"></span>
             <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · CRM</span>
           </div>
-          <img src="assets/app-crm-liste.webp" alt="Liste CRM de 45 leads qualifiés et enrichis automatiquement par l'IA" loading="lazy" />
+          <img src="assets/app-crm-liste.webp" alt="Liste CRM de 45 leads qualifiés et enrichis automatiquement par l'IA" width="1366" height="946" loading="lazy" />
           <figcaption>Tous vos leads au même endroit, <strong style="color:var(--cool-200)">qualifiés et enrichis automatiquement</strong> : température, profil, projet, et la prochaine action.</figcaption>
         </figure>
 
@@ -1444,7 +1432,7 @@
             <span class="app-dot" style="background:var(--success)"></span>
             <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · Fiche contact</span>
           </div>
-          <img src="assets/app-crm-fiche.webp" alt="Fiche contact CRM avec le résumé de Juliette : qui est le contact, parcours relationnel, prochaine action" loading="lazy" />
+          <img src="assets/app-crm-fiche.webp" alt="Fiche contact CRM avec le résumé de Juliette : qui est le contact, parcours relationnel, prochaine action" width="1366" height="942" loading="lazy" />
           <figcaption>Sur chaque fiche, <strong style="color:var(--cool-200)">Juliette résume qui est le contact</strong> : son projet, son historique, et la prochaine action à mener.</figcaption>
         </figure>
 
@@ -1455,7 +1443,7 @@
             <span class="app-dot" style="background:var(--success)"></span>
             <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · Messagerie</span>
           </div>
-          <img src="assets/app-messagerie.webp" alt="Messagerie, Juliette prépare un message avec le dossier vendeur, envoyé après validation" loading="lazy" />
+          <img src="assets/app-messagerie.webp" alt="Messagerie, Juliette prépare un message avec le dossier vendeur, envoyé après validation" width="1366" height="780" loading="lazy" />
           <figcaption>Juliette prépare le message avec le bon document. <strong style="color:var(--cool-200)">Vous validez, ça part.</strong></figcaption>
         </figure>
 
@@ -1466,7 +1454,7 @@
             <span class="app-dot" style="background:var(--success)"></span>
             <span class="app-url"><iconify-icon icon="tabler:lock" width="12" height="12" style="color:var(--success)"></iconify-icon> systeme1-immo.app · Sniper Web</span>
           </div>
-          <img src="assets/app-sniper.webp" alt="Sniper Web, annonces immobilières collectées automatiquement sur les portails" loading="lazy" />
+          <img src="assets/app-sniper.webp" alt="Sniper Web, annonces immobilières collectées automatiquement sur les portails" width="1366" height="900" loading="lazy" />
           <figcaption>Le <strong style="color:var(--cool-200)">Sniper Web</strong> collecte les annonces des portails, tout seul, sur vos zones.</figcaption>
         </figure>
 
@@ -1538,7 +1526,7 @@
 </section>
 
 <!-- PAGES & OUTILS (contenu réel du back-office) -->
-<section id="pages" class="py-28 md:py-40 spotlight relative bg-gradient-section-1" onmousemove="updateMouse(event, this)">
+<section id="pages" class="py-28 md:py-40 spotlight relative bg-gradient-section-1 cv-auto" onmousemove="updateMouse(event, this)">
   <div class="max-w-7xl mx-auto px-6">
     <div class="max-w-3xl sec-head mb-16 reveal">
       <div class="sec-label">
@@ -1670,7 +1658,7 @@
 
 
 <!-- HOW IT WORKS -->
-<section class="py-28 md:py-40 relative bg-gradient-section-4 vf-section">
+<section class="py-28 md:py-40 relative bg-gradient-section-4 vf-section cv-auto">
   <div class="max-w-7xl mx-auto px-6">
     <div class="max-w-3xl sec-head mb-16 reveal">
       <span class="sec-label">COMMENT ÇA MARCHE</span>
@@ -1703,7 +1691,7 @@
 </section>
 
 <!-- BEFORE / AFTER — DRAMATIC -->
-<section class="py-28 md:py-40 relative bg-gradient-section-2 overflow-hidden">
+<section class="py-28 md:py-40 relative bg-gradient-section-2 overflow-hidden cv-auto">
   <div class="max-w-6xl mx-auto px-6">
     <div class="max-w-3xl sec-head mb-16 reveal">
       <span class="sec-label">AVANT · APRÈS</span>
@@ -1811,7 +1799,7 @@
 </section>
 
 <!-- TESTIMONIAL (agent, pas propriétaire) -->
-<section class="py-28 md:py-40 relative">
+<section class="py-28 md:py-40 relative cv-auto">
   <div class="max-w-3xl mx-auto px-6">
     <div class="neu-card card-glow p-10 md:p-14 text-center reveal-scale relative">
       <iconify-icon icon="tabler:quote" width="60" height="60" class="absolute top-4 left-8" style="color:rgba(91,163,232,.2)"></iconify-icon>
@@ -1868,7 +1856,7 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="py-28 md:py-40">
+<section id="faq" class="py-28 md:py-40 cv-auto">
   <div class="max-w-3xl mx-auto px-6">
     <div class="sec-head mb-12 reveal">
       <span class="sec-label">FAQ</span>
@@ -1978,7 +1966,7 @@
 </section>
 
 <!-- CTA FINAL -->
-<section id="cta-final" class="py-28 md:py-40 relative overflow-hidden">
+<section id="cta-final" class="py-28 md:py-40 relative overflow-hidden cv-auto">
   <div class="absolute inset-0 bg-gradient-to-b from-accent-blue/10 via-transparent to-transparent"></div>
   <div class="absolute inset-0 grid-bg opacity-50"></div>
   <div class="relative max-w-4xl mx-auto px-6 text-center">
@@ -2018,7 +2006,7 @@
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 text-sm">
     <div>
       <div class="mb-4">
-        <img src="assets/logo.webp" alt="Système1-Immo" class="h-10 w-auto" />
+        <img src="assets/logo.webp" alt="Système1-Immo" width="800" height="204" class="h-10 w-auto" />
       </div>
       <p style="color:var(--cool-400)">Le CRM vocal et le site qui remplissent votre CRM — pour vendre plus, du bon côté de la loi.</p>
       <p class="mt-4 text-xs" style="color:var(--cool-500)">

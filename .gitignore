@@ -5,3 +5,9 @@ big-*.mp4
 # Fichiers temporaires
 *.tmp
 _*.tmp
+
+# Node.js (build Tailwind)
+node_modules/
+
+# Rapports Lighthouse
+lighthouse-*.report.*

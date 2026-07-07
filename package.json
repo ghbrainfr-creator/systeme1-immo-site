@@ -1,0 +1,13 @@
+{
+  "name": "systeme1-immo-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine Système1-Immo (statique HTML/CSS/JS)",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src.css -o ./tailwind.min.css --minify",
+    "dev:css": "tailwindcss -i ./src.css -o ./tailwind.min.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
