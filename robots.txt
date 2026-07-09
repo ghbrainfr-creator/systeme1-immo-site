@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://systeme1-immo.com/sitemap.xml
+Sitemap: https://www.systeme1-immo.com/sitemap.xml
 
 Disallow: /.vercel/
