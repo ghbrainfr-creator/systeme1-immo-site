@@ -873,6 +873,7 @@
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm text-cool-400">
       <a href="#juliette" class="hover:text-white transition relative group">Juliette<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
+      <a href="#video" class="hover:text-white transition relative group">Vidéo<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
       <a href="#demo" class="hover:text-white transition relative group">Démo<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
       <a href="#pages" class="hover:text-white transition relative group">Pages & outils<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
       <a href="#dashboard" class="hover:text-white transition relative group">Back-office<span class="absolute -bottom-1 left-0 w-0 h-px bg-accent-blue group-hover:w-full transition-all"></span></a>
@@ -889,6 +890,7 @@
   <div id="mobileMenu" class="md:hidden border-t border-navy-600/40" style="background:rgba(7,11,20,.97)">
     <div class="px-6 py-4 flex flex-col text-sm">
       <a href="#juliette" class="py-3 text-cool-200 hover:text-white border-b border-navy-600/25">Juliette</a>
+      <a href="#video" class="py-3 text-cool-200 hover:text-white border-b border-navy-600/25">Vidéo</a>
       <a href="#demo" class="py-3 text-cool-200 hover:text-white border-b border-navy-600/25">Démo</a>
       <a href="#pages" class="py-3 text-cool-200 hover:text-white border-b border-navy-600/25">Pages &amp; outils</a>
       <a href="#dashboard" class="py-3 text-cool-200 hover:text-white">Back-office</a>
@@ -920,11 +922,7 @@
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
     <div class="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
 
-      <!-- [1] Tag : catégorie + différenciateur (Unity + Authority Cialdini) -->
-      <div class="badge-velox mb-6 reveal-scale" style="transition-delay:0s">
-        <span class="live-dot"></span>
-        SYSTÈME1-IMMO™ · LA PROSPECTION NOUVELLE GÉNÉRATION
-      </div>
+      <!-- Vignette catégorie retirée (équilibrage hero — demande Fred) -->
 
       <!-- [2] Headline : LA PLAIE (tri-couleur — accent blue pour le time anchor, blanc pour le focus) -->
       <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-4 tracking-tight" style="color:var(--cool-50)">
@@ -953,7 +951,7 @@
       <p class="text-lg md:text-xl max-w-xl mx-auto lg:mx-0 mb-2 italic leading-relaxed reveal" style="transition-delay:1.05s; color:var(--cool-300)">
         « Je ne prospecte plus. 50 ventes par an. »
       </p>
-      <a href="#demo" class="inline-flex items-center gap-1 mb-6 text-sm font-medium hover:underline reveal" style="transition-delay:1.1s; color:var(--accent-blue)">
+      <a href="#video" class="inline-flex items-center gap-1 mb-6 text-sm font-medium hover:underline reveal" style="transition-delay:1.1s; color:var(--accent-blue)">
         Voir comment
         <iconify-icon icon="tabler:chevron-down" width="14" height="14"></iconify-icon>
       </a>
@@ -968,12 +966,7 @@
 
       <!-- Trust chip vert retiré (lifting — demande user : trop chargé, effet « bouton ») -->
 
-      <!-- Bandeau loi 11 aout (evergreen : fait date, pas de compte a rebours) -->
-      <a href="loi-aout-2026.html" class="reveal mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl flex-wrap justify-center hover:opacity-90 transition" style="transition-delay:1.4s; background:rgba(242,180,90,.07); border:1px solid rgba(242,180,90,.25); color:#FAD9A4">
-        <iconify-icon icon="tabler:scale" width="18" height="18" style="color:#F2B45A"></iconify-icon>
-        <span class="text-sm font-medium">11 août 2026 · loi n°2025-594 : la prospection téléphonique à froid devient interdite sans accord préalable.</span>
-        <span class="text-sm font-bold underline" style="color:#FBE3B5">Ce que vous avez encore le droit de faire →</span>
-      </a>
+      <!-- Bandeau loi déplacé en pleine largeur sous le hero (élargissement — demande Fred) -->
 
       <!-- Visitor counter conservé pour le sticky CTA bar (référencé par JS) -->
       <span id="visitorCount" style="display:none">—</span>
@@ -990,20 +983,62 @@
         </div>
         <img src="assets/app-dashboard.webp" alt="Aperçu de l'application Système1-Immo : tableau de bord où Juliette met à jour une fiche à la voix" width="1366" height="782" loading="eager" />
       </div>
-      <!-- un seul badge flottant conservé, calmé (matche les chips de la maquette) -->
-      <div class="hidden lg:flex items-center gap-2.5 absolute -bottom-5 -left-5 neu-card p-3" style="max-width:230px">
-        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(82,199,122,.15);border:1px solid rgba(82,199,122,.25)">
-          <iconify-icon icon="tabler:check" width="16" height="16" style="color:var(--success)"></iconify-icon>
-        </div>
-        <div>
-          <div class="text-xs font-semibold" style="color:var(--cool-50)">Fiche générée</div>
-          <div class="text-[10px]" style="color:var(--cool-400)">Automatique · CRM</div>
-        </div>
-      </div>
+      <!-- Vignette flottante « Fiche générée » retirée (équilibrage hero — demande Fred) -->
     </div>
 
     </div>
 
+    <!-- Bandeau loi — pleine largeur sous le hero (élargi, moins serré — demande Fred) -->
+    <a href="loi-aout-2026.html" class="reveal mt-12 mx-auto max-w-4xl flex items-center gap-3 px-6 py-3 rounded-xl flex-wrap justify-center text-center hover:opacity-90 transition" style="transition-delay:0.3s; background:rgba(242,180,90,.07); border:1px solid rgba(242,180,90,.25); color:#FAD9A4">
+      <iconify-icon icon="tabler:scale" width="18" height="18" style="color:#F2B45A"></iconify-icon>
+      <span class="text-sm md:text-base font-medium">11 août 2026 · loi n°2025-594 : la prospection téléphonique à froid devient interdite sans accord préalable.</span>
+      <span class="text-sm md:text-base font-bold underline" style="color:#FBE3B5">Ce que vous avez encore le droit de faire →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ DÉMO VIDÉO (promo 2 min) ============ -->
+<section id="video" class="relative z-10 py-20 md:py-28">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+      <div class="badge-velox mb-5 reveal-scale"><span class="live-dot"></span> LA DÉMO · 2 MINUTES</div>
+      <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight mb-4 reveal" style="color:var(--cool-50)">
+        Voyez <span class="gradient-text">Juliette</span> à l'œuvre.
+      </h2>
+      <p class="text-base md:text-lg leading-relaxed reveal" style="transition-delay:.1s; color:var(--cool-200)">
+        Prospection, CRM vocal, messagerie, site web qui capte des leads… tout ce que Système1-Immo fait pour vous, en 2 minutes.
+      </p>
+    </div>
+
+    <div class="relative mx-auto rounded-2xl overflow-hidden reveal-scale" style="transition-delay:.15s; box-shadow:0 40px 100px rgba(0,0,0,.55); border:1px solid rgba(91,163,232,.28)">
+      <video
+        id="promoVideo"
+        class="block w-full h-auto"
+        controls
+        preload="none"
+        playsinline
+        poster="assets/promo-poster.jpg"
+        style="background:#05080f; aspect-ratio:16/9"
+      >
+        <source src="assets/systeme1-immo-promo.mp4" type="video/mp4">
+        Votre navigateur ne peut pas lire cette vidéo.
+      </video>
+      <button id="promoPlayBtn" type="button" class="promo-play-overlay" aria-label="Lire la vidéo de présentation">
+        <span class="promo-play-circle"><svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="margin-left:4px"><path d="M8 5v14l11-7z"/></svg></span>
+      </button>
+    </div>
+    <style>
+      .promo-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(5,8,15,.12),rgba(5,8,15,.34));border:0;padding:0;cursor:pointer;transition:opacity .35s ease}
+      .promo-play-overlay.is-hidden{opacity:0;pointer-events:none}
+      .promo-play-circle{width:92px;height:92px;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(91,163,232,.95);box-shadow:0 12px 46px rgba(91,163,232,.55);transition:transform .25s ease,background .25s ease}
+      .promo-play-overlay:hover .promo-play-circle{transform:scale(1.08);background:#5ba3e8}
+      .promo-play-circle iconify-icon{margin-left:5px}
+      @media (max-width:640px){.promo-play-circle{width:70px;height:70px}}
+    </style>
+    <script>
+      (function(){var v=document.getElementById('promoVideo'),b=document.getElementById('promoPlayBtn');if(!v||!b)return;b.addEventListener('click',function(){v.play();});v.addEventListener('play',function(){b.classList.add('is-hidden');});v.addEventListener('ended',function(){b.classList.remove('is-hidden');});})();
+    </script>
   </div>
 </section>
 
@@ -2017,6 +2052,7 @@
     <div>
       <div class="font-semibold mb-3" style="color:var(--cool-50)">Produit</div>
       <ul class="space-y-2" style="color:var(--cool-400)">
+        <li><a href="#video" class="hover:text-white transition">Vidéo</a></li>
         <li><a href="#demo" class="hover:text-white transition">Démo</a></li>
         <li><a href="#pages" class="hover:text-white transition">Pages & outils</a></li>
         <li><a href="#dashboard" class="hover:text-white transition">Back-office</a></li>
