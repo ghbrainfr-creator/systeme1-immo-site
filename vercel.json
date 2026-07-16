@@ -4,6 +4,14 @@
   "framework": null,
   "cleanUrls": false,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "systeme1-immo.com" }],
+      "destination": "https://www.systeme1-immo.com/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/quiz.html",
