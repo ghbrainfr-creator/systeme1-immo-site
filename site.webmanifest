@@ -1,0 +1,22 @@
+{
+  "name": "Système1-Immo",
+  "short_name": "Système1-Immo",
+  "description": "CRM vocal immobilier et site qui remplit votre CRM, sans démarchage à froid.",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#070B14",
+  "theme_color": "#070B14",
+  "icons": [
+    {
+      "src": "/assets/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

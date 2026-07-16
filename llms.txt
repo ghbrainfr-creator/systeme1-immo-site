@@ -1,0 +1,22 @@
+# Système1-Immo
+
+> CRM vocal immobilier et site générateur de leads pour agents et mandataires
+> indépendants. Capte et qualifie des vendeurs en inbound, sans démarchage à
+> froid, conforme à la loi n°2025-594 (interdiction du démarchage téléphonique
+> non consenti au 11 août 2026). Assistante IA : Juliette.
+
+## Produit
+- [Système1-Immo](https://www.systeme1-immo.com/) : CRM vocal piloté à la voix + vitrine qui remplit le CRM. L'assistante IA Juliette rédige les messages, met à jour les fiches et relance les contacts. Sans engagement, export CSV à tout moment.
+- [Loi du 11 août 2026 expliquée](https://www.systeme1-immo.com/loi-aout-2026.html) : ce que la loi n°2025-594 anti-démarchage change pour les agents immobiliers, ce qui reste autorisé, et comment rester conforme.
+
+## Méthode & recherche
+- [Système1-Immo Lab](https://systeme1-immo-lab.com) : recherche appliquée aux neurosciences de la décision en immobilier (biais cognitifs, science du comportement du vendeur).
+
+## Société
+- Fondateurs : Nordine Mouaouia (25 ans d'immobilier, 1 250 ventes, certifié en psychologie du consommateur immobilier, fondateur du Système1-Immo Lab) et Freddy Nazon (ancien marchand de biens et développeur).
+- Contact : contact@systeme1-immo.fr
+
+## Légal
+- [Mentions légales](https://www.systeme1-immo.com/mentions-legales.html)
+- [CGU](https://www.systeme1-immo.com/cgu.html)
+- [Confidentialité](https://www.systeme1-immo.com/confidentialite.html)
