@@ -862,7 +862,14 @@
       "url": "https://www.systeme1-immo.com/",
       "logo": "https://www.systeme1-immo.com/assets/logo.webp",
       "description": "Le premier CRM vocal immobilier et le site qui remplit votre CRM. Les vendeurs viennent à vous, qualifiés, sans démarchage à froid.",
-      "email": "contact@systeme1-immo.fr"
+      "email": "contact@systeme1-immo.fr",
+      "founder": [
+        { "@id": "https://www.systeme1-immo.com/#nordine" },
+        { "@id": "https://www.systeme1-immo.com/#freddy" }
+      ],
+      "sameAs": [
+        "https://systeme1-immo-lab.com"
+      ]
     },
     {
       "@type": "WebSite",
@@ -874,8 +881,10 @@
     },
     {
       "@type": "SoftwareApplication",
+      "@id": "https://www.systeme1-immo.com/#app",
       "name": "Système1-Immo",
       "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "CRM immobilier vocal",
       "operatingSystem": "Web",
       "url": "https://www.systeme1-immo.com/",
       "inLanguage": "fr-FR",
@@ -889,6 +898,25 @@
         "Newsletter automatique"
       ],
       "publisher": { "@id": "https://www.systeme1-immo.com/#organization" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.systeme1-immo.com/#nordine",
+      "name": "Nordine Mouaouia",
+      "jobTitle": "Co-fondateur",
+      "worksFor": { "@id": "https://www.systeme1-immo.com/#organization" },
+      "description": "Agent immobilier, 25 ans d'expérience et 1 250 ventes, certifié en psychologie du consommateur immobilier. Fondateur du Système1-Immo Lab.",
+      "sameAs": [
+        "https://systeme1-immo-lab.com"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.systeme1-immo.com/#freddy",
+      "name": "Freddy Nazon",
+      "jobTitle": "Co-fondateur",
+      "worksFor": { "@id": "https://www.systeme1-immo.com/#organization" },
+      "description": "Ancien marchand de biens et développeur. Conçoit la plateforme Système1-Immo."
     },
     {
       "@type": "VideoObject",
@@ -907,6 +935,8 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": "https://www.systeme1-immo.com/#faq",
+  "isPartOf": { "@id": "https://www.systeme1-immo.com/#app" },
   "mainEntity": [
     {
       "@type": "Question",
